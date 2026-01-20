@@ -10,6 +10,44 @@ Move tasks here when Acceptance Criteria are met.
 ## Completed tasks
 <!-- Append completed tasks below. Preserve the original record for auditability. -->
 
+### T-011: Add vertical-specific configuration examples
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-20
+Context:
+- Template will be more useful with concrete examples for different industries
+- Users should see how to adapt template for their specific vertical
+- Examples make the template more accessible and reduce setup time
+Acceptance Criteria:
+- [x] T-011.1: Create /docs/examples/ directory
+- [x] T-011.2: Create /docs/examples/LAW_FIRM_EXAMPLE.md:
+  - Example service structure (Corporate Law, Family Law, Estate Planning, Litigation, etc.)
+  - Sample pricing structure for legal services
+  - Sample blog topics
+  - Recommended environment variables
+- [x] T-011.3: Create /docs/examples/CONSULTING_FIRM_EXAMPLE.md:
+  - Example service structure (Strategy, Operations, Digital Transformation, Change Management, etc.)
+  - Sample pricing (project-based, retainer, etc.)
+  - Sample blog topics
+- [x] T-011.4: Create /docs/examples/ACCOUNTING_FIRM_EXAMPLE.md:
+  - Example service structure (Tax Preparation, Bookkeeping, Audit, Financial Planning, etc.)
+  - Sample pricing structure
+  - Sample blog topics
+- [x] T-011.5: Create /docs/examples/DESIGN_AGENCY_EXAMPLE.md:
+  - Example service structure (Brand Design, Web Design, UX/UI, Motion Graphics, etc.)
+  - Sample pricing (project-based, hourly, retainer)
+  - Sample blog topics
+- [x] T-011.6: Reference these examples in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [x] T-011.7: Add a "Common Verticals" section to README.md with links to examples
+References:
+- /docs/examples/ (new directory)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+- /README.md
+Dependencies: T-010
+Effort: M
+
 ### T-082: Remove email pipeline and add tests for new lead flow
 Priority: P1
 Type: FEATURE

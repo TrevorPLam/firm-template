@@ -362,46 +362,6 @@ Effort: L
 > Create comprehensive documentation for template users.
 > These tasks help users customize the template for their specific needs.
 
-### T-011: Add vertical-specific configuration examples
-Priority: P1
-Type: DOCS
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Template will be more useful with concrete examples for different industries
-- Users should see how to adapt template for their specific vertical
-- Examples make the template more accessible and reduce setup time
-Acceptance Criteria:
-- [ ] T-011.1: Create /docs/examples/ directory
-- [ ] T-011.2: Create /docs/examples/LAW_FIRM_EXAMPLE.md:
-  - Example service structure (Corporate Law, Family Law, Estate Planning, Litigation, etc.)
-  - Sample pricing structure for legal services
-  - Sample blog topics
-  - Recommended environment variables
-- [ ] T-011.3: Create /docs/examples/CONSULTING_FIRM_EXAMPLE.md:
-  - Example service structure (Strategy, Operations, Digital Transformation, Change Management, etc.)
-  - Sample pricing (project-based, retainer, etc.)
-  - Sample blog topics
-- [ ] T-011.4: Create /docs/examples/ACCOUNTING_FIRM_EXAMPLE.md:
-  - Example service structure (Tax Preparation, Bookkeeping, Audit, Financial Planning, etc.)
-  - Sample pricing structure
-  - Sample blog topics
-- [ ] T-011.5: Create /docs/examples/DESIGN_AGENCY_EXAMPLE.md:
-  - Example service structure (Brand Design, Web Design, UX/UI, Motion Graphics, etc.)
-  - Sample pricing (project-based, hourly, retainer)
-  - Sample blog topics
-- [ ] T-011.6: Reference these examples in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [ ] T-011.7: Add a "Common Verticals" section to README.md with links to examples
-References:
-- /docs/examples/ (new directory)
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-- /README.md
-Dependencies: T-010
-Effort: M
-
----
-
 ### T-013: Create template release checklist
 Priority: P1
 Type: DOCS
@@ -1377,7 +1337,7 @@ Effort: S
 
 ### By Phase
 - **Phase 1 (Sanitization)**: 8 tasks - Convert marketing firm to generic template ✅ DONE
-- **Phase 2 (Documentation)**: 5 tasks - T-009, T-010, T-012 complete; T-011, T-013 remaining
+- **Phase 2 (Documentation)**: 5 tasks - T-009, T-010, T-011, T-012 complete; T-013 remaining
 - **Phase 3 (Infrastructure)**: 4 tasks - Deployment and configuration support
 - **Phase 4 (Quality)**: 4 tasks - Performance and accessibility optimization
 - **Phase 5 (Platinum Standard)**: 18 tasks - Industry-leading enhancements
@@ -1420,4 +1380,4 @@ Effort: S
 
 ---
 
-**Next Steps**: Execute remaining Phase 2 tasks (T-011, T-013) to complete documentation, then Phase 5A for platinum-standard essentials.
+**Next Steps**: Execute remaining Phase 2 task (T-013) to complete documentation, then Phase 5A for platinum-standard essentials.

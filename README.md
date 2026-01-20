@@ -34,6 +34,13 @@ This is a **complete, production-ready website template** designed specifically 
 - Design studios (brand design, web design, UX/UI)
 - Any professional services business needing a modern website
 
+### Common Verticals (Example Mappings)
+Use the example mappings below to quickly align services, pricing, and blog topics with your vertical:
+- [Law Firm Example](docs/examples/LAW_FIRM_EXAMPLE.md)
+- [Consulting Firm Example](docs/examples/CONSULTING_FIRM_EXAMPLE.md)
+- [Accounting Firm Example](docs/examples/ACCOUNTING_FIRM_EXAMPLE.md)
+- [Design Agency Example](docs/examples/DESIGN_AGENCY_EXAMPLE.md)
+
 ---
 
 ## 💎 The Diamond Standard
