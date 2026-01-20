@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 
-// Lightweight wrapper for marketing cards; variants tune padding/shadow for service vs testimonial blocks
+// Lightweight wrapper for content cards; variants tune padding/shadow for service vs testimonial blocks
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'service' | 'testimonial'
   children: React.ReactNode

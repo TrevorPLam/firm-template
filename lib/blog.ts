@@ -66,7 +66,7 @@
  * title: string        # Required: Post title
  * description: string  # Required: SEO description
  * date: string         # Required: YYYY-MM-DD format
- * author: string       # Optional: Defaults to "Your Dedicated Marketer Team"
+ * author: string       # Optional: Defaults to "Your Firm Team"
  * category: string     # Optional: Defaults to "General"
  * featured: boolean    # Optional: Defaults to false
  * ---

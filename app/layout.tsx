@@ -31,7 +31,7 @@
  * ```
  *
  * **METADATA**:
- * - Default title with template: "%s | Your Dedicated Marketer"
+ * - Default title with template: "%s | Your Firm Name"
  * - Child pages override with their own metadata export
  * - OG image generated via /api/og route
  * - Structured data: Organization + WebSite schemas in <head>
@@ -250,7 +250,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
-              name: 'Your Dedicated Marketer',
+               name: siteName,
               url: siteUrl,
               potentialAction: {
                 '@type': 'SearchAction',
