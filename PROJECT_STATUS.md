@@ -29,6 +29,7 @@ This is not a task list; tasks belong in `TODO.md`.
 - ✅ Phase 1 sanitization complete (T-001 through T-008)
 - ✅ README.md updated: Reflects template purpose and usage
 - ✅ Legal template pages added for privacy policy and terms (T-016)
+- ✅ Rate limiting documentation clarified for production vs. development (T-017)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
