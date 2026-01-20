@@ -1,14 +1,14 @@
 # Template Sanitization Analysis & Game Plan
 
 **Date**: 2026-01-20  
-**Status**: Analysis Complete, Game Plan Created  
-**Next Phase**: Execution (requires authorization)
+**Status**: Game Plan Complete & Prioritized  
+**Next Phase**: Execute Phase 1 (T-001 through T-008)
 
 ---
 
 ## Executive Summary
 
-This document summarizes the comprehensive analysis of the `firm-template` repository and the creation of a detailed game plan to convert it from a marketing firm-specific implementation into a generic professional services template that can be adopted by any vertical firm.
+This document summarizes the comprehensive analysis of the `firm-template` repository and the creation of a detailed, prioritized game plan to convert it from a marketing firm-specific implementation into a generic professional services template that can be adopted by any vertical firm.
 
 ### What Was Completed
 
@@ -18,17 +18,20 @@ This document summarizes the comprehensive analysis of the `firm-template` repos
    - Catalogued infrastructure and functionality
    - Verified Diamond Standard compliance
 
-2. ✅ **TODO.md Sanitization**
+2. ✅ **TODO.md Restructured**
    - Removed all marketing-specific tasks
-   - Preserved all industry-agnostic infrastructure tasks
-   - Updated Goals section to reflect generic template purpose
-   - Maintained task schema and organizational structure
+   - Created 21 new tasks starting from T-001
+   - Organized into 4 phases with clear priorities
+   - **Phase 1 (P0)**: Core sanitization (T-001 through T-008)
+   - **Phase 2 (P1)**: Documentation (T-009 through T-013)
+   - **Phase 3 (P2)**: Infrastructure (T-014 through T-018)
+   - **Phase 4 (P3)**: Quality & optimization (T-019 through T-021)
 
-3. ✅ **Comprehensive Game Plan Creation**
-   - Created 13 detailed tasks (T-200 through T-212)
-   - Defined clear acceptance criteria for each task
-   - Estimated effort and dependencies
-   - Documented what changes and what stays
+3. ✅ **Documentation Updated**
+   - README.md transformed for template users
+   - PROJECT_STATUS.md updated with current focus
+   - READMEAI.md updated with template context
+   - Governance docs aligned with template purpose
 
 ---
 
@@ -124,84 +127,55 @@ This document summarizes the comprehensive analysis of the `firm-template` repos
 
 ## Sanitization Game Plan Summary
 
-### Phase 3 Tasks (13 Tasks Total)
+### 21 Tasks Across 4 Phases
 
-#### T-200: Analysis (DONE ✅)
-- Completed comprehensive analysis of marketing-specific content
-- Identified all locations requiring changes
+#### **Phase 1: Template Sanitization (P0) - CRITICAL**
+**Tasks T-001 through T-008** - Core conversion work
 
-#### T-201: Branding Replacement
-- Replace all "Your Dedicated Marketer" references
-- Update package name and configuration
-- Make site name environment-variable driven
-- **Effort**: L (Large)
+- **T-001**: Replace branding (L effort)
+- **T-002**: Sanitize homepage (M effort)
+- **T-003**: Replace services (XL effort) - Largest task
+- **T-004**: Pricing template (M effort)
+- **T-005**: Blog content (M effort)
+- **T-006**: Navigation & footer (M effort)
+- **T-007**: Metadata & SEO (M effort)
+- **T-008**: Verify functionality (L effort)
 
-#### T-202: Homepage Sanitization
-- Update Hero, ValueProps, CTAs with generic messaging
-- Preserve component structure and functionality
-- **Effort**: M (Medium)
+**Estimated Phase 1 Effort**: 2-3 days
 
-#### T-203: Service Sanitization
-- Rename 8 service directories to generic names
-- Update all service content with placeholders
-- Update navigation and footer links
-- **Effort**: XL (Extra Large)
+#### **Phase 2: Template Documentation (P1) - HIGH**
+**Tasks T-009 through T-013** - Help users customize
 
-#### T-204: Pricing Template
-- Convert marketing-specific pricing to generic template
-- Update tier names and features to be industry-agnostic
-- **Effort**: M
+- **T-009**: Update README.md (M effort)
+- **T-010**: Customization guide (L effort)
+- **T-011**: Vertical examples (M effort)
+- **T-012**: Update governance docs (M effort)
+- **T-013**: Release checklist (M effort)
 
-#### T-205: Blog Content
-- Remove 5 marketing-specific blog posts
-- Create 2-3 generic example blog posts
-- **Effort**: M
+**Estimated Phase 2 Effort**: 1-2 days
 
-#### T-206: Documentation Update
-- Update README to reflect template purpose
-- Update all /docs/ files
-- Create CRM_SETUP.md (generic version of HUBSPOT_SETUP.md)
-- **Effort**: L
+#### **Phase 3: Infrastructure & Deployment (P2) - MEDIUM**
+**Tasks T-014 through T-018** - Deployment support
 
-#### T-207: Customization Guide
-- Create comprehensive TEMPLATE_CUSTOMIZATION_GUIDE.md
-- Create PLACEHOLDER_REFERENCE.md
-- Document quick-start checklist
-- **Effort**: L
+- **T-014**: Cloudflare Pages setup (M effort)
+- **T-015**: Production env checklist (S effort)
+- **T-016**: Privacy & terms pages (S effort)
+- **T-017**: Rate limiting verification (S effort)
+- **T-018**: Analytics documentation (S effort)
 
-#### T-208: Navigation & Footer
-- Update navigation links to generic routes
-- Make footer sections configurable
-- **Effort**: M
+**Estimated Phase 3 Effort**: 1 day
 
-#### T-209: Metadata & SEO
-- Update all metadata to be generic
-- Make structured data environment-driven
-- Update OG image generation
-- **Effort**: M
+#### **Phase 4: Quality & Optimization (P3) - LOW**
+**Tasks T-019 through T-021** - Enhancements
 
-#### T-210: Vertical Examples
-- Create law firm example
-- Create consulting firm example
-- Create accounting firm example
-- Create design agency example
-- **Effort**: M
+- **T-019**: Performance baselines (M effort)
+- **T-020**: Vulnerability monitoring (S effort)
+- **T-021**: Accessibility validation (M effort)
 
-#### T-211: Functionality Verification
-- Run full test suite
-- Test all pages and features
-- Verify no broken links
-- Document verification results
-- **Effort**: L
-
-#### T-212: Release Checklist
-- Final grep for marketing-specific terms
-- Verify all placeholders in place
-- Create release notes
-- **Effort**: M
+**Estimated Phase 4 Effort**: 1 day
 
 ### Total Estimated Effort
-**3-4 days of focused work**
+**5-7 days of focused work** across all phases
 
 ---
 
@@ -322,16 +296,35 @@ The sanitization will be considered successful when:
 
 ## Next Steps
 
-**This analysis is complete. The game plan is documented in TODO.md Phase 3.**
+**The game plan is complete and prioritized. Ready for execution.**
 
-To execute the sanitization:
-1. Review TODO.md Phase 3 tasks (T-200 through T-212)
-2. Obtain authorization to make changes
-3. Execute tasks in order (respecting dependencies)
-4. Verify functionality at each step (T-211)
-5. Complete final release checklist (T-212)
+### Immediate Actions
+1. Execute Phase 1 (T-001 through T-008) - Core template sanitization
+2. Verify functionality after each task
+3. Update PROJECT_STATUS.md as tasks complete
+4. Move completed tasks to TODOCOMPLETED.md
 
-**Estimated timeline**: 3-4 days of focused work
+### Success Criteria
+Template conversion will be considered successful when:
+1. ✅ All Phase 1 tasks (T-001 through T-008) are complete
+2. ✅ Build succeeds without errors
+3. ✅ All tests pass
+4. ✅ No marketing-specific content remains
+5. ✅ All functionality preserved
+6. ✅ Documentation complete for template users
+
+**Current Status**: ✅ Planning complete → 🔄 Ready to execute Phase 1
+
+---
+
+## Reference: Task Details
+
+For complete task details including acceptance criteria, references, and dependencies, see:
+- **TODO.md** - Authoritative task list with all 21 tasks
+- **T-001 to T-008** - Phase 1: Core sanitization (P0 priority)
+- **T-009 to T-013** - Phase 2: Documentation (P1 priority)
+- **T-014 to T-018** - Phase 3: Infrastructure (P2 priority)
+- **T-019 to T-021** - Phase 4: Quality (P3 priority)
 
 ---
 
