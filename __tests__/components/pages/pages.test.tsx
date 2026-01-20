@@ -19,7 +19,7 @@ describe('page components', () => {
     render(<ServicesPage />)
 
     expect(
-      screen.getByRole('heading', { name: /professional services that drive growth/i })
+      screen.getByRole('heading', { name: /professional services that deliver results/i })
     ).toBeInTheDocument()
   })
 
@@ -33,7 +33,7 @@ describe('page components', () => {
     render(<BlogPage />)
 
     expect(
-      screen.getByRole('heading', { name: /marketing insights & strategies/i })
+      screen.getByRole('heading', { name: /industry insights & strategies/i })
     ).toBeInTheDocument()
   })
 
