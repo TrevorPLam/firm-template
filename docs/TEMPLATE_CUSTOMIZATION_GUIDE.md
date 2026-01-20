@@ -135,8 +135,80 @@ Use these examples as structured mappings for services, pricing, and blog topics
 - Required variable: `HUBSPOT_PRIVATE_APP_TOKEN`
 
 ### Analytics
-- Set `NEXT_PUBLIC_ANALYTICS_ID` for your provider (GA4, Plausible, etc.).
+- The template ships with a provider-agnostic tracking wrapper in [`lib/analytics.ts`](../lib/analytics.ts).
+- Analytics events are recorded via `trackEvent`, `trackFormSubmission`, and `trackCTAClick`.
+- Set `NEXT_PUBLIC_ANALYTICS_ID` for the provider you choose (GA4, Plausible, Fathom, etc.).
 - Configure Sentry using `NEXT_PUBLIC_SENTRY_DSN` if desired (see `docs/SENTRY-SETUP.md`).
+
+#### Provider setup examples
+**Google Analytics 4 (GA4)**
+1. Create a GA4 property and copy the Measurement ID (format: `G-XXXXXXX`).
+2. Set `NEXT_PUBLIC_ANALYTICS_ID` in `.env`.
+3. Add the GA4 script in `app/layout.tsx` using `next/script`.
+4. Update CSP allowlists in `middleware.ts`:
+   - `script-src`: add `https://www.googletagmanager.com`
+   - `connect-src`: add `https://www.google-analytics.com` and `https://www.googletagmanager.com`
+   - See `docs/SECURITY-CSP-ANALYTICS.md` for context.
+
+```tsx
+// app/layout.tsx (example)
+import Script from 'next/script'
+
+{process.env.NEXT_PUBLIC_ANALYTICS_ID ? (
+  <>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
+      strategy="afterInteractive"
+    />
+    <Script id="ga4-init" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_ANALYTICS_ID}');
+      `}
+    </Script>
+  </>
+) : null}
+```
+
+**Plausible**
+1. Create a Plausible site and copy your domain.
+2. Set `NEXT_PUBLIC_ANALYTICS_ID` to the site domain (for reference in docs/ops).
+3. Add the Plausible script in `app/layout.tsx`.
+4. Update CSP allowlists in `middleware.ts`:
+   - `script-src`: add `https://plausible.io`
+   - `connect-src`: add `https://plausible.io`
+   - See `docs/SECURITY-CSP-ANALYTICS.md` for context.
+
+```tsx
+// app/layout.tsx (example)
+import Script from 'next/script'
+
+{process.env.NEXT_PUBLIC_ANALYTICS_ID ? (
+  <Script
+    src="https://plausible.io/js/script.js"
+    data-domain={process.env.NEXT_PUBLIC_ANALYTICS_ID}
+    strategy="afterInteractive"
+  />
+) : null}
+```
+
+**Fathom (or other providers)**
+- Add the provider script in `app/layout.tsx`.
+- Extend `trackEvent` in `lib/analytics.ts` to forward events to the provider API.
+- Update CSP allowlists for script and connect sources (check provider docs for the exact domains).
+
+#### Conversion tracking setup
+- The template does **not** wire analytics events by default.
+- Use `trackFormSubmission('contact', true | false)` after contact submissions.
+- Use `trackCTAClick('cta text', 'destination')` for CTA buttons and links.
+- For custom funnels, call `trackEvent({ action, category, label })` with consistent naming.
+
+#### Verification checklist
+- Confirm events fire in the provider’s debug/real-time view.
+- In the browser console, ensure no CSP errors are logged.
+- Trigger a CTA click or contact form submission and confirm event capture.
 
 ---
 

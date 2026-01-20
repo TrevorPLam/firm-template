@@ -1,6 +1,6 @@
 # OBSERVABILITY.md
 
-Last Updated: 2026-01-02
+Last Updated: 2026-01-20
 
 Applies to repos that run services (API, worker, cron, etc.). For libraries/CLI, keep logging conventions only.
 
@@ -16,6 +16,20 @@ Applies to repos that run services (API, worker, cron, etc.). For libraries/CLI,
 
 ## Tracing (optional)
 - Add distributed tracing when there are multiple services or external dependencies.
+
+## Analytics (optional)
+- Tracking helpers live in [`lib/analytics.ts`](../lib/analytics.ts) and are provider-agnostic.
+- No analytics events are wired by default; add event calls where needed.
+- Provider setup requires:
+  - Adding the provider script in `app/layout.tsx`
+  - Setting `NEXT_PUBLIC_ANALYTICS_ID`
+  - Updating CSP allowlists in `middleware.ts` (see `docs/SECURITY-CSP-ANALYTICS.md`)
+
+### Conversion tracking checklist
+- Contact form: call `trackFormSubmission('contact', true | false)` after submit.
+- CTA buttons: call `trackCTAClick('cta text', 'destination')`.
+- Custom events: use `trackEvent({ action, category, label })` with consistent naming.
+- Verify events using the provider’s real-time/debug tools and check for CSP errors.
 
 ## Error handling
 - Fail fast on configuration errors.
