@@ -35,7 +35,7 @@ const buildPayload = (email: string) => ({
   email,
   phone: '555-123-4567',
   website: '',
-  message: 'Looking for marketing support. <script>alert(1)</script>',
+  message: 'Looking for professional services support. <script>alert(1)</script>',
 })
 
 const buildResponse = (data: unknown, ok = true, status = 200) => ({

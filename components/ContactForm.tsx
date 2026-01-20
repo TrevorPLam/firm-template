@@ -29,7 +29,6 @@
  * | email | ✅ | valid email |
  * | company | ❌ | optional |
  * | phone | ✅ | required |
- * | marketingSpend | ❌ | dropdown |
  * | message | ✅ | min 10 chars |
  * | hearAboutUs | ❌ | dropdown |
  *
@@ -69,7 +68,6 @@
  * - Email (required, validated)
  * - Company (optional)
  * - Phone (required)
- * - Marketing Spend (dropdown)
  * - Message (required)
  * - How did you hear about us (dropdown)
  *
@@ -145,7 +143,6 @@ export default function ContactForm() {
       if (result.success) {
         await setSentryUser({ email: data.email, name: data.name })
         await setSentryContext('contact_form', {
-          marketingSpend: data.marketingSpend,
           heardFrom: data.hearAboutUs,
         })
         setSubmitStatus({
@@ -221,23 +218,9 @@ export default function ContactForm() {
         {...register('phone')}
       />
 
-      <Select
-        label="Current Monthly Marketing Spend"
-        options={[
-          { value: '', label: 'Select an option' },
-          { value: 'under-1k', label: 'Under $1,000' },
-          { value: '1k-5k', label: '$1,000 - $5,000' },
-          { value: '5k-10k', label: '$5,000 - $10,000' },
-          { value: 'over-10k', label: 'Over $10,000' },
-          { value: 'not-sure', label: 'Not sure' },
-        ]}
-        error={errors.marketingSpend?.message}
-        {...register('marketingSpend')}
-      />
-
       <Textarea
         label="Message"
-        placeholder="Tell us about your business and marketing goals..."
+        placeholder="Tell us about your business and goals..."
         rows={5}
         required
         error={errors.message?.message}

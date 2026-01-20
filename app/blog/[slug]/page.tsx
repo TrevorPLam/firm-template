@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Blog | Your Dedicated Marketer`,
+    title: `${post.title} | Blog | Your Firm Name`,
     description: post.description,
   }
 }
@@ -63,12 +63,12 @@ export default async function BlogPostPage({ params }: Props) {
     },
     isPartOf: {
       '@type': 'Blog',
-      name: 'Your Dedicated Marketer Blog',
+      name: 'Your Firm Blog',
       url: `${baseUrl}/blog`,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Your Dedicated Marketer',
+      name: 'Your Firm Name',
       logo: {
         '@type': 'ImageObject',
         url: `${baseUrl}/logo.png`,
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: Props) {
               Ready to Implement These Strategies?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Let our team handle your marketing while you focus on growing your business.
+              Let our team handle your needs while you focus on growing your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

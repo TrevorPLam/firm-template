@@ -92,7 +92,7 @@ export default function InstallPrompt() {
         <div className="flex-1">
           <h3 className="font-bold text-lg mb-1">Install Our App</h3>
           <p className="text-sm text-blue-100 mb-3">
-            Get quick access to our marketing services with our mobile app. Works offline!
+            Get quick access to our services with our mobile app. Works offline!
           </p>
 
           <div className="flex gap-2">

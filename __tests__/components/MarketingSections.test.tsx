@@ -12,7 +12,7 @@ describe('Marketing sections', () => {
       screen.getByRole('heading', { name: /your dedicated marketer — that means i’m part of your team/i })
     ).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /book a free strategy call/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /get a free marketing plan/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /get started/i })).toBeInTheDocument()
   })
 
   it('renders the value proposition cards', () => {
@@ -31,7 +31,7 @@ describe('Marketing sections', () => {
     render(<ServicesOverview />)
 
     expect(
-      screen.getByRole('heading', { name: /marketing leadership i run with your team/i })
+      screen.getByRole('heading', { name: /professional services for your business/i })
     ).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 3, name: /seo services/i })).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: /learn more/i })).toHaveLength(4)

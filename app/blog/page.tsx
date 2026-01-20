@@ -4,8 +4,8 @@ import { getAllPosts, getAllCategories } from '@/lib/blog'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Blog | Your Dedicated Marketer',
-  description: 'Insights, tips, and strategies to help you grow your business through digital marketing.',
+  title: 'Blog | Your Firm Name',
+  description: 'Insights, tips, and strategies to help you grow your business.',
 }
 
 export default function BlogPage() {
@@ -19,7 +19,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Marketing Insights & Strategies
+              Industry Insights & Strategies
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
               Expert advice, industry trends, and actionable strategies to help your business thrive online.
@@ -59,7 +59,7 @@ export default function BlogPage() {
           {posts.length === 0 ? (
             <div className="max-w-2xl mx-auto text-center">
               <p className="text-gray-600 text-lg">
-                No blog posts yet. Check back soon for valuable marketing insights!
+                No blog posts yet. Check back soon for valuable insights!
               </p>
             </div>
           ) : (
@@ -122,10 +122,10 @@ export default function BlogPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Want Expert Help With Your Marketing?
+              Want Expert Help?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Stop reading and start growing. Let's build a custom marketing strategy for your business.
+              Stop reading and start growing. Let's build a custom strategy for your business.
             </p>
             <Link
               href="/contact"

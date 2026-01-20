@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { ArrowRight, Target, Users, TrendingUp, Award, Heart, Lightbulb } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Us | Your Dedicated Marketer',
-  description: 'Learn about Your Dedicated Marketer - your partner in digital marketing success. Discover our story, values, and proven approach to growing businesses online.',
+  title: 'About Us | Your Firm Name',
+  description: 'Learn about Your Firm Name - your partner in professional services success. Discover our story, values, and proven approach to helping businesses thrive.',
 }
 
 export default function AboutPage() {
@@ -15,10 +15,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Your Partner in Digital Marketing Success
+              Your Partner in Professional Services Success
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              We're not just another marketing agency. We're your dedicated team, committed to understanding your business and driving real, measurable growth.
+              We're not just another service provider. We're your dedicated team, committed to understanding your business and delivering exceptional results.
             </p>
           </div>
         </div>
@@ -33,23 +33,23 @@ export default function AboutPage() {
             </h2>
             <div className="prose prose-lg max-w-none text-gray-600 space-y-6">
               <p>
-                Your Dedicated Marketer was born from a simple observation: small and medium-sized businesses
-                deserve the same level of marketing expertise as large corporations, without the enterprise price tag.
+                Your Firm Name was founded on a simple belief: businesses of all sizes
+                deserve access to exceptional professional services, without the enterprise price tag.
               </p>
               <p>
-                We saw too many talented business owners struggling to navigate the complex world of digital marketing.
-                They were spending money on tactics that didn't work, or worse, not investing in marketing at all because
-                they didn't know where to start.
+                We recognized that many talented business owners were struggling to find reliable partners
+                who truly understood their needs. They needed more than just a vendor—they needed a trusted advisor
+                and an extension of their team.
               </p>
               <p>
-                That's why we created a different kind of marketing agency—one that acts as an extension of your team,
-                not just a vendor. We take the time to understand your business, your customers, and your goals. Then we
-                build and execute strategies that actually move the needle.
+                That's why we built a different kind of firm—one that prioritizes long-term partnerships over
+                quick transactions. We take the time to understand your business, your challenges, and your goals.
+                Then we develop and execute solutions that deliver measurable results.
               </p>
               <p>
-                Today, we've helped hundreds of businesses increase their online visibility, generate more qualified leads,
-                and achieve sustainable growth. But what makes us most proud isn't just the results—it's the long-term
-                partnerships we've built along the way.
+                Today, we've helped numerous businesses overcome challenges, seize opportunities,
+                and achieve sustainable growth. What makes us most proud isn't just the outcomes—it's the lasting
+                relationships we've built along the way.
               </p>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Partnership Approach</h3>
               <p className="text-gray-600">
-                We're not just a service provider—we're your dedicated marketing team. We collaborate,
+                We're not just a service provider—we're your dedicated professional partner. We collaborate,
                 educate, and grow together.
               </p>
             </div>
@@ -113,8 +113,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Expertise</h3>
               <p className="text-gray-600">
-                We stay on the cutting edge of digital marketing. Our team continuously learns and
-                adapts to bring you the latest strategies that work.
+                We stay on the cutting edge of our industry. Our team continuously learns and
+                adapts to bring you the latest best practices and proven strategies.
               </p>
             </div>
 
@@ -164,8 +164,8 @@ export default function AboutPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Custom Plan Development</h3>
                   <p className="text-gray-600">
-                    We create a tailored marketing plan that combines the right channels, tactics, and
-                    messaging to reach your ideal customers and drive conversions.
+                    We create a tailored strategy that combines the right approaches, methods, and
+                    solutions to achieve your specific business objectives.
                   </p>
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default function AboutPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Measure & Optimize</h3>
                   <p className="text-gray-600">
-                    We continuously track performance, analyze data, and refine our approach. Marketing is
+                    We continuously track performance, analyze results, and refine our approach. Excellence is
                     never "set it and forget it"—we're always finding ways to improve.
                   </p>
                 </div>

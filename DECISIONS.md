@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-This document tracks significant architectural decisions for the Your Dedicated Marketer marketing site.
+This document tracks significant architectural decisions for the professional services firm website.
 
 ## Format
 
@@ -19,14 +19,14 @@ Each decision follows this structure:
 **Date**: 2024-12-26
 
 ### Context
-Need modern framework for marketing site with excellent performance, SEO, and developer experience. Options include Next.js, Astro, Remix, or plain React with Vite.
+Need modern framework for professional services website with excellent performance, SEO, and developer experience. Options include Next.js, Astro, Remix, or plain React with Vite.
 
 ### Decision
 Use Next.js 14 with App Router and static site generation.
 
 ### Alternatives Considered
 1. **Astro**: Great for content sites but less flexible for interactive components
-2. **Remix**: Excellent framework but overkill for static marketing site
+2. **Remix**: Excellent framework but overkill for static website
 3. **Vite + React**: More manual setup, less optimized for static generation
 
 ### Consequences
@@ -54,7 +54,7 @@ Use static generation for all pages, Server Actions for contact form.
 **Date**: 2024-12-26
 
 ### Context
-Marketing site needs reliable hosting with global CDN, automatic HTTPS, and zero cost for startup phase.
+Professional services website needs reliable hosting with global CDN, automatic HTTPS, and zero cost for startup phase.
 
 ### Decision
 Deploy to Cloudflare Pages (free tier).
@@ -89,7 +89,7 @@ Use GitHub integration for automatic deployments on push to main.
 **Date**: 2024-12-26
 
 ### Context
-Need efficient, maintainable styling solution for marketing site with responsive design.
+Need efficient, maintainable styling solution for professional website with responsive design.
 
 ### Decision
 Use Tailwind CSS with custom configuration.
@@ -345,7 +345,7 @@ Need to decide: migrate to maintained fork, implement custom service worker, or 
 Remove next-pwa package while keeping basic PWA features (manifest, icons, install prompt).
 
 **Rationale:**
-1. Marketing site doesn't require offline functionality
+1. Website doesn't require offline functionality
 2. Service worker caching adds complexity and potential bugs
 3. Manifest and install prompt work without next-pwa
 4. Reduces bundle size and build complexity
@@ -376,7 +376,7 @@ Remove next-pwa package while keeping basic PWA features (manifest, icons, insta
 - ✅ Keep install-to-home-screen functionality
 
 #### Negative
-- ❌ No offline functionality (acceptable for marketing site)
+- ❌ No offline functionality (acceptable for professional services website)
 - ❌ No automatic caching of assets (CDN handles this)
 - ❌ No background sync (not needed)
 
@@ -406,7 +406,7 @@ If offline functionality becomes important:
 2. Consider Workbox for more control
 3. Implement incremental caching for specific routes only
 
-For now, the basic installable PWA is sufficient for our marketing use case.
+For now, the basic installable PWA is sufficient for our use case.
 
 **References:**
 - Removed package: `next-pwa@5.6.0`

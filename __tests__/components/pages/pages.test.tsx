@@ -11,7 +11,7 @@ describe('page components', () => {
     render(<AboutPage />)
 
     expect(
-      screen.getByRole('heading', { name: /your partner in digital marketing success/i })
+      screen.getByRole('heading', { name: /your partner in professional services success/i })
     ).toBeInTheDocument()
   })
 
@@ -19,7 +19,7 @@ describe('page components', () => {
     render(<ServicesPage />)
 
     expect(
-      screen.getByRole('heading', { name: /marketing services that drive growth/i })
+      screen.getByRole('heading', { name: /professional services that drive growth/i })
     ).toBeInTheDocument()
   })
 

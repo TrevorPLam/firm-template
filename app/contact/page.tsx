@@ -6,11 +6,11 @@ import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ContactForm'
 import ErrorBoundary from '@/components/ErrorBoundary'
 
-const CONTACT_EMAIL = 'contact@yourdedicatedmarketer.com'
+const CONTACT_EMAIL = 'contact@yourfirm.com'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Your Dedicated Marketer',
-  description: 'Get in touch to discuss your marketing goals. Schedule a free consultation or send us a message.',
+  title: 'Contact Us | Your Firm Name',
+  description: 'Get in touch to discuss your goals. Schedule a free consultation or send us a message.',
 }
 
 export default function ContactPage() {
@@ -24,7 +24,7 @@ export default function ContactPage() {
               Let's Grow Your Business Together
             </h1>
             <p className="text-xl text-white/80">
-              Schedule a free 30-minute consultation to discuss your marketing goals and how we can help you achieve them.
+              Schedule a free 30-minute consultation to discuss your goals and how we can help you achieve them.
             </p>
           </div>
         </Container>
@@ -130,7 +130,7 @@ export default function ContactPage() {
                     <span className="flex-shrink-0 w-6 h-6 bg-teal rounded-full flex items-center justify-center text-white text-sm font-semibold">
                       3
                     </span>
-                    <span>Receive a custom marketing plan tailored to your business</span>
+                    <span>Receive a custom strategy plan tailored to your business</span>
                   </li>
                 </ol>
               </div>
