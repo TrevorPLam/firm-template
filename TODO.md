@@ -491,35 +491,6 @@ Effort: S
 
 ---
 
-### T-018: Document analytics provider integration
-Priority: P2
-Type: INFRASTRUCTURE
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Template includes analytics integration framework
-- Need to document how users can add their own analytics provider
-- Should support common providers (Google Analytics, Plausible, Fathom, etc.)
-Acceptance Criteria:
-- [ ] T-018.1: Document analytics integration in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [ ] T-018.2: Provide examples for common providers:
-  - Google Analytics 4
-  - Plausible Analytics
-  - Fathom Analytics
-- [ ] T-018.3: Document CSP header updates needed for each provider
-- [ ] T-018.4: Document conversion tracking setup
-- [ ] T-018.5: Update /docs/OBSERVABILITY.md with analytics section
-References:
-- /lib/analytics.ts
-- /lib/env.ts
-- /docs/OBSERVABILITY.md
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: None
-Effort: S
-
----
-
 ## 🔵 PHASE 4: QUALITY & OPTIMIZATION (P3)
 > Quality improvements and optimizations.
 > These enhance the template but are not required for initial release.

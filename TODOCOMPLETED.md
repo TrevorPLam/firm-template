@@ -10,6 +10,33 @@ Move tasks here when Acceptance Criteria are met.
 ## Completed tasks
 <!-- Append completed tasks below. Preserve the original record for auditability. -->
 
+### T-018: Document analytics provider integration
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-20
+Context:
+- Template includes analytics integration framework
+- Need to document how users can add their own analytics provider
+- Should support common providers (Google Analytics, Plausible, Fathom, etc.)
+Acceptance Criteria:
+- [x] T-018.1: Document analytics integration in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [x] T-018.2: Provide examples for common providers:
+  - Google Analytics 4
+  - Plausible Analytics
+  - Fathom Analytics
+- [x] T-018.3: Document CSP header updates needed for each provider
+- [x] T-018.4: Document conversion tracking setup
+- [x] T-018.5: Update /docs/OBSERVABILITY.md with analytics section
+References:
+- /lib/analytics.ts
+- /lib/env.ts
+- /docs/OBSERVABILITY.md
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: S
+
 ### T-017: Wire distributed rate limiting with Upstash
 Priority: P2
 Type: INFRASTRUCTURE
