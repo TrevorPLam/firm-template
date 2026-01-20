@@ -59,25 +59,26 @@ This file is the single source of truth for actionable work. If another document
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-20 (commit: 9685c51)
 Context:
 - All references to "Your Dedicated Marketer" / "YD Marketer" / "YD Firms" need generic replacement
 - Package name, site name, and all branding should be configurable via environment variables
 - Approximately 365+ references found across the codebase
 Acceptance Criteria:
-- [ ] T-001.1: Replace package.json name: "your-dedicated-marketer" → "firm-template"
-- [ ] T-001.2: Update all "Your Dedicated Marketer" → "Your Firm Name" in:
+- [x] T-001.1: Replace package.json name: "your-dedicated-marketer" → "firm-template"
+- [x] T-001.2: Update all "Your Dedicated Marketer" → "Your Firm Name" in:
   - /lib/env.ts (NEXT_PUBLIC_SITE_NAME default)
   - /lib/env.public.ts
   - /lib/blog.ts (default author)
   - /app/api/og/route.tsx
   - All service page metadata
   - /app/layout.tsx metadata and structured data
-- [ ] T-001.3: Update Footer.tsx: "YD Marketer" → "Your Firm Name" and "YD Firms LLC" → "Your Firm LLC"
-- [ ] T-001.4: Update testimonials in SocialProof.tsx to use generic client references
-- [ ] T-001.5: Update ServiceDetailLayout.tsx provider name reference
-- [ ] T-001.6: Create comprehensive .env.example with SITE_NAME, SITE_TAGLINE, FIRM_LEGAL_NAME placeholders
+- [x] T-001.3: Update Footer.tsx: "YD Marketer" → "Your Firm Name" and "YD Firms LLC" → "Your Firm LLC"
+- [x] T-001.4: Update testimonials in SocialProof.tsx to use generic client references
+- [x] T-001.5: Update ServiceDetailLayout.tsx provider name reference
+- [x] T-001.6: Create comprehensive .env.example with SITE_NAME, SITE_TAGLINE, FIRM_LEGAL_NAME placeholders
 References:
 - /package.json
 - /lib/env.ts
@@ -97,25 +98,26 @@ Effort: L
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-20 (commit: 69a7805)
 Context:
 - Homepage contains marketing-specific value propositions and messaging
 - Need to replace with generic professional services messaging
 - Must preserve component structure and functionality
 Acceptance Criteria:
-- [ ] T-002.1: Update Hero.tsx:
+- [x] T-002.1: Update Hero.tsx:
   - Replace headline with generic: "Your dedicated professional — delivering expert solutions for your business."
   - Replace body copy with generic professional services messaging
   - Keep CTA structure but update button text: "Schedule a Consultation" and "Learn More"
   - Preserve image and layout structure
-- [ ] T-002.2: Update ValueProps.tsx:
+- [x] T-002.2: Update ValueProps.tsx:
   - Replace three marketing-specific value props with generic professional services benefits
   - Keep component structure and icons
   - Make messaging applicable to any vertical (consulting, legal, accounting, design, etc.)
-- [ ] T-002.3: Update FinalCTA.tsx with generic call-to-action messaging
-- [ ] T-002.4: Update CTASection.tsx with generic messaging
-- [ ] T-002.5: Document recommended customization points in component comments
+- [x] T-002.3: Update FinalCTA.tsx with generic call-to-action messaging
+- [x] T-002.4: Update CTASection.tsx with generic messaging
+- [x] T-002.5: Document recommended customization points in component comments
 References:
 - /components/Hero.tsx
 - /components/ValueProps.tsx
@@ -130,15 +132,16 @@ Effort: M
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-20 (commit: 70c55c3)
 Context:
 - Current services are marketing-specific: SEO, Content Marketing, Social Media, Email Marketing, etc.
 - Need generic service categories that work for any professional services firm
 - Must preserve all routing, component structure, and functionality
 - Keep 8 service pages to match current structure
 Acceptance Criteria:
-- [ ] T-003.1: Rename service directories and update routes:
+- [x] T-003.1: Rename service directories and update routes:
   - /app/services/seo → /app/services/service-1
   - /app/services/content → /app/services/service-2
   - /app/services/social → /app/services/service-3
@@ -147,19 +150,19 @@ Acceptance Criteria:
   - /app/services/crm → /app/services/service-6
   - /app/services/funnel → /app/services/service-7
   - /app/services/reporting → /app/services/service-8
-- [ ] T-003.2: Update each service page.tsx with generic placeholder content:
+- [x] T-003.2: Update each service page.tsx with generic placeholder content:
   - Title: "Service [1-8] | Your Firm Name"
   - Description: Generic professional service description
   - Benefits and features as placeholders: "Key Benefit 1", "Feature A", etc.
   - Keep component structure (ServiceDetailLayout)
-- [ ] T-003.3: Update ServicesOverview.tsx with generic service cards
-- [ ] T-003.4: Update /app/services/page.tsx:
+- [x] T-003.3: Update ServicesOverview.tsx with generic service cards
+- [x] T-003.4: Update /app/services/page.tsx:
   - Replace coreServices array with generic service titles: "Core Service 1", "Core Service 2", etc.
   - Replace supportServices array with generic service titles
   - Keep icon structure and layout
-- [ ] T-003.5: Update Footer.tsx services links to match new routes
-- [ ] T-003.6: Update Navigation.tsx if services are linked there
-- [ ] T-003.7: Update sitemap.ts to reflect new routes
+- [x] T-003.5: Update Footer.tsx services links to match new routes
+- [x] T-003.6: Update Navigation.tsx if services are linked there
+- [x] T-003.7: Update sitemap.ts to reflect new routes
 References:
 - /app/services/ (all subdirectories)
 - /components/ServicesOverview.tsx
@@ -175,26 +178,27 @@ Effort: XL
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-20
 Context:
 - Current pricing tiers are marketing-service specific (Starter $1,500, Growth $3,500, Scale $6,000)
 - Features listed are marketing-specific (blog posts, SEO, social media, etc.)
 - Need generic pricing structure applicable to any professional services firm
 Acceptance Criteria:
-- [ ] T-004.1: Update /app/pricing/page.tsx:
+- [x] T-004.1: Update /app/pricing/page.tsx:
   - Replace tier names with "Basic", "Professional", "Enterprise"
   - Replace pricing with placeholder "Contact for Pricing" or "$X,XXX/month"
   - Replace marketing-specific features with generic professional service features:
     * "Hours per month", "Response time", "Dedicated support", "Custom solutions", etc.
   - Keep pricing table structure and styling
   - Add comments explaining customization points
-- [ ] T-004.2: Update FAQ section with industry-agnostic questions:
+- [x] T-004.2: Update FAQ section with industry-agnostic questions:
   - "What's included in each tier?"
   - "Can I change tiers later?"
   - "What's your refund policy?"
-- [ ] T-004.3: Update CTA messaging to be generic
-- [ ] T-004.4: Keep all accordion and UI functionality intact
+- [x] T-004.3: Update CTA messaging to be generic
+- [x] T-004.4: Keep all accordion and UI functionality intact
 References:
 - /app/pricing/page.tsx
 Dependencies: T-001
@@ -206,8 +210,9 @@ Effort: M
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-20
 Context:
 - Current blog posts are all marketing-specific:
   - seo-basics-small-business.mdx
@@ -218,18 +223,18 @@ Context:
 - Need to replace with generic example blog posts
 - Blog infrastructure must remain functional
 Acceptance Criteria:
-- [ ] T-005.1: Remove all 5 marketing-specific blog posts from /content/blog/
-- [ ] T-005.2: Create 3 generic example blog posts:
+- [x] T-005.1: Remove all 5 marketing-specific blog posts from /content/blog/
+- [x] T-005.2: Create 3 generic example blog posts:
   - "example-post-1-industry-insights.mdx" - Generic industry insights template
   - "example-post-2-client-success.mdx" - Generic client success story template
   - "example-post-3-best-practices.mdx" - Generic best practices template
-- [ ] T-005.3: Update blog posts with:
+- [x] T-005.3: Update blog posts with:
   - author: "Your Firm Team" (placeholder)
   - category: "Industry Insights", "Client Success", "Best Practices"
   - Generic, reusable content that applies to any vertical
-- [ ] T-005.4: Ensure blog listing page still works with new posts
-- [ ] T-005.5: Ensure search index updates correctly
-- [ ] T-005.6: Verify blog post pages render correctly
+- [x] T-005.4: Ensure blog listing page still works with new posts
+- [x] T-005.5: Ensure search index updates correctly
+- [x] T-005.6: Verify blog post pages render correctly
 References:
 - /content/blog/
 - /app/blog/page.tsx
