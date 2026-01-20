@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Playwright coverage for contact submission success, rate limiting, and search empty states
 - Added unit tests for Hero, ValueProps, ServicesOverview, and SocialProof sections
 - Added Article and Service structured data on blog posts and service pages for richer SEO signals
+- Added template privacy policy and terms of service pages with placeholder guidance
 
 ### Security
 - Added hashed IP + email rate limiting for contact form submissions
@@ -34,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expanded vertical examples with copy-only implementation steps and FAQ/CTA guidance
 - Added a template release checklist and linked badge in the README
 - Added a quality-assurance review section and refreshed audit counts in the release checklist
+- Documented legal page customization requirements in the template guide
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`

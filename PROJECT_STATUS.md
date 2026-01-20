@@ -28,6 +28,7 @@ This is not a task list; tasks belong in `TODO.md`.
 - ✅ Analysis complete: 365+ marketing-specific references identified
 - ✅ Phase 1 sanitization complete (T-001 through T-008)
 - ✅ README.md updated: Reflects template purpose and usage
+- ✅ Legal template pages added for privacy policy and terms (T-016)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
