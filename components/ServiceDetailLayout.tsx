@@ -120,7 +120,7 @@ export default function ServiceDetailLayout({
     description: description,
     provider: {
       '@type': 'Organization',
-      name: 'Your Dedicated Marketer',
+      name: 'Your Firm Name',
       url: baseUrl,
     },
     url: resolvedServiceUrl,

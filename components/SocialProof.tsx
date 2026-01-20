@@ -5,13 +5,13 @@ import Card from '@/components/ui/Card'
 
 const testimonials = [
   {
-    quote: "Working with Your Dedicated Marketer transformed our online presence. We saw a 150% increase in qualified leads within the first 3 months.",
+    quote: "Working with this firm transformed our business operations. We saw a 150% increase in qualified leads within the first 3 months.",
     author: 'Sarah Johnson',
     company: 'Tech Solutions Inc.',
     title: 'CEO',
   },
   {
-    quote: "Finally, a marketing partner that actually understands founder and team realities. No fluff, just results-driven strategies that work.",
+    quote: "Finally, a professional partner that actually understands founder and team realities. No fluff, just results-driven strategies that work.",
     author: 'Michael Chen',
     company: 'Local Services Co.',
     title: 'Founder',
@@ -36,10 +36,10 @@ function SocialProof() {
       <Container>
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-            Trusted by founders and teams I work with
+            Trusted by clients we work with
           </h2>
           <p className="text-lg text-slate max-w-2xl mx-auto">
-            Here’s what people say about having me embedded in their marketing
+            Here's what clients say about working with us
           </p>
         </div>
 
