@@ -52,19 +52,26 @@ Goal: Provide a repeatable, auditable checklist for confirming the template is r
   - [ ] Link to customization guide
   - [ ] Quick start instructions
   - [ ] Known limitations or considerations
+**Technical Verification**
+- `npm run build`: Succeeded
+- `npm run test`: Failed (`vitest: not found`). See PR for context.
+- `npm run test:e2e`: Failed (`playwright: not found`). See PR for context.
+- `npm run lint`: Succeeded
+- `npm run type-check`: Succeeded
 
----
+**Marketing-term scan (manual audit)**
+- Command: `rg -o "marketing" --stats` → 140 matches across 31 files (mostly docs, tests, and archived references).
+- Command: `rg -o "marketer" --stats` → 43 matches across 24 files (docs, tests, and deployment references).
+- Command: `rg -oi "dedicated marketer" --stats` → 54 matches across 24 files (archive/history + placeholder references).
+- Command: `rg -n "YD Marketer"` → Matches in docs/tests and design system documentation.
+- Command: `rg -n "YD Firms"` → Matches in archived docs and TODO references.
 
-## Quality Assurance Review (Perfect Codebase Standards)
-Use this section to confirm the release is not just functional, but maintainable and audit-ready.
+**Package metadata review**
+- `package.json` name is `firm-template` and has no marketing-specific description fields.
 
-- [ ] **Best practices:** No unsafe patterns, anti-patterns, or security regressions introduced.
-- [ ] **Quality coding:** Clear naming, consistency with existing conventions, and no low-value churn.
-- [ ] **Potential bugs:** No partially implemented features, silent failures, or stale placeholders.
-- [ ] **Dead code:** No unused imports, unused components, or unreferenced docs.
-- [ ] **Completeness:** All referenced docs, links, and tasks are present and accurate.
-- [ ] **Deduplication:** No repeated guidance that should be centralized.
-- [ ] **Simplification:** Remove avoidable complexity without changing behavior.
+**External checks (manual, repo-owner action required)**
+- GitHub repo description and topics updated.
+- Release `v1.0.0` published with release notes and links.
 - [ ] **Meta commentary:** New or updated modules include concise AI/maintainer notes for iteration.
 
 ---
