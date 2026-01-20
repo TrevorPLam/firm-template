@@ -9,6 +9,14 @@ Goal: Provide a repeatable, auditable checklist for confirming the template is r
 
 ---
 
+## Meta (AI + Maintainer Context)
+**Scope:** This checklist governs the final release of the generic professional services template.  
+**Audience:** Repository owners and maintainers preparing a public release.  
+**Primary outcomes:** Confirm sanitized content, validated builds/tests, and release-readiness documentation.  
+**Evidence expectation:** Capture logs, command output, and links in the Verification Log below to keep releases auditable.
+
+---
+
 ## Pre-Release Verification
 - [ ] All branding placeholders are in place (no firm-specific names in UI copy).
 - [ ] No "Your Dedicated Marketer" references remain **outside** archive/history docs.
@@ -47,15 +55,29 @@ Goal: Provide a repeatable, auditable checklist for confirming the template is r
 
 ---
 
+## Quality Assurance Review (Perfect Codebase Standards)
+Use this section to confirm the release is not just functional, but maintainable and audit-ready.
+
+- [ ] **Best practices:** No unsafe patterns, anti-patterns, or security regressions introduced.
+- [ ] **Quality coding:** Clear naming, consistency with existing conventions, and no low-value churn.
+- [ ] **Potential bugs:** No partially implemented features, silent failures, or stale placeholders.
+- [ ] **Dead code:** No unused imports, unused components, or unreferenced docs.
+- [ ] **Completeness:** All referenced docs, links, and tasks are present and accurate.
+- [ ] **Deduplication:** No repeated guidance that should be centralized.
+- [ ] **Simplification:** Remove avoidable complexity without changing behavior.
+- [ ] **Meta commentary:** New or updated modules include concise AI/maintainer notes for iteration.
+
+---
+
 ## Verification Log (Latest)
 > Update this section each time you re-run the checks.
 
 **Date:** 2026-01-20
 
 **Marketing-term scan (manual audit)**
-- Command: `rg -o "marketing" --stats` → 140 matches across 31 files (mostly docs, tests, and archived references).
-- Command: `rg -o "marketer" --stats` → 43 matches across 24 files (docs, tests, and deployment references).
-- Command: `rg -oi "dedicated marketer" --stats` → 54 matches across 24 files (archive/history + placeholder references).
+- Command: `rg -o "marketing" --stats` → 142 matches across 32 files (docs, tests, and archived references).
+- Command: `rg -o "marketer" --stats` → 45 matches across 25 files (docs, tests, and deployment references).
+- Command: `rg -oi "dedicated marketer" --stats` → 56 matches across 25 files (archive/history + placeholder references).
 - Command: `rg -n "YD Marketer"` → Matches in docs/tests and design system documentation.
 - Command: `rg -n "YD Firms"` → Matches in archived docs and TODO references.
 
