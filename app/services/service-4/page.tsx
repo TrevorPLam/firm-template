@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Professional service solutions tailored to your business needs. Expert guidance and strategic execution to help your organization succeed.',
 }
 
-export default function Service4Page() {
+export default function Service1Page() {
   return (
     <ServiceDetailLayout
       icon={Briefcase}
@@ -75,7 +75,7 @@ export default function Service4Page() {
       faqs={[
         {
           question: 'How long does it take to see results?',
-          answer: 'Timeline varies based on your specific situation and goals. Most clients see initial progress within the first month, with significant results typically appearing within 3-6 months. We'\''ll provide a realistic timeline during our initial consultation.',
+          answer: 'Timeline varies based on your specific situation and goals. Most clients see initial progress within the first month, with significant results typically appearing within 3-6 months. We\'ll provide a realistic timeline during our initial consultation.',
         },
         {
           question: 'What makes your approach different?',
@@ -83,11 +83,11 @@ export default function Service4Page() {
         },
         {
           question: 'Do you work with businesses in my industry?',
-          answer: 'Our methodology is adaptable across industries. While we have experience in many sectors, what matters most is understanding your specific challenges and goals. During our consultation, we'\''ll discuss relevant case studies and how our approach applies to your situation.',
+          answer: 'Our methodology is adaptable across industries. While we have experience in many sectors, what matters most is understanding your specific challenges and goals. During our consultation, we\'ll discuss relevant case studies and how our approach applies to your situation.',
         },
         {
           question: 'What level of involvement is required from our team?',
-          answer: 'We'\''re flexible and adapt to your preferences. Some clients want hands-on collaboration, while others prefer us to take the lead. We'\''ll discuss the optimal approach based on your resources and objectives.',
+          answer: 'We\'re flexible and adapt to your preferences. Some clients want hands-on collaboration, while others prefer us to take the lead. We\'ll discuss the optimal approach based on your resources and objectives.',
         },
       ]}
     />
