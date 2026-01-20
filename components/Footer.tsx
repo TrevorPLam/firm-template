@@ -6,10 +6,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const services = [
-    { href: '/services/seo', label: 'SEO Services' },
-    { href: '/services/content', label: 'Content Marketing' },
-    { href: '/services/social', label: 'Social Media' },
-    { href: '/services/email', label: 'Email Marketing' },
+    { href: '/services/service-1', label: 'Core Service 1' },
+    { href: '/services/service-2', label: 'Core Service 2' },
+    { href: '/services/service-3', label: 'Core Service 3' },
+    { href: '/services/service-4', label: 'Core Service 4' },
   ]
 
   const company = [

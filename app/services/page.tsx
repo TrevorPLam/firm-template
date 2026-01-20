@@ -1,71 +1,78 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Search, FileText, Share2, Mail, TrendingUp, Database, Users, BarChart } from 'lucide-react'
+import { Briefcase, Target, Users, TrendingUp, Settings, Database, FileText, BarChart } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 
+/**
+ * TEMPLATE CUSTOMIZATION:
+ * Update service titles, descriptions, and icons to match your actual offerings.
+ * Replace generic "Core Service X" with your real service names.
+ * Update href links to match your renamed service routes.
+ */
+
 export const metadata: Metadata = {
-  title: 'Marketing Services | Your Dedicated Marketer',
-  description: 'Comprehensive marketing solutions for small businesses. SEO, content marketing, social media, email campaigns, and more.',
+  title: 'Professional Services | Your Firm Name',
+  description: 'Comprehensive professional services solutions tailored to your business needs. Expert guidance and strategic execution.',
 }
 
 const coreServices = [
   {
-    icon: Search,
-    title: 'SEO Services',
-    description: 'Technical SEO audits, on-page optimization, keyword research, and local SEO to get found by customers actively searching.',
-    href: '/services/seo',
-    features: ['Technical SEO', 'On-page optimization', 'Local SEO', 'Keyword research'],
+    icon: Briefcase,
+    title: 'Core Service 1',
+    description: 'Strategic solutions designed to address your primary business challenges with expert guidance and proven methodologies.',
+    href: '/services/service-1',
+    features: ['Feature A', 'Feature B', 'Feature C', 'Feature D'],
   },
   {
-    icon: FileText,
-    title: 'Content Marketing',
-    description: 'Strategic content planning, blog creation, editorial workflows, and content distribution to attract and engage your audience.',
-    href: '/services/content',
-    features: ['Blog posts', 'Content calendar', 'SEO optimization', 'Distribution strategy'],
+    icon: Target,
+    title: 'Core Service 2',
+    description: 'Comprehensive approach to achieving your business objectives through careful planning and execution.',
+    href: '/services/service-2',
+    features: ['Feature A', 'Feature B', 'Feature C', 'Feature D'],
   },
   {
-    icon: Share2,
-    title: 'Social Media Management',
-    description: 'Platform strategy, content creation, post scheduling, community management, and engagement monitoring across all platforms.',
-    href: '/services/social',
-    features: ['Platform strategy', 'Content creation', 'Community management', 'Analytics'],
+    icon: Users,
+    title: 'Core Service 3',
+    description: 'Collaborative solutions that leverage our expertise to drive measurable results for your organization.',
+    href: '/services/service-3',
+    features: ['Feature A', 'Feature B', 'Feature C', 'Feature D'],
   },
   {
-    icon: Mail,
-    title: 'Email Marketing',
-    description: 'Campaign strategy, email copywriting, list segmentation, automation setup, and performance tracking for higher conversions.',
-    href: '/services/email',
-    features: ['Campaign strategy', 'Automation', 'List segmentation', 'Analytics'],
+    icon: TrendingUp,
+    title: 'Core Service 4',
+    description: 'Growth-focused strategies that help your business scale efficiently and sustainably over time.',
+    href: '/services/service-4',
+    features: ['Feature A', 'Feature B', 'Feature C', 'Feature D'],
   },
 ]
 
 const supportServices = [
   {
-    icon: TrendingUp,
-    title: 'Marketing Strategy',
-    description: 'Quarterly planning, channel recommendations, budget allocation, and competitive analysis.',
-    href: '/services/strategy',
+    icon: Settings,
+    title: 'Supporting Service 5',
+    description: 'Specialized support to optimize your operations and enhance overall performance.',
+    href: '/services/service-5',
   },
   {
     icon: Database,
-    title: 'CRM Setup & Management',
-    description: 'Platform selection, workflow automation, contact organization, and reporting dashboards.',
-    href: '/services/crm',
+    title: 'Supporting Service 6',
+    description: 'Data-driven insights and management solutions for better decision-making.',
+    href: '/services/service-6',
   },
   {
-    icon: Users,
-    title: 'Funnel Build-Out',
-    description: 'Landing page optimization, lead magnets, conversion tracking, and A/B testing.',
-    href: '/services/funnel',
+    icon: FileText,
+    title: 'Supporting Service 7',
+    description: 'Documentation, planning, and strategic analysis to support your goals.',
+    href: '/services/service-7',
   },
   {
     icon: BarChart,
-    title: 'Marketing Reporting',
-    description: 'Analytics dashboards, performance reports, KPI tracking, and ROI measurement.',
-    href: '/services/reporting',
+    title: 'Supporting Service 8',
+    description: 'Performance tracking, reporting, and continuous improvement initiatives.',
+    href: '/services/service-8',
   },
 ]
 
@@ -77,11 +84,11 @@ export default function ServicesPage() {
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Marketing Services That Drive Growth
+              Professional Services That Deliver Results
             </h1>
             <p className="text-xl text-white/80 mb-8">
-              Comprehensive marketing solutions designed to help small businesses scale effectively.
-              No fluff, just strategies that deliver measurable results.
+              Comprehensive solutions designed to help your business achieve its goals.
+              Expert guidance and strategic execution for sustainable success.
             </p>
             <Link href="/contact">
               <Button variant="primary" size="large">
@@ -97,10 +104,10 @@ export default function ServicesPage() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-              Core Marketing Services
+              Core Services
             </h2>
             <p className="text-lg text-slate max-w-2xl mx-auto">
-              Essential services to build your marketing foundation and drive consistent growth
+              Essential services to build your business foundation and drive consistent growth
             </p>
           </div>
 
@@ -142,10 +149,10 @@ export default function ServicesPage() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-              Support Services
+              Supporting Services
             </h2>
             <p className="text-lg text-slate max-w-2xl mx-auto">
-              Additional services to enhance your marketing efforts and maximize ROI
+              Additional services to enhance your business operations and maximize results
             </p>
           </div>
 
@@ -180,7 +187,7 @@ export default function ServicesPage() {
               Not Sure Which Services You Need?
             </h2>
             <p className="text-lg text-slate mb-8">
-              Schedule a free consultation and we'll create a custom marketing plan tailored to your business goals and budget.
+              Schedule a free consultation and we'll create a custom plan tailored to your business goals and objectives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
