@@ -49,25 +49,25 @@ export default function Hero() {
           {/* Left Column - Text Content */}
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal mb-6 leading-tight">
-              Your dedicated marketer — that means I’m part of your team.
+              Your professional partner — delivering expert solutions for your business.
             </h1>
             <p className="text-lg md:text-xl text-slate-800 mb-8 leading-relaxed">
-              I work alongside founders and teams who want clear strategy, honest execution, and a marketer who takes ownership — not a detached agency.
+              We work alongside businesses and teams who want clear strategy, honest execution, and a partner who takes ownership — not a detached vendor.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
                 <Button variant="primary" size="large">
-                  Book a Free Strategy Call
+                  Book a Free Consultation
                 </Button>
               </Link>
               <Link href="/contact">
                 <Button variant="secondary" size="large">
-                  Get a Free Marketing Plan
+                  Get Started
                 </Button>
               </Link>
             </div>
             <p className="text-sm text-slate mt-4">
-              No contracts · Cancel anytime · Free strategy call, no obligation
+              No contracts · Cancel anytime · Free consultation, no obligation
             </p>
           </div>
 

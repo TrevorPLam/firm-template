@@ -6,7 +6,7 @@ import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ContactForm'
 import ErrorBoundary from '@/components/ErrorBoundary'
 
-const CONTACT_EMAIL = 'contact@yourdedicatedmarketer.com'
+const CONTACT_EMAIL = 'contact@yourfirm.com'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Your Dedicated Marketer',

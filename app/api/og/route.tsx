@@ -76,9 +76,9 @@ export async function GET(request: NextRequest) {
             🚀
           </div>
           <div>
-            <div style={{ fontSize: 28, fontWeight: 700 }}>Your Dedicated Marketer</div>
+            <div style={{ fontSize: 28, fontWeight: 700 }}>Your Firm Name</div>
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
-              ROI-Obsessed Marketing Partners
+              Professional Services Excellence
             </div>
           </div>
         </div>
@@ -87,11 +87,11 @@ export async function GET(request: NextRequest) {
         <div style={{ fontSize: 22, color: 'rgba(255,255,255,0.85)', maxWidth: 900 }}>{description}</div>
 
         <div style={{ display: 'flex', gap: 16, fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
-          <span>Performance Marketing</span>
+          <span>Expert Solutions</span>
           <span>•</span>
-          <span>SEO & Content</span>
+          <span>Strategic Guidance</span>
           <span>•</span>
-          <span>Lifecycle Campaigns</span>
+          <span>Proven Results</span>
         </div>
       </div>
     ),

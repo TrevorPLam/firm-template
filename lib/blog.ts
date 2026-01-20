@@ -26,7 +26,7 @@
  * description: string  # Required, used for SEO meta
  * date: YYYY-MM-DD     # Required, used for sorting
  * author: string       # Optional, defaults to team name
- * category: string     # Optional, defaults to "Marketing"
+ * category: string     # Optional, defaults to "General"
  * featured: boolean    # Optional, shows on homepage
  * ```
  *
@@ -67,7 +67,7 @@
  * description: string  # Required: SEO description
  * date: string         # Required: YYYY-MM-DD format
  * author: string       # Optional: Defaults to "Your Dedicated Marketer Team"
- * category: string     # Optional: Defaults to "Marketing"
+ * category: string     # Optional: Defaults to "General"
  * featured: boolean    # Optional: Defaults to false
  * ---
  * ```
@@ -159,7 +159,7 @@ export function getAllPosts(): BlogPost[] {
         description: data.description,
         date: data.date,
         author: data.author || 'Your Firm Team',
-        category: data.category || 'Marketing',
+        category: data.category || 'General',
         readingTime: readingTime(content).text,
         content,
         featured: data.featured || false,
@@ -194,7 +194,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
       description: data.description,
       date: data.date,
       author: data.author || 'Your Firm Team',
-      category: data.category || 'Marketing',
+      category: data.category || 'General',
       readingTime: readingTime(content).text,
       content,
       featured: data.featured || false,

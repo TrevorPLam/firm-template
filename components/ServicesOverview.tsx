@@ -8,27 +8,27 @@ import Card from '@/components/ui/Card'
 const services = [
   {
     icon: Search,
-    title: 'SEO Services',
-    description: 'Get found by customers actively searching for your services',
-    href: '/services/seo',
+    title: 'Core Service 1',
+    description: 'Primary service offering - customize this description for your business',
+    href: '/services/service-1',
   },
   {
     icon: FileText,
-    title: 'Content Marketing',
-    description: 'Attract and engage your audience with strategic content',
-    href: '/services/content',
+    title: 'Core Service 2',
+    description: 'Secondary service offering - update with your specific capabilities',
+    href: '/services/service-2',
   },
   {
     icon: Share2,
-    title: 'Social Media',
-    description: 'Build community and brand awareness across platforms',
-    href: '/services/social',
+    title: 'Core Service 3',
+    description: 'Tertiary service offering - tailor to your target market',
+    href: '/services/service-3',
   },
   {
     icon: Mail,
-    title: 'Email Marketing',
-    description: 'Nurture leads and drive conversions with targeted campaigns',
-    href: '/services/email',
+    title: 'Core Service 4',
+    description: 'Additional service offering - customize for your firm',
+    href: '/services/service-4',
   },
 ]
 
@@ -38,10 +38,10 @@ export default function ServicesOverview() {
       <Container>
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-            Marketing leadership I run with your team
+            Professional Services for Your Business
           </h2>
           <p className="text-lg text-slate max-w-2xl mx-auto">
-            I focus on the channels that matter most right now so founders and teams get momentum without extra management.
+            We focus on the solutions that matter most to your business goals and deliver results without unnecessary complexity.
           </p>
         </div>
 
