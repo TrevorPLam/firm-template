@@ -185,7 +185,7 @@ describe('Analytics', () => {
 
   describe('Error handling', () => {
     it('should not throw error if gtag is not available', () => {
-      // @ts-ignore
+      // @ts-expect-error - Testing behavior when gtag is undefined
       delete window.gtag
 
       expect(() => {
@@ -197,7 +197,7 @@ describe('Analytics', () => {
     })
 
     it('should not throw error if plausible is not available', () => {
-      // @ts-ignore
+      // @ts-expect-error - Testing behavior when plausible is undefined
       delete window.plausible
 
       expect(() => {
