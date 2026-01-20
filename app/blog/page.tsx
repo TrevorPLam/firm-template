@@ -121,11 +121,11 @@ export default function BlogPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Want Expert Help?
-              Want Expert Help With Your Marketing?
             </h2>
+            <p className="text-xl text-gray-600 mb-8">
               Stop reading and start growing. Let's build a custom strategy for your business.
-              Stop reading and start growing. Let's build a custom marketing strategy for your business.
             </p>
             <Link
               href="/contact"

@@ -69,7 +69,7 @@ test('contact form submission success', async ({ page }) => {
   await submitContactForm(page, {
     name: 'Jamie Test',
     email: `jamie.${Date.now()}@example.com`,
-    message: 'Looking for marketing strategy support for Q2 growth.',
+    message: 'Looking for professional services support for Q2 growth.',
   })
 
   await expect(page.getByRole('alert')).toContainText(/thank you for your message/i)
