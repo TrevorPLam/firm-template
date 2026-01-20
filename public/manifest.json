@@ -1,7 +1,7 @@
 {
-  "name": "Your Dedicated Marketer",
-  "short_name": "YDM",
-  "description": "Expert digital marketing services for businesses that want to grow. SEO, content marketing, social media, and email marketing that delivers real ROI.",
+  "name": "Your Firm Name",
+  "short_name": "Firm",
+  "description": "Expert professional services for businesses that want to succeed. Strategic guidance and proven execution that delivers results.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -26,26 +26,26 @@
       "type": "image/png"
     }
   ],
-  "categories": ["business", "marketing", "productivity"],
+  "categories": ["business", "productivity", "professional-services"],
   "shortcuts": [
     {
       "name": "Contact Us",
       "short_name": "Contact",
-      "description": "Get in touch with our marketing team",
+      "description": "Get in touch with our team",
       "url": "/contact",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "View Services",
       "short_name": "Services",
-      "description": "Explore our marketing services",
+      "description": "Explore our professional services",
       "url": "/services",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Pricing",
       "short_name": "Pricing",
-      "description": "View our pricing tiers",
+      "description": "View our service pricing",
       "url": "/pricing",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }

@@ -117,6 +117,8 @@ import InstallPrompt from '@/components/InstallPrompt'
 import { getPublicBaseUrl } from '@/lib/env.public'
 import { getSearchIndex } from '@/lib/search'
 
+import { validatedPublicEnv } from '@/lib/env.public'
+
 // Font configuration with CSS variables
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const plexSans = IBM_Plex_Sans({
@@ -127,27 +129,28 @@ const plexSans = IBM_Plex_Sans({
 })
 
 const siteUrl = getPublicBaseUrl()
-const ogImageUrl = new URL('/api/og?title=Your%20Dedicated%20Marketer', siteUrl).toString()
+const siteName = validatedPublicEnv.NEXT_PUBLIC_SITE_NAME
+const ogImageUrl = new URL(`/api/og?title=${encodeURIComponent(siteName)}`, siteUrl).toString()
 
 /**
  * Global metadata applied to all pages.
  * Child pages can override with their own metadata export.
  * 
- * Title template: "%s | Your Dedicated Marketer"
+ * Title template uses NEXT_PUBLIC_SITE_NAME from environment
  * - Child page title replaces %s
- * - Example: "SEO Services | Your Dedicated Marketer"
+ * - Example: "Services | Your Firm Name"
  */
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Your Dedicated Marketer | Digital Marketing Services That Drive Results',
-    template: '%s | Your Dedicated Marketer',
+    default: `${siteName} | Professional Services That Drive Results`,
+    template: `%s | ${siteName}`,
   },
-  description: 'Expert digital marketing services for businesses that want to grow. We specialize in SEO, content marketing, social media, and email marketing that delivers real ROI.',
-  keywords: ['digital marketing', 'SEO services', 'content marketing', 'social media marketing', 'email marketing', 'marketing agency'],
-  authors: [{ name: 'Your Dedicated Marketer' }],
-  creator: 'Your Dedicated Marketer',
-  publisher: 'Your Dedicated Marketer',
+  description: 'Expert professional services for businesses that want to succeed. Strategic guidance, proven execution, and measurable results for your organization.',
+  keywords: ['professional services', 'business consulting', 'expert guidance', 'strategic solutions', 'business growth'],
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
   formatDetection: {
     email: false,
     address: false,
@@ -171,26 +174,26 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Your Dedicated Marketer',
-    title: 'Your Dedicated Marketer | Digital Marketing Services That Drive Results',
+    siteName: siteName,
+    title: `${siteName} | Professional Services That Drive Results`,
     description:
-      'Expert digital marketing services for businesses that want to grow. We specialize in SEO, content marketing, social media, and email marketing that delivers real ROI.',
+      'Expert professional services for businesses that want to succeed. Strategic guidance, proven execution, and measurable results for your organization.',
     images: [
       {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: 'Your Dedicated Marketer brand preview image',
+        alt: `${siteName} brand preview image`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Dedicated Marketer | Digital Marketing Services That Drive Results',
+    title: `${siteName} | Professional Services That Drive Results`,
     description:
-      'Expert digital marketing services for businesses that want to grow. SEO, content, social media, and email marketing that delivers ROI.',
+      'Expert professional services for businesses that want to succeed. Strategic guidance, proven execution, and measurable results.',
     images: [ogImageUrl],
-    creator: '@yourdedicatedmarketer',
+    creator: '@yourfirmname',
   },
 }
 
@@ -209,7 +212,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="YDM" />
+        <meta name="apple-mobile-web-app-title" content={siteName.substring(0, 12)} />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
@@ -220,29 +223,23 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Your Dedicated Marketer',
-              description: 'Expert digital marketing services for businesses that want to grow.',
+              name: siteName,
+              description: 'Expert professional services for businesses that want to succeed.',
               url: siteUrl,
               logo: new URL('/logo.png', siteUrl).toString(),
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'Customer Service',
-                email: 'contact@yourdedicatedmarketer.com',
+                email: 'contact@example.com',
               },
               sameAs: [
-                'https://www.facebook.com/yourdedicatedmarketer',
-                'https://www.twitter.com/yourdedicatedmarketer',
-                'https://www.linkedin.com/company/yourdedicatedmarketer',
-                'https://www.instagram.com/yourdedicatedmarketer',
+                'https://www.facebook.com/yourfirm',
+                'https://www.twitter.com/yourfirm',
+                'https://www.linkedin.com/company/yourfirm',
               ],
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'US',
-              },
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: '4.9',
-                reviewCount: '127',
               },
             }),
           }}

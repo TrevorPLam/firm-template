@@ -39,10 +39,10 @@ export async function GET(request: NextRequest) {
     return new Response('Invalid query parameters', { status: 400 })
   }
 
-  const title = escapeHtml(parseResult.data.title ?? 'Your Dedicated Marketer')
+  const title = escapeHtml(parseResult.data.title ?? 'Your Firm Name')
   const description = escapeHtml(
     parseResult.data.description ??
-      'Digital marketing services that drive growth through SEO, content, and performance campaigns.'
+      'Professional services that drive results through strategic guidance and proven execution.'
   )
 
   return new ImageResponse(

@@ -249,24 +249,25 @@ Effort: M
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-20 (completed in T-003)
 Context:
 - Navigation links currently point to marketing-specific services
 - Footer contains marketing-specific link labels
 - Need to make navigation configurable and generic
 Acceptance Criteria:
-- [ ] T-006.1: Update Navigation.tsx navLinks array:
+- [x] T-006.1: Update Navigation.tsx navLinks array:
   - Ensure links point to generic service routes (/services, /pricing, /about, /blog, /contact)
   - Update link labels to be generic
   - Add comments explaining customization
-- [ ] T-006.2: Update Footer.tsx:
+- [x] T-006.2: Update Footer.tsx:
   - Update services section with generic service links (or remove if using generic route)
   - Update company info section to use placeholders
   - Make social links configurable via environment variables or comments
   - Add comment blocks explaining customization points
-- [ ] T-006.3: Ensure all navigation links resolve correctly after service route changes
-- [ ] T-006.4: Update robots.ts if it contains any specific references
+- [x] T-006.3: Ensure all navigation links resolve correctly after service route changes
+- [x] T-006.4: Update robots.ts if it contains any specific references
 References:
 - /components/Navigation.tsx
 - /components/Footer.tsx
@@ -280,6 +281,11 @@ Effort: M
 Priority: P0
 Type: TEMPLATE
 Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-20
+Type: TEMPLATE
+Owner: AGENT
 Status: READY
 Blockers: None
 Context:
@@ -287,19 +293,19 @@ Context:
 - Structured data contains marketing-specific information
 - OpenGraph images and social metadata need genericization
 Acceptance Criteria:
-- [ ] T-007.1: Update /app/layout.tsx:
+- [x] T-007.1: Update /app/layout.tsx:
   - Update metadata title template: "[Page] | Your Firm Name"
   - Update metadata description to generic professional services
   - Update structured data (Organization, WebSite schemas) with environment variable placeholders
   - Make URL references environment-variable driven
-- [ ] T-007.2: Update /app/api/og/route.tsx:
+- [x] T-007.2: Update /app/api/og/route.tsx:
   - Replace "Your Dedicated Marketer" with configurable firm name from env
   - Make OG image generation generic
-- [ ] T-007.3: Review and update all page-specific metadata exports:
+- [x] T-007.3: Review and update all page-specific metadata exports:
   - /app/services/*/page.tsx (use generic service names)
   - /app/pricing/page.tsx
   - /app/blog/page.tsx
-- [ ] T-007.4: Update /public/manifest.json (if exists) with generic app information
+- [x] T-007.4: Update /public/manifest.json (if exists) with generic app information
 References:
 - /app/layout.tsx
 - /app/api/og/route.tsx
