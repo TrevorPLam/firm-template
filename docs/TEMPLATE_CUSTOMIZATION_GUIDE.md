@@ -123,6 +123,7 @@ Use these examples as structured mappings for services, pricing, and blog topics
 ### Environment variables reference
 - `.env.example` (recommended baseline)
 - `env.example` (annotated reference)
+- [`docs/PRODUCTION-ENV-CHECKLIST.md`](PRODUCTION-ENV-CHECKLIST.md) (production checklist + verification)
 
 ### Database (Supabase)
 - Follow [`docs/SUPABASE_SETUP.md`](SUPABASE_SETUP.md)

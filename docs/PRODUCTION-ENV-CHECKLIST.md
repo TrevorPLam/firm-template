@@ -1,111 +1,54 @@
-# Production Environment Checklist
+# PRODUCTION-ENV-CHECKLIST.md — Production Environment Checklist
 
-**Purpose**: Verify all required environment variables are set in Cloudflare Pages before launch.
+Last Updated: 2026-01-20
+Status: Active
 
-**Last Updated**: 2026-01-11
-
-**Platform**: Cloudflare Pages
-
----
-
-## ✅ Required Variables (Must be set)
-
-These variables MUST be configured in Cloudflare Pages for the site to function correctly in production.
-
-### Public Configuration
-- [ ] `NEXT_PUBLIC_SITE_URL` = `https://yourdedicatedmarketer.com` (your actual domain)
-- [ ] `NEXT_PUBLIC_SITE_NAME` = `Your Dedicated Marketer`
-
-### Analytics (Required per T-084 launch scope)
-- [ ] `NEXT_PUBLIC_ANALYTICS_ID` = `G-JY4DRX7FVC` (Google Analytics 4)
-
-### Lead Capture Pipeline (v1 scope)
-- [ ] `SUPABASE_URL` = `https://[your-project].supabase.co`
-- [ ] `SUPABASE_SERVICE_ROLE_KEY` = `[service-role-key-from-supabase]`
-- [ ] `HUBSPOT_PRIVATE_APP_TOKEN` = `[private-app-token-from-hubspot]`
-
-### Rate Limiting (Production recommended)
-- [ ] `UPSTASH_REDIS_REST_URL` = `https://[your-instance].upstash.io`
-- [ ] `UPSTASH_REDIS_REST_TOKEN` = `[token-from-upstash]`
+Purpose: Ensure production deployments have the correct environment variables configured, with clear verification steps for each value.
 
 ---
 
-## ⚪ Optional Variables (Can be omitted)
+## Required Environment Variables
+These variables are required for the contact pipeline to work in production.
 
-These variables have defaults or graceful fallbacks. Set them if you want to override defaults.
-
-### Error Tracking (Optional)
-- [ ] `NEXT_PUBLIC_SENTRY_DSN` = `https://[your-dsn]@sentry.io/[project]` (optional)
-- [ ] `SENTRY_AUTH_TOKEN` = *(only for source maps upload)*
-- [ ] `SENTRY_ORG` = *(only for source maps upload)*
-- [ ] `SENTRY_PROJECT` = *(only for source maps upload)*
-- [ ] `SENTRY_ENVIRONMENT` = `production` (optional)
-
-### Runtime (Auto-detected)
-- [ ] `NODE_ENV` = *(automatically set by Cloudflare Pages to "production")*
+| Variable | Purpose | Where to obtain | Example format | Security considerations | Verification steps |
+| --- | --- | --- | --- | --- | --- |
+| `SUPABASE_URL` | Connects the app to your Supabase project. | Supabase project settings → API. | `https://xyzcompany.supabase.co` | Server-side only; never expose in client bundles. | Submit a contact form and confirm a record appears in Supabase. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Grants server-side access for secure writes to Supabase. | Supabase project settings → API (service role key). | `eyJhbGciOiJIUzI1...` | Treat as a secret; rotate if exposed. | Trigger a contact form submission and confirm no auth errors in logs. |
+| `HUBSPOT_PRIVATE_APP_TOKEN` | Enables CRM sync for leads. | HubSpot → Settings → Integrations → Private Apps. | `pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` | Secret token; never commit to git. | Submit a form and verify the contact appears in HubSpot. |
 
 ---
 
-## 🔧 Verification Steps
+## Optional Environment Variables
+Optional variables enhance production readiness but are not strictly required.
 
-### 1. Access Cloudflare Pages Dashboard
-1. Log into [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Navigate to **Pages** → **your-dedicated-marketer**
-3. Go to **Settings** → **Environment Variables**
-
-### 2. Verify Required Variables
-For each required variable listed above:
-- [ ] Confirm the variable name is spelled correctly (case-sensitive)
-- [ ] Confirm the value is set and not empty
-- [ ] Confirm sensitive values (API keys, tokens) are not accidentally public
-
-### 3. Test Deployment
-- [ ] Trigger a new deployment (push to main or manual deploy)
-- [ ] Check build logs for any "Missing required environment variable" errors
-- [ ] Verify site starts without errors
-- [ ] Test contact form submission (should save to Supabase and sync to HubSpot)
-
-### 4. Security Validation
-- [ ] Confirm no NEXT_PUBLIC_ prefixed variables contain secrets
-- [ ] Confirm all server-only variables (no prefix) are properly hidden from browser
-- [ ] Run `scripts/check-client-secrets.mjs` locally to verify no leaks
+| Variable | Purpose | Where to obtain | Example format | Security considerations | Verification steps |
+| --- | --- | --- | --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Base URL for metadata, sitemap, and OG tags. | Your production domain. | `https://yourfirm.com` | Public value; safe to expose. | Visit `/sitemap.xml` and confirm canonical URLs match the domain. |
+| `NEXT_PUBLIC_SITE_NAME` | Display name used in metadata and UI. | Internal branding decision. | `Your Firm Name` | Public value; safe to expose. | Confirm the site header/footer show the updated name. |
+| `NEXT_PUBLIC_SITE_TAGLINE` | Tagline for hero copy and metadata. | Internal branding decision. | `Expert solutions for your business` | Public value; safe to expose. | Confirm hero and metadata reflect the new tagline. |
+| `NEXT_PUBLIC_ANALYTICS_ID` | Enables analytics tracking (provider-specific). | Analytics provider dashboard. | `G-XXXXXXX` | Public value; safe to expose. | Trigger a page view and verify events in provider real-time view. |
+| `UPSTASH_REDIS_REST_URL` | Enables distributed rate limiting. | Upstash Redis database settings. | `https://xxxx-redis.upstash.io` | Server-side secret; keep private. | Check logs for `Initialized distributed rate limiting with Upstash Redis`. |
+| `UPSTASH_REDIS_REST_TOKEN` | Auth token for Upstash Redis. | Upstash Redis database settings. | `AXXXXXX...` | Server-side secret; keep private. | Confirm rate limiting uses Redis (no fallback log). |
+| `SENTRY_AUTH_TOKEN` | Uploads source maps/releases. | Sentry account settings. | `sntrys_...` | Server-side secret; keep private. | Run a production build and confirm Sentry release upload. |
+| `SENTRY_ORG` | Identifies your Sentry organization. | Sentry organization settings. | `your-org-slug` | Server-side value; keep private. | Confirm release creation uses the correct org. |
+| `SENTRY_PROJECT` | Identifies your Sentry project. | Sentry project settings. | `your-project-slug` | Server-side value; keep private. | Confirm release creation uses the correct project. |
+| `SENTRY_ENVIRONMENT` | Labels errors by environment. | Internal decision. | `production` | Server-side value; ok to expose in logs. | Trigger an error and confirm it appears under the correct environment. |
+| `NEXT_PUBLIC_SENTRY_DSN` | Enables client-side error reporting. | Sentry project settings. | `https://xxxx@o0.ingest.sentry.io/0` | Public value; safe to expose. | Trigger a client error and confirm it appears in Sentry. |
 
 ---
 
-## 🚨 Common Issues
+## Development-Only Variables
+These values are helpful for local development and are not required in production.
 
-### Issue: "Missing required environment variable"
-**Cause**: Variable not set or misspelled in Cloudflare Pages
-**Fix**: Double-check spelling and value in Cloudflare Pages Settings → Environment Variables
-
-### Issue: Contact form fails with "Internal error"
-**Cause**: Supabase or HubSpot credentials invalid or missing
-**Fix**: 
-1. Verify `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in Supabase dashboard
-2. Verify `HUBSPOT_PRIVATE_APP_TOKEN` has correct permissions (contacts.write)
-3. Check Sentry for detailed error logs
-
-### Issue: Rate limiting not working across instances
-**Cause**: Upstash Redis credentials not set (falling back to in-memory)
-**Fix**: Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`
-
----
-
-## 📋 Pre-Launch Checklist
-
-Before marking this task complete:
-
-- [ ] All **Required** variables are set in Cloudflare Pages
-- [ ] A test deployment succeeds without environment variable errors
-- [ ] Contact form submission works in the deployed environment
-- [ ] No secrets are exposed in browser DevTools (Network/Application tabs)
-- [ ] Screenshot or note confirms all variables are configured
+| Variable | Purpose | Where to obtain | Example format | Security considerations | Verification steps |
+| --- | --- | --- | --- | --- | --- |
+| `NEXT_PUBLIC_SENTRY_DEBUG` | Enables verbose Sentry logging in development. | Local developer choice. | `true` | Public value; avoid enabling in production. | Start the dev server and confirm Sentry debug logs appear. |
+| `NODE_ENV` | Forces a local environment override. | Local developer choice. | `development` | Do not override in production platforms. | Confirm `process.env.NODE_ENV` resolves to `development` locally. |
 
 ---
 
 ## Notes
+- Keep all secrets in your deployment platform’s environment variable settings.
+- Use `.env.local` for local development; it is ignored by git.
+- If any required variable is missing, halt deployment until the issue is resolved.
 
-- This checklist reflects the **v1 launch scope** defined in [LAUNCH-SCOPE-V1.md](LAUNCH-SCOPE-V1.md)
-- Future env vars (not needed for v1) are marked as optional or omitted
-- See [env.example](/env.example) for detailed descriptions of each variable
-- See [DEPLOYMENT.md](DEPLOYMENT.md) for full deployment procedures
