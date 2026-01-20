@@ -825,22 +825,693 @@ Effort: M
 
 ---
 
+## 🟣 PHASE 5: PLATINUM STANDARD ENHANCEMENTS (P0-P3)
+> **BEYOND DIAMOND**: These tasks elevate the template from "excellent" to "platinum standard"
+> Based on industry research, WebAward criteria, and best-in-class professional services sites
+> See PLATINUM_STANDARD_ANALYSIS.md for detailed research and rationale
+
+### T-022: Upgrade Next.js to patch CVE-2025-66478
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Next.js 15.5.2 has security vulnerability CVE-2025-66478
+- Must upgrade to patched version before template release
+- Critical security issue blocks production use
+- Identified in TEMPLATE_ASSESSMENT_REPORT.md
+Acceptance Criteria:
+- [ ] T-022.1: Upgrade Next.js to 15.5.3 or latest patched version
+- [ ] T-022.2: Verify build works with Cloudflare adapter
+- [ ] T-022.3: Run full test suite (npm run test, npm run type-check)
+- [ ] T-022.4: Test local development server
+- [ ] T-022.5: Document version change in CHANGELOG.md
+- [ ] T-022.6: Update package.json and package-lock.json
+References:
+- /package.json
+- /CHANGELOG.md
+- https://nextjs.org/blog/CVE-2025-66478
+Dependencies: None
+Effort: S
+
+---
+
+### T-023: Migrate from @cloudflare/next-on-pages to OpenNext
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- @cloudflare/next-on-pages is deprecated (npm shows deprecation warning)
+- Recommended migration path is OpenNext: https://opennext.js.org/cloudflare
+- Will resolve critical npm vulnerability
+- Current adapter still works but won't receive updates
+Acceptance Criteria:
+- [ ] T-023.1: Research OpenNext adapter for Cloudflare
+- [ ] T-023.2: Install OpenNext dependencies
+- [ ] T-023.3: Update build configuration (package.json scripts)
+- [ ] T-023.4: Update deployment documentation
+- [ ] T-023.5: Test local build: npm run pages:build
+- [ ] T-023.6: Test local preview: npm run pages:preview
+- [ ] T-023.7: Verify all pages work correctly
+- [ ] T-023.8: Update wrangler.toml if needed
+- [ ] T-023.9: Document migration in CHANGELOG.md
+References:
+- /package.json
+- /wrangler.toml
+- /docs/CLOUDFLARE_DEPLOYMENT.md
+- https://opennext.js.org/cloudflare
+Dependencies: T-022
+Effort: M
+
+---
+
+### T-024: Add optional transactional email integration
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Contact form stores leads in Supabase and syncs to CRM
+- No email notifications to business owner or customer
+- Many businesses want email alerts for new leads
+- Should be optional and configurable
+Acceptance Criteria:
+- [ ] T-024.1: Add email provider options to env.ts:
+  - SendGrid (most popular)
+  - Postmark (developer-friendly)
+  - Resend (modern, simple)
+- [ ] T-024.2: Create /lib/email.ts with email sending logic
+- [ ] T-024.3: Add email templates:
+  - Lead notification to business owner
+  - Thank you email to customer (optional)
+- [ ] T-024.4: Update contact form action to send emails (optional)
+- [ ] T-024.5: Add environment variables:
+  - EMAIL_PROVIDER (sendgrid|postmark|resend|none)
+  - EMAIL_API_KEY
+  - EMAIL_FROM_ADDRESS
+  - EMAIL_TO_ADDRESS (business owner)
+- [ ] T-024.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-024.7: Add to .env.example with clear instructions
+- [ ] T-024.8: Test email sending with each provider
+References:
+- /lib/actions.ts
+- /lib/email.ts (new)
+- /lib/env.ts
+- /.env.example
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: M
+
+---
+
+### T-025: Create interactive CLI setup wizard
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Currently users must manually edit .env and files
+- Interactive CLI would make setup faster and less error-prone
+- Ask questions and generate config automatically
+- Similar to "create-next-app" experience
+Acceptance Criteria:
+- [ ] T-025.1: Create /scripts/setup.js with inquirer.js
+- [ ] T-025.2: CLI should ask for:
+  - Firm name and tagline
+  - Industry/vertical (law, consulting, accounting, design, other)
+  - Contact information
+  - Whether to enable optional features (analytics, email, etc.)
+- [ ] T-025.3: Generate .env.local from answers
+- [ ] T-025.4: Optionally customize:
+  - Hero messaging based on vertical
+  - Service names based on vertical
+  - Color scheme (basic preset options)
+- [ ] T-025.5: Add npm script: npm run setup
+- [ ] T-025.6: Document in README.md Quick Start section
+- [ ] T-025.7: Test wizard end-to-end
+References:
+- /scripts/setup.js (new)
+- /package.json
+- /README.md
+Dependencies: T-010, T-011
+Effort: L
+
+---
+
+### T-026: Create optional theme customization UI
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Non-technical users struggle with Tailwind config
+- Visual theme editor would lower barrier to entry
+- Should be optional (dev-only) tool
+- Generate Tailwind config from UI selections
+Acceptance Criteria:
+- [ ] T-026.1: Create /app/theme-editor/page.tsx (dev-only route)
+- [ ] T-026.2: Build UI for customizing:
+  - Primary color (brand color)
+  - Secondary color
+  - Font family selections
+  - Logo upload preview
+- [ ] T-026.3: Live preview of changes
+- [ ] T-026.4: Export button to generate:
+  - Updated tailwind.config.ts
+  - Updated color variables
+- [ ] T-026.5: Add middleware to block /theme-editor in production
+- [ ] T-026.6: Document in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-026.7: Optional: Save themes to localStorage
+References:
+- /app/theme-editor/page.tsx (new)
+- /tailwind.config.ts
+- /middleware.ts
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: XL
+
+---
+
+### T-027: Enhance SEO tooling and documentation
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- SEO setup is mostly manual currently
+- Could provide better tools and validation
+- Help users optimize for search engines
+Acceptance Criteria:
+- [ ] T-027.1: Create SEO checklist in TEMPLATE_CUSTOMIZATION_GUIDE.md:
+  - Meta tags verification
+  - Structured data validation
+  - Sitemap generation
+  - robots.txt configuration
+  - Internal linking strategy
+- [ ] T-027.2: Add SEO validation script: npm run audit:seo
+  - Check for missing meta descriptions
+  - Verify structured data syntax
+  - Check for broken internal links
+  - Validate sitemap.xml
+- [ ] T-027.3: Document how to customize:
+  - OpenGraph images
+  - Twitter cards
+  - Structured data schemas
+- [ ] T-027.4: Add common schema.org templates (Organization, LocalBusiness, etc.)
+- [ ] T-027.5: Document analytics and Search Console setup
+References:
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+- /scripts/seo-audit.mjs (new)
+- /app/layout.tsx
+- /app/sitemap.ts
+Dependencies: None
+Effort: M
+
+---
+
+### T-028: Configure automated dependency updates
+Priority: P3
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Dependencies should be kept up-to-date automatically
+- Dependabot or Renovate Bot can automate this
+- Reduces maintenance burden for template users
+Acceptance Criteria:
+- [ ] T-028.1: Create .github/dependabot.yml configuration:
+  - Check npm dependencies weekly
+  - Group minor/patch updates
+  - Separate major updates
+  - Auto-merge patch updates (if tests pass)
+- [ ] T-028.2: Document Dependabot in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-028.3: Add instructions for disabling if desired
+- [ ] T-028.4: Test by manually triggering Dependabot
+- [ ] T-028.5: Update SECURITY.md with dependency update policy
+References:
+- /.github/dependabot.yml (new)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+- /SECURITY.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-029: Add component showcase (Storybook)
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Template has 20+ reusable components
+- No visual catalog or documentation for components
+- Storybook would help users understand component API
+- Useful for development and testing
+Acceptance Criteria:
+- [ ] T-029.1: Install Storybook for Next.js
+- [ ] T-029.2: Create stories for UI components:
+  - Button, Card, Input, Textarea, Select
+  - Accordion, Container, Section
+- [ ] T-029.3: Create stories for feature components:
+  - Hero, ValueProps, CTASection
+  - ContactForm, SearchDialog
+- [ ] T-029.4: Add Storybook npm scripts:
+  - npm run storybook (dev)
+  - npm run build-storybook (production)
+- [ ] T-029.5: Document Storybook in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-029.6: Optional: Deploy Storybook to GitHub Pages
+References:
+- /.storybook/ (new)
+- /components/**/*.stories.tsx (new)
+- /package.json
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: M
+
+---
+
+### T-030: Implement AI Chatbot Integration
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- 67% of B2B professional services sites have AI chat in 2026
+- Increases lead capture by 15-30% according to industry data
+- Provides 24/7 instant engagement
+- Qualifies leads automatically
+- Critical differentiator for modern professional services
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-030.1: Research and select chatbot provider (Intercom, Drift, Tidio, or custom)
+- [ ] T-030.2: Create chatbot component wrapper for React integration
+- [ ] T-030.3: Design conversation flows for common inquiries:
+  - Service information requests
+  - Pricing questions
+  - Appointment scheduling
+  - Contact information collection
+- [ ] T-030.4: Integrate with contact form/CRM pipeline
+- [ ] T-030.5: Add chatbot to all public pages (configurable)
+- [ ] T-030.6: Document configuration in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-030.7: Add environment variables for API keys
+- [ ] T-030.8: Test conversation flows and lead capture
+References:
+- /components/Chatbot.tsx (new)
+- /lib/chatbot.ts (new)
+- /lib/env.ts
+- /.env.example
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: M
+
+---
+
+### T-031: Add Client Logo Showcase & Trust Badge Component
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Social proof increases conversion by 25% on average
+- Client logos are standard on 82% of professional services sites
+- Builds immediate credibility and trust
+- WebAward criterion: demonstrate authority and expertise
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-031.1: Create ClientLogoShowcase component
+  - Configurable logo grid (3-4 columns, responsive)
+  - Grayscale filter with color on hover
+  - Lazy loading for images
+- [ ] T-031.2: Create TrustBadge component for certifications/awards
+  - Displays badges with tooltips
+  - Configurable positioning
+- [ ] T-031.3: Add placeholder logos to /public/clients/
+- [ ] T-031.4: Integrate on homepage below hero section
+- [ ] T-031.5: Document logo requirements (size, format) in customization guide
+- [ ] T-031.6: Add to vertical examples (law firm shows bar association, etc.)
+References:
+- /components/ClientLogoShowcase.tsx (new)
+- /components/TrustBadge.tsx (new)
+- /public/clients/ (new directory)
+- /app/page.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-011
+Effort: S
+
+---
+
+### T-032: Integrate Appointment Scheduling (Calendly/Cal.com)
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Reduces booking friction by 40% according to conversion studies
+- Standard feature on 73% of consulting/professional services sites
+- Eliminates back-and-forth email scheduling
+- Improves user experience significantly
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-032.1: Create AppointmentScheduler component
+  - Support Calendly embed
+  - Support Cal.com (open source alternative)
+  - Configurable via environment variables
+- [ ] T-032.2: Add scheduling CTAs to:
+  - Homepage
+  - Services pages
+  - Contact page
+  - Pricing page
+- [ ] T-032.3: Create modal/popup option for inline booking
+- [ ] T-032.4: Add environment variables:
+  - SCHEDULING_PROVIDER (calendly|calcom|none)
+  - CALENDLY_URL or CALCOM_USERNAME
+- [ ] T-032.5: Style to match template design system
+- [ ] T-032.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-032.7: Test booking flow end-to-end
+References:
+- /components/AppointmentScheduler.tsx (new)
+- /lib/env.ts
+- /.env.example
+- /app/contact/page.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: S
+
+---
+
+### T-033: Add A/B Testing Framework
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Enables continuous optimization (2-5% monthly improvement)
+- Standard on 58% of high-performing marketing sites
+- Data-driven decision making
+- WebAward criterion: innovation and optimization
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-033.1: Research and select A/B testing solution:
+  - Vercel Analytics (if deploying to Vercel)
+  - PostHog (open source, privacy-friendly)
+  - Google Optimize alternative
+- [ ] T-033.2: Create A/B test wrapper component
+- [ ] T-033.3: Document how to run experiments:
+  - Hero headline variants
+  - CTA button text/color
+  - Pricing display options
+  - Form field variations
+- [ ] T-033.4: Add example A/B tests to demonstrate:
+  - Homepage hero test
+  - Contact form variation
+- [ ] T-033.5: Integrate with analytics pipeline
+- [ ] T-033.6: Document in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-033.7: Add to OBSERVABILITY.md for monitoring
+References:
+- /components/ABTest.tsx (new)
+- /lib/analytics.ts
+- /lib/abtest.ts (new)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+- /docs/OBSERVABILITY.md
+Dependencies: T-010
+Effort: M
+
+---
+
+### T-034: Create Resource Library with Lead Magnets
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Gated content generates 20% more leads than contact forms alone
+- 78% of professional services firms offer downloadable resources
+- Builds email list for nurture campaigns
+- Demonstrates expertise and thought leadership
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-034.1: Create /app/resources/page.tsx - library listing
+- [ ] T-034.2: Create resource download component with email gate
+- [ ] T-034.3: Add resource categories:
+  - Guides & eBooks
+  - Templates & Checklists
+  - Case Studies
+  - Whitepapers
+- [ ] T-034.4: Create 3 example resources (PDF placeholders):
+  - "Industry Guide 2026"
+  - "Service Selection Checklist"
+  - "ROI Calculation Template"
+- [ ] T-034.5: Integrate download tracking with CRM
+- [ ] T-034.6: Add resource CTAs throughout site
+- [ ] T-034.7: Document resource creation process in docs
+References:
+- /app/resources/page.tsx (new)
+- /app/resources/[slug]/page.tsx (new)
+- /components/ResourceDownload.tsx (new)
+- /public/resources/ (new directory)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-024
+Effort: M
+
+---
+
+### T-035: Add Video Content Support
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Video increases engagement by 35% according to marketing research
+- 89% of professional services sites use video content
+- Trust-building through visual storytelling
+- Supports testimonials, case studies, team introductions
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-035.1: Create VideoPlayer component
+  - Support YouTube embed
+  - Support Vimeo embed
+  - Support direct video file (with native HTML5 player)
+  - Responsive sizing
+  - Lazy loading
+- [ ] T-035.2: Create VideoTestimonial component
+  - Grid layout for multiple testimonials
+  - Play on hover option
+  - Full-screen mode
+- [ ] T-035.3: Add video support to blog posts (MDX)
+- [ ] T-035.4: Create example video embeds:
+  - Hero section video option
+  - About page team video
+  - Service explainer video
+- [ ] T-035.5: Document video hosting options and setup
+- [ ] T-035.6: Add to vertical examples
+References:
+- /components/VideoPlayer.tsx (new)
+- /components/VideoTestimonial.tsx (new)
+- /components/Hero.tsx (update for video option)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-011
+Effort: S
+
+---
+
+### T-036: Implement Exit-Intent Popup System
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Recovers 10-15% of abandoning visitors
+- Standard on 61% of lead-generation sites
+- Non-intrusive when implemented correctly
+- Provides last-chance conversion opportunity
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-036.1: Create ExitIntentPopup component
+  - Detect mouse leaving viewport
+  - Show once per session (cookie/localStorage)
+  - Responsive design
+  - Easy dismiss
+- [ ] T-036.2: Create popup content variants:
+  - Newsletter signup offer
+  - Resource download offer
+  - Consultation booking offer
+  - Contact form simplified
+- [ ] T-036.3: Add configuration options:
+  - Delay before showing (e.g., 5 seconds on page)
+  - Pages to show/hide
+  - Popup frequency (once per session/day/week)
+- [ ] T-036.4: Integrate with analytics to track effectiveness
+- [ ] T-036.5: Document configuration in customization guide
+- [ ] T-036.6: Test on mobile (disable or adapt)
+References:
+- /components/ExitIntentPopup.tsx (new)
+- /lib/exit-intent.ts (new)
+- /app/layout.tsx (add popup)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: M
+
+---
+
+### T-037: Create Team Member Profiles Section
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Humanizes the firm and builds trust
+- 91% of professional services sites have team pages
+- Critical for relationship-based businesses
+- WebAward criterion: demonstrate expertise
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-037.1: Create /app/team/page.tsx - team listing
+- [ ] T-037.2: Create /app/team/[slug]/page.tsx - individual profiles
+- [ ] T-037.3: Create TeamMember component for grid display
+  - Photo (with hover effect)
+  - Name and title
+  - Brief bio
+  - Credentials/certifications
+  - Social links (LinkedIn, etc.)
+- [ ] T-037.4: Create team member content schema:
+  - MDX files in /content/team/
+  - Frontmatter: name, title, photo, bio, credentials, social
+- [ ] T-037.5: Add 3-4 example team members (placeholders)
+- [ ] T-037.6: Link team page from navigation
+- [ ] T-037.7: Add team section to homepage
+- [ ] T-037.8: Document in customization guide
+References:
+- /app/team/page.tsx (new)
+- /app/team/[slug]/page.tsx (new)
+- /components/TeamMember.tsx (new)
+- /content/team/ (new directory)
+- /lib/team.ts (new - similar to blog.ts)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-011
+Effort: M
+
+---
+
+### T-038: Build Interactive ROI Calculator
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Unique differentiator (only 23% of sites have this)
+- High engagement (2-3x time on page)
+- Generates qualified leads
+- Industry-specific tool adds value
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-038.1: Create ROICalculator component framework
+  - Form inputs for key variables
+  - Real-time calculation
+  - Visual results display (charts/graphs)
+  - Export/email results option
+- [ ] T-038.2: Create generic calculator template:
+  - Cost savings calculator
+  - ROI timeline calculator
+  - Investment return calculator
+- [ ] T-038.3: Create industry-specific examples:
+  - Law firm: "Settlement Value Calculator"
+  - Consulting: "Project Cost Estimator"
+  - Accounting: "Tax Savings Calculator"
+- [ ] T-038.4: Add calculator page: /app/calculator/page.tsx
+- [ ] T-038.5: Integrate lead capture (email to get results)
+- [ ] T-038.6: Document calculator customization
+- [ ] T-038.7: Add to vertical examples
+References:
+- /app/calculator/page.tsx (new)
+- /components/ROICalculator.tsx (new)
+- /lib/calculator.ts (new)
+- /docs/examples/ (add to vertical examples)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-011
+Effort: L
+
+---
+
+### T-039: Add Newsletter Popup & Lead Magnet Incentive
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Increases newsletter signups by 50% vs footer form alone
+- Standard on 68% of professional services sites
+- Builds marketing email list
+- Can offer lead magnet incentive
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-039.1: Create NewsletterPopup component
+  - Timed trigger (e.g., after 30 seconds)
+  - Scroll trigger option (e.g., 50% page scroll)
+  - Exit-intent trigger option
+  - Mobile-friendly design
+- [ ] T-039.2: Add incentive options:
+  - "Get our weekly industry insights"
+  - "Download our free guide"
+  - "Join 1,000+ professionals"
+- [ ] T-039.3: Integrate with email service (from T-024)
+- [ ] T-039.4: Add configuration:
+  - Show frequency (once per session/week)
+  - Delay timing
+  - Pages to show/hide
+- [ ] T-039.5: A/B test different incentive messages
+- [ ] T-039.6: Track conversion rate in analytics
+- [ ] T-039.7: Document in customization guide
+References:
+- /components/NewsletterPopup.tsx (new)
+- /lib/newsletter.ts (new)
+- /app/layout.tsx (add popup)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-024
+Effort: S
+
+---
+
 ## Summary
 
-**Total Tasks**: 21 (T-001 through T-021)
-**Estimated Total Effort**: ~3-4 days of focused work
+**Total Tasks**: 39 (T-001 through T-039)
+**Estimated Total Effort**: ~10-12 days of focused work
 
 ### By Priority
-- **P0 (Critical)**: 8 tasks - Template sanitization and core verification
-- **P1 (High)**: 5 tasks - Documentation for template users
-- **P2 (Medium)**: 4 tasks - Infrastructure and deployment support
-- **P3 (Low)**: 4 tasks - Quality improvements and optimizations
+- **P0 (Critical)**: 9 tasks - Template sanitization, core verification, security fixes
+- **P1 (High)**: 9 tasks - Documentation, platinum-standard essentials
+- **P2 (Medium)**: 10 tasks - Infrastructure, advanced platinum features
+- **P3 (Low)**: 11 tasks - Quality improvements, elite differentiators
 
 ### By Phase
-- **Phase 1 (Sanitization)**: 8 tasks - Convert marketing firm to generic template
+- **Phase 1 (Sanitization)**: 8 tasks - Convert marketing firm to generic template ✅ DONE
 - **Phase 2 (Documentation)**: 5 tasks - Help users customize the template
 - **Phase 3 (Infrastructure)**: 4 tasks - Deployment and configuration support
 - **Phase 4 (Quality)**: 4 tasks - Performance and accessibility optimization
+- **Phase 5 (Platinum Standard)**: 18 tasks - Industry-leading enhancements
+
+### Platinum Standard Path
+- **Phase 5A (Essentials)**: T-022, T-023, T-024, T-030, T-031, T-032, T-033 → 88/100 (Industry Standard)
+- **Phase 5B (Advanced)**: T-034, T-035, T-036, T-037, T-039 → 95/100 (Exceeds Standard)
+- **Phase 5C (Elite)**: T-025, T-026, T-027, T-028, T-029, T-038 → 98/100 (Platinum)
 
 ### What Changes (Content Only)
 - Branding: "Your Dedicated Marketer" → Configurable placeholders
@@ -849,6 +1520,13 @@ Effort: M
 - Pricing: Marketing-specific → Generic pricing template
 - Components: Marketing messaging → Generic professional services messaging
 - Documentation: Marketing context → Template user documentation
+
+### What Adds (Platinum Enhancements)
+- AI Features: Chatbot, personalization, A/B testing
+- Trust Building: Client logos, team profiles, video testimonials
+- Conversion Tools: Exit-intent, newsletter popups, appointment scheduling
+- Content: Resource library, video support, ROI calculators
+- Developer Experience: CLI wizard, theme editor, Storybook, Dependabot
 
 ### What Stays (100% Functionality)
 - All components and modules
@@ -868,4 +1546,4 @@ Effort: M
 
 ---
 
-**Next Steps**: Execute Phase 1 tasks (T-001 through T-008) to complete core template sanitization.
+**Next Steps**: Execute Phase 2 tasks (T-009 through T-013) to complete documentation, then Phase 5A for platinum-standard essentials.
