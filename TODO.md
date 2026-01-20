@@ -460,37 +460,6 @@ Effort: M
 
 ---
 
-### T-015: Create production environment checklist
-Priority: P2
-Type: INFRASTRUCTURE
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Template users need clear guidance on production environment setup
-- Should be explicit and verifiable
-- Helps prevent deployment issues
-Acceptance Criteria:
-- [ ] T-015.1: Create /docs/PRODUCTION-ENV-CHECKLIST.md with sections:
-  - Required Environment Variables (site will not work without these)
-  - Optional Environment Variables (enhance functionality)
-  - Development-Only Variables (not needed in production)
-- [ ] T-015.2: For each variable, document:
-  - Purpose and usage
-  - Where to obtain value
-  - Example format
-  - Security considerations
-- [ ] T-015.3: Include verification steps for each variable
-- [ ] T-015.4: Add to TEMPLATE_CUSTOMIZATION_GUIDE.md
-References:
-- /env.example
-- /docs/PRODUCTION-ENV-CHECKLIST.md (new)
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: T-014
-Effort: S
-
----
-
 ## 🔵 PHASE 4: QUALITY & OPTIMIZATION (P3)
 > Quality improvements and optimizations.
 > These enhance the template but are not required for initial release.
