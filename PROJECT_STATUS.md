@@ -13,7 +13,7 @@ This is not a task list; tasks belong in `TODO.md`.
 ## Current snapshot
 - Phase: **Template Released / Ready for User Customization** - Documentation in progress
 - Environment: Next.js 15.5.2, TypeScript, Tailwind CSS, Cloudflare Pages Adapter Installed
-- Status: Template sanitization complete; documentation tasks (T-009 through T-013) underway
+- Status: Template sanitization complete; documentation tasks nearly complete (T-013 remaining)
 - Last known "green" state: **UNKNOWN** (not re-verified during this update)
 - Key risks: 
     - Next.js 15.x lock-in: `@cloudflare/next-on-pages` has peer dependency conflicts with Next.js 16
@@ -28,7 +28,7 @@ This is not a task list; tasks belong in `TODO.md`.
 - ✅ Analysis complete: 365+ marketing-specific references identified
 - ✅ Phase 1 sanitization complete (T-001 through T-008)
 - ✅ README.md updated: Reflects template purpose and usage
-- 🔄 **NEXT**: Complete Phase 2 documentation tasks (T-009 through T-013)
+- 🔄 **NEXT**: Complete Phase 2 documentation task T-013
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
 
@@ -75,7 +75,7 @@ Use this format:
   - Follow-up (task IDs in TODO.md): N/A
 
 ## Open questions
-- Q: Should we create example implementations for specific verticals (law firm, consulting firm)?
-  - Context: Would help users understand customization better
-  - Needed input: User feedback on which verticals are most common
-  - Task ID: T-011 (planned)
+- Q: Should we add additional vertical examples (healthcare, real estate, nonprofits)?
+  - Context: Current examples cover four common professional service types
+  - Needed input: Owner guidance on next-most important verticals
+  - Task ID: **UNKNOWN** (add if prioritized)
