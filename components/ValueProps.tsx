@@ -4,58 +4,70 @@ import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Card from '@/components/ui/Card'
 
+/**
+ * TEMPLATE CUSTOMIZATION:
+ * Replace these value propositions with your firm's unique benefits.
+ * Keep the structure (icon, title, description) but update content to match your vertical.
+ * 
+ * Examples by industry:
+ * - Law Firm: "Experienced legal counsel", "Client-first approach", "Proven track record"
+ * - Consulting: "Strategic insights", "Implementation support", "Measurable outcomes"
+ * - Accounting: "Tax optimization", "Compliance expertise", "Financial clarity"
+ * - Design Agency: "Creative excellence", "Brand strategy", "Collaborative process"
+ */
+
 const valueProps = [
   {
     icon: Target,
-    title: 'Marketing shouldn’t feel like a guessing game.',
+    title: 'Expert guidance, strategic execution',
     description: (
       <>
-        <p>Most founders don’t actually need more marketing. They need someone to own it.</p>
-        <p>Someone who:</p>
+        <p>Success requires more than just doing tasks. You need a partner who understands your business context and goals.</p>
+        <p>We provide:</p>
         <ul className="list-disc list-inside pl-4 space-y-1">
-          <li>Understands the business context</li>
-          <li>Knows what matters right now (and what doesn’t)</li>
-          <li>Makes decisions, not just suggestions</li>
-          <li>Stays accountable over time</li>
+          <li>Deep understanding of your business objectives</li>
+          <li>Strategic planning aligned with your goals</li>
+          <li>Proactive recommendations, not just execution</li>
+          <li>Ongoing accountability and results tracking</li>
         </ul>
-        <p>That’s the role I fill.</p>
+        <p>That's the value we deliver.</p>
       </>
     ),
   },
   {
     icon: DollarSign,
-    title: 'What ‘part of your team’ actually means',
+    title: 'True partnership approach',
     description: (
       <>
         <p>
-          I’m embedded in your team, learning the business and taking ownership — not handing you a list of tasks.
+          We work as an extension of your team, learning your business and taking ownership — not just checking boxes.
         </p>
         <p>When we work together:</p>
         <ul className="list-disc list-inside pl-4 space-y-1">
-          <li>I learn your business like an internal hire would</li>
-          <li>I help decide priorities, not just execute orders</li>
-          <li>I work within your existing tools, people, and constraints</li>
-          <li>You get marketing leadership without hiring full-time</li>
+          <li>We learn your business like an internal team member would</li>
+          <li>We help shape priorities, not just follow orders</li>
+          <li>We integrate with your existing processes and tools</li>
+          <li>You get senior-level expertise without full-time overhead</li>
         </ul>
         <p>You stay focused on running the business.</p>
-        <p>I take responsibility for the marketing.</p>
+        <p>We take responsibility for delivering results.</p>
       </>
     ),
   },
   {
     icon: Settings,
-    title: 'Who this works best for',
+    title: 'Ideal for ambitious organizations',
     description: (
       <>
-        <p>This is a good fit if:</p>
+        <p>This approach works best if:</p>
         <ul className="list-disc list-inside pl-4 space-y-1">
-          <li>You’re a founder or part of a lean team</li>
-          <li>You want senior-level marketing ownership, not hand-holding</li>
-          <li>You don’t want to manage freelancers or a revolving bench of contractors</li>
-          <li>You want clarity, momentum, and follow-through</li>
+          <li>You're a leader looking for strategic partnership</li>
+          <li>You want senior-level expertise and ownership</li>
+          <li>You prefer depth over managing multiple vendors</li>
+          <li>You value clarity, momentum, and follow-through</li>
         </ul>
-        <p>If you’re looking for a hands-off partner or a one-time project, this probably isn’t it.</p>
-        <p>If you want a dedicated marketer embedded into your team, it is.</p>
+        <p>If you're looking for a hands-off vendor or one-time project, this may not be the right fit.</p>
+        <p>If you want a dedicated partner invested in your success, it is.</p>
       </>
     ),
   },
