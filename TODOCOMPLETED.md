@@ -10,6 +10,32 @@ Move tasks here when Acceptance Criteria are met.
 ## Completed tasks
 <!-- Append completed tasks below. Preserve the original record for auditability. -->
 
+### T-016: Implement privacy + terms pages
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-20
+Context:
+- Legal pages must exist for any professional services site
+- Footer links currently point to these pages
+- Need generic templates that users can customize
+Acceptance Criteria:
+- [x] T-016.1: Create /app/privacy/page.tsx with generic privacy policy template
+- [x] T-016.2: Create /app/terms/page.tsx with generic terms of service template
+- [x] T-016.3: Use placeholder text with clear markers: [YOUR FIRM NAME], [YOUR STATE/COUNTRY], etc.
+- [x] T-016.4: Ensure Footer.tsx links resolve without 404s
+- [x] T-016.5: Add basic SEO metadata to privacy/terms pages
+- [x] T-016.6: Add prominent notice that these are templates and must be reviewed by legal counsel
+- [x] T-016.7: Document in TEMPLATE_CUSTOMIZATION_GUIDE.md that legal pages MUST be customized
+References:
+- /app/privacy/page.tsx
+- /app/terms/page.tsx
+- /components/Footer.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: S
+
 ### T-011: Add vertical-specific configuration examples
 Priority: P1
 Type: DOCS

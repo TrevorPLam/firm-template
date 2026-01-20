@@ -92,6 +92,12 @@ This guide walks you through the minimum configuration needed to launch, then de
 - `/app/contact/page.tsx` handles the form.
 - The form submission logic is in `/lib/actions.ts`.
 
+### Legal pages (required)
+- Privacy Policy: `/app/privacy/page.tsx`
+- Terms of Service: `/app/terms/page.tsx`
+- Replace every placeholder like `[YOUR FIRM NAME]`, `[YOUR STATE/COUNTRY]`, and `[BILLING TERMS]`.
+- **Do not publish** until legal counsel reviews the final language for your jurisdiction.
+
 ---
 
 ## Vertical Examples (Common Firm Types)
