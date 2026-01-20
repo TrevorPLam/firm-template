@@ -7,12 +7,12 @@ Status: Active
 
 Purpose: Make work in this repo deterministic, auditable, and agent-executable while staying readable for a non-coder owner.
 
-**TEMPLATE STATUS**: This repository is being converted from a marketing firm-specific implementation into a generic professional services template. All work should focus on template sanitization (TODO.md Phase 1) until complete.
+**TEMPLATE STATUS**: Template sanitization is complete. Current focus is documentation and customization guidance (TODO.md Phase 2).
 
 ## Start here (required read order)
 1) `CODEBASECONSTITUTION.md` (non-negotiable rules)
 2) `AGENTS.md` (how agents must behave)
-3) `TODO.md` (task truth source - **currently focused on template sanitization**)
+3) `TODO.md` (task truth source - **currently focused on template documentation**)
 4) Runbooks (use when instructed):
    - `CODEAUDIT.md`
    - `SECURITYAUDIT.md`
@@ -22,8 +22,8 @@ Purpose: Make work in this repo deterministic, auditable, and agent-executable w
 5) `repo.manifest.yaml` (how to run/verify this repo)
 6) `PROJECT_STATUS.md` (current state + next step)
 
-## Current Priority: Template Conversion
-**FOCUS**: Execute TODO.md Phase 1 (Tasks T-001 through T-008) to sanitize all marketing-specific content and convert to generic professional services template.
+## Current Priority: Template Documentation
+**FOCUS**: Execute TODO.md Phase 2 (Tasks T-009 through T-013) to document customization, governance updates, and release readiness.
 
 **DO NOT**:
 - Add marketing-specific features
@@ -44,12 +44,12 @@ Purpose: Make work in this repo deterministic, auditable, and agent-executable w
 
 ## Modes
 - **Planner**: propose plan + questions; no code edits
-- **Builder**: implement exactly one task (or a small, linked set) from TODO.md Phase 1
+- **Builder**: implement exactly one task (or a small, linked set) from TODO.md Phase 2
 - **Auditor**: inspect + create tasks; do not refactor blindly
 - **Status-Sync**: update `PROJECT_STATUS.md` and move completed tasks to `TODOCOMPLETED.md`
 - **Emergency**: stop-the-bleed (secrets/auth/payment)
 
-**Current Mode Recommended**: Builder (for template sanitization tasks T-001 through T-008)
+**Current Mode Recommended**: Builder (for documentation tasks T-009 through T-013)
 
 ## Verification (minimum)
 - Prefer existing repo commands (see `repo.manifest.yaml`).

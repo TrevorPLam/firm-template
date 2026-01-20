@@ -11,30 +11,36 @@ A lightweight place to record the current state of the project, major decisions,
 This is not a task list; tasks belong in `TODO.md`.
 
 ## Current snapshot
-- Phase: **Template Sanitization Phase** - Converting marketing firm to generic professional services template
+- Phase: **Template Released / Ready for User Customization** - Documentation in progress
 - Environment: Next.js 15.5.2, TypeScript, Tailwind CSS, Cloudflare Pages Adapter Installed
-- Status: Template conversion game plan complete; ready to execute Phase 1 tasks (T-001 through T-008)
-- Last known "green" state: Build passes locally, all tests passing
+- Status: Template sanitization complete; documentation tasks (T-009 through T-013) underway
+- Last known "green" state: **UNKNOWN** (not re-verified during this update)
 - Key risks: 
     - Next.js 15.x lock-in: `@cloudflare/next-on-pages` has peer dependency conflicts with Next.js 16
     - Edge Runtime limitations: `fs` usage requires explicitly marking some routes as `force-static`
-    - Template must maintain 100% functionality during sanitization
+    - Documentation drift: README and guides must stay aligned with template behavior
 - Testing posture: E2E coverage for contact submission, rate limiting, and search; Vitest unit tests configured
 
 ## Current Focus
-**PRIMARY GOAL**: Convert this repository from a marketing firm-specific implementation into a reusable professional services template.
+**PRIMARY GOAL**: Provide a reusable professional services template with clear customization and deployment guidance.
 
 **Progress**:
 - ✅ Analysis complete: 365+ marketing-specific references identified
-- ✅ Game plan created: 21 tasks organized into 4 phases
-- ✅ TODO.md restructured: Sanitization tasks prioritized as P0
-- ✅ README.md updated: Now reflects template purpose and usage
-- 🔄 **NEXT**: Execute Phase 1 (T-001 through T-008) - Core template sanitization
+- ✅ Phase 1 sanitization complete (T-001 through T-008)
+- ✅ README.md updated: Reflects template purpose and usage
+- 🔄 **NEXT**: Complete Phase 2 documentation tasks (T-009 through T-013)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
 
 ## Decisions (append-only)
 Use this format:
+
+- Date: 2026-01-20
+  - Decision: Mark template sanitization complete and move focus to documentation
+  - Why: Core content is now generic; next priority is guiding users through customization
+  - Alternatives considered: Starting infrastructure enhancements before docs (rejected - docs must be accurate first)
+  - Trade-offs: Delays advanced features but improves adoption readiness
+  - Follow-up: Complete T-009 through T-013
 
 - Date: 2026-01-20
   - Decision: Restructure TODO.md with sanitization as Phase 1 (P0 priority)

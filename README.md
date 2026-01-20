@@ -134,6 +134,7 @@ Visit `http://localhost:3000` to view the application.
    - Or deploy to Vercel, Netlify, or any Next.js-compatible platform
 
 📚 **Full customization guide**: See `/docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
+🧭 **Placeholder reference**: See `/docs/PLACEHOLDER_REFERENCE.md`
 
 ### Verification
 
@@ -202,8 +203,9 @@ For platform-specific instructions, see the [Next.js deployment documentation](h
 │   └── blog/             # Blog posts (replace with your content)
 ├── docs/                 # Template documentation and customization guides
 │   ├── TEMPLATE_CUSTOMIZATION_GUIDE.md  # Start here!
-│   ├── examples/         # Vertical-specific examples (law, consulting, etc.)
-│   └── ...               # Technical documentation
+│   ├── PLACEHOLDER_REFERENCE.md         # All placeholder locations
+│   ├── TEMPLATE_ARCHITECTURE.md         # Architecture decisions & rationale
+│   └── ...                              # Technical documentation
 ├── lib/                  # Utilities, hooks, and core logic
 ├── public/               # Static assets (replace with your images/logos)
 ├── scripts/              # Maintenance and verification scripts
@@ -213,14 +215,13 @@ For platform-specific instructions, see the [Next.js deployment documentation](h
 ## 📚 Documentation
 
 - **[Template Customization Guide](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)** - Complete guide to customizing this template
-- **[Vertical Examples](docs/examples/)** - Industry-specific configuration examples:
-  - [Law Firm Example](docs/examples/LAW_FIRM_EXAMPLE.md)
-  - [Consulting Firm Example](docs/examples/CONSULTING_FIRM_EXAMPLE.md)
-  - [Accounting Firm Example](docs/examples/ACCOUNTING_FIRM_EXAMPLE.md)
-  - [Design Agency Example](docs/examples/DESIGN_AGENCY_EXAMPLE.md)
+- **[Placeholder Reference](docs/PLACEHOLDER_REFERENCE.md)** - All placeholder content locations and priorities
 - **[Deployment Guide](docs/CLOUDFLARE_DEPLOYMENT.md)** - Step-by-step deployment instructions
 - **[Diamond Standard](docs/DIAMOND_STANDARD.md)** - Understanding the quality standards
 - **[Architecture Overview](docs/TEMPLATE_ARCHITECTURE.md)** - Technical architecture decisions
+
+**Planned (see `TODO.md`):**
+- Vertical-specific examples (law firm, consulting, accounting, design)
 
 ## 🔧 Customization Checklist
 
@@ -271,7 +272,7 @@ If you are an AI coding assistant working on this template, **YOU MUST READ**:
 2.  [`CODEBASECONSTITUTION.md`](CODEBASECONSTITUTION.md) - The supreme laws of the repo.
 3.  [`TODO.md`](TODO.md) - The single source of truth for tasks.
 
-**Current Phase**: Template Sanitization (see TODO.md Phase 1)  
+**Current Phase**: Template Documentation (see TODO.md Phase 2)  
 **Do not deviate from `TODO.md` without human approval.**
 
 ## 🙋 Getting Help

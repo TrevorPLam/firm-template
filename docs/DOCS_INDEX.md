@@ -1,6 +1,6 @@
 # docs/DOCS_INDEX.md — Documentation Index
 
-Last Updated: 2026-01-08
+Last Updated: 2026-01-20
 
 ## Read order (agents)
 1) `../CODEBASECONSTITUTION.md`
@@ -21,6 +21,11 @@ Last Updated: 2026-01-08
 
 ## Analysis & Findings
 - `AI_DEEP_DIVE_FINDINGS.md` (Comprehensive codebase analysis with issues, debt, and enhancements)
+
+## Template guides
+- `TEMPLATE_CUSTOMIZATION_GUIDE.md`
+- `PLACEHOLDER_REFERENCE.md`
+- `TEMPLATE_ARCHITECTURE.md`
 
 ## Ops & Deployment
 - `docs/DEPLOYMENT.md` (Cloudflare Pages source of truth)
