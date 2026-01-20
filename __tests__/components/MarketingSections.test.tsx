@@ -9,9 +9,9 @@ describe('Marketing sections', () => {
     render(<Hero />)
 
     expect(
-      screen.getByRole('heading', { name: /your dedicated marketer — that means i’m part of your team/i })
+      screen.getByRole('heading', { name: /your professional partner — delivering expert solutions for your business/i })
     ).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /book a free strategy call/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /book a free consultation/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /get started/i })).toBeInTheDocument()
   })
 
@@ -19,12 +19,12 @@ describe('Marketing sections', () => {
     render(<ValueProps />)
 
     expect(
-      screen.getByRole('heading', { level: 3, name: /marketing shouldn’t feel like a guessing game/i })
+      screen.getByRole('heading', { level: 3, name: /expert guidance, strategic execution/i })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { level: 3, name: /what ‘part of your team’ actually means/i })
+      screen.getByRole('heading', { level: 3, name: /true partnership approach/i })
     ).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 3, name: /who this works best for/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: /ideal for ambitious organizations/i })).toBeInTheDocument()
   })
 
   it('renders the services overview section', () => {
@@ -33,14 +33,14 @@ describe('Marketing sections', () => {
     expect(
       screen.getByRole('heading', { name: /professional services for your business/i })
     ).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 3, name: /seo services/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: /core service 1/i })).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: /learn more/i })).toHaveLength(4)
   })
 
   it('renders testimonials and metrics', () => {
     render(<SocialProof />)
 
-    expect(screen.getByRole('heading', { name: /trusted by founders and teams i work with/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /trusted by clients we work with/i })).toBeInTheDocument()
     expect(screen.getByText(/sarah johnson/i)).toBeInTheDocument()
     expect(screen.getByText(/127%/i)).toBeInTheDocument()
   })

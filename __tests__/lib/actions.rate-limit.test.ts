@@ -151,6 +151,7 @@ describe('contact form rate limiting', () => {
   })
 
   it('returns success when HubSpot sync fails after saving the lead', async () => {
+    currentIp = '198.51.100.10' // Use a fresh IP to avoid rate limiting
     hubspotShouldFail = true
 
     const response = await submitContactForm(buildPayload('hubspot-fail@example.com'))
