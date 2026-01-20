@@ -366,14 +366,14 @@ Effort: L
 Priority: P1
 Type: DOCS
 Owner: AGENT
-Status: READY
-Blockers: T-008 must be complete
+Status: IN-REVIEW
+Blockers: Requires repo-owner access for GitHub settings and release creation
 Context:
 - Need final verification before template can be released for public use
 - Ensures no marketing-specific content slipped through
 - Provides confidence for first users
 Acceptance Criteria:
-- [ ] T-013.1: Create /docs/TEMPLATE_RELEASE_CHECKLIST.md with sections:
+- [x] T-013.1: Create /docs/TEMPLATE_RELEASE_CHECKLIST.md with sections:
   - Pre-Release Verification:
     * All branding placeholders are in place
     * No "Your Dedicated Marketer" references remain (except in history/changelog)
@@ -400,20 +400,20 @@ Acceptance Criteria:
     * LICENSE file appropriate
     * Security policy in place
     * Contributing guidelines (if accepting contributions)
-- [ ] T-013.2: Run comprehensive grep search for remaining marketing-specific terms:
+- [x] T-013.2: Run comprehensive grep search for remaining marketing-specific terms:
   - "marketing" (should only appear in generic contexts or as example)
   - "marketer"
   - "dedicated marketer"
   - "YD Marketer"
   - "YD Firms"
-- [ ] T-013.3: Review package.json for any marketing-specific metadata
+- [x] T-013.3: Review package.json for any marketing-specific metadata
 - [ ] T-013.4: Review git repository settings (description, topics, etc.)
 - [ ] T-013.5: Create GitHub release with template v1.0.0:
   - Release notes explaining template purpose
   - Link to customization guide
   - Quick start instructions
   - Known limitations or considerations
-- [ ] T-013.6: Add template badge/shield to README
+- [x] T-013.6: Add template badge/shield to README
 References:
 - /docs/TEMPLATE_RELEASE_CHECKLIST.md (new)
 - Repository-wide
@@ -1337,7 +1337,7 @@ Effort: S
 
 ### By Phase
 - **Phase 1 (Sanitization)**: 8 tasks - Convert marketing firm to generic template ✅ DONE
-- **Phase 2 (Documentation)**: 5 tasks - T-009, T-010, T-011, T-012 complete; T-013 remaining
+- **Phase 2 (Documentation)**: 5 tasks - T-009, T-010, T-011, T-012 complete; T-013 in review (repo-owner steps pending)
 - **Phase 3 (Infrastructure)**: 4 tasks - Deployment and configuration support
 - **Phase 4 (Quality)**: 4 tasks - Performance and accessibility optimization
 - **Phase 5 (Platinum Standard)**: 18 tasks - Industry-leading enhancements
@@ -1380,4 +1380,4 @@ Effort: S
 
 ---
 
-**Next Steps**: Execute remaining Phase 2 task (T-013) to complete documentation, then Phase 5A for platinum-standard essentials.
+**Next Steps**: Complete remaining external steps for T-013 (repo settings + GitHub release), then Phase 5A for platinum-standard essentials.
