@@ -97,10 +97,10 @@ This guide walks you through the minimum configuration needed to launch, then de
 ## Vertical Examples (Common Firm Types)
 Use these examples as structured mappings for services, pricing, and blog topics. Each example keeps the same routes and component structure.
 
-- [`docs/examples/LAW_FIRM_EXAMPLE.md`](examples/LAW_FIRM_EXAMPLE.md)
-- [`docs/examples/CONSULTING_FIRM_EXAMPLE.md`](examples/CONSULTING_FIRM_EXAMPLE.md)
-- [`docs/examples/ACCOUNTING_FIRM_EXAMPLE.md`](examples/ACCOUNTING_FIRM_EXAMPLE.md)
-- [`docs/examples/DESIGN_AGENCY_EXAMPLE.md`](examples/DESIGN_AGENCY_EXAMPLE.md)
+- [Law Firm Example](examples/LAW_FIRM_EXAMPLE.md)
+- [Consulting Firm Example](examples/CONSULTING_FIRM_EXAMPLE.md)
+- [Accounting Firm Example](examples/ACCOUNTING_FIRM_EXAMPLE.md)
+- [Design Agency Example](examples/DESIGN_AGENCY_EXAMPLE.md)
 
 > AI note: Treat these as copy/structure guides; do not change route structure when applying them.
 
