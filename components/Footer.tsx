@@ -6,10 +6,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const services = [
-    { href: '/services/seo', label: 'SEO Services' },
-    { href: '/services/content', label: 'Content Marketing' },
-    { href: '/services/social', label: 'Social Media' },
-    { href: '/services/email', label: 'Email Marketing' },
+    { href: '/services/service-1', label: 'Core Service 1' },
+    { href: '/services/service-2', label: 'Core Service 2' },
+    { href: '/services/service-3', label: 'Core Service 3' },
+    { href: '/services/service-4', label: 'Core Service 4' },
   ]
 
   const company = [
@@ -37,9 +37,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">YD Marketer</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Your Firm Name</h3>
             <p className="text-white/70 mb-6">
-              Growth-focused marketing for small businesses. Strategic services that drive real results.
+              Professional services for your business. Strategic solutions that drive real results.
             </p>
             <div className="flex gap-4">
               {socialLinks.map(social => {
@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
           <p className="text-white/60">
-            © {currentYear} YD Firms LLC. All rights reserved.
+            © {currentYear} Your Firm LLC. All rights reserved.
           </p>
         </div>
       </div>

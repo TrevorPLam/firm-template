@@ -7,78 +7,87 @@ import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Accordion from '@/components/ui/Accordion'
 
+/**
+ * TEMPLATE CUSTOMIZATION:
+ * Update pricing tiers to reflect your actual service offerings and rates.
+ * Replace tier names, prices, features, and descriptions with your specific packages.
+ * Common pricing models:
+ * - Hourly rates: "Starting at $XXX/hour"
+ * - Project-based: "Starting at $X,XXX per project"
+ * - Monthly retainer: "$X,XXX/month"
+ * - Tiered packages: Basic/Professional/Enterprise
+ * - Custom: "Contact for pricing"
+ */
+
 export const metadata: Metadata = {
-  title: 'Pricing | Your Dedicated Marketer',
-  description: 'Transparent pricing for marketing services. Choose from Starter, Growth, or Scale tiers. No hidden fees, no surprises.',
+  title: 'Pricing | Your Firm Name',
+  description: 'Transparent pricing for professional services. Choose from Basic, Professional, or Enterprise tiers. No hidden fees.',
 }
 
 const tiers = [
   {
-    name: 'Starter',
-    price: '$1,500',
-    period: '/month',
-    description: 'Perfect for small businesses getting started with marketing',
+    name: 'Basic',
+    price: 'Contact Us',
+    period: '',
+    description: 'Essential services for getting started',
     features: [
-      { name: '4 blog posts per month', included: true },
-      { name: 'Basic SEO optimization', included: true },
-      { name: 'Social media (2 platforms)', included: true },
-      { name: '12 social posts per month', included: true },
-      { name: '2 email campaigns per month', included: true },
-      { name: 'Monthly performance report', included: true },
-      { name: 'Email support', included: true },
-      { name: 'Monthly strategy call', included: true },
-      { name: 'Advanced SEO', included: false },
-      { name: 'Marketing automation', included: false },
+      { name: '10 hours per month', included: true },
+      { name: 'Email support (48hr response)', included: true },
+      { name: 'Monthly progress reports', included: true },
+      { name: 'Standard service delivery', included: true },
+      { name: 'Access to client portal', included: true },
+      { name: 'Quarterly planning sessions', included: true },
+      { name: 'Priority support', included: false },
       { name: 'Dedicated account manager', included: false },
-      { name: 'Weekly strategy calls', included: false },
+      { name: 'Custom solutions', included: false },
+      { name: 'Weekly status calls', included: false },
     ],
     cta: 'Get Started',
     href: '/contact',
     popular: false,
   },
   {
-    name: 'Growth',
-    price: '$3,500',
-    period: '/month',
-    description: 'For established businesses ready to scale their marketing',
+    name: 'Professional',
+    price: 'Contact Us',
+    period: '',
+    description: 'Comprehensive services for growing organizations',
     features: [
-      { name: '8 blog posts per month', included: true },
-      { name: 'Advanced SEO program', included: true },
-      { name: 'Social media (3 platforms)', included: true },
-      { name: '20 social posts per month', included: true },
-      { name: '4 email campaigns per month', included: true },
-      { name: 'Bi-weekly performance reports', included: true },
-      { name: 'Priority email & phone support', included: true },
-      { name: 'Bi-weekly strategy calls', included: true },
-      { name: 'Email automation setup', included: true },
-      { name: 'CRM management', included: true },
-      { name: 'Ad account setup & monitoring', included: true },
+      { name: '25 hours per month', included: true },
+      { name: 'Priority support (24hr response)', included: true },
+      { name: 'Bi-weekly progress reports', included: true },
+      { name: 'Expedited service delivery', included: true },
+      { name: 'Access to client portal', included: true },
+      { name: 'Monthly planning sessions', included: true },
+      { name: 'Advanced analytics', included: true },
+      { name: 'Process optimization', included: true },
+      { name: 'Bi-weekly status calls', included: true },
       { name: 'Dedicated account manager', included: false },
+      { name: 'Custom integrations', included: false },
     ],
     cta: 'Get Started',
     href: '/contact',
     popular: true,
   },
   {
-    name: 'Scale',
-    price: '$6,000',
-    period: '/month',
-    description: 'For businesses with complex marketing needs',
+    name: 'Enterprise',
+    price: 'Contact Us',
+    period: '',
+    description: 'Full-service solutions for complex needs',
     features: [
-      { name: '12+ blog posts per month', included: true },
-      { name: 'Comprehensive SEO program', included: true },
-      { name: 'Social media (4+ platforms)', included: true },
-      { name: '30+ social posts per month', included: true },
-      { name: 'Unlimited email campaigns', included: true },
-      { name: 'Weekly performance reports', included: true },
-      { name: 'Priority support (24hr response)', included: true },
-      { name: 'Weekly strategy calls', included: true },
-      { name: 'Advanced marketing automation', included: true },
-      { name: 'Full CRM management', included: true },
-      { name: 'PPC management included', included: true },
+      { name: 'Unlimited hours', included: true },
+      { name: 'VIP support (4hr response)', included: true },
+      { name: 'Weekly progress reports', included: true },
+      { name: 'White-glove service delivery', included: true },
+      { name: 'Access to client portal', included: true },
+      { name: 'Weekly planning sessions', included: true },
+      { name: 'Advanced analytics & insights', included: true },
+      { name: 'Custom process optimization', included: true },
+      { name: 'Daily status updates', included: true },
       { name: 'Dedicated account manager', included: true },
+      { name: 'Custom integrations', included: true },
+      { name: 'Strategic consulting', included: true },
     ],
-    cta: 'Get Started',
+    cta: 'Contact Sales',
     href: '/contact',
     popular: false,
   },
@@ -86,59 +95,59 @@ const tiers = [
 
 const addOns = [
   {
-    name: 'PPC Management',
-    price: 'Starting at $1,000/month',
-    description: 'Google Ads and social media advertising management with optimization',
+    name: 'Additional Hours',
+    price: 'Contact for rates',
+    description: 'Purchase additional hours as needed for your projects',
   },
   {
-    name: 'Website Redesign',
-    price: 'Starting at $5,000',
-    description: 'Complete website redesign with conversion optimization',
+    name: 'Specialized Services',
+    price: 'Custom pricing',
+    description: 'Access specialized expertise for specific challenges',
   },
   {
-    name: 'Advanced SEO',
-    price: 'Starting at $2,000/month',
-    description: 'Link building, technical SEO, and enterprise optimization',
+    name: 'Training & Workshops',
+    price: 'Contact for details',
+    description: 'Team training and knowledge transfer sessions',
   },
   {
-    name: 'Video Content',
-    price: 'Starting at $500/video',
-    description: 'Professional video production and editing for marketing',
+    name: 'Implementation Support',
+    price: 'Project-based',
+    description: 'Hands-on support for implementing recommendations',
   },
 ]
 
 const faqs = [
   {
     question: 'What\'s included in each tier?',
-    answer: 'Each tier includes a set of core services shown in the comparison table above. Higher tiers include more deliverables, more frequent reporting, and additional services. All tiers include strategy, execution, and reporting.',
+    answer: 'Each tier includes a set of core services shown in the comparison table above. Higher tiers include more hours, faster response times, and additional services. All tiers include strategy, execution, and reporting.',
   },
   {
-    question: 'Can I switch tiers?',
-    answer: 'Yes! You can upgrade or downgrade at any time. If you upgrade mid-month, we\'ll prorate the difference. If you downgrade, the new rate applies at your next billing cycle.',
+    question: 'Can I change tiers later?',
+    answer: 'Yes! You can upgrade or downgrade at any time. If you upgrade mid-cycle, we\'ll prorate the difference. If you downgrade, the new rate applies at your next billing cycle.',
   },
   {
     question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards, ACH transfers, and wire transfers. Payment is due monthly in advance. We also offer quarterly and annual payment options with discounts.',
+    answer: 'We accept all major credit cards, ACH transfers, and wire transfers. Payment terms are typically net 30 for established clients. We also offer flexible payment arrangements for larger projects.',
   },
   {
-    question: 'Is there a contract?',
-    answer: 'We require a 3-month initial commitment to see results. After that, you can continue month-to-month or commit to longer terms for discounted rates. We believe in earning your business every month.',
+    question: 'Is there a contract or commitment?',
+    answer: 'Contract terms vary by service tier and client needs. We offer both month-to-month arrangements and longer-term engagements with discounted rates. We\'ll discuss what works best for your situation during our consultation.',
   },
   {
-    question: 'What\'s not included in these prices?',
-    answer: 'Paid advertising budgets, premium tools/software (unless specified), third-party services (photographers, videographers), and services outside our core offerings. We\'re transparent about any additional costs before starting work.',
+    question: 'What\'s not included in the listed pricing?',
+    answer: 'Third-party costs (licenses, subscriptions, outside vendors), travel expenses when applicable, and services outside our core offerings are billed separately. We\'re transparent about any additional costs before starting work.',
   },
   {
-    question: 'How do we measure success?',
-    answer: 'Success metrics vary by business but typically include organic traffic growth, lead generation, conversion rates, and ROI. We set specific KPIs during onboarding and track them monthly. You\'ll always know if we\'re delivering results.',
+    question: 'How do you measure success?',
+    answer: 'Success metrics are defined collaboratively during onboarding and vary by client goals. We establish clear KPIs, track progress regularly, and adjust strategies as needed to ensure you\'re seeing results.',
   },
   {
     question: 'Do you work with businesses in my industry?',
-    answer: 'We work with B2B and B2C businesses across many industries. During our consultation, we\'ll discuss your industry specifics and share relevant experience. We focus on understanding your business rather than cookie-cutter solutions.',
+    answer: 'We work across many industries and sectors. During our consultation, we\'ll discuss your specific situation and share relevant experience. Our approach focuses on understanding your unique needs rather than applying one-size-fits-all solutions.',
   },
   {
-    question: 'What if I need custom services?',
-    answer: 'We can create custom packages combining services from different tiers or adding specialized services. Schedule a consultation to discuss your specific needs, and we\'ll build a proposal that fits your goals and budget.',
+    question: 'Can I get a custom package?',
+    answer: 'Absolutely! We can create custom packages tailored to your specific needs, combining elements from different tiers or adding specialized services. Schedule a consultation to discuss your requirements, and we\'ll build a proposal that fits your goals and budget.',
   },
 ]
 
@@ -175,7 +184,7 @@ export default function PricingPage() {
               No hidden fees, no surprises. Choose the plan that fits your business goals.
             </p>
             <p className="text-lg text-white/70">
-              All plans include strategy, execution, and reporting. Cancel anytime after initial 3-month commitment.
+              All plans include strategy, execution, and reporting. Flexible engagement terms available.
             </p>
           </div>
         </Container>
@@ -244,7 +253,7 @@ export default function PricingPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">Add-On Services</h2>
             <p className="text-lg text-slate max-w-2xl mx-auto">
-              Enhance your marketing package with additional specialized services
+              Enhance your service package with additional specialized offerings
             </p>
           </div>
 

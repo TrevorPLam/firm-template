@@ -5,13 +5,19 @@
  * Primary above-the-fold content on the homepage.
  * Introduces the brand value proposition with CTAs.
  * 
+ * **TEMPLATE CUSTOMIZATION:**
+ * - Update headline to match your firm's unique value proposition
+ * - Customize body copy to reflect your services and approach
+ * - Update CTA button text to match your offering (consultation, demo, etc.)
+ * - Replace hero image in /public/images/ if desired
+ * 
  * **Layout:**
  * - Two-column grid on desktop (text + image)
  * - Single column on mobile (text only, image hidden)
  * 
  * **CTAs:**
- * - Primary: "Book a Free Strategy Call" → /contact
- * - Secondary: "Get a Free Marketing Plan" → /contact
+ * - Primary: "Schedule a Consultation" → /contact
+ * - Secondary: "Learn More" → /contact
  * 
  * **Image:**
  * - Location: /public/images/hero-growth.svg
@@ -70,7 +76,7 @@ export default function Hero() {
             <div className="bg-gradient-to-br from-charcoal to-teal/20 rounded-2xl p-4 aspect-square flex items-center justify-center shadow-lg">
               <Image
                 src="/images/hero-growth.svg"
-                alt="Stylized bar chart climbing upward to represent marketing growth"
+                alt="Stylized growth chart representing business growth and success"
                 width={640}
                 height={640}
                 sizes="(min-width: 1280px) 592px, (min-width: 1024px) 50vw, 0px"

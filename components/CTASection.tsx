@@ -18,6 +18,10 @@ interface CTASectionProps {
 /**
  * Reusable CTA Section component
  * Eliminates duplication across multiple pages
+ * 
+ * TEMPLATE CUSTOMIZATION:
+ * This component is already generic and reusable.
+ * Customize colors and styling in tailwind.config.ts if needed.
  */
 export default function CTASection({
   title,

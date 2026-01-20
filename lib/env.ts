@@ -112,9 +112,9 @@ const envSchema = z.object({
    * Public site name for branding.
    * Used in page titles, OG tags, meta descriptions.
    * 
-   * @default 'Your Dedicated Marketer'
+   * @default 'Your Firm Name'
    */
-  NEXT_PUBLIC_SITE_NAME: z.string().default('Your Dedicated Marketer'),
+  NEXT_PUBLIC_SITE_NAME: z.string().default('Your Firm Name'),
 
   /**
    * Analytics tracking ID (optional).
