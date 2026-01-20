@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added template customization guide, placeholder reference, and architecture overview documentation
 - Updated README, READMEAI, and project status to reflect template documentation phase
 - Added vertical-specific customization examples and linked them from the customization guide and README
+- Expanded vertical examples with copy-only implementation steps and FAQ/CTA guidance
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`

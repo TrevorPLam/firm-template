@@ -1,9 +1,14 @@
 # LAW_FIRM_EXAMPLE.md — Vertical Customization Example (Law Firm)
 
 Last Updated: 2026-01-20
-Status: Draft
+Status: Example
 
 Goal: Show how to adapt the template for a law firm while keeping routing and component structure intact.
+
+**Meta**
+- Audience: Law firms, boutique practices, multi-practice firms
+- Scope: Copy updates only (services, pricing, blog topics, CTAs)
+- Non-goals: Route changes, component refactors, or layout changes
 
 > AI note: Use this as a mapping guide. Replace placeholder copy only; keep components and layouts unchanged.
 
@@ -24,6 +29,7 @@ Goal: Show how to adapt the template for a law firm while keeping routing and co
 **Customization notes**
 - Keep the same routes; update page titles, descriptions, benefits, and feature bullets.
 - Link the strongest conversion CTA to the primary practice area (e.g., litigation consults).
+- Use client-intake language in CTAs (case review, consult, conflict check).
 
 ---
 
@@ -37,6 +43,11 @@ Goal: Show how to adapt the template for a law firm while keeping routing and co
 | Enterprise | Retainer | Ongoing counsel | Priority response, quarterly reviews, custom reporting |
 
 > AI note: If your firm is hourly-only, keep the tiers but replace pricing with “Contact for Pricing.”
+
+**Suggested FAQ swaps for `/app/pricing/page.tsx`**
+- “What does the initial consultation include?”
+- “How do flat-fee matters work?”
+- “Do you offer payment plans?”
 
 ---
 
@@ -63,3 +74,12 @@ Goal: Show how to adapt the template for a law firm while keeping routing and co
 - Add attorney bios and credentials to `/app/about/page.tsx` or a future `/app/team` page.
 - Swap testimonials with anonymized client results or practice outcomes.
 - Review disclaimers and add legal-specific footers where required by jurisdiction.
+- Update CTA labels to match intake (e.g., “Schedule a Consultation”).
+
+---
+
+## Implementation Steps (Copy-Only)
+1. Update each service page title, description, benefits, and features to match the mapping above.
+2. Replace pricing tier labels and FAQs to reflect consults, flat-fee matters, or retainers.
+3. Swap blog example posts with practice-focused education topics.
+4. Confirm metadata and structured data remain generic placeholders.

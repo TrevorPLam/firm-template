@@ -104,6 +104,13 @@ Use these examples as structured mappings for services, pricing, and blog topics
 
 > AI note: Treat these as copy/structure guides; do not change route structure when applying them.
 
+**How to apply an example (copy-only workflow)**
+1. Map your top eight services to the existing `/app/services/service-[1-8]/` routes.
+2. Replace the pricing tiers and FAQs with your vertical-specific model.
+3. Swap blog topics in `/content/blog/` to match your expertise.
+4. Update hero, value props, and CTAs to use vertical-intake language.
+5. Re-run tests and perform mobile QA from the checklist below.
+
 ---
 
 ## Technical Configuration

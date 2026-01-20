@@ -1,9 +1,14 @@
 # ACCOUNTING_FIRM_EXAMPLE.md — Vertical Customization Example (Accounting)
 
 Last Updated: 2026-01-20
-Status: Draft
+Status: Example
 
 Goal: Provide an accounting-focused template configuration with common services and pricing signals.
+
+**Meta**
+- Audience: CPA firms, bookkeeping firms, fractional CFO teams
+- Scope: Copy updates only (services, pricing tiers, blog topics, FAQs)
+- Non-goals: Route changes, component refactors, or layout changes
 
 > AI note: Keep service routes intact. Update copy, benefits, and FAQs to reflect compliance and trust.
 
@@ -24,6 +29,7 @@ Goal: Provide an accounting-focused template configuration with common services 
 **Customization notes**
 - Highlight compliance, accuracy, and proactive planning in every service description.
 - Add relevant certifications (CPA, EA) to the About or Team section.
+- Emphasize deadlines and seasonal readiness in CTAs.
 
 ---
 
@@ -35,6 +41,11 @@ Goal: Provide an accounting-focused template configuration with common services 
 | Enterprise | Advisory | Dedicated finance strategy | Forecasts, CFO advisory calls, custom reporting |
 
 > AI note: If you price per employee or transaction volume, note that in the pricing FAQ.
+
+**Suggested FAQ swaps for `/app/pricing/page.tsx`**
+- “What bookkeeping cadence do you recommend?”
+- “Do you support year-end tax planning?”
+- “Which accounting systems do you support?”
 
 ---
 
@@ -51,3 +62,12 @@ Goal: Provide an accounting-focused template configuration with common services 
 - Add trust badges or certifications in the footer.
 - Ensure contact form captures industry, revenue range, and accounting system used.
 - Replace testimonial placeholders with anonymized financial outcomes.
+- Add deadline reminders in the blog or CTA sections.
+
+---
+
+## Implementation Steps (Copy-Only)
+1. Replace service descriptions with compliance-focused benefits and deliverables.
+2. Update pricing tiers to match monthly, quarterly, and advisory scopes.
+3. Swap blog topics to cover planning, close cycles, and audit readiness.
+4. Confirm contact form intake fields match your onboarding process.

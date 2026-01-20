@@ -1,9 +1,14 @@
 # DESIGN_AGENCY_EXAMPLE.md — Vertical Customization Example (Design Agency)
 
 Last Updated: 2026-01-20
-Status: Draft
+Status: Example
 
 Goal: Provide a design agency configuration with creative services and flexible pricing models.
+
+**Meta**
+- Audience: Design agencies, creative studios, product design teams
+- Scope: Copy updates only (services, pricing models, blog topics, CTAs)
+- Non-goals: Route changes, component refactors, or layout changes
 
 > AI note: Keep layout and component structure the same; update creative services and visuals only.
 
@@ -24,6 +29,7 @@ Goal: Provide a design agency configuration with creative services and flexible 
 **Customization notes**
 - Add portfolio links or case studies to each service detail page.
 - Use the blog to share process breakdowns and client outcomes.
+- Emphasize creative process and deliverables in CTAs.
 
 ---
 
@@ -33,6 +39,11 @@ Goal: Provide a design agency configuration with creative services and flexible 
 - **Retainer**: Monthly design capacity with a scoped backlog.
 
 > AI note: Clarify what is in-scope (deliverables, revisions, handoff assets).
+
+**Suggested FAQ swaps for `/app/pricing/page.tsx`**
+- “How many revision rounds are included?”
+- “What does handoff include?”
+- “Do you offer ongoing design support?”
 
 ---
 
@@ -49,3 +60,12 @@ Goal: Provide a design agency configuration with creative services and flexible 
 - Update imagery in `/public/` with portfolio-quality visuals.
 - Add a short “Process” section to the homepage or services pages.
 - Ensure contact form captures project timeline, budget, and preferred deliverables.
+- Add a portfolio CTA to the hero secondary button.
+
+---
+
+## Implementation Steps (Copy-Only)
+1. Map top services to the eight routes and update benefits to emphasize outcomes.
+2. Replace pricing tiers with project, hourly, or retainer framing.
+3. Refresh blog topics with process, research, and launch insights.
+4. Swap images and thumbnails with portfolio-ready assets.
