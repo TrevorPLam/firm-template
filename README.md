@@ -6,6 +6,7 @@
 ![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-orange)
 ![Diamond Standard](https://img.shields.io/badge/Standard-Diamond-b91c1c)
 ![Template](https://img.shields.io/badge/Template-Ready-brightgreen)
+[![Release Checklist](https://img.shields.io/badge/Release-Checklist-blue)](docs/TEMPLATE_RELEASE_CHECKLIST.md)
 
 **A production-ready, customizable website template for professional services firms.** Built to the "Diamond Standard" for engineering excellence—optimized for speed, SEO, accessibility, and maintainability. Easily adaptable for law firms, consulting agencies, accounting practices, design studios, and more.
 
