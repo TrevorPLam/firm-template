@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a template release checklist and linked badge in the README
 - Added a quality-assurance review section and refreshed audit counts in the release checklist
 - Documented legal page customization requirements in the template guide
+- Documented production versus development rate limiting behavior and verification steps
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`

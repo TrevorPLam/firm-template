@@ -1,6 +1,6 @@
 # Deployment (Cloudflare Pages)
 
-Last Updated: 2026-01-08
+Last Updated: 2026-01-20
 
 ## Purpose
 This is the single source of truth for deploying the Your Dedicated Marketer site to Cloudflare Pages.
@@ -59,6 +59,19 @@ These are required for the v1 contact pipeline (Supabase storage + HubSpot CRM s
 - Rate-limited submissions are still stored, flagged with `is_suspicious` and `suspicion_reason = "rate_limit"`.
 - HubSpot sync is best-effort: failures do **not** block a user-facing success response.
 - HubSpot failures are recorded in Supabase with `hubspot_sync_status = "needs_sync"` and a timestamp.
+
+## Rate limiting behavior (production vs. development)
+Use this section to confirm whether distributed rate limiting is active and to document fallback behavior.
+
+### Production (Upstash enabled)
+- **Required env vars**: `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
+- **Behavior**: The contact form uses Upstash Redis for distributed, multi-instance rate limiting.
+- **Verification**: Check deployment logs for `Initialized distributed rate limiting with Upstash Redis`.
+
+### Development or fallback (Upstash missing)
+- **Behavior**: The app uses an in-memory Map for rate limiting (single instance only).
+- **Logging**: Startup logs include `Upstash Redis not configured, using in-memory rate limiting (not suitable for production)`.
+- **Action**: Set both Upstash variables before handling production traffic.
 
 ## Pre-deploy checklist
 - [ ] Confirm `npm run build` completes locally.

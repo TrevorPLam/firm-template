@@ -10,6 +10,28 @@ Move tasks here when Acceptance Criteria are met.
 ## Completed tasks
 <!-- Append completed tasks below. Preserve the original record for auditability. -->
 
+### T-017: Wire distributed rate limiting with Upstash
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-20
+Context:
+- Ensure rate limiting works in multi-instance production
+- Already implemented but needs verification and documentation
+Acceptance Criteria:
+- [x] T-017.1: Verify limiter uses Upstash when credentials exist
+- [x] T-017.2: Ensure fallback behavior is logged/documented for missing credentials
+- [x] T-017.3: Update docs to explain production vs dev limiter behavior
+- [x] T-017.4: Add to TEMPLATE_CUSTOMIZATION_GUIDE.md deployment section
+References:
+- /lib/actions.ts
+- /lib/env.ts
+- /docs/DEPLOYMENT.md
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: S
+
 ### T-016: Implement privacy + terms pages
 Priority: P2
 Type: INFRASTRUCTURE

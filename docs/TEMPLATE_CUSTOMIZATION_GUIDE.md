@@ -96,7 +96,7 @@ This guide walks you through the minimum configuration needed to launch, then de
 - Privacy Policy: `/app/privacy/page.tsx`
 - Terms of Service: `/app/terms/page.tsx`
 - Replace every placeholder like `[YOUR FIRM NAME]`, `[YOUR STATE/COUNTRY]`, and `[BILLING TERMS]`.
-- **Do not publish** until legal counsel reviews the final language for your jurisdiction.
+- **You MUST customize these pages before launch.** Do not publish until legal counsel reviews the final language for your jurisdiction.
 
 ---
 
@@ -145,6 +145,12 @@ Use these examples as structured mappings for services, pricing, and blog topics
 - Follow [`docs/CLOUDFLARE_DEPLOYMENT.md`](CLOUDFLARE_DEPLOYMENT.md).
 - Use `npm run pages:build` for the build command.
 - Set environment variables in Cloudflare dashboard (same names as `.env.example`).
+
+### Rate limiting (Upstash)
+- Production traffic should use distributed rate limiting via Upstash Redis.
+- Set **both** `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
+- Verify logs show `Initialized distributed rate limiting with Upstash Redis`.
+- If those vars are missing, the site uses in-memory limits (not suitable for production).
 
 ### Custom domain
 - Update `NEXT_PUBLIC_SITE_URL` to your production domain.

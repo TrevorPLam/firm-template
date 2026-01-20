@@ -491,58 +491,6 @@ Effort: S
 
 ---
 
-### T-016: Implement privacy + terms pages
-Priority: P2
-Type: INFRASTRUCTURE
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Legal pages must exist for any professional services site
-- Footer links currently point to these pages
-- Need generic templates that users can customize
-Acceptance Criteria:
-- [ ] T-016.1: Create /app/privacy/page.tsx with generic privacy policy template
-- [ ] T-016.2: Create /app/terms/page.tsx with generic terms of service template
-- [ ] T-016.3: Use placeholder text with clear markers: [YOUR FIRM NAME], [YOUR STATE/COUNTRY], etc.
-- [ ] T-016.4: Ensure Footer.tsx links resolve without 404s
-- [ ] T-016.5: Add basic SEO metadata to privacy/terms pages
-- [ ] T-016.6: Add prominent notice that these are templates and must be reviewed by legal counsel
-- [ ] T-016.7: Document in TEMPLATE_CUSTOMIZATION_GUIDE.md that legal pages MUST be customized
-References:
-- /app/privacy/page.tsx (new)
-- /app/terms/page.tsx (new)
-- /components/Footer.tsx
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: None
-Effort: S
-
----
-
-### T-017: Wire distributed rate limiting with Upstash
-Priority: P2
-Type: INFRASTRUCTURE
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Ensure rate limiting works in multi-instance production
-- Already implemented but needs verification and documentation
-Acceptance Criteria:
-- [ ] T-017.1: Verify limiter uses Upstash when credentials exist
-- [ ] T-017.2: Ensure fallback behavior is logged/documented for missing credentials
-- [ ] T-017.3: Update docs to explain production vs dev limiter behavior
-- [ ] T-017.4: Add to TEMPLATE_CUSTOMIZATION_GUIDE.md deployment section
-References:
-- /lib/actions.ts
-- /lib/env.ts
-- /docs/DEPLOYMENT.md
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: None
-Effort: S
-
----
-
 ### T-018: Document analytics provider integration
 Priority: P2
 Type: INFRASTRUCTURE
