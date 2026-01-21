@@ -32,13 +32,13 @@ This document provides a **token-optimized**, repo-specific guide of best practi
 2. `READMEAI.md` (operational guidance)
 3. `BESTPR.md` (this file - best practices)
 4. `AGENTS.md` (agent instructions)
-5. `TODO.md` (task truth source)
+5. `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (task truth sources)
 6. `repo.manifest.yaml` (verification commands)
 
 **Key Files to Know:**
 - `CODEBASECONSTITUTION.md` - Non-negotiable rules
 - `READMEAI.md` - How agents should work (modes, task flow)
-- `TODO.md` - Active tasks (single source of truth)
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` - Active tasks (single source of truth (by priority))
 - `TODOCOMPLETED.md` - Completed tasks archive
 - `PROJECT_STATUS.md` - Current state + next immediate step
 - `repo.manifest.yaml` - Verification commands (type-check, lint, test)
@@ -947,7 +947,7 @@ npm install server-only
 ### Authority Order
 1. **CODEBASECONSTITUTION.md** - Non-negotiable rules
 2. **READMEAI.md** - Operational modes and task flow
-3. **TODO.md** - Active tasks (task truth source)
+3. **P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md** - Active tasks (task truth sources)
 4. **BESTPR.md** - This file (best practices)
 5. **AGENTS.md** - Agent-specific instructions
 6. **specs/** - Non-binding notes
@@ -965,7 +965,7 @@ npm install server-only
 - Prefer local scripts over paid services
 
 ### Task Workflow
-1. Check `TODO.md` for current phase and tasks
+1. Check `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` for current phase and tasks
 2. Implement ONE task (or small linked set)
 3. Run verification (tests/lint/build)
 4. Update `PROJECT_STATUS.md` with progress
@@ -1014,7 +1014,7 @@ npm install server-only
 
 ### Before Making Changes
 1. Read `CODEBASECONSTITUTION.md` (non-negotiables)
-2. Check `TODO.md` for current task/phase
+2. Check `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` for current task/phase
 3. Review this file (BESTPR.md) for patterns
 4. Check relevant `AGENTS.md` for directory-specific rules
 
@@ -1045,7 +1045,7 @@ npm install server-only
 ### Documentation Map
 - **Start:** `READMEAI.md` (entry point)
 - **Rules:** `CODEBASECONSTITUTION.md` (governance)
-- **Tasks:** `TODO.md` (what to work on)
+- **Tasks:** `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (what to work on)
 - **Best Practices:** This file (how to work)
 - **Architecture:** `docs/TEMPLATE_ARCHITECTURE.md`
 - **Testing:** `docs/TESTING_STRATEGY.md`

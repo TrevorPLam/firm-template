@@ -6,7 +6,7 @@
 
 ---
 
-> **Status update (2026-01-05):** This report is retained for historical context only. Actionable items from this analysis have been tracked and resolved in `TODO_COMPLETED.md` (T-001–T-049). For current work, use `TODO.md`.
+> **Status update (2026-01-05):** This report is retained for historical context only. Actionable items from this analysis have been tracked and resolved in `TODO_COMPLETED.md` (T-001–T-049). For current work, use `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`.
 
 ## Executive Summary
 

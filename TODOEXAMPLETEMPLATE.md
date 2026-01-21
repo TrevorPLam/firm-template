@@ -1,10 +1,10 @@
-# TODO.md — Repository Task List
+# P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md — Repository Task List
 
 Document Type: Workflow
 Last Updated: 2026-01-06
-Task Truth Source: **TODO.md**
+Task Truth Source: **P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md**
 
-This file is the single source of truth for actionable work. If another document disagrees, the task record in this file wins (unless the Constitution overrides).
+This file is the single source of truth (by priority) for actionable work. If another document disagrees, the task record in this file wins (unless the Constitution overrides).
 
 ## Task Schema (Required)
 - **ID**: `T-###` (unique, sequential)
@@ -843,6 +843,6 @@ T-046 (unblock npm registry access)
 ---
 
 ## References
-- Authority order: `CODEBASECONSTITUTION.md` > `READMEAI.md` > `TODO.md`
+- Authority order: `CODEBASECONSTITUTION.md` > `READMEAI.md` > `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 - No automation may rewrite this file; scripts may generate `TODO.generated.md` (informational only)
 - When completing tasks, move to `TODOCOMPLETED.md` with completion date

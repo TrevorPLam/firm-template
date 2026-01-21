@@ -2,9 +2,9 @@
 
 Document Type: Workflow
 Last Updated: 2026-01-07
-Source: Completed tasks moved from `TODO.md`
+Source: Completed tasks moved from `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 
-This file stores completed work in the same schema as `TODO.md`. Move tasks here when Acceptance Criteria are met. New entries must use the required fields (ID, Priority, Type, Title, Owner, Context, Acceptance Criteria, References, Dependencies, Effort). Legacy records are preserved verbatim below for auditability.
+This file stores completed work in the same schema as `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`. Move tasks here when Acceptance Criteria are met. New entries must use the required fields (ID, Priority, Type, Title, Owner, Context, Acceptance Criteria, References, Dependencies, Effort). Legacy records are preserved verbatim below for auditability.
 
 ## Completed tasks (schema-aligned)
 <!-- Append new completed tasks here using the required schema. -->
@@ -12,9 +12,9 @@ This file stores completed work in the same schema as `TODO.md`. Move tasks here
 ## Legacy completed tasks (preserved verbatim pre-upgrade)
 # TODO - Completed Tasks
 
-> **Task truth source:** TODO.md
-> This file tracks completed tasks from TODO.md with completion dates.
-> Tasks are moved here when completed and removed from the active TODO.md.
+> **Task truth source:** P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
+> This file tracks completed tasks from P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with completion dates.
+> Tasks are moved here when completed and removed from the active P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md.
 
 ---
 
@@ -62,7 +62,7 @@ Recorded that the coverage provider task has been completed and archived, while 
 **Completed:** 2026-01-07
 
 **Description:**
-Removed stale TODO.md references by pointing the completed dependency tasks to TODO_COMPLETED and clarifying the follow-up guidance.
+Removed stale P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md references by pointing the completed dependency tasks to TODO_COMPLETED and clarifying the follow-up guidance.
 
 **Completed Actions:**
 - Updated task references for T-030 and T-031 to TODO_COMPLETED.
@@ -595,12 +595,12 @@ Aligned @next/mdx with Next.js 14.x and updated lockfile metadata where possible
 **Completed Actions:**
 - Set @next/mdx to ^14.2.18 in package.json
 - Updated package-lock.json references for @next/mdx (integrity requires regeneration with registry access)
-- Logged follow-up lockfile regeneration task in TODO.md
+- Logged follow-up lockfile regeneration task in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 **Files:**
 - `package.json`
 - `package-lock.json`
-- `TODO.md`
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 
 ---
 
@@ -1173,7 +1173,7 @@ Capture the latest registry retry results for lockfile regeneration and coverage
 - Added dependency health notes highlighting the new diagnostic command and pre-install checklist.
 
 **Files:**
-- `TODO.md`
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 - `DEPENDENCY_HEALTH.md`
 
 ---
@@ -1316,23 +1316,23 @@ npm audit now reports 0 vulnerabilities. All security issues resolved.
 
 **Description:**  
 Executed complete CODE_AUDIT process following CODE_AUDIT.md phases 0-6:
-- Phase 0: Identified task truth source (TODO.md)
+- Phase 0: Identified task truth sources (P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 - Phase 1: Consolidated tasks from USERTODO.md, swept docs/code for actionable items
 - Phase 2: Reviewed code completeness (no major gaps found)
 - Phase 3: Ran lint/type-check/build, identified quality issues (3 critical fixes needed)
 - Phase 4: Identified dead code candidates (next-pwa)
 - Phase 5: Consolidated enhancements from USERTODO.md
-- Phase 6: Produced unified TODO.md with 23 tasks in standard format
+- Phase 6: Produced unified P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with 23 tasks in standard format
 
 **Results:**
-- Created comprehensive TODO.md with all tasks in standard format
+- Created comprehensive P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with all tasks in standard format
 - Found 3 P0 issues requiring immediate fix (type error, lint warnings, security vulns)
 - Consolidated 20+ items from USERTODO.md into structured tasks
 - All tasks have acceptance criteria, file references, and effort estimates
 - Prioritized as P0 (3 tasks), P1 (4 tasks), P2 (16 tasks)
 
 **Files:**
-- `TODO.md` (completely restructured)
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (completely restructured)
 - `TODO_COMPLETED.md` (this file, updated)
 - `docs/workflows/USERTODO.md` (reference document, kept for historical context)
 

@@ -19,5 +19,5 @@ These scripts are **optional helpers**. They exist to reduce manual work, but th
 - `scripts/sync-todo.sh` — generates `TODO.generated.md` from `specs/project-tasks.md (non-binding notes)` (non-binding)
 
 ## Non-binding rule
-- `TODO.md` is the task truth source.
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` is the task truth sources.
 - `TODO.generated.md` is informational only and may be discarded.

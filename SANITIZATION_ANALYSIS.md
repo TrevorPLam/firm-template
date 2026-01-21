@@ -18,7 +18,7 @@ This document summarizes the comprehensive analysis of the `firm-template` repos
    - Catalogued infrastructure and functionality
    - Verified Diamond Standard compliance
 
-2. ✅ **TODO.md Restructured**
+2. ✅ **P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Restructured**
    - Removed all marketing-specific tasks
    - Created 21 new tasks starting from T-001
    - Organized into 4 phases with clear priorities
@@ -320,7 +320,7 @@ Template conversion will be considered successful when:
 ## Reference: Task Details
 
 For complete task details including acceptance criteria, references, and dependencies, see:
-- **TODO.md** - Authoritative task list with all 21 tasks
+- **P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md** - Authoritative task list with all 21 tasks
 - **T-001 to T-008** - Phase 1: Core sanitization (P0 priority)
 - **T-009 to T-013** - Phase 2: Documentation (P1 priority)
 - **T-014 to T-018** - Phase 3: Infrastructure (P2 priority)

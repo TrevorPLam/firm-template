@@ -1,10 +1,10 @@
 # TODO - Security Review Findings
 
 > **DEPRECATED**  
-> **Replaced by:** [TODO.md](../../../TODO.md) (canonical task backlog)  
+> **Replaced by:** [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md](../../../P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md) (canonical task backlog)  
 > **Reason:** Security review tasks consolidated into centralized backlog  
 > **Last updated:** 2026-01-03
-> **Task truth source:** TODO.md
+> **Task truth source:** P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 > This file tracks security findings from security reviews and other quality/enhancement tasks.
 
 ## Security Tasks

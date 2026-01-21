@@ -8,7 +8,7 @@ Last Updated: 2026-01-21
 
 ## Purpose
 A lightweight place to record the current state of the project, major decisions, and open questions.
-This is not a task list; tasks belong in `TODO.md`.
+This is not a task list; tasks belong in `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`.
 
 ## Current snapshot
 - Phase: **Template Released / Ready for User Customization** - Documentation in progress
@@ -53,7 +53,7 @@ Use this format:
   - Follow-up: Complete T-009 through T-013
 
 - Date: 2026-01-20
-  - Decision: Restructure TODO.md with sanitization as Phase 1 (P0 priority)
+  - Decision: Restructure P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with sanitization as Phase 1 (P0 priority)
   - Why: Template conversion is the primary goal; all other work should happen after sanitization is complete
   - Alternatives considered: Mixing sanitization with infrastructure tasks (rejected - too confusing)
   - Trade-offs: Delays infrastructure improvements but ensures focused, complete conversion
@@ -64,14 +64,14 @@ Use this format:
   - Why: Clean slate for template-focused roadmap; old task numbers referenced marketing-specific work
   - Alternatives considered: Keep old numbering (rejected - confusing for template users)
   - Trade-offs: Breaks references to old task IDs in git history (acceptable)
-  - Follow-up: Archive old TODO.md for historical reference
+  - Follow-up: Archive old P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md for historical reference
 
 - Date: 2026-01-07
   - Decision: Downgrade to Next.js 15.5.2 and ESLint 9.
   - Why: `@cloudflare/next-on-pages` adapter did not strictly support Next.js 16, causing peer dependency install failures and runtime build issues.
   - Alternatives considered: Forcing peer deps (failed at runtime), Custom build adapter (too high effort).
   - Trade-offs: Cannot use Next.js 16 features until Cloudflare adapter updates.
-  - Follow-up (task IDs in TODO.md): Monitor Cloudflare adapter updates (T-020)
+  - Follow-up (task IDs in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md): Monitor Cloudflare adapter updates (T-020)
 
 - Date: 2026-01-07
   - Decision: Use manual `archive/eslint.config.mjs` style configuration.
@@ -82,7 +82,7 @@ Use this format:
 - Date: 2026-01-07
   - Decision: Mark `feed.xml` and `search` routes as `dynamic = 'force-static'`.
   - Why: They use `fs` (via `lib/blog.ts`) which is not available in the Cloudflare Edge Runtime unless pre-rendered at build time.
-  - Follow-up (task IDs in TODO.md): N/A
+  - Follow-up (task IDs in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md): N/A
 
 ## Open questions
 - Q: Should we add additional vertical examples (healthcare, real estate, nonprofits)?

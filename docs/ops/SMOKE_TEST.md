@@ -40,4 +40,4 @@ Provide a lightweight, repeatable checklist for manual release verification with
 If any step fails:
 1. Capture a screenshot.
 2. Note the URL + device size.
-3. Create or update a task in `TODO.md` with acceptance criteria.
+3. Create or update a task in `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` with acceptance criteria.

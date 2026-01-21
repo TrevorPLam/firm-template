@@ -2,9 +2,9 @@
 
 Document Type: Workflow
 Last Updated: 2026-01-21
-Source: Completed tasks moved from `TODO.md`
+Source: Completed tasks moved from `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 
-This file stores completed work in the same schema as `TODO.md`.
+This file stores completed work in the same schema as `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`.
 Move tasks here when Acceptance Criteria are met.
 
 ## Completed tasks
@@ -295,7 +295,7 @@ Acceptance Criteria:
 - [x] T-084.4: Confirm the scope note answers "If this fails on launch day, what breaks the business?"
 References:
 - /docs/LAUNCH-SCOPE-V1.md
-- /TODO.md
+- /P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 Dependencies: None
 Effort: XS
 
@@ -1059,7 +1059,7 @@ Context:
 Acceptance Criteria:
 - [x] T-067.1: Merge unique value from `docs/ops/DEPLOYMENT.md` into `docs/DEPLOYMENT.md`
 - [x] T-067.2: Archive `docs/ops/DEPLOYMENT.md` or make it the source of truth
-- [x] T-067.3: Update `DOCS_INDEX.md` to point to the single source of truth
+- [x] T-067.3: Update `DOCS_INDEX.md` to point to the single source of truth (by priority)
 References:
 - /docs/DEPLOYMENT.md
 - /docs/ops/DEPLOYMENT.md
@@ -1104,7 +1104,7 @@ References:
 Dependencies: None
 Effort: S
 Notes:
-- Moved from TODO.md; completion date not recorded in task history.
+- Moved from P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md; completion date not recorded in task history.
 
 ### T-079: Update contact form requirements + env validation for Supabase/HubSpot
 Priority: P1
@@ -1168,7 +1168,7 @@ References:
 Dependencies: None
 Effort: XS
 Notes:
-- Moved from TODO.md; completion date not recorded in task history.
+- Moved from P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md; completion date not recorded in task history.
 
 ### T-074: Add active link highlighting to Navigation
 Priority: P3
@@ -1209,7 +1209,7 @@ References:
 Dependencies: T-050
 Effort: M
 Notes:
-- Moved from TODO.md; completion date not recorded in task history.
+- Moved from P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md; completion date not recorded in task history.
 
 ### T-009: Update README.md for template users
 Priority: P1

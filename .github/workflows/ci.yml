@@ -36,7 +36,7 @@ jobs:
         run: node scripts/check-todo-comments.mjs
         continue-on-error: true
         # Flags TODO/FIXME/XXX/HACK comments in source code
-        # Consider moving actionable items to TODO.md
+        # Consider moving actionable items to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
       - name: Type check
         run: npm run type-check

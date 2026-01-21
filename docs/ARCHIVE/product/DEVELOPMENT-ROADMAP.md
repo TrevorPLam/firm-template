@@ -1,12 +1,12 @@
 # ARCHIVED — Development Roadmap
 
 > Archived: 2026-01-08  
-> Superseded by: `TODO.md` and `PROJECT_STATUS.md`
+> Superseded by: `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` and `PROJECT_STATUS.md`
 
 > **Last Updated:** 2026-01-03  
 > **Canonical Status:** Supporting  
 > **Purpose:** Historical development phases and completed milestones  
-> **Note:** This document contains reference checklists showing planned work. Most items are completed. For current active tasks, see [TODO.md](../../TODO.md).  
+> **Note:** This document contains reference checklists showing planned work. Most items are completed. For current active tasks, see [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md](../../P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md).  
 > **See Also:** [DOCS_INDEX.md](../../DOCS_INDEX.md), [DEVELOPMENT-ROADMAP.md](./DEVELOPMENT-ROADMAP.md)
 
 ## Phase 1: Foundation (Week 1-2)

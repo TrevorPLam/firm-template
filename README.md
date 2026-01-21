@@ -238,7 +238,7 @@ For platform-specific instructions, see the [Next.js deployment documentation](h
 - **[Diamond Standard](docs/DIAMOND_STANDARD.md)** - Understanding the quality standards
 - **[Architecture Overview](docs/TEMPLATE_ARCHITECTURE.md)** - Technical architecture decisions
 
-**Planned (see `TODO.md`):**
+**Planned (see `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`):**
 - Vertical-specific examples (law firm, consulting, accounting, design)
 
 ## 🔧 Customization Checklist
@@ -290,10 +290,10 @@ If you are an AI coding assistant working on this template, **YOU MUST READ**:
 
 1.  [`AGENTS.md`](AGENTS.md) - Operational guidelines and cost control.
 2.  [`CODEBASECONSTITUTION.md`](CODEBASECONSTITUTION.md) - The supreme laws of the repo.
-3.  [`TODO.md`](TODO.md) - The single source of truth for tasks.
+3.  [`P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`](P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md) - The single source of truth (by priority) for tasks.
 
-**Current Phase**: Template Documentation (see TODO.md Phase 2)  
-**Do not deviate from `TODO.md` without human approval.**
+**Current Phase**: Template Documentation (see P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Phase 2)  
+**Do not deviate from `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` without human approval.**
 
 ## 🙋 Getting Help
 

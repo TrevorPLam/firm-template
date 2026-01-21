@@ -18,7 +18,7 @@ If this repo is deployed/used in production, define a private reporting channel 
 
 ## Dependency vulnerability monitoring
 - Known advisory context: `@cloudflare/next-on-pages` pulls transitive build-tool vulnerabilities noted in
-  `TODO.md` (T-020). Specific CVEs are **UNKNOWN** until an `npm audit` report can be captured in this repo.
+  `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (T-020). Specific CVEs are **UNKNOWN** until an `npm audit` report can be captured in this repo.
 - Monitoring cadence: review `@cloudflare/next-on-pages` release notes at least monthly.
 - Mitigations (WHY: upstream adapter controls the toolchain surface area):
   - Re-run `npm audit` after registry access is available to confirm the current advisory list.

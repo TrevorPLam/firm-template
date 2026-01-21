@@ -192,7 +192,7 @@ The template currently represents a **strong foundation** with production-ready 
 #### Governance & Process (10/10)
 - ✅ **CODEBASECONSTITUTION.md** - Repo rules and standards
 - ✅ **AGENTS.md** - AI agent operating guidelines
-- ✅ **TODO.md** - Comprehensive task list (21 tasks)
+- ✅ **P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md** - Comprehensive task list (21 tasks)
 - ✅ **PROJECT_STATUS.md** - Current state tracking
 - ✅ **DIAMOND_STANDARD.md** - Quality definitions
 - ✅ **Multiple Audit Runbooks** - Security, code, dependencies, docs, releases
@@ -226,7 +226,7 @@ The template currently represents a **strong foundation** with production-ready 
 **Blocker**: Cannot release template publicly  
 **Solution**: Complete T-009, T-010, T-011 (Phase 2 docs)  
 **Effort**: L (Large - 1 day)  
-**Status**: Tasks already defined in TODO.md
+**Status**: Tasks already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 #### 3. No Legal Pages (P2 - MEDIUM)
 **Issue**: Privacy policy and terms of service don't exist  
@@ -234,7 +234,7 @@ The template currently represents a **strong foundation** with production-ready 
 **Blocker**: Professional services firms need these for launch  
 **Solution**: Complete T-016 (create generic templates)  
 **Effort**: S (Small - 2 hours)  
-**Status**: Task already defined in TODO.md
+**Status**: Task already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 ### 3.2 High-Priority Improvements 🟡
 
@@ -257,14 +257,14 @@ The template currently represents a **strong foundation** with production-ready 
 **Impact**: Higher friction for adoption, more support questions  
 **Solution**: Complete T-011 (create 4 vertical examples)  
 **Effort**: M (Medium - 4 hours)  
-**Status**: Task already defined in TODO.md
+**Status**: Task already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 #### 6. README Not Updated (P1)
 **Issue**: README still has some template-focused content but could be enhanced  
 **Impact**: First impression and discoverability  
 **Solution**: Complete T-009 (comprehensive README update)  
 **Effort**: S (Small - 2 hours)  
-**Status**: Task already defined in TODO.md
+**Status**: Task already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 ### 3.3 Medium-Priority Enhancements 🟢
 
@@ -274,14 +274,14 @@ The template currently represents a **strong foundation** with production-ready 
 **Solution**: Complete T-019 (configure Lighthouse CI)  
 **Effort**: M (Medium - 3 hours)  
 **Blocker**: Lighthouse CLI not installed (easy to fix)  
-**Status**: Task already defined in TODO.md
+**Status**: Task already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 #### 8. No Comprehensive A11y Audit (P3)
 **Issue**: WCAG 2.1 compliance not formally verified  
 **Impact**: May have hidden accessibility issues  
 **Solution**: Complete T-021 (run accessibility audit)  
 **Effort**: M (Medium - 3 hours)  
-**Status**: Task already defined in TODO.md
+**Status**: Task already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 #### 9. No Email Service Integration (P2)
 **Issue**: Contact form stores leads but doesn't send emails  
@@ -604,7 +604,7 @@ A perfect professional services firm template should:
 ### 8.1 Recommended Approach
 
 #### Phase-Based Execution (Recommended)
-**Follow the existing TODO.md structure**, which already breaks work into logical phases:
+**Follow the existing P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md structure**, which already breaks work into logical phases:
 
 1. **Phase 1** ✅ COMPLETE - Template sanitization (done)
 2. **Phase 2** ⬜ NEXT - Documentation (T-009 through T-013)
@@ -613,14 +613,14 @@ A perfect professional services firm template should:
 5. **Phase 5** ⬜ OPTIONAL - Enhancements (new tasks T-022 through T-029)
 
 **Advantages**:
-- Already defined in TODO.md
+- Already defined in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 - Logical dependency chain
 - Clear success criteria
 - Phased releases possible
 
-### 8.2 New Tasks to Add to TODO.md
+### 8.2 New Tasks to Add to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
-The following new tasks should be added to TODO.md to address gaps identified in this assessment:
+The following new tasks should be added to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md to address gaps identified in this assessment:
 
 ```markdown
 ## 🟣 PHASE 5: ENHANCEMENTS & POLISH (P0-P3)
@@ -896,7 +896,7 @@ Effort: M
 
 ### 8.3 Task Priority Summary
 
-**Add to TODO.md Phase 5**:
+**Add to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Phase 5**:
 
 | Task | Priority | Effort | Description | Blocking Release? |
 |------|----------|--------|-------------|-------------------|

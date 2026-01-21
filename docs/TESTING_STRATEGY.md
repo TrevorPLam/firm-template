@@ -19,7 +19,7 @@ This is a template testing strategy. Real projects should extend it.
 
 ## Coverage expectations
 - Coverage thresholds are enforced in `vitest.config.ts` when running `npm run test:coverage`.
-- Adjust thresholds only via TODO.md task with documented rationale.
+- Adjust thresholds only via P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md task with documented rationale.
 
 ## Minimum acceptable verification per change
 - A runnable command (tests, lint, build, or a smoke check)

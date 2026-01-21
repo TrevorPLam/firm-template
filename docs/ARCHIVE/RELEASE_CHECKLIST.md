@@ -17,7 +17,7 @@ Release types:
 Primary outputs (must be updated):
 
 * CHANGELOG.md (release entry)
-* TODO.md / TODO_COMPLETED.md (tasks reconciled)
+* P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md / TODO_COMPLETED.md (tasks reconciled)
 * Optional: DECISIONS.md (if tradeoffs/choices were made)
 ---
 
@@ -39,7 +39,7 @@ Deliverables:
 1. A completed checklist record (copy into the bottom “Release Record” section).
 2. A release-ready CHANGELOG.md entry.
 3. A short “Release Notes” summary (5–15 bullets).
-4. Any discovered gaps converted into TODO.md tasks with IDs.
+4. Any discovered gaps converted into P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks with IDs.
 
 ⠀
 Stop conditions:
@@ -86,7 +86,7 @@ Gate:
 1. Run a quick task sanity pass
 
 ⠀
-* TODO.md:
+* P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md:
 
   * No completed tasks remain.
   * Top tasks align with what you’re shipping.
@@ -99,7 +99,7 @@ Gate:
 ⠀
 * If you spot TODO/FIXME in docs related to the release:
 
-  * Convert to TODO.md tasks (T-###)
+  * Convert to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks (T-###)
   * Replace in docs with “Tracked in TODO: T-###”
 
 Gate:
@@ -368,7 +368,7 @@ Docs:
 Decision:
 
 * GO / NO-GO
-* If NO-GO: list blockers as TODO.md tasks (T-###):
+* If NO-GO: list blockers as P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks (T-###):
 
 ## Release Notes (final bullets to communicate):
 
@@ -429,7 +429,7 @@ Docs:
 Decision:
 
 * GO
-* If NO-GO: list blockers as TODO.md tasks (T-###):
+* If NO-GO: list blockers as P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks (T-###):
 
 ## Release Notes (final bullets to communicate):
 
@@ -506,7 +506,7 @@ Docs:
 Decision:
 
 * NO-GO
-* If NO-GO: list blockers as TODO.md tasks (T-###):
+* If NO-GO: list blockers as P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks (T-###):
   * T-029
 
 ## Release Notes (final bullets to communicate):
@@ -547,7 +547,7 @@ Decision:
 - No code changes to application functionality
 - No dependency upgrades or removals
 - No UI/UX changes
-- Security tasks are documented but not yet implemented (tracked in TODO.md)
+- Security tasks are documented but not yet implemented (tracked in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 
 ## Risk Review
 
@@ -619,7 +619,7 @@ Since this is a documentation-only release with no code changes, full smoke test
 - No debug code or "TEMP" comments added
 - No large commented-out blocks
 - All new files are documentation (*.md)
-- TODO.md properly structured with P0/P1/P2 priorities
+- P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md properly structured with P0/P1/P2 priorities
 
 **Error handling states:** N/A
 - No new API calls or error handling code

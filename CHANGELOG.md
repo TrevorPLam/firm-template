@@ -97,7 +97,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documented MDX architecture decision (ADR-004)
 - Documented clsx + tailwind-merge utility pattern (ADR-005)
 - Created comprehensive security review framework in SECURITY_REVIEW.md
-- Added 10 security enhancement tasks to TODO.md (T-001 through T-010)
+- Added 10 security enhancement tasks to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md (T-001 through T-010)
 - Added dependency evaluation task for next-pwa (T-DEP-001)
 - Created TODO_COMPLETED.md to track completed tasks
 - Enhanced CODE_AUDIT.md with audit execution framework
@@ -152,4 +152,4 @@ Per DEPENDENCY_HEALTH.md:
 - Document dependency additions with justification
 - Note dependency removals and what replaced them
 - Record major version upgrades with impact summary
-- Link to related TODO.md or DECISIONS.md entries
+- Link to related P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md or DECISIONS.md entries

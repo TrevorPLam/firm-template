@@ -250,7 +250,7 @@ npm run test:e2e -- --grep accessibility
 ### Sign-Off
 - [ ] Tester confirms all critical tests pass
 - [ ] Any blocking issues documented with follow-up tasks
-- [ ] Task T-021 marked DONE in TODO.md
+- [ ] Task T-021 marked DONE in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
 
 ---
 

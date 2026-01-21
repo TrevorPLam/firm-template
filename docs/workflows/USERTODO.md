@@ -1,19 +1,19 @@
 # User TODO - Remaining Action Items
 
-> **⚠️ DEPRECATED:** This document has been consolidated into [TODO.md](../../TODO.md)  
-> **Active tasks:** See [TODO.md](../../TODO.md) for the current prioritized backlog  
+> **⚠️ DEPRECATED:** This document has been consolidated into [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md](../../P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)  
+> **Active tasks:** See [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md](../../P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md) for the current prioritized backlog  
 > **Last consolidated:** 2026-01-03 via CODE_AUDIT execution
 
 This document contains action items that require manual intervention, external service setup, or user decisions.
 
-**All actionable items from this document have been migrated to TODO.md with:**
+**All actionable items from this document have been migrated to P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with:**
 - Standard task format (T-### IDs)
 - Priority levels (P0/P1/P2)
 - Acceptance criteria
 - Effort estimates
 - File references
 
-**See TODO.md for:**
+**See P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md for:**
 - T-015: Configure Production API Keys (Items #3, #6, #7)
 - T-016: Implement Distributed Rate Limiting (Item #4)
 - T-014: Migrate or Remove Deprecated next-pwa (Item #5)

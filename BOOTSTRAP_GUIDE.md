@@ -15,14 +15,14 @@ Bootstrap an AI-operable repo with minimal cost and maximum clarity.
    - `specs/product-brief.md`
    - `specs/project-spec.md`
    - `specs/technical-plan.md`
-3) Populate `TODO.md` with your first 5–15 tasks (small, measurable).
+3) Populate `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` with your first 5–15 tasks (small, measurable).
 4) Run optional checks (no CI required):
    - `make governance`
    - `make security`
    - `make check`
 
 ## Quick start (agent)
-1) Read `CODEBASECONSTITUTION.md` → `READMEAI.md` → `TODO.md`
+1) Read `CODEBASECONSTITUTION.md` → `READMEAI.md` → `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 2) If TODO is empty: run `CODEAUDIT.md` to create a first backlog.
 3) Ask clarifying questions early; do not implement with ambiguous requirements.
 

@@ -30,7 +30,7 @@ Hierarchy (what to read first):
 - `BOOTSTRAP_GUIDE.md` → how to start (human + AI)
 - `PROJECT_STATUS.md` → current truth + next step
 - `repo.manifest.yaml` → how to run/verify/ship (machine-readable)
-- `TODO.md` → task truth source
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` → task truth sources
 - `SECURITY.md` → reporting + baseline expectations
 - `CHANGELOG.md` + `VERSION` → release hygiene
 

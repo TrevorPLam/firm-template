@@ -174,7 +174,7 @@ docs(deployment): update Cloudflare Pages instructions
 
 5. **Create Pull Request:**
    - Fill out PR template
-   - Link related tasks from TODO.md
+   - Link related tasks from P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
    - Wait for CI to pass
    - Request review if needed
 
@@ -209,10 +209,10 @@ The CI pipeline runs on every PR and push to main:
 
 ## Task Management
 
-- **Task Source**: `TODO.md` is the single source of truth
-- **Creating Tasks**: Add to `TODO.md` following the task schema
+- **Task Source**: `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` is the single source of truth (by priority)
+- **Creating Tasks**: Add to `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` following the task schema
 - **Completing Tasks**: Mark as DONE and move to `TODOCOMPLETED.md`
-- **TODO Comments**: Avoid TODO comments in code; use `TODO.md` instead
+- **TODO Comments**: Avoid TODO comments in code; use `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` instead
 
 ## Testing
 
@@ -255,7 +255,7 @@ npm run test:e2e
 - Check `CODEBASECONSTITUTION.md` for governance rules
 - Review `AGENTS.md` for agent-specific guidelines
 - See `READMEAI.md` for AI operating instructions
-- Check `TODO.md` for current tasks
+- Check `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` for current tasks
 
 ## References
 

@@ -2,9 +2,9 @@
 
 Document Type: Workflow
 Last Updated: 2026-01-21
-Source: Completed tasks moved from `TODO.md`
+Source: Completed tasks moved from `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 
-This file stores completed work in the same schema as `TODO.md`.
+This file stores completed work in the same schema as `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`.
 Move tasks here when Acceptance Criteria are met.
 
 ## Completed tasks

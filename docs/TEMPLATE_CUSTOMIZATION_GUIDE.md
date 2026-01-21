@@ -95,7 +95,7 @@ Use the built-in theme editor to preview colors, fonts, and logo placement befor
 
 ### About / Team (optional)
 - `/app/about/page.tsx` (placeholder copy)
-- Add `/app/team` pages if you need team bios (planned task; see `TODO.md`)
+- Add `/app/team` pages if you need team bios (planned task; see `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`)
 
 ### Pricing
 - `/app/pricing/page.tsx` contains generic tiers.

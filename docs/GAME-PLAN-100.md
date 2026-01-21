@@ -3,7 +3,7 @@
 > **Last Updated:** 2026-01-03  
 > **Canonical Status:** Supporting  
 > **Purpose:** Quality improvement planning and tracking for site metrics  
-> **Note:** This document contains reference checklists for planning. For actionable tasks, see [TODO.md](../TODO.md).  
+> **Note:** This document contains reference checklists for planning. For actionable tasks, see [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md](../P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md).  
 > **See Also:** [DOCS_INDEX.md](./DOCS_INDEX.md)
 
 ## Current Status Overview

@@ -27,4 +27,4 @@ Performed an accessibility review focused on navigation, search, and interactive
 ## Follow-Up
 
 - Run axe DevTools scans and screen reader checks in a live preview environment to validate against WCAG 2.1 AA.
-- Capture any contrast or focus issues discovered in TODO.md if they require new remediation work.
+- Capture any contrast or focus issues discovered in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md if they require new remediation work.

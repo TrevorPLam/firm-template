@@ -2,14 +2,14 @@
 
 Document Type: Audit Runbook
 Last Updated: 2026-01-07
-Precedence: `CODEBASECONSTITUTION.md` → `READMEAI.md` → `TODO.md` → this document
+Precedence: `CODEBASECONSTITUTION.md` → `READMEAI.md` → `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` → this document
 Owner: AGENT
 
 Purpose: Ship changes safely and repeatably without relying on CI/GitHub Actions.
 
 ## AGENT execution (runbook)
 Inputs to inspect:
-- `TODO.md / TODOCOMPLETED.md`
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md / TODOCOMPLETED.md`
 - `CHANGELOG.md`
 - `Deployment configs (env.example, next.config.mjs, middleware, etc.)`
 - `docs/ops/ and docs/workflows/ references`
@@ -29,7 +29,7 @@ Stop conditions:
 Required outputs:
 - Release record appended to this document.
 - CHANGELOG.md updated with scope and risks.
-- Tasks added/updated in TODO.md for any gaps.
+- Tasks added/updated in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md for any gaps.
 
 ---
 

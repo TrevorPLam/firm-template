@@ -7,13 +7,13 @@ Status: Active
 
 Purpose: Make work in this repo deterministic, auditable, and agent-executable while staying readable for a non-coder owner.
 
-**TEMPLATE STATUS**: Template sanitization is complete. Current focus is documentation and customization guidance (TODO.md Phase 2).
+**TEMPLATE STATUS**: Template sanitization is complete. Current focus is documentation and customization guidance (P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Phase 2).
 
 ## Start here (required read order)
 1) `CODEBASECONSTITUTION.md` (non-negotiable rules)
 2) `AGENTS.md` (how agents must behave)
 3) `BESTPR.md` (best practices - **REQUIRED before coding**)
-4) `TODO.md` (task truth source - **currently focused on template documentation**)
+4) `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (task truth sources - **currently focused on template documentation**)
 5) Runbooks (use when instructed):
    - `CODEAUDIT.md`
    - `SECURITYAUDIT.md`
@@ -24,7 +24,7 @@ Purpose: Make work in this repo deterministic, auditable, and agent-executable w
 7) `PROJECT_STATUS.md` (current state + next step)
 
 ## Current Priority: Template Documentation
-**FOCUS**: Execute TODO.md Phase 2 (Tasks T-009 through T-013) to document customization, governance updates, and release readiness.
+**FOCUS**: Execute P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Phase 2 (Tasks T-009 through T-013) to document customization, governance updates, and release readiness.
 
 **DO NOT**:
 - Add marketing-specific features
@@ -38,14 +38,14 @@ Purpose: Make work in this repo deterministic, auditable, and agent-executable w
 - Document customization points for template users
 
 ## Task truth model
-- **Authoritative**: `TODO.md`
+- **Authoritative**: `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`
 - **Archive**: `TODOCOMPLETED.md`
 - **Non-binding notes**: `specs/` (may contain ideas; must be converted into tasks to be actionable)
 - Optional helper: `scripts/sync-todo.sh` generates `TODO.generated.md` (informational only)
 
 ## Modes
 - **Planner**: propose plan + questions; no code edits
-- **Builder**: implement exactly one task (or a small, linked set) from TODO.md Phase 2
+- **Builder**: implement exactly one task (or a small, linked set) from P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Phase 2
 - **Auditor**: inspect + create tasks; do not refactor blindly
 - **Status-Sync**: update `PROJECT_STATUS.md` and move completed tasks to `TODOCOMPLETED.md`
 - **Emergency**: stop-the-bleed (secrets/auth/payment)

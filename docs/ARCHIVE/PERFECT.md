@@ -95,7 +95,7 @@ Transform the existing codebase into a world-class, production-ready system that
 **Context**: 
 - Next.js 15.5.2 has critical security vulnerability CVE-2025-66478
 - Must upgrade to 15.5.3+ before production deployment
-- Already in TODO.md as T-022
+- Already in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md as T-022
 
 **Acceptance Criteria**:
 - [ ] Upgrade Next.js to 15.5.3 or latest patched version

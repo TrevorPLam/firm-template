@@ -7,7 +7,7 @@ This document defines what “healthy governance” means for this repo.
 ## Invariants (must be true)
 - `CODEBASECONSTITUTION.md` exists and is the top authority.
 - `READMEAI.md` exists and reflects reality.
-- `TODO.md` is the task truth source and includes a `Task Truth Source:` line.
+- `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` is the task truth sources and includes a `Task Truth Source:` line.
 - Completed tasks live in `TODOCOMPLETED.md`.
 - GitHub Actions are **off by default** and stored under `githubactions/`.
 
@@ -21,5 +21,5 @@ Optional helper:
 - `scripts/sync-todo.sh` can generate `TODO.generated.md` from non-binding specs notes when present (informational only)
 
 ## Failure policy
-- If an invariant fails, create a task in `TODO.md` and mark it `BLOCKED` if external action is required.
+- If an invariant fails, create a task in `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` and mark it `BLOCKED` if external action is required.
 - If a security invariant fails (secrets/auth bypass), create a `P0` task and stop work until resolved.

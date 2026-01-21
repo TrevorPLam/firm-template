@@ -4,7 +4,7 @@ SHELL := /usr/bin/env bash
 
 help:
 	@echo "Targets:"
-	@echo "  make sync-todo   - Regenerate TODO.md from specs/project-tasks.md (non-binding notes)"
+	@echo "  make sync-todo   - Regenerate TODO.generated.md from specs/project-tasks.md (non-binding notes)"
 	@echo "  make governance  - Run governance audit"
 	@echo "  make security    - Run lightweight security scan"
 	@echo "  make check       - Run repo checks (best-effort, stack-aware)"

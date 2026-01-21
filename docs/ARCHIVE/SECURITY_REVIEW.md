@@ -6,7 +6,7 @@ SECURITY_REVIEW.md
 
 Precedence: CODEBASECONSTITUTION.md → READMEAI.md → specs/* → this document.
 
-Purpose: maintain a practical security baseline for an AI-built codebase without requiring scripts, scanners, or CI. This is a repeatable review checklist that produces concrete TODO.md tasks when gaps exist.
+Purpose: maintain a practical security baseline for an AI-built codebase without requiring scripts, scanners, or CI. This is a repeatable review checklist that produces concrete P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks when gaps exist.
 
 What this is:
 
@@ -20,7 +20,7 @@ What this is not:
 
 Primary outputs:
 
-* Security findings converted into TODO.md tasks (Type: QUALITY or COMPLETE or ENHANCE with SEC category)
+* Security findings converted into P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks (Type: QUALITY or COMPLETE or ENHANCE with SEC category)
 * Optional updates to DECISIONS.md when security tradeoffs are chosen
 * Optional updates to docs if behavior/requirements change
 
@@ -37,7 +37,7 @@ Constraints:
 
 * Assume the repo owner does not run scripts and does not use GitHub Actions.
 * Prefer review methods that can be done by reading code/config and using the deployed preview (if available).
-* When you find a gap, create a concrete task in TODO.md:
+* When you find a gap, create a concrete task in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md:
 
   * Priority: P0 for critical exploitable issues; P1 for high-risk; P2 for hardening
   * Type: QUALITY if refactor/cleanup; COMPLETE if required behavior is missing; ENHANCE if hardening
@@ -46,7 +46,7 @@ Constraints:
 Deliverables:
 
 1. A “Security Review Summary” section appended to the bottom of this file (date + results).
-2. TODO.md updates for all findings (no exceptions).
+2. P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md updates for all findings (no exceptions).
 3. If applicable, updates to env.example to document required env vars safely (placeholders only).
 
 ⠀
@@ -356,7 +356,7 @@ Complete security review of Next.js 14 marketing website covering all 7 phases:
 
 ### Tasks Created
 
-All findings documented in TODO.md with detailed acceptance criteria:
+All findings documented in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with detailed acceptance criteria:
 - **T-001** through **T-010** (10 tasks total)
 - 2 P1 tasks, 8 P2 tasks
 - All tagged with [SEC] category

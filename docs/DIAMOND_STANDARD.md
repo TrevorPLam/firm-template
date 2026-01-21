@@ -33,7 +33,7 @@ This document defines what "best practices," "diamond standard," and "perfect co
    - Defined measurable acceptance criteria for each task
 
 4. **Task Generation** (Phase 4)
-   - Converted plan into 24 executable tasks following TODO.md schema
+   - Converted plan into 24 executable tasks following P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md schema
    - Assigned priorities: P0/P1 for critical, P2 for important, P3 for nice-to-have
    - Specified Owner (AGENT vs Trevor) based on capability
    - Provided exact file references and verification steps
@@ -160,7 +160,7 @@ This document defines what "best practices," "diamond standard," and "perfect co
 **Current State**: Strong governance (A-)
 - ✅ Excellent governance docs (Constitution, READMEAI, Agents)
 - ✅ Audit runbooks
-- ✅ Task management system (TODO.md)
+- ✅ Task management system (P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 - ⚠️ Missing: Component docs, ADRs, contributing guide
 
 **Target State**: Exemplary DX (A+)
@@ -266,7 +266,7 @@ Focus: Future-proofing, optimization
 ## Continuous Improvement
 
 This is a living standard. As new best practices emerge:
-1. Propose changes via TODO.md task
+1. Propose changes via P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md task
 2. Document rationale in ADR
 3. Update this document
 4. Communicate to team

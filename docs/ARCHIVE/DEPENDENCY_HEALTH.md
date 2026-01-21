@@ -12,7 +12,7 @@ Primary outputs:
 
 * A predictable dependency posture (few surprises, fewer abandoned libs)
 * Dependency changes recorded in CHANGELOG.md when they affect behavior
-* Any dependency findings converted into TODO.md tasks (with acceptance criteria)
+* Any dependency findings converted into P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks (with acceptance criteria)
 
 Hard rules:
 
@@ -33,7 +33,7 @@ Constraints:
 * Assume the repo owner does not run scripts and does not use GitHub Actions.
 * You may inspect package.json, lockfiles, requirements.txt, pyproject.toml, etc.
 * You must not recommend large dependency upgrades unless you also list the risks and a safe upgrade plan.
-* Convert findings into concrete TODO.md tasks with:
+* Convert findings into concrete P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks with:
 
   * Priority (P0/P1/P2)
   * Type (QUALITY or ENHANCE)
@@ -43,7 +43,7 @@ Constraints:
 Deliverables:
 
 1. Append a “Dependency Health Summary” section to the bottom of this file (dated).
-2. Add/modify TODO.md tasks for any recommended changes (add/update/remove/dedupe).
+2. Add/modify P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md tasks for any recommended changes (add/update/remove/dedupe).
 3. If a dependency change is already completed, ensure it is reflected in CHANGELOG.md and TODO_COMPLETED.md.
 
 ⠀
@@ -142,7 +142,7 @@ Common overlap categories (choose one):
 
 If overlap exists:
 
-* Create a TODO.md task to consolidate:
+* Create a P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md task to consolidate:
 
   * pick the canonical lib
   * list where the other is used
@@ -204,7 +204,7 @@ Acceptance criteria template:
 
 Every dependency change must be recorded:
 
-* Planned: TODO.md with task ID
+* Planned: P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with task ID
 * Completed: TODO_COMPLETED.md + CHANGELOG.md (if behavior impact)
 
 Recommended task labeling:
@@ -261,10 +261,10 @@ This prevents future churn and re-arguing.
 **(P2) Dependency Version Pinning Strategy**
 - **Issue:** All dependencies use caret (^) ranges, which allows automatic minor/patch updates. This is generally safe but can introduce unexpected breaking changes, especially for security-critical dependencies.
 - **Risk:** Low-Medium - Potential for unexpected behavior changes
-- **Recommendation:** Consider exact version pinning for security-critical deps (Sentry, zod, resend, next) as mentioned in TODO.md T-008.
+- **Recommendation:** Consider exact version pinning for security-critical deps (Sentry, zod, resend, next) as mentioned in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md T-008.
 
 **(P2) Missing Dependency Update Documentation**
-- **Issue:** No documented cadence or process for dependency updates beyond what's already in TODO.md T-008.
+- **Issue:** No documented cadence or process for dependency updates beyond what's already in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md T-008.
 - **Risk:** Low - May lead to dependency drift over time
 - **Recommendation:** Document dependency update policy in this file.
 
@@ -279,11 +279,11 @@ This prevents future churn and re-arguing.
 
 ### Tasks Created:
 
-**T-DEP-001:** Evaluate and potentially replace next-pwa (documented below in TODO.md)
+**T-DEP-001:** Evaluate and potentially replace next-pwa (documented below in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 **Priority:** P2  
 **Type:** QUALITY  
 
-**T-008:** Review and Update Dependencies (already exists in TODO.md)  
+**T-008:** Review and Update Dependencies (already exists in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)  
 **Priority:** P2  
 **Type:** QUALITY (SEC)  
 **Status:** Already tracked
@@ -458,13 +458,13 @@ This prevents future churn and re-arguing.
 - **Issue:** `react` and `@types/react` are on 18.x while `react-dom` and `@types/react-dom` are on 19.x. Next.js 14 expects React 18.x, so mismatched majors can cause runtime, build, or type-checking issues.
 - **Risk:** Medium-High - potential runtime warnings or incompatibilities in rendering behavior.
 - **Recommendation:** Align `react-dom` to the same supported major as `react` (18.x) and validate builds.
-- **Status:** Not started (see T-050 in TODO.md)
+- **Status:** Not started (see T-050 in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 
 **(P2) Unused MDX Loader Dependencies**
 - **Issue:** `@mdx-js/loader` and `@mdx-js/react` are listed but not referenced in the codebase or Next.js config.
 - **Risk:** Low - adds unused install surface and potential future maintenance overhead.
 - **Recommendation:** Confirm they are not required by the current MDX setup and remove if unused.
-- **Status:** Not started (see T-051 in TODO.md)
+- **Status:** Not started (see T-051 in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 
 ### Positive Findings:
 

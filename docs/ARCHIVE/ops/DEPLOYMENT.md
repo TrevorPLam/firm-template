@@ -621,7 +621,7 @@ When implementing distributed rate limiting:
 **References:**
 - Current implementation: `lib/actions.ts` (in-memory Map)
 - Decision rationale: [DECISIONS.md - ADR-007](../../../DECISIONS.md)
-- Task tracking: [TODO.md - T-016](../../../TODO.md)
+- Task tracking: [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md - T-016](../../../P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md)
 
 ---
 
