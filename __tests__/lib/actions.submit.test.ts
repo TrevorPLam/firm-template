@@ -4,6 +4,7 @@ const fetchMock = vi.hoisted(() => vi.fn())
 const logError = vi.hoisted(() => vi.fn())
 const logInfo = vi.hoisted(() => vi.fn())
 const logWarn = vi.hoisted(() => vi.fn())
+const sendContactEmails = vi.hoisted(() => vi.fn())
 const supabaseUrl = 'https://supabase.example'
 
 vi.stubGlobal('fetch', fetchMock)
@@ -18,6 +19,10 @@ vi.mock('@/lib/logger', () => ({
   logError,
   logInfo,
   logWarn,
+}))
+
+vi.mock('@/lib/email', () => ({
+  sendContactEmails,
 }))
 
 vi.mock('@/lib/env', () => ({
@@ -47,6 +52,10 @@ const buildResponse = (data: unknown, ok = true, status = 200) => ({
 describe('contact form lead pipeline', () => {
   beforeEach(() => {
     vi.resetAllMocks()
+    sendContactEmails.mockResolvedValue({
+      ownerNotification: { success: true, provider: 'sendgrid' },
+      customerThankYou: { success: true, provider: 'sendgrid' },
+    })
     fetchMock.mockImplementation(async (input: RequestInfo) => {
       const url = typeof input === 'string' ? input : input.toString()
       const supabaseRestUrl = `${supabaseUrl}/rest/v1/leads`
@@ -75,11 +84,17 @@ describe('contact form lead pipeline', () => {
     })
   })
 
-  it('stores a sanitized lead and syncs to HubSpot', async () => {
+  it('test_stores_a_sanitized_lead_and_syncs_to_hubspot', async () => {
     const { submitContactForm } = await import('@/lib/actions')
     const response = await submitContactForm(buildPayload('jamie@example.com'))
 
     expect(response.success).toBe(true)
+    expect(sendContactEmails).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: 'jamie@example.com',
+        message: expect.stringContaining('&lt;script&gt;alert(1)&lt;'),
+      }),
+    )
     const insertCall = fetchMock.mock.calls.find(([url]) => url === `${supabaseUrl}/rest/v1/leads`)
     const insertBody = JSON.parse(insertCall?.[1]?.body as string)[0]
 
@@ -87,7 +102,7 @@ describe('contact form lead pipeline', () => {
     expect(insertBody.is_suspicious).toBe(false)
   })
 
-  it('returns success even when HubSpot fails', async () => {
+  it('test_returns_success_even_when_hubspot_fails', async () => {
     fetchMock.mockImplementation(async (input: RequestInfo) => {
       const url = typeof input === 'string' ? input : input.toString()
       const supabaseRestUrl = `${supabaseUrl}/rest/v1/leads`

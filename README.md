@@ -23,7 +23,7 @@ This is a **complete, production-ready website template** designed specifically 
 - ✅ **Proven architecture** - Next.js 15 App Router with TypeScript and Tailwind CSS
 - ✅ **8 customizable service pages** - Replace placeholders with your offerings
 - ✅ **Built-in blog engine** - MDX-powered with full-text search
-- ✅ **Contact form ready** - Rate limiting, spam protection, CRM integration
+- ✅ **Contact form ready** - Rate limiting, spam protection, CRM integration, optional email alerts
 - ✅ **Diamond Standard quality** - 95+ Lighthouse scores, WCAG accessibility, security best practices
 - ✅ **Edge-optimized** - Deploys to Cloudflare Pages for global performance
 - ✅ **Fully documented** - Comprehensive customization guides included
@@ -61,7 +61,7 @@ This repository adheres to a strict "Diamond Standard" of engineering excellence
 *   **Content Engine**: MDX-powered blog with static generation - perfect for thought leadership and SEO.
 *   **Client-Side Search**: Zero-latency, pre-indexed search functionality across all content.
 *   **Configurable Services**: 8 service page templates ready to customize for your offerings.
-*   **Contact Form**: Built-in form with rate limiting, spam protection, and CRM integration (Supabase + your CRM of choice).
+*   **Contact Form**: Built-in form with rate limiting, spam protection, CRM integration, and optional email alerts.
 *   **Performance First**: 
     *   Tailwind CSS for zero-runtime styling.
     *   Automatic image optimization.
@@ -186,6 +186,7 @@ Cloudflare Pages provides:
 *   Most variables have sensible defaults
 *   Set `NEXT_PUBLIC_SITE_URL` to your production domain
 *   Configure CRM credentials (Supabase, HubSpot, etc.) as needed
+*   Optional: enable email alerts with `EMAIL_PROVIDER`, `EMAIL_API_KEY`, and sender/recipient addresses
 
 📚 **Detailed deployment guide**: See [`docs/CLOUDFLARE_DEPLOYMENT.md`](docs/CLOUDFLARE_DEPLOYMENT.md)
 
@@ -243,6 +244,7 @@ Use this checklist when adapting the template for your firm:
   - [ ] Copy `.env.example` to `.env`
   - [ ] Set `NEXT_PUBLIC_SITE_NAME` and `NEXT_PUBLIC_SITE_URL`
   - [ ] Configure CRM credentials (Supabase, HubSpot, etc.)
+  - [ ] Optional: configure transactional email alerts
 
 - [ ] **Branding**
   - [ ] Replace logo and favicon in `/public/`
@@ -264,6 +266,7 @@ Use this checklist when adapting the template for your firm:
 - [ ] **Integrations**
   - [ ] Set up Supabase database
   - [ ] Configure CRM integration
+  - [ ] Optional: configure email provider (SendGrid, Postmark, Resend)
   - [ ] Set up analytics (Google Analytics, Plausible, etc.)
   - [ ] Configure Sentry for error tracking
 

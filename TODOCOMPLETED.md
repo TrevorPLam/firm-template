@@ -1293,3 +1293,41 @@ References:
 - /docs/TEMPLATE_ARCHITECTURE.md
 Dependencies: T-010
 Effort: M
+
+### T-024: Add optional transactional email integration
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-21
+Context:
+- Contact form stores leads in Supabase and syncs to CRM
+- No email notifications to business owner or customer
+- Many businesses want email alerts for new leads
+- Should be optional and configurable
+Acceptance Criteria:
+- [x] T-024.1: Add email provider options to env.ts:
+  - SendGrid (most popular)
+  - Postmark (developer-friendly)
+  - Resend (modern, simple)
+- [x] T-024.2: Create /lib/email.ts with email sending logic
+- [x] T-024.3: Add email templates:
+  - Lead notification to business owner
+  - Thank you email to customer (optional)
+- [x] T-024.4: Update contact form action to send emails (optional)
+- [x] T-024.5: Add environment variables:
+  - EMAIL_PROVIDER (sendgrid|postmark|resend|none)
+  - EMAIL_API_KEY
+  - EMAIL_FROM_ADDRESS
+  - EMAIL_TO_ADDRESS (business owner)
+- [x] T-024.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [x] T-024.7: Add to .env.example with clear instructions
+- [x] T-024.8: Test email sending with each provider
+References:
+- /lib/actions.ts
+- /lib/email.ts (new)
+- /lib/env.ts
+- /.env.example
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: M

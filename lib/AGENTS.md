@@ -23,6 +23,7 @@ This folder contains all shared utility modules for the application. Many module
 | `actions.ts` | Server actions for contact form | Rate limiting, input sanitization, IP hashing |
 | `sanitize.ts` | XSS and injection prevention | HTML escaping, email header sanitization |
 | `env.ts` | Environment variable validation | Zod schemas, fail-fast on missing secrets |
+| `email.ts` | Transactional email notifications | Provider gating, sanitized payloads, no secret logging |
 | `sentry-sanitize.ts` | PII filtering for error reports | Redacts sensitive fields before Sentry |
 | `logger.ts` | Centralized logging with Sentry | Sanitizes context, redacts sensitive keys |
 
