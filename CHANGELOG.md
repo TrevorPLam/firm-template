@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added client logo showcase and trust badge sections to the homepage
 - Added Article and Service structured data on blog posts and service pages for richer SEO signals
 - Added template privacy policy and terms of service pages with placeholder guidance
+- Added Dependabot configuration for weekly dependency updates with grouped minor/patch and separate major updates
 
 ### Security
 - Added hashed IP + email rate limiting for contact form submissions
@@ -42,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a production environment checklist and linked it from the template customization guide
 - Refreshed accessibility documentation and linked the validation workflow from the README
 - Documented client logos and trust badges across the customization guide and vertical examples
+- Documented how to enable, auto-merge (patch-only), or disable Dependabot updates
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`
