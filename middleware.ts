@@ -110,6 +110,14 @@ const MAX_BODY_SIZE_BYTES = 1024 * 1024 // 1MB payload limit for POST requests
  * @returns Response with security headers applied
  */
 export function middleware(request: NextRequest) {
+  if (
+    request.nextUrl.pathname.startsWith('/theme-editor') &&
+    process.env.NODE_ENV !== 'development'
+  ) {
+    // Dev-only tooling should fail closed in production to avoid accidental exposure.
+    return new NextResponse('Not Found', { status: 404 })
+  }
+
   // Clone the response
   const response = NextResponse.next()
 

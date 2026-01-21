@@ -65,6 +65,18 @@ This guide walks you through the minimum configuration needed to launch, then de
 ### Typography
 - Update fonts in `app/layout.tsx` and `tailwind.config.ts`.
 
+### Theme editor (dev-only)
+Use the built-in theme editor to preview colors, fonts, and logo placement before editing source files.
+
+1. Start the dev server: `npm run dev`
+2. Visit `http://localhost:3000/theme-editor`
+3. Select primary + secondary colors, heading/body fonts, and upload a logo preview.
+4. Click **Generate snippets** and paste the output into:
+   - `tailwind.config.ts`
+   - `app/globals.css`
+
+> Note: `/theme-editor` is blocked in production via middleware and will return a 404.
+
 ---
 
 ## Content Customization

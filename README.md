@@ -67,6 +67,9 @@ This repository adheres to a strict "Diamond Standard" of engineering excellence
     *   Automatic image optimization.
     *   Static Site Generation (SSG) for core pages.
     *   Edge deployment for global speed.
+*   **Theme Editor (Dev-Only)**:
+    *   Preview brand colors, fonts, and logo placement.
+    *   Generate Tailwind + CSS variable snippets for fast customization.
 *   **Developer Experience**:
     *   100% TypeScript with strict mode.
     *   Vitest for unit testing.

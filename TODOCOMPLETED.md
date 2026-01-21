@@ -1331,3 +1331,36 @@ References:
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
 Dependencies: T-010
 Effort: M
+
+### T-026: Create optional theme customization UI
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-21
+Context:
+- Non-technical users struggle with Tailwind config
+- Visual theme editor would lower barrier to entry
+- Should be optional (dev-only) tool
+- Generate Tailwind config from UI selections
+Acceptance Criteria:
+- [x] T-026.1: Create /app/theme-editor/page.tsx (dev-only route)
+- [x] T-026.2: Build UI for customizing:
+  - Primary color (brand color)
+  - Secondary color
+  - Font family selections
+  - Logo upload preview
+- [x] T-026.3: Live preview of changes
+- [x] T-026.4: Export button to generate:
+  - Updated tailwind.config.ts
+  - Updated color variables
+- [x] T-026.5: Add middleware to block /theme-editor in production
+- [x] T-026.6: Document in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [ ] T-026.7: Optional: Save themes to localStorage
+References:
+- /app/theme-editor/page.tsx (new)
+- /tailwind.config.ts
+- /middleware.ts
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: XL
