@@ -1,7 +1,13 @@
 # content/AGENTS.md — CMS-like Content
 
-Last Updated: 2026-01-06
+Last Updated: 2026-01-21
 Applies To: Any agent working in content/
+
+## Required Reading
+**⚠️ Before coding:** See `/BESTPR.md` for comprehensive best practices including:
+- Data and content patterns
+- MDX blog post structure
+- Static generation requirements
 
 ## Purpose
 This folder contains content managed as files (file-based CMS pattern). Currently only blog posts are stored here, with potential for expansion to other content types.

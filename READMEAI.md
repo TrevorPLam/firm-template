@@ -12,15 +12,16 @@ Purpose: Make work in this repo deterministic, auditable, and agent-executable w
 ## Start here (required read order)
 1) `CODEBASECONSTITUTION.md` (non-negotiable rules)
 2) `AGENTS.md` (how agents must behave)
-3) `TODO.md` (task truth source - **currently focused on template documentation**)
-4) Runbooks (use when instructed):
+3) `BESTPR.md` (best practices - **REQUIRED before coding**)
+4) `TODO.md` (task truth source - **currently focused on template documentation**)
+5) Runbooks (use when instructed):
    - `CODEAUDIT.md`
    - `SECURITYAUDIT.md`
    - `DEPENDENCYAUDIT.md`
    - `RELEASEAUDIT.md`
    - `DOCSAUDIT.md`
-5) `repo.manifest.yaml` (how to run/verify this repo)
-6) `PROJECT_STATUS.md` (current state + next step)
+6) `repo.manifest.yaml` (how to run/verify this repo)
+7) `PROJECT_STATUS.md` (current state + next step)
 
 ## Current Priority: Template Documentation
 **FOCUS**: Execute TODO.md Phase 2 (Tasks T-009 through T-013) to document customization, governance updates, and release readiness.

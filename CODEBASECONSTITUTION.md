@@ -39,6 +39,7 @@ This repo must be:
 ## 6) Documentation expectations
 - Docs must reflect reality.
 - If a doc’s truth cannot be verified, mark **UNKNOWN** and create a verification task.
+- `BESTPR.md` is the canonical best practices reference for coding standards and patterns.
 
 ## 7) Amendment protocol
 Constitution changes require:

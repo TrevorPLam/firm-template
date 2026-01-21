@@ -1,7 +1,14 @@
 # __tests__/AGENTS.md — Test Suite
 
-Last Updated: 2026-01-06
+Last Updated: 2026-01-21
 Applies To: Any agent working in __tests__/
+
+## Required Reading
+**⚠️ Before coding:** See `/BESTPR.md` for comprehensive best practices including:
+- Testing patterns (Vitest + Testing Library)
+- Mocking server actions and modules
+- Coverage requirements
+- Test structure conventions
 
 ## Purpose
 This folder contains unit and integration tests for the application. Tests ensure code quality, prevent regressions, and document expected behavior.
