@@ -1,9 +1,9 @@
 # Codebase Audit Report
 
-**Last Updated:** 2026-01-21 04:45  
+**Last Updated:** 2026-01-21 04:50  
 **Current Phase:** [Phase 1] - Bugs & Defects  
-**Files Analyzed:** 10 / 96 total files  
-**Total Issues:** 9 (Critical: 1 | High: 3 | Medium: 4 | Low: 1)
+**Files Analyzed:** 18 / 96 total files  
+**Total Issues:** 13 (Critical: 1 | High: 4 | Medium: 7 | Low: 1)
 
 ---
 
@@ -12,8 +12,8 @@
 | Metric | Count |
 |--------|-------|
 | Critical Issues | 1 |
-| High Priority | 3 |
-| Medium Priority | 4 |
+| High Priority | 4 |
+| Medium Priority | 7 |
 | Low Priority | 1 |
 | Dead Code (LOC) | TBD |
 | Test Coverage | TBD% |
@@ -23,7 +23,7 @@
 
 ## Phase Progress
 
-- [x] Phase 1: Bugs & Defects - IN PROGRESS (10/96 files analyzed)
+- [x] Phase 1: Bugs & Defects - IN PROGRESS (18/96 files analyzed)
 - [ ] Phase 2: Code Quality Issues
 - [ ] Phase 3: Dead & Unused Code
 - [ ] Phase 4: Incomplete & Broken Features
@@ -90,8 +90,8 @@ async function getRateLimiter() {
 ## Phase 1: Bugs & Defects
 
 **Status:** In Progress  
-**Files Analyzed:** 10/96  
-**Issues Found:** 9 (Critical: 1 | High: 3 | Medium: 4 | Low: 1)
+**Files Analyzed:** 18/96  
+**Issues Found:** 13 (Critical: 1 | High: 4 | Medium: 7 | Low: 1)
 
 ### Critical Issues
 
@@ -432,6 +432,151 @@ sameAs: [
 
 ---
 
+#### #011 - [Severity: MEDIUM] Missing Backdrop Click Handler in SearchDialog
+**Location:** `components/SearchDialog.tsx:87-94`  
+**Type:** UX Bug / Incomplete Implementation  
+**Description:** Search dialog modal has no click handler on the backdrop overlay, so users cannot close the dialog by clicking outside of it (common modal UX pattern)
+
+**Impact:** Users expect to be able to close modals by clicking the backdrop. Missing this behavior creates a confusing UX where the only ways to close are the X button or Escape key. This particularly affects mobile users who don't have keyboard access.
+
+**Code Snippet:**
+```typescript
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+  className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 py-20"
+>
+  {/* No onClick handler on backdrop */}
+  <div className="w-full max-w-2xl rounded-2xl bg-white shadow-xl">
+    {/* Modal content */}
+  </div>
+</div>
+```
+
+**Root Cause:** Missing event handler for backdrop clicks. Standard modal pattern requires clicking outside the content area to dismiss.
+
+**Recommended Fix:**
+```typescript
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+  className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 py-20"
+  onClick={(e) => {
+    if (e.target === e.currentTarget) {
+      setIsOpen(false)
+    }
+  }}
+>
+  <div className="w-full max-w-2xl rounded-2xl bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
+    {/* Modal content */}
+  </div>
+</div>
+```
+
+**Effort:** 30 minutes  
+**Priority Justification:** Missing expected UX pattern. Especially impacts mobile users who rely on touch interactions.
+
+---
+
+#### #012 - [Severity: MEDIUM] No Loading/Error States in Sentry Client Functions
+**Location:** `lib/sentry-client.ts:12-49`  
+**Type:** Error Handling Gap / Silent Failure  
+**Description:** All Sentry functions silently fail if Sentry import fails, with no indication to the caller that the operation didn't succeed
+
+**Impact:** Developers and monitoring systems have no visibility when Sentry operations fail. If Sentry fails to load (network issue, CSP block, package issue), all tracking silently fails and developers won't know they've lost observability until they need it.
+
+**Code Snippet:**
+```typescript
+export async function setSentryUser(user: { id?: string; email?: string; name?: string }) {
+  if (typeof window === 'undefined' || !process.env.NEXT_PUBLIC_SENTRY_DSN) return
+  const Sentry = await loadSentry().catch(() => null)  // Silently catches error
+  if (Sentry) {
+    Sentry.setUser(user)
+  }
+  // No indication of failure
+}
+```
+
+**Root Cause:** `.catch(() => null)` swallows all import errors without logging or notifying. Operations silently no-op when Sentry is unavailable.
+
+**Recommended Fix:**
+```typescript
+async function loadSentry() {
+  if (!sentryPromise) {
+    sentryPromise = import('@sentry/nextjs').catch((error) => {
+      console.warn('Failed to load Sentry:', error)
+      // Consider: Emit custom event for monitoring
+      return null
+    })
+  }
+  return sentryPromise
+}
+
+export async function setSentryUser(user: { id?: string; email?: string; name?: string }) {
+  if (typeof window === 'undefined' || !process.env.NEXT_PUBLIC_SENTRY_DSN) return
+  const Sentry = await loadSentry()
+  if (!Sentry) {
+    // Log warning when Sentry operations fail
+    console.warn('Sentry unavailable, could not set user')
+    return
+  }
+  Sentry.setUser(user)
+}
+```
+
+**Effort:** 1 hour  
+**Priority Justification:** Makes debugging harder when observability fails. Developer experience issue that can hide critical problems.
+
+---
+
+#### #013 - [Severity: MEDIUM] Inconsistent Focus Indicator on SearchDialog Backdrop
+**Location:** `components/SearchDialog.tsx:92`  
+**Type:** Accessibility Issue / Missing Focus State  
+**Description:** The search dialog backdrop div is focusable (role="dialog") but has no focus indicator styling
+
+**Impact:** Keyboard users navigating to the dialog may not see where focus is when it moves to the dialog container. Violates WCAG 2.1 SC 2.4.7 (Focus Visible).
+
+**Code Snippet:**
+```typescript
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+  className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 py-20"
+>
+```
+
+**Root Cause:** No focus management for the dialog container itself. Role="dialog" makes it focusable but no visual feedback.
+
+**Recommended Fix:**
+```typescript
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+  className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 py-20 focus:outline-none"
+  tabIndex={-1}  // Make focusable for screen readers but don't include in tab order
+  ref={dialogRef}
+>
+```
+
+And focus the dialog container on mount:
+```typescript
+useEffect(() => {
+  if (isOpen) {
+    dialogRef.current?.focus()
+    setTimeout(() => inputRef.current?.focus(), 0)
+  }
+}, [isOpen])
+```
+
+**Effort:** 1 hour  
+**Priority Justification:** Accessibility issue affecting keyboard navigation. WCAG 2.1 Level AA compliance.
+
+---
+
 ### Low Priority Issues
 
 #### #009 - [Severity: LOW] Inconsistent Return Values in Blog Module
@@ -473,23 +618,82 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 
 ---
 
+#### #010 - [Severity: HIGH] Focus Management Bug in Mobile Menu
+**Location:** `components/Navigation.tsx:179-189`  
+**Type:** Accessibility Bug / State Management  
+**Description:** When mobile menu closes, focus restoration attempts to use `lastFocusedElementRef.current` which may be stale or null, leading to focus loss
+
+**Impact:** Keyboard users lose their place in the document when the mobile menu closes. This violates WCAG 2.1 focus management guidelines and creates a poor user experience for keyboard/screen reader users. Focus may jump to the start of the document or be lost entirely.
+
+**Code Snippet:**
+```typescript
+useEffect(() => {
+  if (!isMobileMenuOpen) {
+    const focusTarget = mobileToggleButtonRef.current ?? lastFocusedElementRef.current
+    focusTarget?.focus()
+    return
+  }
+
+  lastFocusedElementRef.current = document.activeElement as HTMLElement | null
+  const focusableElements = getFocusableElements()
+  focusableElements[0]?.focus()
+}, [isMobileMenuOpen])
+```
+
+**Root Cause:** `lastFocusedElementRef.current` is set AFTER the menu opens, but it captures `document.activeElement` which might be the toggle button itself. When the menu closes via Escape key or link click, this ref may no longer point to a valid focusable element, or may point to an element that's no longer in the DOM.
+
+**Recommended Fix:** Store focus before opening menu:
+```typescript
+const toggleMobileMenu = () => {
+  if (!isMobileMenuOpen) {
+    lastFocusedElementRef.current = document.activeElement as HTMLElement
+  }
+  setIsMobileMenuOpen((prev) => !prev)
+}
+
+useEffect(() => {
+  if (!isMobileMenuOpen && lastFocusedElementRef.current) {
+    // Add validation that element still exists
+    if (document.contains(lastFocusedElementRef.current)) {
+      lastFocusedElementRef.current.focus()
+    } else {
+      mobileToggleButtonRef.current?.focus()
+    }
+    lastFocusedElementRef.current = null
+  } else if (isMobileMenuOpen) {
+    const focusableElements = getFocusableElements()
+    focusableElements[0]?.focus()
+  }
+}, [isMobileMenuOpen])
+```
+
+**Effort:** 1-2 hours  
+**Priority Justification:** Accessibility violation affecting keyboard and screen reader users. WCAG 2.1 Level A requirement for focus management.
+
+---
+
 ## Pattern Analysis
 
 ### Recurring Issues
 
-1. **Missing Error Propagation** - Found in 2 locations (actions.ts rate limiter, HubSpot sync)
-2. **Hardcoded Configuration** - Found in layout.tsx structured data, search.ts static pages
-3. **Unused Parameters** - Found in analytics.ts helper functions
-4. **Initialization Race Conditions** - Rate limiter singleton pattern
+1. **Silent Failures** - Found in 3 locations (HubSpot sync, Sentry client, rate limiter)
+2. **Missing Error Propagation** - Found in 2 locations (actions.ts rate limiter, HubSpot sync)
+3. **Hardcoded Configuration** - Found in layout.tsx structured data, search.ts static pages
+4. **Accessibility Issues** - Found in 2 locations (Navigation focus management, SearchDialog focus indicators)
+5. **Unused Parameters** - Found in analytics.ts helper functions
+6. **Initialization Race Conditions** - Rate limiter singleton pattern
 
 ### Hotspots (Files with Most Issues)
 
 1. `lib/actions.ts` - 4 issues (1 critical, 2 high, 1 medium)
-2. `lib/analytics.ts` - 1 issue (1 medium)
-3. `middleware.ts` - 1 issue (1 high)
-4. `lib/logger.ts` - 1 issue (1 high)
-5. `app/layout.tsx` - 1 issue (1 medium)
-6. `lib/blog.ts` - 1 issue (1 low)
+2. `components/SearchDialog.tsx` - 2 issues (2 medium)
+3. `components/Navigation.tsx` - 1 issue (1 high)
+4. `lib/sentry-client.ts` - 1 issue (1 medium)
+5. `lib/analytics.ts` - 1 issue (1 medium)
+6. `middleware.ts` - 1 issue (1 high)
+7. `lib/logger.ts` - 1 issue (1 high)
+8. `app/layout.tsx` - 1 issue (1 medium)
+9. `lib/blog.ts` - 1 issue (1 low)
 
 ---
 
@@ -500,6 +704,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 1. **FIX #001** - Implement Promise-based singleton for rate limiter initialization
 2. **FIX #002** - Move rate limit check before database insertion
 3. **FIX #003** - Add validation for Content-Length header in middleware
+4. **FIX #010** - Fix focus management in mobile menu (accessibility)
 
 ### Short-term (1-4 Weeks)
 
@@ -507,6 +712,9 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 2. Add monitoring/alerting for double-failure scenarios (#006)
 3. Add periodic cleanup for in-memory rate limiter (#005)
 4. Move social media URLs to environment variables (#008)
+5. Add backdrop click handler to SearchDialog (#011)
+6. Add focus indicators to SearchDialog (#013)
+7. Add error logging to Sentry client functions (#012)
 
 ### Long-term (1-6 Months)
 
@@ -546,3 +754,9 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 - Focus: Core server actions, security utilities, middleware
 - Key findings: Rate limiter race condition (CRITICAL), rate limit flow bug, middleware validation gaps
 - Time spent: ~30 minutes
+
+**Batch 2 (Files 11-18): COMPLETE**
+- Files analyzed: components/Navigation.tsx, components/SearchDialog.tsx, components/ErrorBoundary.tsx, lib/sentry-client.ts, components/ui/Input.tsx, components/ui/Button.tsx, components/ui/Textarea.tsx, lib/env.public.ts
+- Focus: Client-side components, UI elements, accessibility
+- Key findings: Focus management bug (HIGH), missing modal UX patterns, silent Sentry failures
+- Time spent: ~25 minutes
