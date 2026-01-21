@@ -1,17 +1,37 @@
 # Accessibility Validation Report
 
-**Task**: T-102
-**Date**: 2026-01-11
-**Tester**: Trevor
-**Scope**: Keyboard navigation, focus visibility, and basic a11y validation
+**Task**: T-021
+**Date**: 2026-01-21
+**Tester**: Agent
+**Scope**: Automated axe scans, keyboard navigation, focus visibility, and basic a11y validation
+
+---
+
+## Accessibility Goal
+
+- **Target Standard**: WCAG 2.1 AA
+- **Status**: Documentation and test plan updated. Automated scans require local dependencies and a running app.
 
 ---
 
 ## Test Environment
 
-- **Browser**: Testing required in Chrome/Firefox/Safari
-- **Pages Tested**: Home, Services, Pricing, Contact, About, Blog
-- **Testing Method**: Keyboard-only navigation (no mouse)
+- **Browser**: Chrome/Firefox/Safari (manual) + Playwright Chromium (automated)
+- **Pages Tested**: Home, Services, Pricing, Contact
+- **Testing Method**: Keyboard-only navigation (manual) and axe-core automated scans
+
+---
+
+## Automated Accessibility Scans (axe-core)
+
+### Latest Run
+- **Status**: Pending (requires `npm install` + `npm run dev`)
+- **Command**: `npm run audit:a11y`
+- **Reports**: `reports/a11y/*.json` (generated locally)
+
+### Why Pending
+Automated scans require Playwright and the app runtime. Run the command above after local dependencies
+are installed and the dev server is available.
 
 ---
 
@@ -193,6 +213,14 @@ Expected focus styles (verify in browser DevTools):
 
 ---
 
+## Recommendations
+
+- Run `npm run audit:a11y` before releases and attach reports to the release checklist.
+- Perform a manual screen reader pass (NVDA/VoiceOver) for the Home and Contact pages.
+- Track any newly added interactive components here with keyboard and focus checks.
+
+---
+
 ## 🔧 Automated Testing (Optional)
 
 ### Tools to Consider
@@ -222,7 +250,7 @@ npm run test:e2e -- --grep accessibility
 ### Sign-Off
 - [ ] Tester confirms all critical tests pass
 - [ ] Any blocking issues documented with follow-up tasks
-- [ ] Task T-102 marked DONE in TODO.md
+- [ ] Task T-021 marked DONE in TODO.md
 
 ---
 
@@ -236,4 +264,3 @@ npm run test:e2e -- --grep accessibility
   - `aria-label` on mobile menu container
   - Escape key handler for mobile menu
   - Focus management in dialogs (search)
-
