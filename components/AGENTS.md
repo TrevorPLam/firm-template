@@ -53,6 +53,7 @@ components/
 | `ErrorBoundary.tsx` | Error handling wrapper | Client |
 | `InstallPrompt.tsx` | PWA install prompt | Client |
 | `SkipToContent.tsx` | Accessibility skip link | Server |
+| `AppointmentScheduler.tsx` | Appointment scheduling CTA embed | Client |
 
 ### UI Primitives (`ui/`)
 

@@ -5,6 +5,8 @@ import Section from '@/components/ui/Section'
 import Card from '@/components/ui/Card'
 import ContactForm from '@/components/ContactForm'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import AppointmentScheduler from '@/components/AppointmentScheduler'
+import { getSchedulingConfig } from '@/lib/scheduling'
 
 const CONTACT_EMAIL = 'contact@yourfirm.com'
 
@@ -14,6 +16,8 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+  const schedulingConfig = getSchedulingConfig()
+
   return (
     <>
       {/* Hero Section */}
@@ -138,6 +142,14 @@ export default function ContactPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Scheduling Section */}
+      <AppointmentScheduler
+        config={schedulingConfig}
+        mode="inline"
+        title="Prefer to Schedule Now?"
+        description="Reserve a time that works for you and we will confirm by email."
+      />
 
       {/* FAQ Section */}
       <Section className="bg-off-white">

@@ -790,8 +790,9 @@ Effort: M
 Priority: P1
 Type: INFRASTRUCTURE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-21
 Context:
 - Reduces booking friction by 40% according to conversion studies
 - Standard feature on 73% of consulting/professional services sites
@@ -799,22 +800,22 @@ Context:
 - Improves user experience significantly
 - Identified in PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
-- [ ] T-032.1: Create AppointmentScheduler component
+- [x] T-032.1: Create AppointmentScheduler component
   - Support Calendly embed
   - Support Cal.com (open source alternative)
   - Configurable via environment variables
-- [ ] T-032.2: Add scheduling CTAs to:
+- [x] T-032.2: Add scheduling CTAs to:
   - Homepage
   - Services pages
   - Contact page
   - Pricing page
-- [ ] T-032.3: Create modal/popup option for inline booking
-- [ ] T-032.4: Add environment variables:
+- [x] T-032.3: Create modal/popup option for inline booking
+- [x] T-032.4: Add environment variables:
   - SCHEDULING_PROVIDER (calendly|calcom|none)
   - CALENDLY_URL or CALCOM_USERNAME
-- [ ] T-032.5: Style to match template design system
-- [ ] T-032.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [ ] T-032.7: Test booking flow end-to-end
+- [x] T-032.5: Style to match template design system
+- [x] T-032.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [x] T-032.7: Test booking flow end-to-end
 References:
 - /components/AppointmentScheduler.tsx (new)
 - /lib/env.ts

@@ -34,6 +34,9 @@ Optional variables enhance production readiness but are not strictly required.
 | `EMAIL_FROM_ADDRESS` | Sender address for notifications. | Email provider configuration. | `notifications@yourfirm.com` | Server-side value; keep private. | Verify the From address in received emails. |
 | `EMAIL_TO_ADDRESS` | Owner inbox for contact alerts. | Internal decision. | `owner@yourfirm.com` | Server-side value; keep private. | Confirm the notification arrives in the correct inbox. |
 | `EMAIL_SEND_THANK_YOU` | Sends a thank-you email to the customer. | Internal decision. | `true` | Server-side value; keep private. | Submit a contact form and confirm the customer receives the thank-you email. |
+| `SCHEDULING_PROVIDER` | Enables appointment scheduling embeds. | Calendly or Cal.com account. | `calendly` | Server-side value; keep private. | Confirm the scheduling CTA appears on the homepage. |
+| `CALENDLY_URL` | Calendly scheduling link. | Calendly scheduling settings. | `https://calendly.com/your-firm/intro` | Server-side value; keep private. | Click the scheduling CTA and verify the Calendly embed loads. |
+| `CALCOM_USERNAME` | Cal.com username for booking. | Cal.com account settings. | `your-firm` | Server-side value; keep private. | Click the scheduling CTA and verify the Cal.com embed loads. |
 | `SENTRY_AUTH_TOKEN` | Uploads source maps/releases. | Sentry account settings. | `sntrys_...` | Server-side secret; keep private. | Run a production build and confirm Sentry release upload. |
 | `SENTRY_ORG` | Identifies your Sentry organization. | Sentry organization settings. | `your-org-slug` | Server-side value; keep private. | Confirm release creation uses the correct org. |
 | `SENTRY_PROJECT` | Identifies your Sentry project. | Sentry project settings. | `your-project-slug` | Server-side value; keep private. | Confirm release creation uses the correct project. |
