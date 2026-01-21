@@ -54,6 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documented transactional email notification setup and optional thank-you emails
 - Documented video embed customization steps and added video notes to vertical examples
 - Documented exit-intent popup configuration in the customization guide
+- Documented monitoring guidance for transitive build-tool vulnerabilities
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`
