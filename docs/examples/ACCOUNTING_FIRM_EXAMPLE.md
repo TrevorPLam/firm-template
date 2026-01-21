@@ -63,6 +63,7 @@ Goal: Provide an accounting-focused template configuration with common services 
 - Ensure contact form captures industry, revenue range, and accounting system used.
 - Replace client logos in `/public/clients/` with approved industries, and add CPA badges in `/components/TrustBadge.tsx`.
 - Replace testimonial placeholders with anonymized financial outcomes.
+- Replace placeholder video IDs in the hero, about, and service pages with accounting overview videos.
 - Add deadline reminders in the blog or CTA sections.
 
 ---

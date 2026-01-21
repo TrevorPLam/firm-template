@@ -1,6 +1,6 @@
 # PLACEHOLDER_REFERENCE.md — Content Replacement Map
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Active
 
 Goal: Provide a single map of placeholder content locations and replacement priority.
@@ -35,6 +35,7 @@ Goal: Provide a single map of placeholder content locations and replacement prio
 | --- | --- | --- |
 | About | `Your Firm Name` narrative | `app/about/page.tsx` |
 | Blog | Example posts + author | `content/blog/*.mdx`, `lib/blog.ts`, `app/blog/page.tsx` |
+| Video | Placeholder video IDs + captions | `components/Hero.tsx`, `app/about/page.tsx`, `app/services/service-1/page.tsx`, `content/blog/*.mdx` |
 | Search | Search page metadata | `app/search/page.tsx` |
 
 ---

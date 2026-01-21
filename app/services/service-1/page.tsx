@@ -20,6 +20,15 @@ export default function Service1Page() {
       title="Core Service 1"
       description="Comprehensive professional services designed to help your business achieve its goals. Our expert team delivers strategic solutions with measurable results."
       serviceSlug="service-1"
+      // Video highlight is optional; include it when you have a short explainer ready.
+      videoHighlight={{
+        title: 'See the Service Approach in Action',
+        description:
+          'Use a short explainer video to walk prospects through your methodology and the outcomes you deliver.',
+        provider: 'vimeo',
+        videoId: '76979871',
+        caption: 'Swap this Vimeo ID with your own service explainer video.',
+      }}
       included={[
         'Initial consultation and needs assessment',
         'Strategic planning and roadmap development',

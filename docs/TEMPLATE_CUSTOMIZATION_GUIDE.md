@@ -105,6 +105,26 @@ Use the built-in theme editor to preview colors, fonts, and logo placement befor
 - Replace example posts in `/content/blog/` with your own.
 - Keep frontmatter fields intact (`title`, `description`, `date`, `author`, `category`).
 
+### Video (optional)
+Use video to introduce your team, explain services, or share client success stories.
+
+**Where video embeds are already wired:**
+- Homepage hero (swap the placeholder YouTube ID in `/components/Hero.tsx`)
+- About page team video (`/app/about/page.tsx`)
+- Service explainer example (`/app/services/service-1/page.tsx`)
+- Blog posts via MDX (`/components/BlogPostContent.tsx`)
+
+**Video components:**
+- `VideoPlayer` (YouTube, Vimeo, or hosted file)
+- `VideoTestimonial` (grid of testimonials with optional hover-to-play)
+
+Example MDX usage:
+```mdx
+<VideoPlayer provider="youtube" videoId="YOUR_VIDEO_ID" title="Firm overview" />
+```
+
+> Tip: For hosted files, place videos in `/public/videos/` and use `provider="file"` with `src="/videos/your-video.mp4"`.
+
 ### Contact
 - `/app/contact/page.tsx` handles the form.
 - The form submission logic is in `/lib/actions.ts`.
