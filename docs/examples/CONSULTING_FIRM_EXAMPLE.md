@@ -66,6 +66,7 @@ Goal: Illustrate a consulting firm adaptation with clear service mapping and pri
 - Add a short “Engagement Phases” section to the pricing page.
 - Ensure the contact form captures company size and desired timeline.
 - Replace client logos in `/public/clients/` with approved logos, and add partner badges in `/components/TrustBadge.tsx`.
+- Replace placeholder video IDs in the hero, about, and service pages with consulting explainer videos.
 - Add an “Outcomes” callout block to the hero or value props.
 
 ---

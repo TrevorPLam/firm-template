@@ -2,6 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode from 'rehype-pretty-code'
+import VideoPlayer from '@/components/VideoPlayer'
 
 interface BlogPostContentProps {
   content: string
@@ -26,6 +27,10 @@ export default function BlogPostContent({ content }: BlogPostContentProps) {
               ],
             ],
           },
+        }}
+        components={{
+          // Provide video embeds in MDX without requiring custom wrappers.
+          VideoPlayer,
         }}
       />
     </div>

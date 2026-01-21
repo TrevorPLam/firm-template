@@ -905,46 +905,6 @@ Effort: M
 
 ---
 
-### T-035: Add Video Content Support
-Priority: P2
-Type: QUALITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Video increases engagement by 35% according to marketing research
-- 89% of professional services sites use video content
-- Trust-building through visual storytelling
-- Supports testimonials, case studies, team introductions
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
-Acceptance Criteria:
-- [ ] T-035.1: Create VideoPlayer component
-  - Support YouTube embed
-  - Support Vimeo embed
-  - Support direct video file (with native HTML5 player)
-  - Responsive sizing
-  - Lazy loading
-- [ ] T-035.2: Create VideoTestimonial component
-  - Grid layout for multiple testimonials
-  - Play on hover option
-  - Full-screen mode
-- [ ] T-035.3: Add video support to blog posts (MDX)
-- [ ] T-035.4: Create example video embeds:
-  - Hero section video option
-  - About page team video
-  - Service explainer video
-- [ ] T-035.5: Document video hosting options and setup
-- [ ] T-035.6: Add to vertical examples
-References:
-- /components/VideoPlayer.tsx (new)
-- /components/VideoTestimonial.tsx (new)
-- /components/Hero.tsx (update for video option)
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: T-010, T-011
-Effort: S
-
----
-
 ### T-036: Implement Exit-Intent Popup System
 Priority: P2
 Type: QUALITY
@@ -1126,7 +1086,7 @@ Effort: S
 
 ### Platinum Standard Path
 - **Phase 5A (Essentials)**: T-022, T-023, T-024, T-030, T-031, T-032, T-033 → 88/100 (Industry Standard)
-- **Phase 5B (Advanced)**: T-034, T-035, T-036, T-037, T-039 → 95/100 (Exceeds Standard)
+- **Phase 5B (Advanced)**: T-034, T-036, T-037, T-039 → 95/100 (Exceeds Standard)
 - **Phase 5C (Elite)**: T-025, T-026, T-027, T-028, T-029, T-038 → 98/100 (Platinum)
 
 ### What Changes (Content Only)

@@ -61,6 +61,7 @@ Goal: Provide a design agency configuration with creative services and flexible 
 - Add a short “Process” section to the homepage or services pages.
 - Ensure contact form captures project timeline, budget, and preferred deliverables.
 - Replace client logos in `/public/clients/` with brand partners, and add award badges in `/components/TrustBadge.tsx`.
+- Replace placeholder video IDs in the hero, about, and service pages with studio reels.
 - Add a portfolio CTA to the hero secondary button.
 
 ---

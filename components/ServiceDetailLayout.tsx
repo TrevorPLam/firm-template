@@ -54,6 +54,8 @@ import Accordion, { AccordionItem } from '@/components/ui/Accordion'
 import { getPublicBaseUrl } from '@/lib/env.public'
 import AppointmentScheduler from '@/components/AppointmentScheduler'
 import { getSchedulingConfig } from '@/lib/scheduling'
+import VideoPlayer from '@/components/VideoPlayer'
+import type { VideoProvider } from '@/lib/video'
 
 /**
  * Process step data structure.
@@ -90,6 +92,16 @@ export interface ServiceDetailProps {
   }[]
   /** FAQ items for accordion */
   faqs: AccordionItem[]
+  /** Optional video highlight for this service page. */
+  videoHighlight?: {
+    title: string
+    description?: string
+    provider: VideoProvider
+    videoId?: string
+    src?: string
+    poster?: string
+    caption?: string
+  }
   /** Optional service slug for structured data */
   serviceSlug?: string
 }
@@ -107,6 +119,7 @@ export default function ServiceDetailLayout({
   whoItsFor,
   pricing,
   faqs,
+  videoHighlight,
   serviceSlug,
 }: ServiceDetailProps) {
   const baseUrl = getPublicBaseUrl().replace(/\/$/, '')
@@ -219,6 +232,32 @@ export default function ServiceDetailLayout({
           </div>
         </Container>
       </Section>
+
+      {/* Service Video Highlight */}
+      {videoHighlight ? (
+        <Section className="bg-white">
+          <Container>
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-charcoal mb-4">
+                  {videoHighlight.title}
+                </h2>
+                {videoHighlight.description ? (
+                  <p className="text-lg text-slate">{videoHighlight.description}</p>
+                ) : null}
+              </div>
+              <VideoPlayer
+                provider={videoHighlight.provider}
+                videoId={videoHighlight.videoId}
+                src={videoHighlight.src}
+                poster={videoHighlight.poster}
+                title={videoHighlight.title}
+                caption={videoHighlight.caption}
+              />
+            </div>
+          </Container>
+        </Section>
+      ) : null}
 
       {/* Who It's For */}
       <Section className="bg-white">

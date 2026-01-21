@@ -74,6 +74,7 @@ Goal: Show how to adapt the template for a law firm while keeping routing and co
 - Add attorney bios and credentials to `/app/about/page.tsx` or a future `/app/team` page.
 - Replace client logos in `/public/clients/` with approved clients or industries, and add bar association badges in `/components/TrustBadge.tsx`.
 - Swap testimonials with anonymized client results or practice outcomes.
+- Replace placeholder video IDs in the hero, about, and service pages with approved firm videos.
 - Review disclaimers and add legal-specific footers where required by jurisdiction.
 - Update CTA labels to match intake (e.g., “Schedule a Consultation”).
 

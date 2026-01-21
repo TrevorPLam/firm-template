@@ -54,6 +54,7 @@ This folder contains all shared utility modules for the application. Many module
 | `contact-form-schema.ts` | Zod schema for contact form validation |
 | `sentry-client.ts` | Client-side Sentry helpers |
 | `scheduling.ts` | Appointment scheduling configuration + embed helpers |
+| `video.ts` | Video source normalization for embeds and files |
 
 ---
 

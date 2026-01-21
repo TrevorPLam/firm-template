@@ -43,6 +43,8 @@ components/
 | `SearchPage.tsx` | Full search page | Client |
 | `ServicesOverview.tsx` | Services grid on homepage | Server |
 | `ServiceDetailLayout.tsx` | Template for service pages | Server |
+| `VideoPlayer.tsx` | Unified video embeds and file playback | Server |
+| `VideoTestimonial.tsx` | Video testimonial grid | Client |
 | `BlogPostContent.tsx` | Blog post renderer | Server |
 | `Breadcrumbs.tsx` | Navigation breadcrumbs | Client |
 | `CTASection.tsx` | Call-to-action blocks | Server |
@@ -74,7 +76,7 @@ See `components/ui/AGENTS.md` for detailed documentation.
 **Client Components:**
 - Must have `'use client'` at top of file
 - Required for: Forms, state, event handlers, browser APIs
-- Current client components: Navigation, ContactForm, SearchDialog, Breadcrumbs, ErrorBoundary, InstallPrompt
+- Current client components: Navigation, ContactForm, SearchDialog, Breadcrumbs, ErrorBoundary, InstallPrompt, AppointmentScheduler, VideoTestimonial
 
 ### Props Pattern
 

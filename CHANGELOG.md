@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added optional transactional email notifications for the contact form (SendGrid/Postmark/Resend)
 - Added a dev-only theme editor to preview tokens and generate Tailwind/CSS snippets
 - Added optional appointment scheduling embeds with Calendly or Cal.com across core pages
+- Added video embeds for hero, about, and service pages plus a reusable video testimonial grid
 
 ### Security
 - Added hashed IP + email rate limiting for contact form submissions
@@ -50,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documented client logos and trust badges across the customization guide and vertical examples
 - Documented how to enable, auto-merge (patch-only), or disable Dependabot updates
 - Documented transactional email notification setup and optional thank-you emails
+- Documented video embed customization steps and added video notes to vertical examples
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`

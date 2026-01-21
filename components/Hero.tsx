@@ -34,6 +34,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import VideoPlayer from '@/components/VideoPlayer'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
 
@@ -42,6 +43,15 @@ import Container from '@/components/ui/Container'
  * Renders the main value proposition and CTAs.
  */
 export default function Hero() {
+  // Switch between image and video without rewriting layout for quick customization.
+  const heroMediaType: 'image' | 'video' = 'video'
+  const heroVideo = {
+    provider: 'youtube' as const,
+    videoId: 'ysz5S6PUM-U',
+    title: 'Firm overview video',
+    caption: 'Replace with a short explainer or welcome video for your firm.',
+  }
+
   return (
     <section className="bg-gradient-to-b from-off-white to-white py-20 md:py-32">
       <Container>
@@ -73,17 +83,27 @@ export default function Hero() {
 
           {/* Right Column - Hero Image/Illustration */}
           <div className="hidden lg:block">
-            <div className="bg-gradient-to-br from-charcoal to-teal/20 rounded-2xl p-4 aspect-square flex items-center justify-center shadow-lg">
-              <Image
-                src="/images/hero-growth.svg"
-                alt="Stylized growth chart representing business growth and success"
-                width={640}
-                height={640}
-                sizes="(min-width: 1280px) 592px, (min-width: 1024px) 50vw, 0px"
-                priority
-                className="h-full w-full object-contain"
+            {heroMediaType === 'video' ? (
+              <VideoPlayer
+                provider={heroVideo.provider}
+                videoId={heroVideo.videoId}
+                title={heroVideo.title}
+                caption={heroVideo.caption}
+                className="rounded-2xl shadow-lg"
               />
-            </div>
+            ) : (
+              <div className="bg-gradient-to-br from-charcoal to-teal/20 rounded-2xl p-4 aspect-square flex items-center justify-center shadow-lg">
+                <Image
+                  src="/images/hero-growth.svg"
+                  alt="Stylized growth chart representing business growth and success"
+                  width={640}
+                  height={640}
+                  sizes="(min-width: 1280px) 592px, (min-width: 1024px) 50vw, 0px"
+                  priority
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            )}
           </div>
         </div>
       </Container>

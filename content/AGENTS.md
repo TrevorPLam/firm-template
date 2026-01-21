@@ -20,11 +20,9 @@ This folder contains content managed as files (file-based CMS pattern). Currentl
 content/
 ├── AGENTS.md       # This file
 └── blog/           # Blog posts in MDX format
-    ├── content-marketing-small-budget.mdx
-    ├── email-marketing-roi.mdx
-    ├── marketing-metrics-that-matter.mdx
-    ├── seo-basics-small-business.mdx
-    └── social-media-strategy-2025.mdx
+    ├── example-post-1-industry-insights.mdx
+    ├── example-post-2-client-success.mdx
+    └── example-post-3-best-practices.mdx
 ```
 
 ---
@@ -55,8 +53,8 @@ featured: false              # Optional: Show on homepage (default: false)
 | `title` | string | ✅ | Displayed as h1, used in OG tags |
 | `description` | string | ✅ | Meta description, max ~160 chars |
 | `date` | string | ✅ | ISO date format (YYYY-MM-DD) |
-| `author` | string | ✅ | Falls back to "Your Dedicated Marketer Team" |
-| `category` | string | ✅ | Falls back to "Marketing" |
+| `author` | string | ✅ | Falls back to "Your Firm Team" |
+| `category` | string | ✅ | Falls back to "General" |
 | `featured` | boolean | ❌ | Default: false |
 
 ---
@@ -74,10 +72,19 @@ featured: false              # Optional: Show on homepage (default: false)
 - Tables
 
 ### MDX Features
-MDX allows embedding React components, but currently the blog uses **pure Markdown only**. If adding React components to blog posts:
+MDX allows embedding React components for richer content.
+If adding React components to blog posts:
 1. Import the component in `BlogPostContent.tsx`
 2. Pass it to the MDX renderer
 3. Document the available components here
+
+**Available MDX components**
+- `VideoPlayer` (YouTube, Vimeo, or hosted video files)
+
+Example:
+```mdx
+<VideoPlayer provider="youtube" videoId="YOUR_VIDEO_ID" title="Case study recap" />
+```
 
 ---
 

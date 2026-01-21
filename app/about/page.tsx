@@ -1,6 +1,34 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Target, Users, TrendingUp, Award, Heart, Lightbulb } from 'lucide-react'
+import VideoPlayer from '@/components/VideoPlayer'
+import VideoTestimonial, { type VideoTestimonialItem } from '@/components/VideoTestimonial'
+
+// Placeholder IDs keep the layout functional while prompting firms to swap in real footage.
+const teamVideo = {
+  provider: 'youtube' as const,
+  videoId: 'ysz5S6PUM-U',
+  title: 'Meet the team behind Your Firm Name',
+  caption: 'Replace with a short team introduction or culture video.',
+}
+
+// Keep quotes short so cards remain balanced across breakpoints.
+const testimonialItems: VideoTestimonialItem[] = [
+  {
+    name: 'Jordan Lee',
+    role: 'Operations Director',
+    quote: 'Their process gave us clarity and a reliable partner we can trust.',
+    provider: 'vimeo',
+    videoId: '76979871',
+  },
+  {
+    name: 'Avery Patel',
+    role: 'Founder',
+    quote: 'We finally have a plan that connects strategy to measurable results.',
+    provider: 'youtube',
+    videoId: 'ysz5S6PUM-U',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'About Us | Your Firm Name',
@@ -55,6 +83,36 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Team Video Section */}
+      <section className="py-20 bg-off-white">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+                Meet the Team
+              </h2>
+              <p className="text-lg text-slate">
+                A short introduction video helps new clients understand your culture and approach.
+              </p>
+            </div>
+            <VideoPlayer
+              provider={teamVideo.provider}
+              videoId={teamVideo.videoId}
+              title={teamVideo.title}
+              caption={teamVideo.caption}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Video Testimonials Section */}
+      <VideoTestimonial
+        items={testimonialItems}
+        title="Client Stories"
+        description="Swap in real testimonials to build trust with prospective clients."
+        playOnHover={false}
+      />
 
       {/* Values Section */}
       <section className="py-20 bg-gray-50">
