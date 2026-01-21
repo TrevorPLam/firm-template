@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `npm run check:npm-registry` to diagnose registry connectivity and proxy issues before running dependency commands
 - Added a contact form honeypot field to block bot submissions
 - Added repeatable accessibility and Lighthouse audit scripts for local QA
+- Added `npm run audit:seo` for metadata, sitemap, and internal link validation
 - Added Playwright coverage for contact submission success, rate limiting, and search empty states
 - Added unit tests for Hero, ValueProps, ServicesOverview, and SocialProof sections
 - Added client logo showcase and trust badge sections to the homepage
@@ -29,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expanded middleware security header docs and environment helper documentation
 - Clarified sanitize utility usage guidance
 - Documented accessibility standards, Lighthouse baselines, and Sentry performance instrumentation
+- Added SEO checklist, structured data templates, and Search Console guidance to the customization guide
 - Documented Vitest coverage threshold expectations in the testing strategy
 - Consolidated Cloudflare Pages deployment guidance, added mobile smoke test checklist, and archived legacy roadmaps
 - Added template customization guide, placeholder reference, and architecture overview documentation

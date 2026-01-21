@@ -1,7 +1,7 @@
 # TODO.md — Repository Task List
 
 Document Type: Workflow
-Last Updated: 2026-01-22
+Last Updated: 2026-01-21
 Task Truth Source: **TODO.md**
 
 This file is the single source of truth for actionable work. If another document disagrees, the task record in this file wins (unless the Constitution overrides).
@@ -717,44 +717,6 @@ References:
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
 Dependencies: T-010
 Effort: XL
-
----
-
-### T-027: Enhance SEO tooling and documentation
-Priority: P3
-Type: QUALITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- SEO setup is mostly manual currently
-- Could provide better tools and validation
-- Help users optimize for search engines
-Acceptance Criteria:
-- [ ] T-027.1: Create SEO checklist in TEMPLATE_CUSTOMIZATION_GUIDE.md:
-  - Meta tags verification
-  - Structured data validation
-  - Sitemap generation
-  - robots.txt configuration
-  - Internal linking strategy
-- [ ] T-027.2: Add SEO validation script: npm run audit:seo
-  - Check for missing meta descriptions
-  - Verify structured data syntax
-  - Check for broken internal links
-  - Validate sitemap.xml
-- [ ] T-027.3: Document how to customize:
-  - OpenGraph images
-  - Twitter cards
-  - Structured data schemas
-- [ ] T-027.4: Add common schema.org templates (Organization, LocalBusiness, etc.)
-- [ ] T-027.5: Document analytics and Search Console setup
-References:
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-- /scripts/seo-audit.mjs (new)
-- /app/layout.tsx
-- /app/sitemap.ts
-Dependencies: None
-Effort: M
 
 ---
 

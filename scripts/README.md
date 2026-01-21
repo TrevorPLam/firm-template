@@ -1,6 +1,6 @@
 # scripts/README.md — Local Tools (Optional)
 
-Last Updated: 2026-01-05
+Last Updated: 2026-01-21
 
 These scripts are **optional helpers**. They exist to reduce manual work, but they must not become a dependency for progress.
 
@@ -15,6 +15,7 @@ These scripts are **optional helpers**. They exist to reduce manual work, but th
 - `scripts/ai-audit.sh` — validates required governance files exist and basic invariants hold
 - `scripts/a11y-audit.mjs` — runs axe-core audits against core pages (requires running dev/server)
 - `scripts/lighthouse-audit.mjs` — captures mobile Lighthouse baselines (requires running dev/server + Lighthouse CLI)
+- `scripts/seo-audit.mjs` — validates metadata coverage, sitemap entries, and internal links
 - `scripts/sync-todo.sh` — generates `TODO.generated.md` from `specs/project-tasks.md (non-binding notes)` (non-binding)
 
 ## Non-binding rule
