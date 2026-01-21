@@ -10,6 +10,44 @@ Move tasks here when Acceptance Criteria are met.
 ## Completed tasks
 <!-- Append completed tasks below. Preserve the original record for auditability. -->
 
+### T-036: Implement Exit-Intent Popup System
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-21
+Context:
+- Recovers 10-15% of abandoning visitors
+- Standard on 61% of lead-generation sites
+- Non-intrusive when implemented correctly
+- Provides last-chance conversion opportunity
+- Identified in PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [x] T-036.1: Create ExitIntentPopup component
+  - Detect mouse leaving viewport
+  - Show once per session (cookie/localStorage)
+  - Responsive design
+  - Easy dismiss
+- [x] T-036.2: Create popup content variants:
+  - Newsletter signup offer
+  - Resource download offer
+  - Consultation booking offer
+  - Contact form simplified
+- [x] T-036.3: Add configuration options:
+  - Delay before showing (e.g., 5 seconds on page)
+  - Pages to show/hide
+  - Popup frequency (once per session/day/week)
+- [x] T-036.4: Integrate with analytics to track effectiveness
+- [x] T-036.5: Document configuration in customization guide
+- [x] T-036.6: Test on mobile (disable or adapt)
+References:
+- /components/ExitIntentPopup.tsx
+- /lib/exit-intent.ts
+- /app/layout.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: M
+
 ### T-015: Create production environment checklist
 Priority: P2
 Type: INFRASTRUCTURE
