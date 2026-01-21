@@ -82,8 +82,8 @@ function buildContactSummary(payload: ContactEmailPayload) {
 
 function buildOwnerNotification(config: ReturnType<typeof getEmailConfig>, payload: ContactEmailPayload) {
   return {
-    to: config.toAddress ?? '',
-    from: config.fromAddress ?? '',
+    to: config.toAddress,
+    from: config.fromAddress,
     subject: `New contact request for ${config.siteName}`,
     text: buildContactSummary(payload),
   }
