@@ -501,9 +501,9 @@ Context:
 - Currently on latest adapter version
 - Not blocking template release but should be monitored
 Acceptance Criteria:
-- [ ] T-020.1: Document known vulnerabilities in SECURITY.md
+- [x] T-020.1: Document known vulnerabilities in SECURITY.md
 - [ ] T-020.2: Check for updates to `@cloudflare/next-on-pages` monthly
-- [ ] T-020.3: Document mitigation strategies for template users
+- [x] T-020.3: Document mitigation strategies for template users
 - [ ] T-020.4: Set up Dependabot or similar for automated updates
 References:
 - /package.json
