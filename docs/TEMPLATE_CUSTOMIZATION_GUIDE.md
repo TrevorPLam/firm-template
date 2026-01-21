@@ -1,6 +1,6 @@
 # TEMPLATE_CUSTOMIZATION_GUIDE.md — Professional Services Template Setup
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Active
 
 Goal: Provide a clear, end-to-end path for customizing this template without changing its underlying functionality.
@@ -54,6 +54,9 @@ This guide walks you through the minimum configuration needed to launch, then de
   - `logo.svg` (or your current logo file)
   - `favicon.ico`
   - PWA icons (see `docs/PWA-ICONS.md`)
+- Client logo placeholders live in `/public/clients/` and are rendered by `/components/ClientLogoShowcase.tsx`.
+  - Recommended format: SVG or PNG with transparent background.
+  - Suggested size: ~160×80 (the grid scales down responsively).
 
 ### Color scheme (Tailwind)
 - Update `tailwind.config.ts` brand colors.
@@ -67,6 +70,8 @@ This guide walks you through the minimum configuration needed to launch, then de
 ## Content Customization
 ### Homepage
 - **Hero**: `/components/Hero.tsx`
+- **Client Logos**: `/components/ClientLogoShowcase.tsx` (swap `/public/clients/*` files)
+- **Trust Badges**: `/components/TrustBadge.tsx` (replace badge labels and descriptions)
 - **Value Props**: `/components/ValueProps.tsx`
 - **CTA Sections**: `/components/CTASection.tsx`, `/components/FinalCTA.tsx`
 

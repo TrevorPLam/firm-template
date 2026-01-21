@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added repeatable accessibility and Lighthouse audit scripts for local QA
 - Added Playwright coverage for contact submission success, rate limiting, and search empty states
 - Added unit tests for Hero, ValueProps, ServicesOverview, and SocialProof sections
+- Added client logo showcase and trust badge sections to the homepage
 - Added Article and Service structured data on blog posts and service pages for richer SEO signals
 - Added template privacy policy and terms of service pages with placeholder guidance
 
@@ -40,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documented analytics provider setup, CSP requirements, and conversion tracking guidance
 - Added a production environment checklist and linked it from the template customization guide
 - Refreshed accessibility documentation and linked the validation workflow from the README
+- Documented client logos and trust badges across the customization guide and vertical examples
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`

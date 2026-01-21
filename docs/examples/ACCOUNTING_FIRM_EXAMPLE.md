@@ -1,6 +1,6 @@
 # ACCOUNTING_FIRM_EXAMPLE.md — Vertical Customization Example (Accounting)
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Example
 
 Goal: Provide an accounting-focused template configuration with common services and pricing signals.
@@ -61,6 +61,7 @@ Goal: Provide an accounting-focused template configuration with common services 
 ## Content Checklist (Accounting)
 - Add trust badges or certifications in the footer.
 - Ensure contact form captures industry, revenue range, and accounting system used.
+- Replace client logos in `/public/clients/` with approved industries, and add CPA badges in `/components/TrustBadge.tsx`.
 - Replace testimonial placeholders with anonymized financial outcomes.
 - Add deadline reminders in the blog or CTA sections.
 

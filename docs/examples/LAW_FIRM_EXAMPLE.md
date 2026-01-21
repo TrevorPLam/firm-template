@@ -1,6 +1,6 @@
 # LAW_FIRM_EXAMPLE.md — Vertical Customization Example (Law Firm)
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Example
 
 Goal: Show how to adapt the template for a law firm while keeping routing and component structure intact.
@@ -72,6 +72,7 @@ Goal: Show how to adapt the template for a law firm while keeping routing and co
 ## Content Checklist (Law Firm)
 - Replace hero headline + subcopy with your primary practice positioning.
 - Add attorney bios and credentials to `/app/about/page.tsx` or a future `/app/team` page.
+- Replace client logos in `/public/clients/` with approved clients or industries, and add bar association badges in `/components/TrustBadge.tsx`.
 - Swap testimonials with anonymized client results or practice outcomes.
 - Review disclaimers and add legal-specific footers where required by jurisdiction.
 - Update CTA labels to match intake (e.g., “Schedule a Consultation”).

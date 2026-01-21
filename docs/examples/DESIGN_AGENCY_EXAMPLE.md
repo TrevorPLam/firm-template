@@ -1,6 +1,6 @@
 # DESIGN_AGENCY_EXAMPLE.md — Vertical Customization Example (Design Agency)
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Example
 
 Goal: Provide a design agency configuration with creative services and flexible pricing models.
@@ -60,6 +60,7 @@ Goal: Provide a design agency configuration with creative services and flexible 
 - Update imagery in `/public/` with portfolio-quality visuals.
 - Add a short “Process” section to the homepage or services pages.
 - Ensure contact form captures project timeline, budget, and preferred deliverables.
+- Replace client logos in `/public/clients/` with brand partners, and add award badges in `/components/TrustBadge.tsx`.
 - Add a portfolio CTA to the hero secondary button.
 
 ---
