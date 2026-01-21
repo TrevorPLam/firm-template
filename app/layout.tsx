@@ -114,6 +114,7 @@ import Footer from '@/components/Footer'
 import SkipToContent from '@/components/SkipToContent'
 import Providers from '@/app/providers'
 import InstallPrompt from '@/components/InstallPrompt'
+import ExitIntentPopup from '@/components/ExitIntentPopup'
 import { getPublicBaseUrl } from '@/lib/env.public'
 import { getSearchIndex } from '@/lib/search'
 
@@ -269,6 +270,15 @@ export default function RootLayout({
             {children}
           </main>
         </Providers>
+        <ExitIntentPopup
+          delayMs={5000}
+          frequency="session"
+          // Adjust copy or routing here to tailor exit-intent offers to your firm.
+          title="Before you go"
+          description="Get a quick consultation checklist and see how we can support your next project."
+          primaryActionLabel="Schedule a Consultation"
+          primaryActionHref="/contact"
+        />
         <Footer />
         <InstallPrompt />
       </body>

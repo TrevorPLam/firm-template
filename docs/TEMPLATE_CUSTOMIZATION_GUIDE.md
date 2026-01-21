@@ -200,6 +200,20 @@ Enable embedded scheduling so visitors can book a consultation without emailing 
 Scheduling CTAs render on the homepage, service pages, pricing page, and contact page. If you set
 `SCHEDULING_PROVIDER=none`, the embed sections will be hidden automatically.
 
+### Exit-intent popup (optional)
+Use the exit-intent popup to re-engage visitors who are about to leave without taking action.
+
+1. Open `/app/layout.tsx` and adjust the `ExitIntentPopup` props:
+   - `title`, `description`, and button labels to match your offer.
+   - `primaryActionHref` to point to your preferred conversion page.
+2. Tune behavior:
+   - `delayMs` controls how long a visitor must stay before exit intent is eligible.
+   - `frequency` can be `session`, `day`, or `week` to control repeat displays.
+   - `blockedPaths` and `allowedPaths` restrict where the popup appears.
+3. If you want to disable it entirely, set `enabled={false}` or remove the component.
+
+> Tip: Exit intent is disabled on touch devices by default to avoid intrusive mobile overlays.
+
 ### Analytics
 - The template ships with a provider-agnostic tracking wrapper in [`lib/analytics.ts`](../lib/analytics.ts).
 - Analytics events are recorded via `trackEvent`, `trackFormSubmission`, and `trackCTAClick`.

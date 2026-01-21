@@ -56,6 +56,7 @@ components/
 | `InstallPrompt.tsx` | PWA install prompt | Client |
 | `SkipToContent.tsx` | Accessibility skip link | Server |
 | `AppointmentScheduler.tsx` | Appointment scheduling CTA embed | Client |
+| `ExitIntentPopup.tsx` | Exit-intent re-engagement modal | Client |
 
 ### UI Primitives (`ui/`)
 
@@ -76,7 +77,7 @@ See `components/ui/AGENTS.md` for detailed documentation.
 **Client Components:**
 - Must have `'use client'` at top of file
 - Required for: Forms, state, event handlers, browser APIs
-- Current client components: Navigation, ContactForm, SearchDialog, Breadcrumbs, ErrorBoundary, InstallPrompt, AppointmentScheduler, VideoTestimonial
+- Current client components: Navigation, ContactForm, SearchDialog, Breadcrumbs, ErrorBoundary, InstallPrompt, AppointmentScheduler, VideoTestimonial, ExitIntentPopup
 
 ### Props Pattern
 

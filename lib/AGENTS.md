@@ -49,6 +49,7 @@ This folder contains all shared utility modules for the application. Many module
 
 | Module | Purpose |
 |--------|---------|
+| `exit-intent.ts` | Exit-intent frequency + storage helpers for popup behavior |
 | `utils.ts` | Generic utilities (cn for classnames) |
 | `analytics.ts` | Analytics event tracking abstraction |
 | `contact-form-schema.ts` | Zod schema for contact form validation |
