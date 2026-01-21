@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added template privacy policy and terms of service pages with placeholder guidance
 - Added Dependabot configuration for weekly dependency updates with grouped minor/patch and separate major updates
 - Added optional transactional email notifications for the contact form (SendGrid/Postmark/Resend)
+- Added a dev-only theme editor to preview tokens and generate Tailwind/CSS snippets
 
 ### Security
 - Added hashed IP + email rate limiting for contact form submissions
