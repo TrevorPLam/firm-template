@@ -1,7 +1,7 @@
 # BESTPR.md — Token-Optimized Best Practices Guide
 
 **Document Type:** Reference  
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Last Updated:** 2026-01-21  
 **Status:** Active  
 **Authority:** Canonical best practices reference (subordinate to CODEBASECONSTITUTION.md)
@@ -33,6 +33,16 @@ This document provides a **token-optimized**, repo-specific guide of best practi
 3. `BESTPR.md` (this file - best practices)
 4. `AGENTS.md` (agent instructions)
 5. `TODO.md` (task truth source)
+6. `repo.manifest.yaml` (verification commands)
+
+**Key Files to Know:**
+- `CODEBASECONSTITUTION.md` - Non-negotiable rules
+- `READMEAI.md` - How agents should work (modes, task flow)
+- `TODO.md` - Active tasks (single source of truth)
+- `TODOCOMPLETED.md` - Completed tasks archive
+- `PROJECT_STATUS.md` - Current state + next immediate step
+- `repo.manifest.yaml` - Verification commands (type-check, lint, test)
+- `.env.example` - ALL environment variables documented
 
 ---
 
@@ -56,6 +66,40 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
 - Use `.env.example` as the template (committed)
 - Use `.env.local` for local overrides (never committed)
 - Post-build script `check-client-secrets.mjs` catches leaks
+
+**Required Environment Variables:**
+```bash
+# Site Configuration (public)
+NEXT_PUBLIC_SITE_URL        # Production URL (https://yourfirm.com)
+NEXT_PUBLIC_SITE_NAME       # Firm name
+
+# Database (server-only, REQUIRED)
+SUPABASE_URL                # Supabase project URL
+SUPABASE_SERVICE_ROLE_KEY   # Service role key (NOT anon key)
+
+# CRM Integration (server-only, REQUIRED)
+HUBSPOT_PRIVATE_APP_TOKEN   # HubSpot API token
+
+# Optional (graceful fallback if missing)
+UPSTASH_REDIS_REST_URL      # Rate limiting (falls back to in-memory)
+UPSTASH_REDIS_REST_TOKEN
+NEXT_PUBLIC_ANALYTICS_ID    # Analytics tracking
+NEXT_PUBLIC_SENTRY_DSN      # Error monitoring
+```
+
+**Accessing Environment Variables:**
+```typescript
+// Server-side (lib/env.ts)
+import { env } from '@/lib/env'
+const apiKey = env.SUPABASE_SERVICE_ROLE_KEY  // ✅ Type-safe, validated
+
+// Client-side (lib/env.public.ts)
+import { publicEnv } from '@/lib/env.public'
+const siteUrl = publicEnv.NEXT_PUBLIC_SITE_URL  // ✅ Type-safe
+
+// ❌ NEVER access process.env directly in components/pages
+const bad = process.env.NEXT_PUBLIC_SITE_URL  // ❌ Not validated
+```
 
 ### Input Sanitization
 ```typescript
@@ -439,6 +483,112 @@ wrangler pages deploy .vercel/output/static  # Deploy
 
 ---
 
+## 🌐 Next.js-Specific Patterns
+
+### Middleware (Security Layer)
+```typescript
+// middleware.ts - Runs on EVERY request
+export function middleware(request: NextRequest) {
+  // 1. Payload size check (DoS prevention)
+  // 2. Security headers (CSP, X-Frame-Options, etc.)
+  // 3. HSTS in production only
+}
+
+// Matcher config (excludes static assets)
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+}
+```
+
+**Critical Rules:**
+- Middleware runs on ALL routes except static assets
+- Security headers MUST include CSP (Content Security Policy)
+- POST requests limited to 1MB (MAX_BODY_SIZE_BYTES)
+- HSTS only in production (breaks localhost)
+- When adding external scripts/APIs, update CSP directives
+
+**CSP Directives to Update:**
+- Adding analytics? Update `script-src` and `connect-src`
+- Adding external images? Update `img-src`
+- Adding fonts? Update `font-src`
+
+### Force-Static Routes (Cloudflare Edge)
+```typescript
+// app/search/page.tsx
+export const dynamic = 'force-static'  // REQUIRED for fs usage
+
+// Routes using lib/blog.ts (which uses fs) MUST be force-static
+```
+
+**When to use `force-static`:**
+- Route uses filesystem access (`fs` module)
+- Route uses `lib/blog.ts` or `lib/search.ts`
+- Examples: `/search`, `/blog/feed.xml`
+
+**Why?** Cloudflare Edge Runtime doesn't support `fs` at request time. Must pre-render at build time.
+
+### Sitemap & Search Sync Pattern
+```typescript
+// CRITICAL: When adding a page, update BOTH files
+
+// 1. app/sitemap.ts - Add to staticPages array
+{
+  url: `${baseUrl}/new-page`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly' as const,
+  priority: 0.8,
+}
+
+// 2. lib/search.ts - Add to staticPages array
+{
+  id: 'page-new-page',
+  title: 'New Page',
+  description: 'Description for search',
+  href: '/new-page',
+  type: 'Page',
+  tags: ['relevant', 'keywords'],
+}
+```
+
+**Rules:**
+- ALL pages must be in both sitemap.ts AND search.ts
+- Blog posts auto-included (don't manually add)
+- Service pages numbered 1-8 (service-1, service-2, etc.)
+- Test search after adding pages
+
+### Metadata Pattern (SEO)
+```typescript
+// Static metadata
+export const metadata: Metadata = {
+  title: 'Page Title | Firm Name',
+  description: 'SEO description (max ~160 chars)',
+  openGraph: {
+    title: 'Page Title',
+    description: 'OG description',
+    images: ['/og-image.jpg'],
+  },
+}
+
+// Dynamic metadata (e.g., blog posts)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = getPostBySlug(await params.slug)
+  if (!post) return { title: 'Not Found' }
+  
+  return {
+    title: `${post.title} | Firm Name`,
+    description: post.description,
+  }
+}
+```
+
+**Rules:**
+- Every page MUST export metadata
+- Include site name in title for branding
+- OG tags improve social sharing
+- Structured data (JSON-LD) for rich snippets
+
+---
+
 ## 📚 Data & Content Patterns
 
 ### Blog Posts (MDX)
@@ -560,11 +710,144 @@ try {
  */
 ```
 
+### AI METACODE Headers (Complex Files)
+```typescript
+/**
+ * ═══════════════════════════════════════════════════════════════
+ * 🤖 AI METACODE — Quick Reference for AI Agents
+ * ═══════════════════════════════════════════════════════════════
+ * 
+ * **FILE PURPOSE**: What this file does and why it exists
+ * **KEY DEPENDENCIES**: What it needs to function
+ * **SECURITY NOTES**: Critical security considerations
+ * **ITERATION HINTS**: How to extend safely
+ * **KNOWN ISSUES**: Tech debt or TODOs
+ * **EDGE RUNTIME**: Cloudflare-specific constraints
+ * 
+ * ═══════════════════════════════════════════════════════════════
+ */
+```
+
+**When to add AI METACODE:**
+- Security-critical files (`lib/actions.ts`, `lib/sanitize.ts`, `middleware.ts`)
+- Complex business logic (`lib/search.ts`, `lib/blog.ts`)
+- Files with edge runtime constraints
+- Files with non-obvious iteration patterns
+
+**Examples in codebase:**
+- `middleware.ts` - Security headers + CSP configuration
+- `lib/search.ts` - Static pages must be manually added
+- `lib/actions.ts` - Rate limiting + sanitization flow
+
 ### AGENTS.md Files
 - Required in: `app/`, `components/`, `lib/`, `__tests__/`, `content/`
 - Purpose: Provide context for AI agents
 - Contents: Purpose, patterns, conventions, do's and don'ts
 - Update when adding new modules/patterns
+
+---
+
+## 🚫 Common Pitfalls (What NOT to Do)
+
+### Security
+- ❌ Commit secrets to git
+- ❌ Use raw user input without sanitization
+- ❌ Log sensitive data (IPs, emails, tokens)
+- ❌ Expose internal error messages to users
+- ❌ Access process.env directly (use lib/env.ts or lib/env.public.ts)
+- ❌ Import server-only modules in client components
+
+### Architecture
+- ❌ Add `'use client'` to pages unnecessarily (default is server)
+- ❌ Use client-side data fetching (breaks SSG)
+- ❌ Import `lib/env.ts` in client components (will fail build)
+- ❌ Create API routes for static data (no database)
+- ❌ Use `fs` in routes without `export const dynamic = 'force-static'`
+- ❌ Forget to add pages to BOTH sitemap.ts AND search.ts
+
+### Styling
+- ❌ Use arbitrary Tailwind values (`bg-[#123]`)
+- ❌ Use inline styles (`style={{ ... }}`)
+- ❌ Use CSS modules
+- ❌ Create new color values outside tailwind.config.ts
+- ❌ Use `!important` (indicates design system issue)
+
+### Testing
+- ❌ Skip tests for new features
+- ❌ Mock entire modules (mock only what's needed)
+- ❌ Write brittle tests (test behavior, not implementation)
+- ❌ Commit failing tests (fix or skip with `test.skip()`)
+
+### Code Organization
+- ❌ Create utility files in random locations
+- ❌ Mix server and client code in same file
+- ❌ Use default exports for utilities (only for components)
+- ❌ Forget to update AGENTS.md when adding new patterns
+
+### Cloudflare-Specific
+- ❌ Use Node.js-specific APIs at request time (`fs`, `path`, `crypto`)
+- ❌ Assume Vercel-specific features work (Image Optimization API)
+- ❌ Forget `unoptimized: true` for images
+
+---
+
+## 🐛 Debugging & Troubleshooting
+
+### Build Errors
+
+**"Module not found: Can't resolve 'server-only'"**
+```bash
+# Install missing dependency
+npm install server-only
+```
+
+**"Middleware must export middleware function"**
+- Check middleware.ts exports `export function middleware()`
+- Verify matcher config is exported
+
+**"Dynamic code evaluation not allowed"**
+- Remove `eval()` or `Function()` calls
+- Check CSP allows necessary scripts in middleware.ts
+
+### TypeScript Errors
+
+**"JSX element implicitly has type 'any'"**
+- Install @types/react: `npm install --save-dev @types/react`
+- Check tsconfig.json includes `"jsx": "preserve"`
+
+**"Cannot find module '@/...' or its corresponding type declarations"**
+- Check tsconfig.json has path alias: `"paths": { "@/*": ["./*"] }`
+- Restart TypeScript server in IDE
+
+### Runtime Errors
+
+**"NEXT_PUBLIC_SITE_URL is not defined"**
+- Copy `.env.example` to `.env.local`
+- Set required environment variables
+- Restart dev server
+
+**"Rate limit storage unavailable"**
+- Expected in development without Upstash Redis
+- Falls back to in-memory (single instance only)
+- Add UPSTASH_REDIS_REST_URL for production
+
+**"Supabase client not initialized"**
+- Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local
+- Verify Zod validation passed in lib/env.ts
+
+### Cloudflare Deployment Errors
+
+**"Build failed: fs.readFileSync is not defined"**
+- Add `export const dynamic = 'force-static'` to route
+- Verify route uses fs only at build time
+
+**"Image optimization not available"**
+- Expected with Cloudflare Pages
+- Verify `unoptimized: true` in next.config.mjs
+
+**"Middleware error: Response body locked"**
+- Don't read request body in middleware
+- Payload size check uses headers only
 
 ---
 
@@ -603,12 +886,28 @@ try {
 ## 🎯 Checklist for New Features
 
 ### Adding a Page
-- [ ] Create `app/path/page.tsx`
+- [ ] Create `app/path/page.tsx` (server component by default)
 - [ ] Export `metadata` const for SEO
-- [ ] Add to `sitemap.ts` if public
-- [ ] Update navigation if needed
-- [ ] Test locally
-- [ ] Validate TypeScript
+- [ ] Add to `app/sitemap.ts` (staticPages array)
+- [ ] Add to `lib/search.ts` (staticPages array) for searchability
+- [ ] Update navigation if needed (components/Navigation.tsx)
+- [ ] Test locally & mobile responsiveness
+- [ ] Validate TypeScript with `npm run type-check`
+
+### Adding a Dynamic Route  
+- [ ] Create `app/path/[param]/page.tsx`
+- [ ] Export `generateStaticParams()` for SSG pre-rendering
+- [ ] Export `generateMetadata()` for dynamic SEO
+- [ ] Add to sitemap (dynamic or static entries)
+- [ ] Test with multiple param values
+- [ ] Verify all routes pre-render at build time
+
+### Adding a Page with File System Access
+- [ ] Create page in `app/`
+- [ ] Add `export const dynamic = 'force-static'` at top of file
+- [ ] Verify uses only build-time data (no request-time fs)
+- [ ] Test build succeeds: `npm run build`
+- [ ] Test with Cloudflare adapter: `npm run pages:build`
 
 ### Adding a Component
 - [ ] Create in `components/` or `components/ui/`
