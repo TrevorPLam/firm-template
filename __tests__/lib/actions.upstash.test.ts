@@ -107,7 +107,8 @@ describe('contact form Upstash rate limiting', () => {
 
     expect(response.success).toBe(true)
     expect(limitMock).toHaveBeenCalledTimes(2)
-    expect(limitMock).toHaveBeenNthCalledWith(1, 'email:upstash@example.com')
+    // Email is hashed before being used as rate-limit identifier
+    expect(limitMock).toHaveBeenNthCalledWith(1, expect.stringMatching(/^email:[0-9a-f]{64}$/))
     expect(limitMock).toHaveBeenNthCalledWith(2, expect.stringMatching(/^ip:/))
     expect(logInfo).toHaveBeenCalledWith('Initialized distributed rate limiting with Upstash Redis')
   })
