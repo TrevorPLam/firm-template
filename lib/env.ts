@@ -40,6 +40,11 @@
  * | SUPABASE_URL | url | required | Supabase project URL |
  * | SUPABASE_SERVICE_ROLE_KEY | string | required | Server-only service role key |
  * | HUBSPOT_PRIVATE_APP_TOKEN | string | required | HubSpot private app token |
+ * | EMAIL_PROVIDER | enum | defaults | Transactional email provider |
+ * | EMAIL_API_KEY | string | optional | Transactional email API key |
+ * | EMAIL_FROM_ADDRESS | string | optional | Transactional email sender |
+ * | EMAIL_TO_ADDRESS | string | optional | Business notification recipient |
+ * | EMAIL_SEND_THANK_YOU | boolean | defaults | Send customer thank-you email |
  *
  * **KNOWN ISSUES**:
  * - [ ] No runtime validation for env changes (restart required)
@@ -169,7 +174,72 @@ const envSchema = z.object({
    * Used for CRM sync.
    */
   HUBSPOT_PRIVATE_APP_TOKEN: z.string().trim().min(1),
+
+  /**
+   * Transactional email provider (optional).
+   * If set to "none", email sending is disabled.
+   * 
+   * @default 'none'
+   */
+  EMAIL_PROVIDER: z.enum(['sendgrid', 'postmark', 'resend', 'none']).default('none'),
+
+  /**
+   * Transactional email API key (required when EMAIL_PROVIDER is not "none").
+   * 
+   * @optional
+   */
+  EMAIL_API_KEY: z.string().trim().min(1).optional(),
+
+  /**
+   * Transactional email sender address (required when EMAIL_PROVIDER is not "none").
+   * 
+   * @optional
+   */
+  EMAIL_FROM_ADDRESS: z.string().trim().email().optional(),
+
+  /**
+   * Recipient address for owner notifications (required when EMAIL_PROVIDER is not "none").
+   * 
+   * @optional
+   */
+  EMAIL_TO_ADDRESS: z.string().trim().email().optional(),
+
+  /**
+   * Send thank-you email to the customer (optional).
+   * 
+   * @default false
+   */
+  EMAIL_SEND_THANK_YOU: z.coerce.boolean().default(false),
 })
+  .superRefine((data, ctx) => {
+    if (data.EMAIL_PROVIDER === 'none') {
+      return
+    }
+
+    if (!data.EMAIL_API_KEY) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'EMAIL_API_KEY is required when EMAIL_PROVIDER is set',
+        path: ['EMAIL_API_KEY'],
+      })
+    }
+
+    if (!data.EMAIL_FROM_ADDRESS) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'EMAIL_FROM_ADDRESS is required when EMAIL_PROVIDER is set',
+        path: ['EMAIL_FROM_ADDRESS'],
+      })
+    }
+
+    if (!data.EMAIL_TO_ADDRESS) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'EMAIL_TO_ADDRESS is required when EMAIL_PROVIDER is set',
+        path: ['EMAIL_TO_ADDRESS'],
+      })
+    }
+  })
 
 /**
  * Validate environment variables at module load time.
@@ -203,6 +273,11 @@ const env = envSchema.safeParse({
   SUPABASE_URL: process.env.SUPABASE_URL,
   SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
   HUBSPOT_PRIVATE_APP_TOKEN: process.env.HUBSPOT_PRIVATE_APP_TOKEN,
+  EMAIL_PROVIDER: process.env.EMAIL_PROVIDER,
+  EMAIL_API_KEY: process.env.EMAIL_API_KEY,
+  EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS,
+  EMAIL_TO_ADDRESS: process.env.EMAIL_TO_ADDRESS,
+  EMAIL_SEND_THANK_YOU: process.env.EMAIL_SEND_THANK_YOU,
 })
 
 if (!env.success) {

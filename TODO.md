@@ -614,31 +614,32 @@ Effort: M
 Priority: P2
 Type: INFRASTRUCTURE
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
+Completed: 2026-01-21
 Context:
 - Contact form stores leads in Supabase and syncs to CRM
 - No email notifications to business owner or customer
 - Many businesses want email alerts for new leads
 - Should be optional and configurable
 Acceptance Criteria:
-- [ ] T-024.1: Add email provider options to env.ts:
+- [x] T-024.1: Add email provider options to env.ts:
   - SendGrid (most popular)
   - Postmark (developer-friendly)
   - Resend (modern, simple)
-- [ ] T-024.2: Create /lib/email.ts with email sending logic
-- [ ] T-024.3: Add email templates:
+- [x] T-024.2: Create /lib/email.ts with email sending logic
+- [x] T-024.3: Add email templates:
   - Lead notification to business owner
   - Thank you email to customer (optional)
-- [ ] T-024.4: Update contact form action to send emails (optional)
-- [ ] T-024.5: Add environment variables:
+- [x] T-024.4: Update contact form action to send emails (optional)
+- [x] T-024.5: Add environment variables:
   - EMAIL_PROVIDER (sendgrid|postmark|resend|none)
   - EMAIL_API_KEY
   - EMAIL_FROM_ADDRESS
   - EMAIL_TO_ADDRESS (business owner)
-- [ ] T-024.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [ ] T-024.7: Add to .env.example with clear instructions
-- [ ] T-024.8: Test email sending with each provider
+- [x] T-024.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [x] T-024.7: Add to .env.example with clear instructions
+- [x] T-024.8: Test email sending with each provider
 References:
 - /lib/actions.ts
 - /lib/email.ts (new)
