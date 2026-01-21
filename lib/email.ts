@@ -173,11 +173,12 @@ async function sendEmail(message: EmailMessage): Promise<EmailSendResult> {
   }
 
   try {
-    const ok = await (config.provider === 'sendgrid'
-      ? sendWithSendGrid(config.apiKey, message)
-      : config.provider === 'postmark'
-      ? sendWithPostmark(config.apiKey, message)
-      : sendWithResend(config.apiKey, message))
+    const senders = {
+      sendgrid: sendWithSendGrid,
+      postmark: sendWithPostmark,
+      resend: sendWithResend,
+    }
+    const ok = await senders[config.provider](config.apiKey, message)
 
     if (!ok) {
       logError('Email provider returned non-OK response', undefined, {
