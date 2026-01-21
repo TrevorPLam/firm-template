@@ -51,6 +51,7 @@ This repository adheres to a strict "Diamond Standard" of engineering excellence
 *   **Secure by Design**: CSP headers, strict input validation (Zod), and secret scanning.
 *   **Edge Native**: Optimized for the Cloudflare Pages Edge Runtime.
 *   **Type Safe**: 100% TypeScript coverage with strict mode enabled.
+*   **Accessible**: Keyboard-friendly UI with documented a11y validation workflow. See [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md).
 *   **Observable**: Integrated Sentry monitoring and comprehensive logging.
 *   **AI-Ready**: Structured specifically for effective collaboration with AI coding agents (`AGENTS.md`, `READMEAI.md`).
 

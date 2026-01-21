@@ -1,7 +1,7 @@
 # TODO.md — Repository Task List
 
 Document Type: Workflow
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Task Truth Source: **TODO.md**
 
 This file is the single source of truth for actionable work. If another document disagrees, the task record in this file wins (unless the Constitution overrides).
@@ -517,8 +517,8 @@ Effort: S
 Priority: P3
 Type: QUALITY
 Owner: AGENT
-Status: READY
-Blockers: None
+Status: IN-REVIEW
+Blockers: npm registry returns 403 for package downloads in this environment
 Context:
 - Template should meet WCAG 2.1 AA standards minimum
 - Already has good accessibility features but needs comprehensive audit
@@ -527,13 +527,13 @@ Acceptance Criteria:
 - [ ] T-021.1: Run automated accessibility tests (axe-core, pa11y, etc.)
 - [ ] T-021.2: Keyboard navigation testing on all pages
 - [ ] T-021.3: Screen reader testing (major pages)
-- [ ] T-021.4: Document accessibility features in README.md:
+- [x] T-021.4: Document accessibility features in README.md:
   - Keyboard navigation support
   - ARIA labels
   - Focus management
   - Color contrast
   - Semantic HTML
-- [ ] T-021.5: Create /docs/ACCESSIBILITY.md with:
+- [x] T-021.5: Create /docs/ACCESSIBILITY.md with:
   - Current compliance level
   - Known issues (if any)
   - Testing methodology

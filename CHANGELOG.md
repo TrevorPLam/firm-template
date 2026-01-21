@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documented production versus development rate limiting behavior and verification steps
 - Documented analytics provider setup, CSP requirements, and conversion tracking guidance
 - Added a production environment checklist and linked it from the template customization guide
+- Refreshed accessibility documentation and linked the validation workflow from the README
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`
