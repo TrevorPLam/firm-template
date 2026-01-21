@@ -7,10 +7,11 @@
  * 
  * **Section Order:**
  * 1. Hero - Value proposition + primary CTAs
- * 2. ValueProps - Key benefits grid
- * 3. ServicesOverview - Service offerings cards
- * 4. SocialProof - Testimonials (lazy loaded)
- * 5. FinalCTA - Bottom conversion prompt (lazy loaded)
+ * 2. ClientLogoShowcase - Client logos and trust badges
+ * 3. ValueProps - Key benefits grid
+ * 4. ServicesOverview - Service offerings cards
+ * 5. SocialProof - Testimonials (lazy loaded)
+ * 6. FinalCTA - Bottom conversion prompt (lazy loaded)
  * 
  * **Performance:**
  * - Above-fold components (Hero, ValueProps, ServicesOverview) loaded immediately
@@ -26,7 +27,9 @@
  */
 
 import dynamic from 'next/dynamic'
+import ClientLogoShowcase from '@/components/ClientLogoShowcase'
 import Hero from '@/components/Hero'
+import TrustBadge from '@/components/TrustBadge'
 import ValueProps from '@/components/ValueProps'
 import ServicesOverview from '@/components/ServicesOverview'
 
@@ -45,6 +48,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <ClientLogoShowcase />
+      <TrustBadge />
       <ValueProps />
       <ServicesOverview />
       <SocialProof />

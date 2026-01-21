@@ -37,6 +37,7 @@ components/
 | `Hero.tsx` | Homepage hero section | Server |
 | `Navigation.tsx` | Site header with mobile menu | Client |
 | `Footer.tsx` | Site footer | Server |
+| `ClientLogoShowcase.tsx` | Client logo grid for trust signals | Server |
 | `ContactForm.tsx` | Lead capture form | Client |
 | `SearchDialog.tsx` | Site search modal | Client |
 | `SearchPage.tsx` | Full search page | Client |
@@ -47,6 +48,7 @@ components/
 | `CTASection.tsx` | Call-to-action blocks | Server |
 | `FinalCTA.tsx` | Bottom-of-page CTA | Server |
 | `SocialProof.tsx` | Testimonials section | Server |
+| `TrustBadge.tsx` | Certifications and awards badges | Server |
 | `ValueProps.tsx` | Value propositions grid | Server |
 | `ErrorBoundary.tsx` | Error handling wrapper | Client |
 | `InstallPrompt.tsx` | PWA install prompt | Client |

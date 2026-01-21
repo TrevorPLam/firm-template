@@ -858,41 +858,6 @@ Effort: M
 
 ---
 
-### T-031: Add Client Logo Showcase & Trust Badge Component
-Priority: P1
-Type: QUALITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Social proof increases conversion by 25% on average
-- Client logos are standard on 82% of professional services sites
-- Builds immediate credibility and trust
-- WebAward criterion: demonstrate authority and expertise
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
-Acceptance Criteria:
-- [ ] T-031.1: Create ClientLogoShowcase component
-  - Configurable logo grid (3-4 columns, responsive)
-  - Grayscale filter with color on hover
-  - Lazy loading for images
-- [ ] T-031.2: Create TrustBadge component for certifications/awards
-  - Displays badges with tooltips
-  - Configurable positioning
-- [ ] T-031.3: Add placeholder logos to /public/clients/
-- [ ] T-031.4: Integrate on homepage below hero section
-- [ ] T-031.5: Document logo requirements (size, format) in customization guide
-- [ ] T-031.6: Add to vertical examples (law firm shows bar association, etc.)
-References:
-- /components/ClientLogoShowcase.tsx (new)
-- /components/TrustBadge.tsx (new)
-- /public/clients/ (new directory)
-- /app/page.tsx
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: T-010, T-011
-Effort: S
-
----
-
 ### T-032: Integrate Appointment Scheduling (Calendly/Cal.com)
 Priority: P1
 Type: INFRASTRUCTURE

@@ -4,7 +4,7 @@ Document Type: Operations
 Canonical Status: Canonical
 Owner: Trevor
 Audience: Humans + agents
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 
 ## Purpose
 A lightweight place to record the current state of the project, major decisions, and open questions.
@@ -30,6 +30,7 @@ This is not a task list; tasks belong in `TODO.md`.
 - ✅ README.md updated: Reflects template purpose and usage
 - ✅ Legal template pages added for privacy policy and terms (T-016)
 - ✅ Rate limiting documentation clarified for production vs. development (T-017)
+- ✅ Client logo showcase and trust badges added to the homepage (T-031)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)

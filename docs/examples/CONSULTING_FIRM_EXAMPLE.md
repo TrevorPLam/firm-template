@@ -1,6 +1,6 @@
 # CONSULTING_FIRM_EXAMPLE.md — Vertical Customization Example (Consulting)
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Example
 
 Goal: Illustrate a consulting firm adaptation with clear service mapping and pricing models.
@@ -65,6 +65,7 @@ Goal: Illustrate a consulting firm adaptation with clear service mapping and pri
 - Include anonymized case studies and outcomes in the services pages.
 - Add a short “Engagement Phases” section to the pricing page.
 - Ensure the contact form captures company size and desired timeline.
+- Replace client logos in `/public/clients/` with approved logos, and add partner badges in `/components/TrustBadge.tsx`.
 - Add an “Outcomes” callout block to the hero or value props.
 
 ---
