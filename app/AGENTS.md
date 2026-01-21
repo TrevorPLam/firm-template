@@ -1,10 +1,17 @@
 # app/AGENTS.md — Next.js App Router Pages
 
-Last Updated: 2026-01-06
+Last Updated: 2026-01-21
 Applies To: Any agent working in app/
 
+## Required Reading
+**⚠️ Before coding:** See `/BESTPR.md` for comprehensive best practices including:
+- Server vs client component patterns
+- Metadata and SEO patterns
+- Static generation (SSG) requirements
+- Routing conventions
+
 ## Purpose
-This folder contains all pages and routes using Next.js 14 App Router. The site uses **Static Site Generation (SSG)** — all pages are pre-rendered at build time.
+This folder contains all pages and routes using Next.js 15 App Router. The site uses **Static Site Generation (SSG)** — all pages are pre-rendered at build time.
 
 ---
 

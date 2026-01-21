@@ -1,7 +1,13 @@
 # components/ui/AGENTS.md — Design System Primitives
 
-Last Updated: 2026-01-06
+Last Updated: 2026-01-21
 Applies To: Any agent working in components/ui/
+
+## Required Reading
+**⚠️ Before coding:** See `/BESTPR.md` for comprehensive best practices including:
+- Styling conventions (design tokens only, NO arbitrary values)
+- Component patterns (forwardRef, TypeScript interfaces)
+- Tailwind CSS usage rules
 
 ## Purpose
 This folder contains the core design system primitives. These are the "Lego blocks" used to build all UI across the application. **Consistency is critical** — do NOT create ad-hoc styling.
