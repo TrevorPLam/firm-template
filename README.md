@@ -161,6 +161,9 @@ npm run lint
 
 # Run full project audit
 ./scripts/check.sh
+
+# Run SEO validation (metadata, sitemap, internal links)
+npm run audit:seo
 ```
 
 ## 🌍 Deployment

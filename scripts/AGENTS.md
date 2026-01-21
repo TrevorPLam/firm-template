@@ -30,6 +30,7 @@ This folder contains build-time scripts, validation tools, and utilities for dev
 | `check-todo-comments.mjs` | Finds TODO/FIXME comments | On-demand or in CI |
 | `a11y-audit.mjs` | Accessibility audit | Before deployment |
 | `lighthouse-audit.mjs` | Performance audit | Before deployment |
+| `seo-audit.mjs` | SEO validation checks (metadata, sitemap, links) | Before release or SEO updates |
 
 ### Workflow & Operations
 | Script | Purpose | When to Run |

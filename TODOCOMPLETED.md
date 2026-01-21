@@ -152,6 +152,42 @@ References:
 Dependencies: T-010
 Effort: M
 
+### T-027: Enhance SEO tooling and documentation
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: DONE
+Completed: 2026-01-21
+Context:
+- SEO setup is mostly manual currently
+- Could provide better tools and validation
+- Help users optimize for search engines
+Acceptance Criteria:
+- [x] T-027.1: Create SEO checklist in TEMPLATE_CUSTOMIZATION_GUIDE.md:
+  - Meta tags verification
+  - Structured data validation
+  - Sitemap generation
+  - robots.txt configuration
+  - Internal linking strategy
+- [x] T-027.2: Add SEO validation script: npm run audit:seo
+  - Check for missing meta descriptions
+  - Verify structured data syntax
+  - Check for broken internal links
+  - Validate sitemap.xml
+- [x] T-027.3: Document how to customize:
+  - OpenGraph images
+  - Twitter cards
+  - Structured data schemas
+- [x] T-027.4: Add common schema.org templates (Organization, LocalBusiness, etc.)
+- [x] T-027.5: Document analytics and Search Console setup
+References:
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+- /scripts/seo-audit.mjs
+- /app/layout.tsx
+- /app/sitemap.ts
+Dependencies: None
+Effort: M
+
 ### T-031: Add Client Logo Showcase & Trust Badge Component
 Priority: P1
 Type: QUALITY

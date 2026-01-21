@@ -226,6 +226,65 @@ import Script from 'next/script'
 - In the browser console, ensure no CSP errors are logged.
 - Trigger a CTA click or contact form submission and confirm event capture.
 
+### SEO & Search Console
+#### SEO checklist (before launch)
+- **Meta tags**: Confirm each page exports metadata with a description.
+- **Structured data**: Validate JSON-LD schema in `app/layout.tsx` and blog posts.
+- **Sitemap**: Keep `app/sitemap.ts` in sync with new routes.
+- **robots.txt**: Update `app/robots.ts` if crawl rules change.
+- **Internal linking**: Ensure navigation and content link to core pages.
+
+Run the built-in audit before release:
+```bash
+npm run audit:seo
+```
+
+#### OpenGraph & Twitter cards
+- Update the global OpenGraph and Twitter metadata in `app/layout.tsx`.
+- Customize the OG image by editing `app/api/og/route.tsx` or swapping to a static asset.
+- For page-specific OG data, add per-page metadata exports in each `page.tsx`.
+
+#### Structured data templates
+Use these as starting points when updating the JSON-LD blocks in `app/layout.tsx`.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Your Firm Name",
+  "url": "https://yourfirm.com",
+  "logo": "https://yourfirm.com/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/company/yourfirm",
+    "https://www.facebook.com/yourfirm"
+  ]
+}
+```
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Your Firm Name",
+  "url": "https://yourfirm.com",
+  "telephone": "+1-555-555-5555",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "City",
+    "addressRegion": "State",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  }
+}
+```
+
+#### Search Console setup (Google)
+1. Create a property in Google Search Console for your domain.
+2. Verify ownership via DNS or add the verification meta tag to `app/layout.tsx`.
+3. Submit your sitemap URL: `https://your-domain.com/sitemap.xml`.
+4. Monitor coverage reports and fix any reported crawl issues.
+
 ---
 
 ## Deployment
