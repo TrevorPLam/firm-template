@@ -249,17 +249,14 @@ async function sendContactNotifications(data: SanitizedContactData) {
     message: data.message,
   })
 
-  if (!results.ownerNotification.success) {
-    if (results.ownerNotification.provider !== 'none') {
-      logWarn('Contact email notification failed', { provider: results.ownerNotification.provider })
+  const logFailure = (result: { success: boolean; provider: string } | undefined, emailType: string) => {
+    if (result && !result.success && result.provider !== 'none') {
+      logWarn(`Contact ${emailType} email failed`, { provider: result.provider })
     }
   }
 
-  if (results.customerThankYou && !results.customerThankYou.success) {
-    if (results.customerThankYou.provider !== 'none') {
-      logWarn('Contact thank-you email failed', { provider: results.customerThankYou.provider })
-    }
-  }
+  logFailure(results.ownerNotification, 'owner notification')
+  logFailure(results.customerThankYou, 'thank-you')
 }
 
 async function handleContactSubmission(data: ContactFormData) {
