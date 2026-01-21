@@ -1,7 +1,7 @@
 # TODO.md — Repository Task List
 
 Document Type: Workflow
-Last Updated: 2026-01-21
+Last Updated: 2026-01-22
 Task Truth Source: **TODO.md**
 
 This file is the single source of truth for actionable work. If another document disagrees, the task record in this file wins (unless the Constitution overrides).
@@ -762,22 +762,22 @@ Effort: M
 Priority: P3
 Type: INFRASTRUCTURE
 Owner: AGENT
-Status: READY
-Blockers: None
+Status: IN-REVIEW
+Blockers: Manual Dependabot trigger requires repo-owner access
 Context:
 - Dependencies should be kept up-to-date automatically
 - Dependabot or Renovate Bot can automate this
 - Reduces maintenance burden for template users
 Acceptance Criteria:
-- [ ] T-028.1: Create .github/dependabot.yml configuration:
+- [x] T-028.1: Create .github/dependabot.yml configuration:
   - Check npm dependencies weekly
   - Group minor/patch updates
   - Separate major updates
   - Auto-merge patch updates (if tests pass)
-- [ ] T-028.2: Document Dependabot in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [ ] T-028.3: Add instructions for disabling if desired
-- [ ] T-028.4: Test by manually triggering Dependabot
-- [ ] T-028.5: Update SECURITY.md with dependency update policy
+- [x] T-028.2: Document Dependabot in TEMPLATE_CUSTOMIZATION_GUIDE.md
+- [x] T-028.3: Add instructions for disabling if desired
+- [ ] T-028.4: Test by manually triggering Dependabot (requires repo-owner access)
+- [x] T-028.5: Update SECURITY.md with dependency update policy
 References:
 - /.github/dependabot.yml (new)
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md

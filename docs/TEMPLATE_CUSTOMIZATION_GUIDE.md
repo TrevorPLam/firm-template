@@ -178,6 +178,16 @@ import Script from 'next/script'
 ) : null}
 ```
 
+### Dependency updates (Dependabot)
+- A starter Dependabot configuration lives in `.github/dependabot.yml`.
+- Updates run weekly and group minor + patch updates separately from major upgrades.
+- **Auto-merge patch updates (if tests pass):**
+  1. Enable GitHub auto-merge on this repository.
+  2. Require the repo’s test/lint checks to pass before merging.
+  3. Manually enable auto-merge on Dependabot PRs that are *patch* updates only.
+- To disable Dependabot, either delete `.github/dependabot.yml` or turn it off in the repo
+  settings under **Security → Dependabot**.
+
 **Plausible**
 1. Create a Plausible site and copy your domain.
 2. Set `NEXT_PUBLIC_ANALYTICS_ID` to the site domain (for reference in docs/ops).
