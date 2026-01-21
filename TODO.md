@@ -30,6 +30,30 @@ This file is the single source of truth for actionable work. If another document
 - **Dependencies**: task IDs (if any)
 - **Effort**: `XS | S | M | L | XL` (XS = < 30 min, S = < 2 hr, M = < 4 hr, L = < 1 day, XL = > 1 day)
 
+## Prompt Scaffold (Required for AGENT-owned tasks)
+Use this scaffold inside each task so agents can work from `TODO.md` without a custom prompt.
+
+- **Role**: Who the agent should act as (e.g., senior engineer, docs editor).
+- **Goal**: What "done" means in one sentence.
+- **Non-Goals**: Explicit exclusions to prevent scope creep.
+- **Context**: Relevant files, prior decisions, and why the task exists.
+- **Constraints**: Tooling, style, security, and architecture rules to follow.
+- **Examples**: Expected input/output or format examples when applicable.
+- **Validation**: Exact verification steps (tests, lint, build, manual checks).
+- **Output Format**: Required response format or artifacts.
+- **Uncertainty**: If details are missing, mark **UNKNOWN** and cite what was checked.
+
+### Task Prompt Template (paste into each task)
+Role:
+Goal:
+Non-Goals:
+Context:
+Constraints:
+Examples:
+Validation:
+Output Format:
+Uncertainty:
+
 ### Priority Meaning
 - **P0**: CRITICAL - Template cannot be released without this; blocks all adoption
 - **P1**: HIGH - Important for template quality and usability; complete within 7 days
@@ -113,13 +137,22 @@ Acceptance Criteria:
   - Quick start instructions
   - Known limitations or considerations
 - [x] T-013.6: Add template badge/shield to README
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-013: Create template release checklist per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: Need final verification before template can be released for public use; Ensures no marketing-specific content slipped through.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-008, T-009, T-010, T-011, T-012; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/docs/TEMPLATE_RELEASE_CHECKLIST.md (new)).
+- Validation: Run and/or verify: npm run build, npm run lint, npm run test, npm run type-check; satisfy all checklist items.
+- Output Format: Update referenced files (/docs/TEMPLATE_RELEASE_CHECKLIST.md (new)) and record task status if required.
+- Uncertainty: Blocker: Requires repo-owner access for GitHub settings and release creation.
 References:
 - /docs/TEMPLATE_RELEASE_CHECKLIST.md (new)
 - Repository-wide
 - GitHub repository settings
 Dependencies: T-008, T-009, T-010, T-011, T-012
 Effort: M
-
 ---
 
 ## 🟡 PHASE 3: INFRASTRUCTURE & DEPLOYMENT (P2)
@@ -150,6 +183,16 @@ Acceptance Criteria:
   - Configure custom domain if applicable
 - [ ] T-014.3: Create deployment troubleshooting section
 - [ ] T-014.4: Define scope and affected files before changes.
+Prompt Scaffold:
+- Role: Platform engineer.
+- Goal: Complete T-014: Configure Cloudflare Pages deployment per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/CLOUDFLARE_DEPLOYMENT.md
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
@@ -179,6 +222,16 @@ Acceptance Criteria:
 - [ ] T-019.3: Define performance budgets as regression guards
 - [ ] T-019.4: Document targets in /docs/OBSERVABILITY.md
 - [ ] T-019.5: Add performance optimization tips to TEMPLATE_CUSTOMIZATION_GUIDE.md
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-019: Performance baselines + budgets (Lighthouse) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: Blocker: Lighthouse CLI not installed (install globally or set `LIGHTHOUSE_BIN`)..
 References:
 - /docs/OBSERVABILITY.md
 - /.lighthouserc.json
@@ -204,6 +257,16 @@ Acceptance Criteria:
 - [ ] T-020.2: Check for updates to `@cloudflare/next-on-pages` monthly
 - [x] T-020.3: Document mitigation strategies for template users
 - [ ] T-020.4: Set up Dependabot or similar for automated updates
+Prompt Scaffold:
+- Role: Dependency maintenance engineer.
+- Goal: Complete T-020: Monitor and fix transitive build-tool vulnerabilities per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: Blocker: Await upstream fixes in `@cloudflare/next-on-pages` or Cloudflare runtime updates..
 References:
 - /package.json
 - /SECURITY.md
@@ -237,6 +300,16 @@ Acceptance Criteria:
   - Known issues (if any)
   - Testing methodology
   - Recommendations for maintaining accessibility
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-021: Accessibility validation and improvements per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: Blocker: npm registry returns 403 for package downloads in this environment.
 References:
 - /docs/ACCESSIBILITY.md
 - /README.md
@@ -261,6 +334,16 @@ Acceptance Criteria:
 - [ ] T-146.2: Run Rich Results Test on a service page (Service schema)
 - [ ] T-146.3: Run Rich Results Test on a page with breadcrumbs
 - [ ] T-146.4: Record results and issues in /docs/SEO_VALIDATION.md
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-146: Validate structured data with Rich Results Test per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/blog/
 - /app/services/
@@ -286,6 +369,16 @@ Acceptance Criteria:
 - [ ] T-147.2: Add environment variable examples (e.g., LIGHTHOUSE_BIN)
 - [ ] T-147.3: Note OS-specific install tips and common failures
 - [ ] T-147.4: Cross-link from testing docs and runbooks
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-147: Document audit tooling prerequisites per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/TESTING_STRATEGY.md
 - /docs/CONTRIBUTING.md
@@ -320,13 +413,22 @@ Acceptance Criteria:
 - [ ] T-022.4: Test local development server
 - [ ] T-022.5: Document version change in CHANGELOG.md
 - [ ] T-022.6: Update package.json and package-lock.json
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-022: Upgrade Next.js to patch CVE-2025-66478 per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: Next.js 15.5.2 has security vulnerability CVE-2025-66478; Must upgrade to patched version before template release.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/package.json, /CHANGELOG.md).
+- Validation: Run and/or verify: npm run test, npm run type-check; satisfy all checklist items.
+- Output Format: Update referenced files (/package.json, /CHANGELOG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /package.json
 - /CHANGELOG.md
 - https://nextjs.org/blog/CVE-2025-66478
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-023: Migrate from @cloudflare/next-on-pages to OpenNext
@@ -351,6 +453,16 @@ Acceptance Criteria:
 - [ ] T-023.7: Verify all pages work correctly
 - [ ] T-023.8: Update wrangler.toml if needed
 - [ ] T-023.9: Document migration in CHANGELOG.md
+Prompt Scaffold:
+- Role: Platform engineer.
+- Goal: Complete T-023: Migrate from @cloudflare/next-on-pages to OpenNext per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /package.json
 - /wrangler.toml
@@ -389,6 +501,16 @@ Acceptance Criteria:
 - [ ] T-025.5: Add npm script: npm run setup
 - [ ] T-025.6: Document in README.md Quick Start section
 - [ ] T-025.7: Test wizard end-to-end
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-025: Create interactive CLI setup wizard per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /scripts/setup.js (new)
 - /package.json
@@ -418,6 +540,16 @@ Acceptance Criteria:
 - [x] T-028.3: Add instructions for disabling if desired
 - [ ] T-028.4: Test by manually triggering Dependabot (requires repo-owner access)
 - [x] T-028.5: Update SECURITY.md with dependency update policy
+Prompt Scaffold:
+- Role: Platform engineer.
+- Goal: Complete T-028: Configure automated dependency updates per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: Blocker: Manual Dependabot trigger requires repo-owner access.
 References:
 - /.github/dependabot.yml (new)
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
@@ -451,6 +583,16 @@ Acceptance Criteria:
   - npm run build-storybook (production)
 - [ ] T-029.5: Document Storybook in TEMPLATE_CUSTOMIZATION_GUIDE.md
 - [ ] T-029.6: Optional: Deploy Storybook to GitHub Pages
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-029: Add component showcase (Storybook) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /.storybook/ (new)
 - /components/**/*.stories.tsx (new)
@@ -487,6 +629,16 @@ Acceptance Criteria:
 - [ ] T-030.6: Document configuration in TEMPLATE_CUSTOMIZATION_GUIDE.md
 - [ ] T-030.7: Add environment variables for API keys
 - [ ] T-030.8: Test conversation flows and lead capture
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-030: Implement AI Chatbot Integration per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: 67% of B2B professional services sites have AI chat in 2026; Increases lead capture by 15-30% according to industry data.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-010; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/Chatbot.tsx (new), /lib/chatbot.ts (new), /lib/env.ts).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/Chatbot.tsx (new), /lib/chatbot.ts (new), /lib/env.ts) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/Chatbot.tsx (new)
 - /lib/chatbot.ts (new)
@@ -495,7 +647,6 @@ References:
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
 Dependencies: T-010
 Effort: M
-
 ---
 
 ### T-031: Add Client Logo Showcase & Trust Badge Component
@@ -522,6 +673,16 @@ Acceptance Criteria:
 - [ ] T-031.4: Integrate on homepage below hero section
 - [ ] T-031.5: Document logo requirements (size, format) in customization guide
 - [ ] T-031.6: Add to vertical examples (law firm shows bar association, etc.)
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-031: Add Client Logo Showcase & Trust Badge Component per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: Social proof increases conversion by 25% on average; Client logos are standard on 82% of professional services sites.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-010, T-011; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/ClientLogoShowcase.tsx (new), /components/TrustBadge.tsx (new), /public/clients/ (new directory)).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/ClientLogoShowcase.tsx (new), /components/TrustBadge.tsx (new), /public/clients/ (new directory)) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/ClientLogoShowcase.tsx (new)
 - /components/TrustBadge.tsx (new)
@@ -530,7 +691,6 @@ References:
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
 Dependencies: T-010, T-011
 Effort: S
-
 ---
 
 ---
@@ -564,6 +724,16 @@ Acceptance Criteria:
 - [ ] T-033.5: Integrate with analytics pipeline
 - [ ] T-033.6: Document in TEMPLATE_CUSTOMIZATION_GUIDE.md
 - [ ] T-033.7: Add to OBSERVABILITY.md for monitoring
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-033: Add A/B Testing Framework per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: Enables continuous optimization (2-5% monthly improvement); Standard on 58% of high-performing marketing sites.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-010; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/ABTest.tsx (new), /lib/analytics.ts, /lib/abtest.ts (new)).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/ABTest.tsx (new), /lib/analytics.ts, /lib/abtest.ts (new)) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/ABTest.tsx (new)
 - /lib/analytics.ts
@@ -572,7 +742,6 @@ References:
 - /docs/OBSERVABILITY.md
 Dependencies: T-010
 Effort: M
-
 ---
 
 ### T-034: Create Resource Library with Lead Magnets
@@ -602,6 +771,16 @@ Acceptance Criteria:
 - [ ] T-034.5: Integrate download tracking with CRM
 - [ ] T-034.6: Add resource CTAs throughout site
 - [ ] T-034.7: Document resource creation process in docs
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-034: Create Resource Library with Lead Magnets per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/resources/page.tsx (new)
 - /app/resources/[slug]/page.tsx (new)
@@ -643,6 +822,16 @@ Acceptance Criteria:
   - Service explainer video
 - [ ] T-035.5: Document video hosting options and setup
 - [ ] T-035.6: Add to vertical examples
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-035: Add Video Content Support per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/VideoPlayer.tsx (new)
 - /components/VideoTestimonial.tsx (new)
@@ -683,6 +872,16 @@ Acceptance Criteria:
 - [ ] T-036.4: Integrate with analytics to track effectiveness
 - [ ] T-036.5: Document configuration in customization guide
 - [ ] T-036.6: Test on mobile (disable or adapt)
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-036: Implement Exit-Intent Popup System per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/ExitIntentPopup.tsx (new)
 - /lib/exit-intent.ts (new)
@@ -721,6 +920,16 @@ Acceptance Criteria:
 - [ ] T-037.6: Link team page from navigation
 - [ ] T-037.7: Add team section to homepage
 - [ ] T-037.8: Document in customization guide
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-037: Create Team Member Profiles Section per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/team/page.tsx (new)
 - /app/team/[slug]/page.tsx (new)
@@ -763,6 +972,16 @@ Acceptance Criteria:
 - [ ] T-038.5: Integrate lead capture (email to get results)
 - [ ] T-038.6: Document calculator customization
 - [ ] T-038.7: Add to vertical examples
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-038: Build Interactive ROI Calculator per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/calculator/page.tsx (new)
 - /components/ROICalculator.tsx (new)
@@ -804,6 +1023,16 @@ Acceptance Criteria:
 - [ ] T-039.5: A/B test different incentive messages
 - [ ] T-039.6: Track conversion rate in analytics
 - [ ] T-039.7: Document in customization guide
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-039: Add Newsletter Popup & Lead Magnet Incentive per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/NewsletterPopup.tsx (new)
 - /lib/newsletter.ts (new)
@@ -811,6 +1040,244 @@ References:
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
 Dependencies: T-010, T-024
 Effort: S
+
+---
+
+### T-149: Add Case Studies Library (Trust & Outcomes)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Trust-based firms rely on outcomes and proof to win consultations
+- Case studies provide structured credibility beyond testimonials
+- Supports SEO with long-form, outcome-focused content
+Acceptance Criteria:
+- [ ] T-149.1: Create `/app/case-studies/page.tsx` listing page
+- [ ] T-149.2: Create `/app/case-studies/[slug]/page.tsx` detail page
+- [ ] T-149.3: Add `components/CaseStudyCard.tsx` and `components/CaseStudyDetail.tsx`
+- [ ] T-149.4: Add MDX content source in `/content/case-studies/` with 2-3 placeholders
+- [ ] T-149.5: Create `lib/case-studies.ts` loader (patterned after `lib/blog.ts`)
+- [ ] T-149.6: Add Case Study structured data (Article or CreativeWork schema)
+- [ ] T-149.7: Add routes to `app/sitemap.ts` and `lib/search.ts`
+- [ ] T-149.8: Document customization steps in `docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-149: Add Case Studies Library (Trust & Outcomes) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
+References:
+- /app/case-studies/page.tsx (new)
+- /app/case-studies/[slug]/page.tsx (new)
+- /components/CaseStudyCard.tsx (new)
+- /components/CaseStudyDetail.tsx (new)
+- /content/case-studies/ (new directory)
+- /lib/case-studies.ts (new)
+- /app/sitemap.ts
+- /lib/search.ts
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: M
+
+---
+
+### T-150: Add FAQ / Knowledge Base Hub
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Professional services sites benefit from a centralized FAQ hub
+- Reduces consultation friction and supports SEO
+- Complements service-level FAQ schema
+Acceptance Criteria:
+- [ ] T-150.1: Create `/app/faq/page.tsx` with searchable FAQ sections
+- [ ] T-150.2: Add `components/FAQSection.tsx` for reusable FAQ blocks
+- [ ] T-150.3: Create data source in `/content/faq/` or `lib/faq.ts`
+- [ ] T-150.4: Add FAQPage structured data for the hub
+- [ ] T-150.5: Add route to `app/sitemap.ts` and `lib/search.ts`
+- [ ] T-150.6: Optionally add FAQ link to Navigation (documented)
+- [ ] T-150.7: Document customization steps in `docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-150: Add FAQ / Knowledge Base Hub per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
+References:
+- /app/faq/page.tsx (new)
+- /components/FAQSection.tsx (new)
+- /content/faq/ (new directory)
+- /lib/faq.ts (new)
+- /app/sitemap.ts
+- /lib/search.ts
+- /components/Navigation.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: M
+
+---
+
+### T-151: Add Multi-Step / Conditional Intake Form
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Trust-based firms often need more qualification than a single-step form
+- Multi-step intake improves completion rates for longer forms
+- Conditional fields improve relevance per service type
+Acceptance Criteria:
+- [ ] T-151.1: Add multi-step flow and progress UI to `components/ContactForm.tsx`
+- [ ] T-151.2: Add conditional fields (service type, budget, timeline) in schema
+- [ ] T-151.3: Update `lib/contact-form-schema.ts` and server action handling
+- [ ] T-151.4: Update tests in `__tests__/components/ContactForm.test.tsx`
+- [ ] T-151.5: Document new fields and behavior in `docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-151: Add Multi-Step / Conditional Intake Form per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
+References:
+- /components/ContactForm.tsx
+- /lib/contact-form-schema.ts
+- /lib/actions.ts
+- /__tests__/components/ContactForm.test.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: None
+Effort: M
+
+---
+
+### T-152: Wire Analytics for CTAs and Form Submissions
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Analytics helpers exist but are not wired into conversion points
+- CTA and form tracking are required for optimization
+- Supports trust-based firms tracking consultation conversions
+Acceptance Criteria:
+- [ ] T-152.1: Call `trackFormSubmission` on contact form success/failure
+- [ ] T-152.2: Call `trackCTAClick` on primary CTA buttons (Hero, CTASection, FinalCTA)
+- [ ] T-152.3: Track scheduling CTA usage in `AppointmentScheduler`
+- [ ] T-152.4: Track exit-intent primary action in `ExitIntentPopup`
+- [ ] T-152.5: Update `docs/OBSERVABILITY.md` with event wiring guidance
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-152: Wire Analytics for CTAs and Form Submissions per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: Analytics helpers exist but are not wired into conversion points; CTA and form tracking are required for optimization.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-059; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/ContactForm.tsx, /components/Hero.tsx, /components/CTASection.tsx).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/ContactForm.tsx, /components/Hero.tsx, /components/CTASection.tsx) and record task status if required.
+- Uncertainty: None.
+References:
+- /components/ContactForm.tsx
+- /components/Hero.tsx
+- /components/CTASection.tsx
+- /components/FinalCTA.tsx
+- /components/AppointmentScheduler.tsx
+- /components/ExitIntentPopup.tsx
+- /lib/analytics.ts
+- /docs/OBSERVABILITY.md
+Dependencies: T-059
+Effort: S
+---
+
+### T-153: Add Local SEO / Location Support (Optional)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Many law/accounting firms serve specific regions and need local SEO
+- Location pages build trust and improve search visibility
+- Supports LocalBusiness schema for search engines
+Acceptance Criteria:
+- [ ] T-153.1: Create `/app/locations/page.tsx` with office listings
+- [ ] T-153.2: Create `/app/locations/[slug]/page.tsx` with map + contact details
+- [ ] T-153.3: Add location data source in `/content/locations/` or `lib/locations.ts`
+- [ ] T-153.4: Update LocalBusiness structured data in `app/layout.tsx` to use env values
+- [ ] T-153.5: Add required env vars to `.env.example` and `lib/env.public.ts`
+- [ ] T-153.6: Add routes to `app/sitemap.ts` and `lib/search.ts`
+- [ ] T-153.7: Document setup in `docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-153: Add Local SEO / Location Support (Optional) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
+References:
+- /app/locations/page.tsx (new)
+- /app/locations/[slug]/page.tsx (new)
+- /content/locations/ (new directory)
+- /lib/locations.ts (new)
+- /app/layout.tsx
+- /.env.example
+- /lib/env.public.ts
+- /app/sitemap.ts
+- /lib/search.ts
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-075, T-088
+Effort: M
+
+---
+
+### T-154: Integrate Video Testimonials on Homepage
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Video testimonials improve credibility for trust-first firms
+- Component exists but is not surfaced in the homepage experience
+Acceptance Criteria:
+- [ ] T-154.1: Add `VideoTestimonial` to homepage or case studies page
+- [ ] T-154.2: Provide placeholder testimonial data for the component
+- [ ] T-154.3: Document usage in `docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-154: Integrate Video Testimonials on Homepage per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
+References:
+- /components/VideoTestimonial.tsx
+- /app/page.tsx
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-035
+Effort: XS
 
 ---
 
@@ -829,12 +1296,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-040.1: Implement Promise-based singleton initialization in `lib/actions.ts`
 - [ ] T-040.2: Add test or concurrency simulation verifying single instance initialization
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-040: Fix rate limiter race condition (WRONG #001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #001/C001: rate limiter singleton can initialize multiple times; Concurrent requests can create multiple limiter instances and inconsistent enforcement.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/actions.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-041: Guard root layout search index build (WRONG #014)
@@ -848,13 +1324,22 @@ Context:
 Acceptance Criteria:
 - [ ] T-041.1: Add try/catch fallback around `getSearchIndex()` in `app/layout.tsx`
 - [ ] T-041.2: Log error via logger and keep navigation functional with empty items
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-041: Guard root layout search index build (WRONG #014) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #014: unhandled error from `getSearchIndex()` can crash entire app.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/layout.tsx, /lib/search.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/layout.tsx, /lib/search.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/layout.tsx
 - /lib/search.ts
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002)
@@ -868,12 +1353,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-042.1: Move rate limit enforcement before `insertLead()` in `lib/actions.ts`
 - [ ] T-042.2: Add test for rate-limited submissions not writing records
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #002/SEC-002: leads are inserted before rate limit check, enabling spam.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/actions.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-043: Fix HubSpot sync error swallowing (BUG #003 / #006)
@@ -888,12 +1382,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-043.1: Persist sync failure state with error details when CRM sync fails
 - [ ] T-043.2: Return a safe warning or status indicator to callers when sync fails
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-043: Fix HubSpot sync error swallowing (BUG #003 / #006) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md BUG #003/#006: HubSpot sync failures are swallowed and status updates can fail silently; Leads can be stuck in pending state with no visibility or recovery path.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/actions.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-044: Remediate MDX XSS vulnerability (BUG #008)
@@ -909,13 +1412,22 @@ Acceptance Criteria:
 - [ ] T-044.2: Audit current MDX content for unsafe nodes/scripts
 - [ ] T-044.3: Define scope and affected files before changes.
 - [ ] T-044.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-044: Remediate MDX XSS vulnerability (BUG #008) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md BUG #008: MDX rendering allows script injection without sanitization.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/BlogPostContent.tsx, /content/blog/, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/BlogPostContent.tsx, /content/blog/, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/BlogPostContent.tsx
 - /content/blog/
 - /WRONG.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-045: Prevent header injection in HubSpot name fields (BUG #011)
 Priority: P0
@@ -928,13 +1440,22 @@ Context:
 Acceptance Criteria:
 - [ ] T-045.1: Sanitize first/last names to strip CR/LF and control chars
 - [ ] T-045.2: Add tests covering CR/LF injection attempts
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-045: Prevent header injection in HubSpot name fields (BUG #011) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md BUG #011: first/last names are sent to HubSpot without newline sanitization.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /lib/sanitize.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/actions.ts, /lib/sanitize.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /lib/sanitize.ts
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-046: Prevent path traversal in blog loader (SEC-001)
@@ -948,12 +1469,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-046.1: Validate slugs with a strict allowlist before reading files
 - [ ] T-046.2: Add tests for traversal payloads returning undefined/404
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-046: Prevent path traversal in blog loader (SEC-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md SEC-001: slug-based path building allows path traversal.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/blog.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/blog.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/blog.ts
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-047: Validate Content-Length header in middleware (WRONG #003 / SEC-001)
@@ -967,12 +1497,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-047.1: Reject missing/invalid/negative Content-Length values
 - [ ] T-047.2: Add tests for invalid header values and oversized payloads
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-047: Validate Content-Length header in middleware (WRONG #003 / SEC-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #003/S001: malformed Content-Length can bypass size checks.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/middleware.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/middleware.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /middleware.ts
 - /WRONG.md
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-048: Add explicit null handling in logger sanitize (WRONG #004)
@@ -986,12 +1525,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-048.1: Handle null/undefined explicitly in `sanitizeValue`
 - [ ] T-048.2: Add unit test for null log context values
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-048: Add explicit null handling in logger sanitize (WRONG #004) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #004: sanitizeValue relies on implicit null handling.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/logger.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/logger.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/logger.ts
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-049: Fix mobile menu focus management (WRONG #010)
@@ -1005,12 +1553,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-049.1: Capture focus before opening and restore on close if element exists
 - [ ] T-049.2: Add E2E test for keyboard focus restoration
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-049: Fix mobile menu focus management (WRONG #010) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #010: focus restoration uses stale refs on menu close.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/Navigation.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/Navigation.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/Navigation.tsx
 - /WRONG.md
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-050: Add error handling to blog listing page (WRONG #015)
@@ -1024,12 +1581,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-050.1: Wrap `getAllPosts()`/`getAllCategories()` in try/catch with fallback UI
 - [ ] T-050.2: Add test for malformed MDX returning safe UI
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-050: Add error handling to blog listing page (WRONG #015) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #015: blog listing crashes on malformed MDX/frontmatter.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/blog/page.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/blog/page.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/blog/page.tsx
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-051: Fix metadata handling for missing blog posts (WRONG #016)
@@ -1043,12 +1609,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-051.1: Return noindex metadata for missing posts
 - [ ] T-051.2: Verify `notFound()` still triggers 404 in page render
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-051: Fix metadata handling for missing blog posts (WRONG #016) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #016: `generateMetadata()` returns 200 metadata for missing posts.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/blog/[slug]/page.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/blog/[slug]/page.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/blog/[slug]/page.tsx
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-052: Add Suspense fallback on search page (WRONG #017)
@@ -1062,12 +1637,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-052.1: Provide a loading fallback in `app/search/page.tsx`
 - [ ] T-052.2: Add UI test asserting fallback renders on slow load
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-052: Add Suspense fallback on search page (WRONG #017) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #017: Suspense without fallback yields blank UI.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/search/page.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/search/page.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/search/page.tsx
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-053: Replace index keys in SocialProof lists (WRONG #019)
@@ -1081,12 +1665,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-053.1: Use stable unique keys for testimonials and metrics
 - [ ] T-053.2: Add test or lint rule to prevent index keys in mapped UI
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-053: Replace index keys in SocialProof lists (WRONG #019) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #019: React key anti-pattern risks state corruption.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/SocialProof.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/SocialProof.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/SocialProof.tsx
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-054: Clean up InstallPrompt timeout (WRONG #020)
@@ -1100,12 +1693,21 @@ Context:
 Acceptance Criteria:
 - [ ] T-054.1: Store and clear timeout in effect cleanup
 - [ ] T-054.2: Add test to ensure no setState after unmount
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-054: Clean up InstallPrompt timeout (WRONG #020) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #020: timeout not cleared in effect cleanup.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/InstallPrompt.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/InstallPrompt.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/InstallPrompt.tsx
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-055: Announce search keyboard shortcut to screen readers (WRONG #021)
@@ -1119,13 +1721,22 @@ Context:
 Acceptance Criteria:
 - [ ] T-055.1: Update aria-label to include shortcut hint
 - [ ] T-055.2: Verify with a11y snapshot or test
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-055: Announce search keyboard shortcut to screen readers (WRONG #021) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #021: aria-label does not mention Cmd/Ctrl+K shortcut.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/SearchDialog.tsx, /components/Navigation.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/SearchDialog.tsx, /components/Navigation.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/SearchDialog.tsx
 - /components/Navigation.tsx
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
 ---
 
 ### T-056: Refactor Navigation god component (Q001)
@@ -1141,13 +1752,22 @@ Acceptance Criteria:
 - [ ] T-056.2: Extract focus management and path normalization into hooks/utils
 - [ ] T-056.3: Define scope and affected files before changes.
 - [ ] T-056.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-056: Refactor Navigation god component (Q001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md Q001: `Navigation.tsx` mixes multiple responsibilities.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/components/Navigation.tsx, /lib/utils.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/components/Navigation.tsx, /lib/utils.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /components/Navigation.tsx
 - /lib/utils.ts
 - /WRONG.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-057: Auto-generate static pages list for search (Q002)
 Priority: P1
@@ -1162,13 +1782,22 @@ Acceptance Criteria:
 - [ ] T-057.2: Remove manual duplication with `app/sitemap.ts`
 - [ ] T-057.3: Define scope and affected files before changes.
 - [ ] T-057.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-057: Auto-generate static pages list for search (Q002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md Q002: hardcoded static pages array in `lib/search.ts`.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/search.ts, /app/sitemap.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/search.ts, /app/sitemap.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/search.ts
 - /app/sitemap.ts
 - /WRONG.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-058: Centralize validation logic for contact flow (Q003)
 Priority: P1
@@ -1181,6 +1810,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-058.1: Consolidate validation in `lib/contact-form-schema.ts`
 - [ ] T-058.2: Reuse single schema on client and server
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-058: Centralize validation logic for contact flow (Q003) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md Q003: validation logic duplicated across client/server.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/contact-form-schema.ts, /components/ContactForm.tsx, /lib/actions.ts).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/contact-form-schema.ts, /components/ContactForm.tsx, /lib/actions.ts) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/contact-form-schema.ts
 - /components/ContactForm.tsx
@@ -1188,7 +1827,6 @@ References:
 - /WRONG.md
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-059: Implement analytics provider selection (I001 / D1.1)
@@ -1204,13 +1842,22 @@ Acceptance Criteria:
 - [ ] T-059.2: Implement GA4 or Plausible adapter and tests
 - [ ] T-059.3: Define scope and affected files before changes.
 - [ ] T-059.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Platform engineer.
+- Goal: Complete T-059: Implement analytics provider selection (I001 / D1.1) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md I001/D1.1: analytics provider is stubbed; no real tracking.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/analytics.ts, /lib/env.public.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/analytics.ts, /lib/env.public.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/analytics.ts
 - /lib/env.public.ts
 - /WRONG.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-060: Add HubSpot retry logic (Phase 4 checklist)
 Priority: P1
@@ -1225,12 +1872,21 @@ Acceptance Criteria:
 - [ ] T-060.2: Record retry attempts and final failure state
 - [ ] T-060.3: Define retry strategy (attempt count, backoff, terminal failure)
 - [ ] T-060.4: Add verification (unit/integration) for retry and final failure states
+Prompt Scaffold:
+- Role: Platform engineer.
+- Goal: Complete T-060: Add HubSpot retry logic (Phase 4 checklist) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md Phase 4: HubSpot sync lacks retry queue.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-043; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/actions.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
 Dependencies: T-043
 Effort: M
-
 ---
 ### T-061: Add error boundaries in critical paths (D1.3)
 Priority: P1
@@ -1245,13 +1901,22 @@ Acceptance Criteria:
 - [ ] T-061.2: Ensure failures degrade gracefully with user-safe UI
 - [ ] T-061.3: Define scope and affected files before changes.
 - [ ] T-061.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-061: Add error boundaries in critical paths (D1.3) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md D1.3: missing error boundaries for routes and CRM failures.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/, /components/, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/, /components/, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/
 - /components/
 - /WRONG.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-062: Decouple search index from blog module (A001)
 Priority: P1
@@ -1266,13 +1931,22 @@ Acceptance Criteria:
 - [ ] T-062.2: Update search indexing to use registry
 - [ ] T-062.3: Define scope and affected files before changes.
 - [ ] T-062.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-062: Decouple search index from blog module (A001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md A001: tight coupling between `lib/search.ts` and `lib/blog.ts`.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/search.ts, /lib/blog.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/search.ts, /lib/blog.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/search.ts
 - /lib/blog.ts
 - /WRONG.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-063: Increase critical path test coverage (T1.1)
 Priority: P1
@@ -1287,12 +1961,21 @@ Acceptance Criteria:
 - [ ] T-063.2: Add tests for HubSpot timeout and malformed MDX handling
 - [ ] T-063.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-063.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-063: Increase critical path test coverage (T1.1) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md T1.1: critical paths have low coverage (rate limit, CRM sync, blog parsing).
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/__tests__/, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/__tests__/, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /__tests__/
 - /WRONG.md
 Dependencies: None
 Effort: L
-
 ---
 ### T-064: Add cleanup to in-memory rate limiter (WRONG #005)
 Priority: P2
@@ -1305,6 +1988,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-064.1: Add periodic cleanup or TTL cache
 - [ ] T-064.2: Document fallback limitations in code
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-064: Add cleanup to in-memory rate limiter (WRONG #005) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
@@ -1324,6 +2017,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-065.1: Close dialog when backdrop is clicked
 - [ ] T-065.2: Ensure clicks inside modal do not close
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-065: Add SearchDialog backdrop click to close (WRONG #011) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/SearchDialog.tsx
 - /WRONG.md
@@ -1343,6 +2046,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-066.1: Make dialog focusable and apply visible focus styles
 - [ ] T-066.2: Ensure focus shifts to dialog on open
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-066: Add focus indicator for SearchDialog container (WRONG #013) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/SearchDialog.tsx
 - /WRONG.md
@@ -1362,6 +2075,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-067.1: Log or report failure when Sentry import fails
 - [ ] T-067.2: Ensure callers can detect failure or fallback safely
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-067: Log Sentry client load failures (WRONG #012) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/sentry-client.ts
 - /WRONG.md
@@ -1381,6 +2104,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-068.1: Add error boundary or fallback for BlogPostContent import failures
 - [ ] T-068.2: Provide user-visible error state when content fails to load
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-068: Add error handling for BlogPostContent dynamic import (WRONG #018) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/blog/[slug]/page.tsx
 - /components/BlogPostContent.tsx
@@ -1401,6 +2134,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-069.1: Document or standardize return patterns in `lib/blog.ts`
 - [ ] T-069.2: Add tests verifying consistent behavior
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-069: Standardize blog module return values (WRONG #009) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/blog.ts
 - /WRONG.md
@@ -1420,6 +2163,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-070.1: Remove unused params (`_location`, `_destination`)
 - [ ] T-070.2: Remove or implement dead helpers (trackPageView, trackOutboundLink, trackDownload, trackScrollDepth, trackTimeOnPage)
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-070: Remove unused analytics params and dead helpers (D001 + Deep Sweep) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/analytics.ts
 - /WRONG.md
@@ -1439,6 +2192,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-071.1: Replace unused `error` with `catch {}` or use the value
 - [ ] T-071.2: Ensure logger captures real error details where needed
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-071: Remove unused error variables in catch blocks (D002) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/
 - /components/
@@ -1459,6 +2222,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-072.1: Remove or inline unused type definition
 - [ ] T-072.2: Confirm TypeScript build passes
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-072: Remove orphaned RateLimiter type (D003) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
@@ -1478,6 +2251,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-073.1: Remove unused classes from Tailwind config
 - [ ] T-073.2: Verify styles unchanged via lint/build
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-073: Remove unused Tailwind classes (Phase 3 low) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /tailwind.config.ts
 - /WRONG.md
@@ -1497,6 +2280,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-074.1: Remove unused env vars or wire them into code
 - [ ] T-074.2: Keep .env.example aligned with `lib/env.ts` and `lib/env.public.ts`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-074: Remove unused env vars from .env.example (Phase 3 low) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /.env.example
 - /lib/env.ts
@@ -1518,6 +2311,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-075.1: Add env vars for social URLs in `lib/env.public.ts` and `.env.example`
 - [ ] T-075.2: Update structured data to use env values with safe filtering
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-075: Move social URLs to env vars (WRONG #008 / CF001) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/layout.tsx
 - /lib/env.public.ts
@@ -1539,6 +2342,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-076.1: Move rate limit constants to config/env with validation
 - [ ] T-076.2: Update usage across `lib/actions.ts`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-076: Replace rate-limit magic numbers with config (Phase 2 / Phase 10) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /lib/env.ts
@@ -1561,6 +2374,16 @@ Acceptance Criteria:
 - [ ] T-077.2: Keep behavior unchanged with tests
 - [ ] T-077.3: Define scope and affected files before changes.
 - [ ] T-077.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-077: Reduce long functions (Phase 2 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
@@ -1581,6 +2404,16 @@ Acceptance Criteria:
 - [ ] T-078.2: Verify UI behavior unchanged
 - [ ] T-078.3: Define scope and affected files before changes.
 - [ ] T-078.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-078: Reduce deep nesting in components (Phase 2 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/
 - /WRONG.md
@@ -1599,6 +2432,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-079.1: Align naming conventions with BESTPR.md
 - [ ] T-079.2: Update imports to match renamed files
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-079: Standardize component file naming (Phase 2 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/
 - /BESTPR.md
@@ -1619,6 +2462,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-080.1: Remove unused imports and ensure lint passes
 - [ ] T-080.2: Confirm no build or test regressions
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-080: Remove unused imports (Phase 2 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/
 - /components/
@@ -1640,6 +2493,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-081.1: Extract boolean helpers for complex conditions
 - [ ] T-081.2: Keep behavior identical with unit tests
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-081: Simplify complex conditions (Phase 2 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/
 - /components/
@@ -1660,6 +2523,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-082.1: Add JSDoc for exported functions lacking docs
 - [ ] T-082.2: Ensure new docs match existing style in BESTPR.md
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-082: Add missing JSDoc for exported functions (Phase 2 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/
 - /components/
@@ -1681,6 +2554,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-083.1: Replace console.log with logger helpers
 - [ ] T-083.2: Ensure no console output in production paths
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-083: Remove console.log statements in production code (Phase 2 low) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/logger.ts
 - /WRONG.md
@@ -1700,6 +2583,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-084.1: Remove commented-out blocks or convert to TODOs
 - [ ] T-084.2: Confirm no behavior changes
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-084: Remove commented-out code blocks (Phase 2 low) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/
 - /WRONG.md
@@ -1721,6 +2614,16 @@ Acceptance Criteria:
 - [ ] T-085.2: Document request ID usage in logger helpers
 - [ ] T-085.3: Define scope and affected files before changes.
 - [ ] T-085.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-085: Add request ID correlation for logging (Phase 4 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/logger.ts
 - /middleware.ts
@@ -1740,6 +2643,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-086.1: Add startup validation for required server env vars
 - [ ] T-086.2: Ensure missing vars fail fast with clear errors
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-086: Validate Supabase/HubSpot config at startup (Phase 10 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/env.ts
 - /WRONG.md
@@ -1761,6 +2674,16 @@ Acceptance Criteria:
 - [ ] T-087.2: Document usage in relevant docs
 - [ ] T-087.3: Define scope and affected files before changes.
 - [ ] T-087.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Platform engineer.
+- Goal: Complete T-087: Add env drift checks across environments (Phase 10 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /scripts/
 - /docs/
@@ -1780,6 +2703,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-088.1: Add env var for contact email and use in structured data
 - [ ] T-088.2: Update `.env.example` accordingly
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-088: Move structured data contact email to env var (Phase 10 medium) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /app/layout.tsx
 - /lib/env.public.ts
@@ -1801,6 +2734,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-089.1: Track search queries/events client-side
 - [ ] T-089.2: Respect privacy settings and opt-outs
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-089: Add client-side search analytics (Phase 4 checklist) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/SearchDialog.tsx
 - /lib/analytics.ts
@@ -1821,6 +2764,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-090.1: Validate required fields in blog frontmatter with Zod
 - [ ] T-090.2: Fail gracefully with clear error messages
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-090: Add frontmatter validation for blog posts (Phase 4 checklist) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/blog.ts
 - /content/blog/
@@ -1841,6 +2794,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-091.1: Implement dev-only caching layer for blog reads
 - [ ] T-091.2: Ensure production behavior unchanged
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-091: Add blog post caching in dev builds (Phase 4 checklist) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/blog.ts
 - /WRONG.md
@@ -1862,6 +2825,16 @@ Acceptance Criteria:
 - [ ] T-092.2: Document behavior and performance impact
 - [ ] T-092.3: Choose fuzzy matching approach and configure thresholds
 - [ ] T-092.4: Add tests/examples covering fuzzy matches and ranking
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-092: Add fuzzy search support (Phase 4 checklist) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/search.ts
 - /components/SearchDialog.tsx
@@ -1881,6 +2854,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-093.1: Identify affected component and persist success state across navigation
 - [ ] T-093.2: Add regression test for the success message
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-093: Fix success message disappearing on navigation (Phase 4 medium #009) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/ContactForm.tsx
 - /WRONG.md
@@ -1902,6 +2885,16 @@ Acceptance Criteria:
 - [ ] T-094.2: Update scripts/styles to use nonce safely
 - [ ] T-094.3: Thread nonce through rendering paths that inject scripts/styles
 - [ ] T-094.4: Verify CSP headers and update SECURITY docs with the nonce pattern
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-094: Implement nonce-based CSP (SEC-004 / Phase 4 checklist) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /middleware.ts
 - /WRONG.md
@@ -1920,6 +2913,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-095.1: Use environment-provided salt with safe fallback
 - [ ] T-095.2: Document new env var in `.env.example`
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-095: Strengthen IP hash salt (SEC-003) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /.env.example
@@ -1940,6 +2943,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-096.1: Replace user-facing errors with generic messages
 - [ ] T-096.2: Ensure detailed errors are logged server-side only
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-096: Sanitize error responses (SEC-005) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /WRONG.md
@@ -1959,6 +2972,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-097.1: Update Zod to latest version and run tests
 - [ ] T-097.2: Update CHANGELOG.md if version changes
+Prompt Scaffold:
+- Role: Dependency maintenance engineer.
+- Goal: Complete T-097: Update Zod to latest supported version (SEC-007) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /package.json
 - /package-lock.json
@@ -1980,6 +3003,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-098.1: Add pre-commit hook or CI step to run secret scan
 - [ ] T-098.2: Document setup in developer docs
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-098: Add pre-commit secret scanning (S003) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /scripts/check-client-secrets.mjs
 - /docs/
@@ -2002,6 +3035,16 @@ Acceptance Criteria:
 - [ ] T-099.2: Update `lib/actions.ts` to use the new layer
 - [ ] T-099.3: Define scope and affected files before changes.
 - [ ] T-099.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-099: Add CRM/Supabase abstraction layer (Architecture) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/actions.ts
 - /lib/
@@ -2023,6 +3066,16 @@ Acceptance Criteria:
 - [ ] T-100.2: Update components to use the new interfaces
 - [ ] T-100.3: Define scope and affected files before changes.
 - [ ] T-100.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-100: Reduce direct lib imports from components (Architecture) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/
 - /lib/
@@ -2042,6 +3095,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-101.1: Audit imports between env and logger modules
 - [ ] T-101.2: Add guard or refactor to prevent circular dependency
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-101: Guard env/logger circular dependency risk (Architecture) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/env.ts
 - /lib/logger.ts
@@ -2064,6 +3127,16 @@ Acceptance Criteria:
 - [ ] T-102.2: Link guide from README or customization docs
 - [ ] T-102.3: Define scope and affected files before changes.
 - [ ] T-102.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-102: Add analytics setup documentation (Do1.1) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/
 - /README.md
@@ -2083,6 +3156,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-103.1: Update tests to use placeholder-driven assertions
 - [ ] T-103.2: Ensure tests pass with current template content
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-103: Update brittle tests for placeholder content (T1.2) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /__tests__/
 - /WRONG.md
@@ -2104,6 +3187,16 @@ Acceptance Criteria:
 - [ ] T-104.2: Add integration tests for blog parsing and search indexing
 - [ ] T-104.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-104.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-104: Add integration tests for contact/blog/search (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /__tests__/
 - /tests/
@@ -2125,6 +3218,16 @@ Acceptance Criteria:
 - [ ] T-105.2: Add E2E tests for form submission and PWA prompt
 - [ ] T-105.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-105.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-105: Add E2E tests for mobile menu, form, and PWA (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /tests/
 - /WRONG.md
@@ -2145,6 +3248,16 @@ Acceptance Criteria:
 - [ ] T-106.2: Document a11y test workflow
 - [ ] T-106.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-106.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-106: Add automated accessibility tests (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /tests/
 - /docs/ACCESSIBILITY.md
@@ -2166,6 +3279,16 @@ Acceptance Criteria:
 - [ ] T-107.2: Stabilize async tests with proper waits/timeouts
 - [ ] T-107.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-107.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-107: Improve test quality (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /__tests__/
 - /tests/
@@ -2185,6 +3308,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-108.1: Remove the unused helper or add a real caller
 - [ ] T-108.2: Ensure blog build still succeeds
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-108: Remove dead getPostsByCategory helper (Deep Sweep) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/blog.ts
 - /WRONG.md
@@ -2204,6 +3337,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-109.1: Recalculate total effort based on task list
 - [ ] T-109.2: Update TODO summary estimate with a validated range
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-109: Recalculate TODO effort estimate after audit tasks per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /TODO.md
 Dependencies: None
@@ -2224,6 +3367,16 @@ Acceptance Criteria:
 - [ ] T-110.2: Update SearchDialog and SearchPage to use shared logic
 - [ ] T-110.3: Add regression checks for search behavior parity
 - [ ] T-110.4: Document the shared helper usage and extension points
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-110: Consolidate duplicate search logic (Deep Sweep Q001) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/SearchDialog.tsx
 - /components/SearchPage.tsx
@@ -2246,6 +3399,16 @@ Acceptance Criteria:
 - [ ] T-111.2: Keep layout rendering behavior unchanged
 - [ ] T-111.3: Add regression coverage for the extracted sections
 - [ ] T-111.4: Document the new subcomponent responsibilities
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-111: Reduce ServiceDetailLayout size/complexity (Deep Sweep Q004) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/ServiceDetailLayout.tsx
 - /WRONG.md
@@ -2266,6 +3429,16 @@ Acceptance Criteria:
 - [ ] T-112.2: Update Navigation and SearchDialog to use the shared interface
 - [ ] T-112.3: Add verification for keyboard shortcut and open/close behavior
 - [ ] T-112.4: Document the new interface and expected usage
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-112: Reduce Navigation ↔ SearchDialog coupling (Deep Sweep Q005) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/Navigation.tsx
 - /components/SearchDialog.tsx
@@ -2285,6 +3458,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-113.1: Add max length for message and company fields
 - [ ] T-113.2: Add phone format validation and website protocol validation
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-113: Add stricter contact form schema validation (C1.2) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/contact-form-schema.ts
 - /WRONG.md
@@ -2304,6 +3487,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-114.1: Replace .eslintignore usage with eslint config exclusions
 - [ ] T-114.2: Remove unnecessary @ts-expect-error or unused param suppressions
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-114: Reduce ESLint suppressions and migrate ignore config (C1.3) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /.eslintignore
 - /eslint.config.mjs
@@ -2324,13 +3517,22 @@ Context:
 Acceptance Criteria:
 - [ ] T-115.1: Run npm audit and document remaining vulnerabilities
 - [ ] T-115.2: Upgrade or pin dependencies to resolve high-severity issues
+Prompt Scaffold:
+- Role: Dependency maintenance engineer.
+- Goal: Complete T-115: Resolve remaining npm audit vulnerabilities (Dep1.2) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md Dep1.2: high-severity transitive vulnerabilities (glob, etc.).
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-022; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/package.json, /package-lock.json, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/package.json, /package-lock.json, /WRONG.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /package.json
 - /package-lock.json
 - /WRONG.md
 Dependencies: T-022
 Effort: S
-
 ---
 
 ### T-116: Track test coverage in CI (Phase 5 test debt)
@@ -2344,6 +3546,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-116.1: Add CI or local script to capture coverage thresholds
 - [ ] T-116.2: Document coverage workflow in README or testing docs
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-116: Track test coverage in CI (Phase 5 test debt) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/TESTING_STRATEGY.md
 - /repo.manifest.yaml
@@ -2366,6 +3578,16 @@ Acceptance Criteria:
 - [ ] T-117.2: Document test approach for external APIs
 - [ ] T-117.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-117.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-117: Add contract tests for external APIs (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /__tests__/
 - /lib/actions.ts
@@ -2387,6 +3609,16 @@ Acceptance Criteria:
 - [ ] T-118.2: Document how to run performance tests
 - [ ] T-118.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-118.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-118: Add performance/load testing baseline (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/TESTING_STRATEGY.md
 - /WRONG.md
@@ -2405,6 +3637,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-119.1: Add E2E test asserting security headers on key routes
 - [ ] T-119.2: Document expected header values in tests
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-119: Add E2E coverage for middleware security headers (Phase 9) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /tests/
 - /middleware.ts
@@ -2427,6 +3669,16 @@ Acceptance Criteria:
 - [ ] T-120.2: Produce initial API docs for public modules
 - [ ] T-120.3: Define scope and affected files before changes.
 - [ ] T-120.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-120: Generate API documentation for public modules (Doc debt) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/
 - /lib/
@@ -2452,6 +3704,16 @@ Acceptance Criteria:
 - [ ] T-121.2: Run `npm test` with all tests passing
 - [ ] T-121.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-121.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-121: Fix failing tests after sanitization (PERFECT P0-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P0-001: 8 tests failing due to outdated marketing content expectations; Overlaps with placeholder test updates already tracked.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-103; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/__tests__/components/HomePage.test.tsx, /__tests__/components/MarketingSections.test.tsx, /__tests__/components/pages/pages.test.tsx).
+- Validation: Run and/or verify: npm test; satisfy all checklist items.
+- Output Format: Update referenced files (/__tests__/components/HomePage.test.tsx, /__tests__/components/MarketingSections.test.tsx, /__tests__/components/pages/pages.test.tsx) and record task status if required.
+- Uncertainty: None.
 References:
 - /__tests__/components/HomePage.test.tsx
 - /__tests__/components/MarketingSections.test.tsx
@@ -2460,7 +3722,6 @@ References:
 - /PERFECT.md
 Dependencies: T-103
 Effort: M
-
 ---
 ### T-122: Resolve linting warnings (PERFECT P0-002)
 Priority: P0
@@ -2473,6 +3734,16 @@ Context:
 Acceptance Criteria:
 - [ ] T-122.1: Address all listed lint warnings in PERFECT.md
 - [ ] T-122.2: Run `npm run lint` with 0 warnings/errors
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-122: Resolve linting warnings (PERFECT P0-002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P0-002: 8 lint warnings (eslint ignore, ts-ignore usage, unused params/imports).
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-114, T-080; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/eslint.config.mjs, /.eslintignore, /next.config.mjs).
+- Validation: Run and/or verify: npm run lint; satisfy all checklist items.
+- Output Format: Update referenced files (/eslint.config.mjs, /.eslintignore, /next.config.mjs) and record task status if required.
+- Uncertainty: None.
 References:
 - /eslint.config.mjs
 - /.eslintignore
@@ -2484,7 +3755,6 @@ References:
 - /PERFECT.md
 Dependencies: T-114, T-080
 Effort: S
-
 ---
 
 ### T-123: Run security audit & document findings (PERFECT P0-004)
@@ -2500,6 +3770,16 @@ Acceptance Criteria:
 - [ ] T-123.2: Document mitigations in `docs/SECURITY_AUDIT_RESULTS.md`
 - [ ] T-123.3: Address critical/high issues or document rationale
 - [ ] T-123.4: Define scope and checklist for the audit targets.
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-123: Run security audit & document findings (PERFECT P0-004) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P0-004: 18 npm vulnerabilities and deprecated adapter need assessment.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-115; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/SECURITY.md, /SECURITYAUDIT.md, /docs/SECURITY_AUDIT_RESULTS.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/SECURITY.md, /SECURITYAUDIT.md, /docs/SECURITY_AUDIT_RESULTS.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /SECURITY.md
 - /SECURITYAUDIT.md
@@ -2507,7 +3787,6 @@ References:
 - /PERFECT.md
 Dependencies: T-115
 Effort: M
-
 ---
 ### T-124: Establish test coverage baseline (PERFECT P0-005)
 Priority: P0
@@ -2521,13 +3800,22 @@ Acceptance Criteria:
 - [ ] T-124.1: Run `npm run test:coverage` and capture metrics
 - [ ] T-124.2: Identify files below 50% coverage
 - [ ] T-124.3: Document baseline in `docs/COVERAGE_BASELINE.md`
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-124: Establish test coverage baseline (PERFECT P0-005) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P0-005: coverage baseline is unknown.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/vitest.config.ts, /docs/COVERAGE_BASELINE.md, /PERFECT.md).
+- Validation: Run and/or verify: npm run test:coverage; satisfy all checklist items.
+- Output Format: Update referenced files (/vitest.config.ts, /docs/COVERAGE_BASELINE.md, /PERFECT.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /vitest.config.ts
 - /docs/COVERAGE_BASELINE.md
 - /PERFECT.md
 Dependencies: None
 Effort: S
-
 ---
 
 ### T-125: Dead code elimination sweep (PERFECT P1-001)
@@ -2543,6 +3831,16 @@ Acceptance Criteria:
 - [ ] T-125.2: Remove or document dead code in `docs/DEAD_CODE_ANALYSIS.md`
 - [ ] T-125.3: Ensure tests/build still pass
 - [ ] T-125.4: Define scope and checklist for the audit targets.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-125: Dead code elimination sweep (PERFECT P1-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P1-001: remove unused imports, dead functions, and commented blocks.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-070, T-071, T-072, T-108, T-073, T-084; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/, /components/, /lib/).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/, /components/, /lib/) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/
 - /components/
@@ -2551,7 +3849,6 @@ References:
 - /PERFECT.md
 Dependencies: T-070, T-071, T-072, T-108, T-073, T-084
 Effort: L
-
 ---
 ### T-126: TODO/FIXME resolution audit (PERFECT P1-002)
 Priority: P1
@@ -2566,13 +3863,22 @@ Acceptance Criteria:
 - [ ] T-126.2: Document findings in `docs/TODO_FIXME_AUDIT.md`
 - [ ] T-126.3: Create follow-on tasks for P0/P1 findings
 - [ ] T-126.4: Define scope and checklist for the audit targets.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-126: TODO/FIXME resolution audit (PERFECT P1-002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P1-002: identify TODO/FIXME/HACK/XXX notes and classify.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/scripts/check-todo-comments.mjs, /docs/TODO_FIXME_AUDIT.md, /PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/scripts/check-todo-comments.mjs, /docs/TODO_FIXME_AUDIT.md, /PERFECT.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /scripts/check-todo-comments.mjs
 - /docs/TODO_FIXME_AUDIT.md
 - /PERFECT.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-127: Error handling consistency audit (PERFECT P1-003)
 Priority: P1
@@ -2587,6 +3893,16 @@ Acceptance Criteria:
 - [ ] T-127.2: Verify error boundaries and Sentry capture
 - [ ] T-127.3: Document patterns in `docs/ERROR_HANDLING_GUIDE.md`
 - [ ] T-127.4: Define scope and checklist for the audit targets.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-127: Error handling consistency audit (PERFECT P1-003) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P1-003: audit error handling across API routes, server actions, and client boundaries.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-061, T-067, T-068, T-096; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/api/, /lib/actions.ts, /lib/logger.ts).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/api/, /lib/actions.ts, /lib/logger.ts) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/api/
 - /lib/actions.ts
@@ -2596,7 +3912,6 @@ References:
 - /PERFECT.md
 Dependencies: T-061, T-067, T-068, T-096
 Effort: L
-
 ---
 ### T-128: Type safety enhancement sweep (PERFECT P1-004)
 Priority: P1
@@ -2611,13 +3926,22 @@ Acceptance Criteria:
 - [ ] T-128.2: Document improvements in `docs/TYPE_SAFETY_IMPROVEMENTS.md`
 - [ ] T-128.3: Type-check passes with no implicit any
 - [ ] T-128.4: Define scope and checklist for the audit targets.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-128: Type safety enhancement sweep (PERFECT P1-004) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P1-004: remove implicit any and improve type definitions.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/tsconfig.json, /docs/TYPE_SAFETY_IMPROVEMENTS.md, /PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/tsconfig.json, /docs/TYPE_SAFETY_IMPROVEMENTS.md, /PERFECT.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /tsconfig.json
 - /docs/TYPE_SAFETY_IMPROVEMENTS.md
 - /PERFECT.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-129: Extract magic numbers and strings (PERFECT P1-005)
 Priority: P1
@@ -2632,13 +3956,22 @@ Acceptance Criteria:
 - [ ] T-129.2: Document in `docs/CONSTANTS_REFACTOR.md`
 - [ ] T-129.3: Define scope and affected files before changes.
 - [ ] T-129.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-129: Extract magic numbers and strings (PERFECT P1-005) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P1-005: extract hardcoded numbers/strings to constants.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-076; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/, /docs/CONSTANTS_REFACTOR.md, /PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/, /docs/CONSTANTS_REFACTOR.md, /PERFECT.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/
 - /docs/CONSTANTS_REFACTOR.md
 - /PERFECT.md
 Dependencies: T-076
 Effort: M
-
 ---
 ### T-130: Add file-level documentation headers (PERFECT P2-001)
 Priority: P1
@@ -2653,12 +3986,21 @@ Acceptance Criteria:
 - [ ] T-130.2: Document standards in `docs/DOCUMENTATION_STANDARDS.md`
 - [ ] T-130.3: Define scope and affected files before changes.
 - [ ] T-130.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-130: Add file-level documentation headers (PERFECT P2-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P2-001: add headers to all source/test files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/docs/DOCUMENTATION_STANDARDS.md, /PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/docs/DOCUMENTATION_STANDARDS.md, /PERFECT.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /docs/DOCUMENTATION_STANDARDS.md
 - /PERFECT.md
 Dependencies: None
 Effort: XL
-
 ---
 ### T-131: Document public APIs with JSDoc (PERFECT P2-002)
 Priority: P1
@@ -2673,13 +4015,22 @@ Acceptance Criteria:
 - [ ] T-131.2: Ensure IDE renders docs correctly
 - [ ] T-131.3: Define scope and affected files before changes.
 - [ ] T-131.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-131: Document public APIs with JSDoc (PERFECT P2-002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P2-002: document all exported functions/components.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-120; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/, /components/, /PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/, /components/, /PERFECT.md) and record task status if required.
+- Uncertainty: None.
 References:
 - /lib/
 - /components/
 - /PERFECT.md
 Dependencies: T-120
 Effort: L
-
 ---
 ### T-132: Add inline comments for complex logic (PERFECT P2-003)
 Priority: P1
@@ -2694,6 +4045,16 @@ Acceptance Criteria:
 - [ ] T-132.2: Avoid over-commenting; focus on "why"
 - [ ] T-132.3: Define scope and affected files before changes.
 - [ ] T-132.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-132: Add inline comments for complex logic (PERFECT P2-003) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P2-003: explain complex algorithms, edge cases, and assumptions.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/, /components/, /lib/).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/, /components/, /lib/) and record task status if required.
+- Uncertainty: None.
 References:
 - /app/
 - /components/
@@ -2701,7 +4062,6 @@ References:
 - /PERFECT.md
 Dependencies: None
 Effort: M
-
 ---
 ### T-133: Code duplication analysis (PERFECT P3-001)
 Priority: P2
@@ -2716,6 +4076,16 @@ Acceptance Criteria:
 - [ ] T-133.2: Extract shared utilities and refactor duplicates
 - [ ] T-133.3: Define scope and checklist for the audit targets.
 - [ ] T-133.4: Record findings and create follow-up tasks for any issues.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-133: Code duplication analysis (PERFECT P3-001) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/DUPLICATION_ANALYSIS.md
 - /PERFECT.md
@@ -2736,6 +4106,16 @@ Acceptance Criteria:
 - [ ] T-134.2: Refactor complex functions with docs
 - [ ] T-134.3: Define scope and affected files before changes.
 - [ ] T-134.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-134: Reduce cyclomatic complexity (PERFECT P3-002) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/
 - /PERFECT.md
@@ -2756,6 +4136,16 @@ Acceptance Criteria:
 - [ ] T-135.2: Preserve behavior and update tests
 - [ ] T-135.3: Define scope and affected files before changes.
 - [ ] T-135.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-135: Simplify large components (PERFECT P3-003) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /components/
 - /app/
@@ -2777,6 +4167,16 @@ Acceptance Criteria:
 - [ ] T-136.2: Update imports across codebase
 - [ ] T-136.3: Define scope and affected files before changes.
 - [ ] T-136.4: Add verification steps (tests or manual checklist) and record results.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-136: Organize utility functions in lib (PERFECT P3-004) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /lib/
 - /PERFECT.md
@@ -2797,6 +4197,16 @@ Acceptance Criteria:
 - [ ] T-137.2: Add unit/integration tests to reach 90%+
 - [ ] T-137.3: Document results in `docs/TEST_COVERAGE_REPORT.md`
 - [ ] T-137.4: Identify target scenarios and fixtures for coverage.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-137: Increase test coverage to 90%+ (PERFECT P4-001) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: Blocker: Requires coverage baseline (T-124).
 References:
 - /__tests__/
 - /vitest.config.ts
@@ -2819,6 +4229,16 @@ Acceptance Criteria:
 - [ ] T-138.2: Document edge cases in test names
 - [ ] T-138.3: Define scope and checklist for the audit targets.
 - [ ] T-138.4: Record findings and create follow-up tasks for any issues.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-138: Edge case testing sweep (PERFECT P4-002) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /__tests__/
 - /PERFECT.md
@@ -2839,6 +4259,16 @@ Acceptance Criteria:
 - [ ] T-139.2: Include accessibility checks and responsive assertions
 - [ ] T-139.3: Identify target scenarios and fixtures for coverage.
 - [ ] T-139.4: Implement tests and wire them into existing scripts.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-139: Enhance E2E testing coverage (PERFECT P4-003) per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /tests/
 - /playwright.config.ts
@@ -2860,11 +4290,20 @@ Acceptance Criteria:
 - [ ] T-140.2: Address feedback and document decisions
 - [ ] T-140.3: Define scope and checklist for the audit targets.
 - [ ] T-140.4: Record findings and create follow-up tasks for any issues.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-140: Final code review gate (PERFECT P5-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P5-001: final code review required before completion.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-121, T-122, T-123, T-124, T-125, T-126, T-127, T-128, T-129, T-130, T-131, T-132, T-133, T-134, T-135, T-136, T-137, T-138, T-139; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/PERFECT.md) and record task status if required.
+- Uncertainty: Blocker: All prior PERFECT phases complete.
 References:
 - /PERFECT.md
 Dependencies: T-121, T-122, T-123, T-124, T-125, T-126, T-127, T-128, T-129, T-130, T-131, T-132, T-133, T-134, T-135, T-136, T-137, T-138, T-139
 Effort: L
-
 ---
 ### T-141: Final security scan gate (PERFECT P5-002)
 Priority: P0
@@ -2879,11 +4318,20 @@ Acceptance Criteria:
 - [ ] T-141.2: Document security scan results
 - [ ] T-141.3: Define scope and checklist for the audit targets.
 - [ ] T-141.4: Record findings and create follow-up tasks for any issues.
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-141: Final security scan gate (PERFECT P5-002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P5-002: run codeql_checker and resolve findings.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-123; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/PERFECT.md) and record task status if required.
+- Uncertainty: Blocker: All code changes complete.
 References:
 - /PERFECT.md
 Dependencies: T-123
 Effort: M
-
 ---
 ### T-142: Performance validation gate (PERFECT P5-003)
 Priority: P0
@@ -2898,13 +4346,22 @@ Acceptance Criteria:
 - [ ] T-142.2: Document performance results
 - [ ] T-142.3: Define scope and checklist for the audit targets.
 - [ ] T-142.4: Record findings and create follow-up tasks for any issues.
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-142: Performance validation gate (PERFECT P5-003) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P5-003: run Lighthouse audits and check Core Web Vitals.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-019; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/.lighthouserc.json, /scripts/lighthouse-audit.mjs, /PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/.lighthouserc.json, /scripts/lighthouse-audit.mjs, /PERFECT.md) and record task status if required.
+- Uncertainty: Blocker: All changes complete.
 References:
 - /.lighthouserc.json
 - /scripts/lighthouse-audit.mjs
 - /PERFECT.md
 Dependencies: T-019
 Effort: M
-
 ---
 ### T-143: Final validation gate (PERFECT P5-004)
 Priority: P0
@@ -2917,11 +4374,20 @@ Context:
 Acceptance Criteria:
 - [ ] T-143.1: Verify tests, lint, type-check, build, and coverage targets
 - [ ] T-143.2: Confirm documentation is complete
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-143: Final validation gate (PERFECT P5-004) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: PERFECT.md P5-004: ensure tests/lint/type-check/security/coverage pass.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; Dependencies: T-140, T-141, T-142; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/PERFECT.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/PERFECT.md) and record task status if required.
+- Uncertainty: Blocker: All prior PERFECT gates complete.
 References:
 - /PERFECT.md
 Dependencies: T-140, T-141, T-142
 Effort: S
-
 ---
 
 ## 🟤 PHASE 8: GOVERNANCE & DOCS HYGIENE (P2)
@@ -2943,6 +4409,16 @@ Acceptance Criteria:
 - [ ] T-144.3: Update docs to match (ENHANCEMENT_SUMMARY, GOVERNANCE_HEALTH, REPO_MAP)
 - [ ] T-144.4: Update `scripts/README.md` and `scripts/AGENTS.md` if paths or behavior changed
 - [ ] T-144.5: Keep `TODO.md` as the task truth source in all docs
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-144: Reconcile non-binding tasks source references per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /scripts/sync-todo.sh
 - /scripts/README.md
@@ -2971,6 +4447,16 @@ Acceptance Criteria:
 - [ ] T-145.2: Replace brand references with template-safe placeholders
 - [ ] T-145.3: Update any cross-references if files are archived
 - [ ] T-145.4: Run a repo-wide search for "Your Dedicated Marketer"/"YD Marketer" and ensure only archived docs remain
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-145: Sanitize remaining marketing-branding in docs per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /docs/start-here/README.md
 - /docs/product/CONTENT-STRATEGY.md
@@ -2997,6 +4483,16 @@ Acceptance Criteria:
 - [ ] T-148.2: Document changelog update requirements and format
 - [ ] T-148.3: Add versioning guidance to release checklist and CONTRIBUTING
 - [ ] T-148.4: Add examples of release notes for minor/patch releases
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-148: Define template versioning and changelog policy per Acceptance Criteria.
+- Non-Goals: Avoid changes outside Acceptance Criteria and References.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for required sections, commands, or outputs.
+- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
+- Output Format: Update referenced files and record outcomes in TODO.md/related docs.
+- Uncertainty: None.
 References:
 - /CHANGELOG.md
 - /docs/TEMPLATE_RELEASE_CHECKLIST.md
@@ -3008,22 +4504,22 @@ Effort: M
 
 ## Summary
 
-**Total Tasks**: 148 (T-001 through T-148; completed tasks archived in TODOCOMPLETED.md)
-**Active Tasks**: 128 (all tasks listed in this file)
+**Total Tasks**: 154 (T-001 through T-154; completed tasks archived in TODOCOMPLETED.md)
+**Active Tasks**: 134 (all tasks listed in this file)
 **Estimated Total Effort**: **UNKNOWN** (audit remediation tasks added; update estimate)
 
 ### By Priority
 - **P0 (Critical)**: 16 tasks - Security fixes and release blockers
-- **P1 (High)**: 30 tasks - Documentation, platinum-standard essentials, audit fixes
-- **P2 (Medium)**: 68 tasks - Infrastructure, quality improvements, audit fixes
-- **P3 (Low)**: 14 tasks - Cleanup and backlog items
+- **P1 (High)**: 31 tasks - Documentation, platinum-standard essentials, audit fixes
+- **P2 (Medium)**: 72 tasks - Infrastructure, quality improvements, audit fixes
+- **P3 (Low)**: 15 tasks - Cleanup and backlog items
 
 ### By Phase
 - **Phase 1 (Sanitization)**: 0 active tasks - Complete and archived in TODOCOMPLETED.md
 - **Phase 2 (Documentation)**: 1 task - T-013 in review (repo-owner steps pending)
 - **Phase 3 (Infrastructure)**: 1 task - Cloudflare Pages setup guidance
 - **Phase 4 (Quality)**: 5 tasks - Performance, accessibility, and validation tooling
-- **Phase 5 (Platinum Standard)**: 14 tasks - Industry-leading enhancements
+- **Phase 5 (Platinum Standard)**: 20 tasks - Industry-leading enhancements
 - **Phase 6 (Audit Remediation)**: 81 tasks - WRONG.md findings remediation
 - **Phase 7 (Perfect Cleanup)**: 23 tasks - PERFECT.md open items
 - **Phase 8 (Governance & Docs Hygiene)**: 3 tasks - Documentation accuracy, branding cleanup, release policy
@@ -3032,6 +4528,7 @@ Effort: M
 - **Phase 5A (Essentials)**: T-022, T-023, T-024, T-030, T-031, T-032, T-033 → 88/100 (Industry Standard)
 - **Phase 5B (Advanced)**: T-034, T-035, T-036, T-037, T-039 → 95/100 (Exceeds Standard)
 - **Phase 5C (Elite)**: T-025, T-026, T-027, T-028, T-029, T-038 → 98/100 (Platinum)
+- **Phase 5D (Trust & Conversion Extensions)**: T-149, T-150, T-151, T-152, T-153, T-154 → 99/100 (Trust-First)
 
 ### What Changes (Content Only)
 - Branding: "Your Dedicated Marketer" → Configurable placeholders
@@ -3067,3 +4564,5 @@ Effort: M
 ---
 
 **Next Steps**: Complete remaining external steps for T-013, then address Phase 6 P0 security fixes (T-040–T-046) before starting Phase 5A.
+
+
