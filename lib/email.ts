@@ -92,7 +92,7 @@ function buildOwnerNotification(config: ReturnType<typeof getEmailConfig>, paylo
 function buildCustomerThankYou(config: ReturnType<typeof getEmailConfig>, payload: ContactEmailPayload) {
   return {
     to: payload.email,
-    from: config.fromAddress ?? '',
+    from: config.fromAddress,
     subject: `Thanks for contacting ${config.siteName}`,
     text: [
       `Hi ${payload.name},`,
