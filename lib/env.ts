@@ -45,6 +45,9 @@
  * | EMAIL_FROM_ADDRESS | string | optional | Transactional email sender |
  * | EMAIL_TO_ADDRESS | string | optional | Business notification recipient |
  * | EMAIL_SEND_THANK_YOU | boolean | defaults | Send customer thank-you email |
+ * | SCHEDULING_PROVIDER | enum | defaults | Appointment scheduling provider |
+ * | CALENDLY_URL | url | optional | Calendly scheduling link |
+ * | CALCOM_USERNAME | string | optional | Cal.com username |
  *
  * **KNOWN ISSUES**:
  * - [ ] No runtime validation for env changes (restart required)
@@ -210,6 +213,28 @@ const envSchema = z.object({
    * @default false
    */
   EMAIL_SEND_THANK_YOU: z.coerce.boolean().default(false),
+
+  /**
+   * Appointment scheduling provider (optional).
+   * Set to "none" to disable scheduling embeds.
+   * 
+   * @default 'none'
+   */
+  SCHEDULING_PROVIDER: z.enum(['calendly', 'calcom', 'none']).default('none'),
+
+  /**
+   * Calendly scheduling URL (required when using Calendly).
+   * 
+   * @optional
+   */
+  CALENDLY_URL: z.string().trim().optional(),
+
+  /**
+   * Cal.com username (required when using Cal.com).
+   * 
+   * @optional
+   */
+  CALCOM_USERNAME: z.string().trim().optional(),
 })
   .superRefine((data, ctx) => {
     if (data.EMAIL_PROVIDER === 'none') {
@@ -238,6 +263,43 @@ const envSchema = z.object({
         message: 'EMAIL_TO_ADDRESS is required when EMAIL_PROVIDER is set',
         path: ['EMAIL_TO_ADDRESS'],
       })
+    }
+  })
+  .superRefine((data, ctx) => {
+    if (data.SCHEDULING_PROVIDER === 'none') {
+      return
+    }
+
+    if (data.SCHEDULING_PROVIDER === 'calendly') {
+      if (!data.CALENDLY_URL) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'CALENDLY_URL is required when SCHEDULING_PROVIDER is calendly',
+          path: ['CALENDLY_URL'],
+        })
+      } else if (!z.string().url().safeParse(data.CALENDLY_URL).success) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'CALENDLY_URL must be a valid URL',
+          path: ['CALENDLY_URL'],
+        })
+      }
+    }
+
+    if (data.SCHEDULING_PROVIDER === 'calcom') {
+      if (!data.CALCOM_USERNAME?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'CALCOM_USERNAME is required when SCHEDULING_PROVIDER is calcom',
+          path: ['CALCOM_USERNAME'],
+        })
+      } else if (data.CALCOM_USERNAME.includes(' ')) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'CALCOM_USERNAME must not include spaces',
+          path: ['CALCOM_USERNAME'],
+        })
+      }
     }
   })
 
@@ -278,6 +340,9 @@ const env = envSchema.safeParse({
   EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS,
   EMAIL_TO_ADDRESS: process.env.EMAIL_TO_ADDRESS,
   EMAIL_SEND_THANK_YOU: process.env.EMAIL_SEND_THANK_YOU,
+  SCHEDULING_PROVIDER: process.env.SCHEDULING_PROVIDER,
+  CALENDLY_URL: process.env.CALENDLY_URL,
+  CALCOM_USERNAME: process.env.CALCOM_USERNAME,
 })
 
 if (!env.success) {

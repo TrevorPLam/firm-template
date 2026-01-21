@@ -32,6 +32,8 @@ import Hero from '@/components/Hero'
 import TrustBadge from '@/components/TrustBadge'
 import ValueProps from '@/components/ValueProps'
 import ServicesOverview from '@/components/ServicesOverview'
+import AppointmentScheduler from '@/components/AppointmentScheduler'
+import { getSchedulingConfig } from '@/lib/scheduling'
 
 // Below-fold components loaded dynamically for better initial load
 const SocialProof = dynamic(() => import('@/components/SocialProof'), {
@@ -45,6 +47,8 @@ const FinalCTA = dynamic(() => import('@/components/FinalCTA'), {
 })
 
 export default function HomePage() {
+  const schedulingConfig = getSchedulingConfig()
+
   return (
     <>
       <Hero />
@@ -52,6 +56,13 @@ export default function HomePage() {
       <TrustBadge />
       <ValueProps />
       <ServicesOverview />
+      <AppointmentScheduler
+        config={schedulingConfig}
+        mode="modal"
+        title="Book Your Intro Call"
+        description="Schedule a quick call to learn how we can support your goals."
+        ctaLabel="Schedule a Call"
+      />
       <SocialProof />
       <FinalCTA />
     </>

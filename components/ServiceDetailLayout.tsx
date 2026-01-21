@@ -52,6 +52,8 @@ import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Accordion, { AccordionItem } from '@/components/ui/Accordion'
 import { getPublicBaseUrl } from '@/lib/env.public'
+import AppointmentScheduler from '@/components/AppointmentScheduler'
+import { getSchedulingConfig } from '@/lib/scheduling'
 
 /**
  * Process step data structure.
@@ -111,6 +113,7 @@ export default function ServiceDetailLayout({
   const resolvedServiceUrl = serviceSlug
     ? `${baseUrl}/services/${serviceSlug}`
     : `${baseUrl}/services`
+  const schedulingConfig = getSchedulingConfig()
 
   // Structured data for Service
   const serviceStructuredData = {
@@ -257,6 +260,15 @@ export default function ServiceDetailLayout({
           </div>
         </Container>
       </Section>
+
+      {/* Scheduling CTA */}
+      <AppointmentScheduler
+        config={schedulingConfig}
+        mode="modal"
+        title="Schedule a Service Consultation"
+        description="Choose a time to discuss this service with our team and get tailored recommendations."
+        ctaLabel="Book a Service Call"
+      />
 
       {/* FAQs */}
       <Section className="bg-white">

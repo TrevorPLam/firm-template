@@ -29,7 +29,7 @@ All secrets must be configured in Cloudflare Pages → Settings → Environment 
 | Variable | Required | Description |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | ⚪ | Base URL for metadata, sitemap, OG tags. Defaults to `http://localhost:3000` if not set. **Set in production** to your actual domain. |
-| `NEXT_PUBLIC_SITE_NAME` | ⚪ | Brand name used in titles/metadata. Defaults to `"Your Dedicated Marketer"` if not set. |
+| `NEXT_PUBLIC_SITE_NAME` | ⚪ | Brand name used in titles/metadata. Defaults to `"Your Firm Name"` if not set. |
 | `NEXT_PUBLIC_ANALYTICS_ID` | ⚪ | Analytics provider ID (if configured). If not set, analytics tracking is disabled. |
 | `NEXT_PUBLIC_SENTRY_DSN` | ⚪ | Sentry public DSN (optional). If not set, Sentry error tracking is disabled. **Note:** Not validated in `lib/env.ts` (used directly in Sentry config files). |
 | `NEXT_PUBLIC_SENTRY_DEBUG` | ⚪ | Enable Sentry in development (defaults to disabled). **Note:** Not validated in `lib/env.ts`. |
@@ -44,6 +44,9 @@ All secrets must be configured in Cloudflare Pages → Settings → Environment 
 | `SENTRY_ORG` | ⚪ | Sentry organization slug (for source maps/releases only). **Note:** Not validated in `lib/env.ts`. |
 | `SENTRY_PROJECT` | ⚪ | Sentry project slug (for source maps/releases only). **Note:** Not validated in `lib/env.ts`. |
 | `SENTRY_ENVIRONMENT` | ⚪ | Sentry environment label. **Note:** Not validated in `lib/env.ts` (used by Sentry config files). |
+| `SCHEDULING_PROVIDER` | ⚪ | Appointment scheduling provider (`calendly`, `calcom`, or `none`). Defaults to `none`. |
+| `CALENDLY_URL` | ⚪ | Calendly scheduling URL (required when `SCHEDULING_PROVIDER=calendly`). |
+| `CALCOM_USERNAME` | ⚪ | Cal.com username (required when `SCHEDULING_PROVIDER=calcom`). |
 
 ### Lead capture pipeline (v1 required)
 These are required for the v1 contact pipeline (Supabase storage + HubSpot CRM sync):

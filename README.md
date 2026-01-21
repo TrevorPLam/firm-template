@@ -62,6 +62,7 @@ This repository adheres to a strict "Diamond Standard" of engineering excellence
 *   **Client-Side Search**: Zero-latency, pre-indexed search functionality across all content.
 *   **Configurable Services**: 8 service page templates ready to customize for your offerings.
 *   **Contact Form**: Built-in form with rate limiting, spam protection, CRM integration, and optional email alerts.
+*   **Appointment Scheduling**: Optional Calendly or Cal.com embeds for consultation booking.
 *   **Performance First**: 
     *   Tailwind CSS for zero-runtime styling.
     *   Automatic image optimization.

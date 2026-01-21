@@ -14,6 +14,9 @@ const forbiddenTokens = [
   'EMAIL_FROM_ADDRESS',
   'EMAIL_TO_ADDRESS',
   'EMAIL_SEND_THANK_YOU',
+  'SCHEDULING_PROVIDER',
+  'CALENDLY_URL',
+  'CALCOM_USERNAME',
 ]
 
 const walkFiles = (dirPath) => {

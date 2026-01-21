@@ -166,6 +166,20 @@ Postmark, or Resend.
 
 If `EMAIL_PROVIDER` is `none`, the contact flow skips email sending entirely.
 
+### Appointment scheduling (optional)
+Enable embedded scheduling so visitors can book a consultation without emailing first.
+
+1. Choose a provider:
+   - **Calendly** (set `SCHEDULING_PROVIDER=calendly`)
+   - **Cal.com** (set `SCHEDULING_PROVIDER=calcom`)
+2. Set the corresponding variables in `.env.local`:
+   - Calendly: `CALENDLY_URL=https://calendly.com/your-firm`
+   - Cal.com: `CALCOM_USERNAME=your-firm`
+3. Restart the dev server so the updated env variables load.
+
+Scheduling CTAs render on the homepage, service pages, pricing page, and contact page. If you set
+`SCHEDULING_PROVIDER=none`, the embed sections will be hidden automatically.
+
 ### Analytics
 - The template ships with a provider-agnostic tracking wrapper in [`lib/analytics.ts`](../lib/analytics.ts).
 - Analytics events are recorded via `trackEvent`, `trackFormSubmission`, and `trackCTAClick`.

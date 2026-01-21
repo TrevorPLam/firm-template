@@ -6,6 +6,8 @@ import Section from '@/components/ui/Section'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Accordion from '@/components/ui/Accordion'
+import AppointmentScheduler from '@/components/AppointmentScheduler'
+import { getSchedulingConfig } from '@/lib/scheduling'
 
 /**
  * TEMPLATE CUSTOMIZATION:
@@ -152,6 +154,8 @@ const faqs = [
 ]
 
 export default function PricingPage() {
+  const schedulingConfig = getSchedulingConfig()
+
   // Structured data for FAQs
   const faqStructuredData = {
     '@context': 'https://schema.org',
@@ -280,6 +284,15 @@ export default function PricingPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Scheduling CTA */}
+      <AppointmentScheduler
+        config={schedulingConfig}
+        mode="modal"
+        title="Book a Pricing Walkthrough"
+        description="Schedule a short call to compare plans and get a tailored proposal."
+        ctaLabel="Schedule a Pricing Call"
+      />
 
       {/* CTA Section */}
       <Section className="bg-charcoal text-white">
