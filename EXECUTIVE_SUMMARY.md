@@ -230,6 +230,6 @@ The firm-template is **76% of the way to perfection** with an **excellent techni
 
 ---
 
-**For Full Details**: See `TEMPLATE_ASSESSMENT_REPORT.md` (50+ pages)  
+**For Full Details**: See `docs/ARCHIVE/2026/TEMPLATE_ASSESSMENT_REPORT.md` (50+ pages)  
 **For Tasks**: See `TODO.md` (21 existing + 8 new tasks)  
 **For Status**: See `PROJECT_STATUS.md`

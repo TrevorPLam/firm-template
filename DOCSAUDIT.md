@@ -76,3 +76,17 @@ Required outputs:
   - T-068: Archive historical roadmaps (P3, DOCS)
 - Questions for Trevor:
   - (none)
+
+### 2026-01-21 — Summary
+- Agent: AGENT
+- Scope: `docs/`, root docs, `specs/`, `repo.manifest.yaml`
+- Findings:
+  - ⚠️ docs index paths were inconsistent with repo-relative references (fixed).
+  - ⚠️ Governance docs claimed TODO is derived from non-binding specs tasks (corrected).
+  - ⚠️ Deployment doc still referenced legacy branding (corrected).
+  - ⚠️ Remaining marketing-branding references exist in docs/start-here, docs/product, docs/architecture.
+- Tasks created/updated:
+  - T-144: Reconcile non-binding tasks source references (P2, DOCS)
+  - T-145: Sanitize remaining marketing-branding in docs (P2, DOCS)
+- Questions for Trevor:
+  - (none)

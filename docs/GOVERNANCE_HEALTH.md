@@ -18,7 +18,7 @@ Run (optional):
 - `scripts/security-scan.sh` (lightweight checks)
 
 Optional helper:
-- `scripts/sync-todo.sh` generates `TODO.generated.md` from `specs/project-tasks.md` (non-binding; informational only)
+- `scripts/sync-todo.sh` can generate `TODO.generated.md` from non-binding specs notes when present (informational only)
 
 ## Failure policy
 - If an invariant fails, create a task in `TODO.md` and mark it `BLOCKED` if external action is required.

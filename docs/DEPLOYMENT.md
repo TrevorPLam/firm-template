@@ -3,7 +3,7 @@
 Last Updated: 2026-01-20
 
 ## Purpose
-This is the single source of truth for deploying the Your Dedicated Marketer site to Cloudflare Pages.
+This is the single source of truth for deploying the firm template to Cloudflare Pages.
 
 ## Cloudflare Pages build settings
 Use the following values when creating the Pages project:

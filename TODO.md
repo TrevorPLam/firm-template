@@ -55,308 +55,7 @@ This file is the single source of truth for actionable work. If another document
 > All marketing-specific content must be replaced with configurable placeholders.
 > **DO NOT PROCEED** to other phases until sanitization is complete.
 
-### T-001: Replace branding and site identity with placeholders
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20 (commit: 9685c51)
-Context:
-- All references to "Your Dedicated Marketer" / "YD Marketer" / "YD Firms" need generic replacement
-- Package name, site name, and all branding should be configurable via environment variables
-- Approximately 365+ references found across the codebase
-Acceptance Criteria:
-- [x] T-001.1: Replace package.json name: "your-dedicated-marketer" → "firm-template"
-- [x] T-001.2: Update all "Your Dedicated Marketer" → "Your Firm Name" in:
-  - /lib/env.ts (NEXT_PUBLIC_SITE_NAME default)
-  - /lib/env.public.ts
-  - /lib/blog.ts (default author)
-  - /app/api/og/route.tsx
-  - All service page metadata
-  - /app/layout.tsx metadata and structured data
-- [x] T-001.3: Update Footer.tsx: "YD Marketer" → "Your Firm Name" and "YD Firms LLC" → "Your Firm LLC"
-- [x] T-001.4: Update testimonials in SocialProof.tsx to use generic client references
-- [x] T-001.5: Update ServiceDetailLayout.tsx provider name reference
-- [x] T-001.6: Create comprehensive .env.example with SITE_NAME, SITE_TAGLINE, FIRM_LEGAL_NAME placeholders
-References:
-- /package.json
-- /lib/env.ts
-- /lib/env.public.ts
-- /lib/blog.ts
-- /app/api/og/route.tsx
-- /app/layout.tsx
-- /components/Footer.tsx
-- /components/SocialProof.tsx
-- /components/ServiceDetailLayout.tsx
-Dependencies: None
-Effort: L
-
----
-
-### T-002: Sanitize homepage content (Hero, ValueProps, CTAs)
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20 (commit: 69a7805)
-Context:
-- Homepage contains marketing-specific value propositions and messaging
-- Need to replace with generic professional services messaging
-- Must preserve component structure and functionality
-Acceptance Criteria:
-- [x] T-002.1: Update Hero.tsx:
-  - Replace headline with generic: "Your dedicated professional — delivering expert solutions for your business."
-  - Replace body copy with generic professional services messaging
-  - Keep CTA structure but update button text: "Schedule a Consultation" and "Learn More"
-  - Preserve image and layout structure
-- [x] T-002.2: Update ValueProps.tsx:
-  - Replace three marketing-specific value props with generic professional services benefits
-  - Keep component structure and icons
-  - Make messaging applicable to any vertical (consulting, legal, accounting, design, etc.)
-- [x] T-002.3: Update FinalCTA.tsx with generic call-to-action messaging
-- [x] T-002.4: Update CTASection.tsx with generic messaging
-- [x] T-002.5: Document recommended customization points in component comments
-References:
-- /components/Hero.tsx
-- /components/ValueProps.tsx
-- /components/FinalCTA.tsx
-- /components/CTASection.tsx
-Dependencies: T-001
-Effort: M
-
----
-
-### T-003: Replace marketing services with generic service placeholders
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20 (commit: 70c55c3)
-Context:
-- Current services are marketing-specific: SEO, Content Marketing, Social Media, Email Marketing, etc.
-- Need generic service categories that work for any professional services firm
-- Must preserve all routing, component structure, and functionality
-- Keep 8 service pages to match current structure
-Acceptance Criteria:
-- [x] T-003.1: Rename service directories and update routes:
-  - /app/services/seo → /app/services/service-1
-  - /app/services/content → /app/services/service-2
-  - /app/services/social → /app/services/service-3
-  - /app/services/email → /app/services/service-4
-  - /app/services/strategy → /app/services/service-5
-  - /app/services/crm → /app/services/service-6
-  - /app/services/funnel → /app/services/service-7
-  - /app/services/reporting → /app/services/service-8
-- [x] T-003.2: Update each service page.tsx with generic placeholder content:
-  - Title: "Service [1-8] | Your Firm Name"
-  - Description: Generic professional service description
-  - Benefits and features as placeholders: "Key Benefit 1", "Feature A", etc.
-  - Keep component structure (ServiceDetailLayout)
-- [x] T-003.3: Update ServicesOverview.tsx with generic service cards
-- [x] T-003.4: Update /app/services/page.tsx:
-  - Replace coreServices array with generic service titles: "Core Service 1", "Core Service 2", etc.
-  - Replace supportServices array with generic service titles
-  - Keep icon structure and layout
-- [x] T-003.5: Update Footer.tsx services links to match new routes
-- [x] T-003.6: Update Navigation.tsx if services are linked there
-- [x] T-003.7: Update sitemap.ts to reflect new routes
-References:
-- /app/services/ (all subdirectories)
-- /components/ServicesOverview.tsx
-- /components/Footer.tsx
-- /components/Navigation.tsx
-- /app/sitemap.ts
-Dependencies: T-001
-Effort: XL
-
----
-
-### T-004: Replace marketing pricing with generic pricing template
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20
-Context:
-- Current pricing tiers are marketing-service specific (Starter $1,500, Growth $3,500, Scale $6,000)
-- Features listed are marketing-specific (blog posts, SEO, social media, etc.)
-- Need generic pricing structure applicable to any professional services firm
-Acceptance Criteria:
-- [x] T-004.1: Update /app/pricing/page.tsx:
-  - Replace tier names with "Basic", "Professional", "Enterprise"
-  - Replace pricing with placeholder "Contact for Pricing" or "$X,XXX/month"
-  - Replace marketing-specific features with generic professional service features:
-    * "Hours per month", "Response time", "Dedicated support", "Custom solutions", etc.
-  - Keep pricing table structure and styling
-  - Add comments explaining customization points
-- [x] T-004.2: Update FAQ section with industry-agnostic questions:
-  - "What's included in each tier?"
-  - "Can I change tiers later?"
-  - "What's your refund policy?"
-- [x] T-004.3: Update CTA messaging to be generic
-- [x] T-004.4: Keep all accordion and UI functionality intact
-References:
-- /app/pricing/page.tsx
-Dependencies: T-001
-Effort: M
-
----
-
-### T-005: Remove marketing blog content and create generic examples
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20
-Context:
-- Current blog posts are all marketing-specific:
-  - seo-basics-small-business.mdx
-  - content-marketing-small-budget.mdx
-  - email-marketing-roi.mdx
-  - marketing-metrics-that-matter.mdx
-  - social-media-strategy-2025.mdx
-- Need to replace with generic example blog posts
-- Blog infrastructure must remain functional
-Acceptance Criteria:
-- [x] T-005.1: Remove all 5 marketing-specific blog posts from /content/blog/
-- [x] T-005.2: Create 3 generic example blog posts:
-  - "example-post-1-industry-insights.mdx" - Generic industry insights template
-  - "example-post-2-client-success.mdx" - Generic client success story template
-  - "example-post-3-best-practices.mdx" - Generic best practices template
-- [x] T-005.3: Update blog posts with:
-  - author: "Your Firm Team" (placeholder)
-  - category: "Industry Insights", "Client Success", "Best Practices"
-  - Generic, reusable content that applies to any vertical
-- [x] T-005.4: Ensure blog listing page still works with new posts
-- [x] T-005.5: Ensure search index updates correctly
-- [x] T-005.6: Verify blog post pages render correctly
-References:
-- /content/blog/
-- /app/blog/page.tsx
-- /app/blog/[slug]/page.tsx
-- /lib/blog.ts
-Dependencies: T-001
-Effort: M
-
----
-
-### T-006: Update navigation and footer to be generic
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20 (completed in T-003)
-Context:
-- Navigation links currently point to marketing-specific services
-- Footer contains marketing-specific link labels
-- Need to make navigation configurable and generic
-Acceptance Criteria:
-- [x] T-006.1: Update Navigation.tsx navLinks array:
-  - Ensure links point to generic service routes (/services, /pricing, /about, /blog, /contact)
-  - Update link labels to be generic
-  - Add comments explaining customization
-- [x] T-006.2: Update Footer.tsx:
-  - Update services section with generic service links (or remove if using generic route)
-  - Update company info section to use placeholders
-  - Make social links configurable via environment variables or comments
-  - Add comment blocks explaining customization points
-- [x] T-006.3: Ensure all navigation links resolve correctly after service route changes
-- [x] T-006.4: Update robots.ts if it contains any specific references
-References:
-- /components/Navigation.tsx
-- /components/Footer.tsx
-- /app/robots.ts
-Dependencies: T-003
-Effort: M
-
----
-
-### T-007: Sanitize metadata, SEO, and structured data
-Priority: P0
-Type: TEMPLATE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20
-Type: TEMPLATE
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Metadata throughout the site references marketing firm
-- Structured data contains marketing-specific information
-- OpenGraph images and social metadata need genericization
-Acceptance Criteria:
-- [x] T-007.1: Update /app/layout.tsx:
-  - Update metadata title template: "[Page] | Your Firm Name"
-  - Update metadata description to generic professional services
-  - Update structured data (Organization, WebSite schemas) with environment variable placeholders
-  - Make URL references environment-variable driven
-- [x] T-007.2: Update /app/api/og/route.tsx:
-  - Replace "Your Dedicated Marketer" with configurable firm name from env
-  - Make OG image generation generic
-- [x] T-007.3: Review and update all page-specific metadata exports:
-  - /app/services/*/page.tsx (use generic service names)
-  - /app/pricing/page.tsx
-  - /app/blog/page.tsx
-- [x] T-007.4: Update /public/manifest.json (if exists) with generic app information
-References:
-- /app/layout.tsx
-- /app/api/og/route.tsx
-- All page.tsx files with metadata exports
-- /public/manifest.json
-Dependencies: T-001, T-003
-Effort: M
-
----
-
-### T-008: Verify all functionality remains intact after sanitization
-Priority: P0
-Type: QUALITY
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-20
-Context:
-- Must confirm NO functionality was lost during sanitization
-- All modules, components, and features must work as before
-- Only content should change, not capabilities
-Acceptance Criteria:
-- [x] T-008.1: Run full test suite: `npm run test`
-- [x] T-008.2: Run type checking: `npm run type-check`
-- [x] T-008.3: Run linting: `npm run lint`
-- [x] T-008.4: Build project successfully: `npm run build`
-- [x] T-008.5: Verify all pages render correctly:
-  - Homepage
-  - All 8 service pages
-  - Pricing page
-  - Blog listing and individual posts
-  - Contact page
-  - Search functionality
-  - 404 page
-- [x] T-008.6: Test all interactive features:
-  - Navigation (desktop and mobile)
-  - Contact form submission
-  - Search dialog
-  - Mobile menu
-- [x] T-008.7: Verify no broken links
-- [x] T-008.8: Confirm all environment variables still work correctly
-- [x] T-008.9: Test rate limiting still functions
-- [x] T-008.10: Document verification results in /docs/SANITIZATION_VERIFICATION.md
-References:
-- All test suites
-- All application pages
-- /docs/SANITIZATION_VERIFICATION.md (new)
-Dependencies: T-001, T-002, T-003, T-004, T-005, T-006, T-007
-Effort: L
-
----
+Phase 1 tasks are complete and archived in `TODOCOMPLETED.md`.
 
 ## 🟠 PHASE 2: TEMPLATE DOCUMENTATION (P1)
 > Create comprehensive documentation for template users.
@@ -450,6 +149,7 @@ Acceptance Criteria:
   - Trigger first deployment and verify build succeeds
   - Configure custom domain if applicable
 - [ ] T-014.3: Create deployment troubleshooting section
+- [ ] T-014.4: Define scope and affected files before changes.
 References:
 - /docs/CLOUDFLARE_DEPLOYMENT.md
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
@@ -463,7 +163,6 @@ Effort: M
 ## 🔵 PHASE 4: QUALITY & OPTIMIZATION (P3)
 > Quality improvements and optimizations.
 > These enhance the template but are not required for initial release.
-
 ### T-019: Performance baselines + budgets (Lighthouse)
 Priority: P3
 Type: QUALITY
@@ -547,10 +246,59 @@ Effort: M
 
 ---
 
+### T-146: Validate structured data with Rich Results Test
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Structured data updates were made but external validation was not run
+- Rich Results Test is required to confirm schema correctness
+- Ensures template users start with verified SEO metadata
+Acceptance Criteria:
+- [ ] T-146.1: Run Rich Results Test on a blog post page (Article schema)
+- [ ] T-146.2: Run Rich Results Test on a service page (Service schema)
+- [ ] T-146.3: Run Rich Results Test on a page with breadcrumbs
+- [ ] T-146.4: Record results and issues in /docs/SEO_VALIDATION.md
+References:
+- /app/blog/
+- /app/services/
+- /components/Breadcrumbs.tsx
+- /docs/OBSERVABILITY.md
+Dependencies: None
+Effort: M
+
+---
+
+### T-147: Document audit tooling prerequisites
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Audit tasks are blocked without Lighthouse/axe/pa11y setup
+- Contributors need a single source of truth for tooling installs
+- Reduces friction for quality and accessibility audits
+Acceptance Criteria:
+- [ ] T-147.1: Document required tooling installs and versions
+- [ ] T-147.2: Add environment variable examples (e.g., LIGHTHOUSE_BIN)
+- [ ] T-147.3: Note OS-specific install tips and common failures
+- [ ] T-147.4: Cross-link from testing docs and runbooks
+References:
+- /docs/TESTING_STRATEGY.md
+- /docs/CONTRIBUTING.md
+- /docs/OBSERVABILITY.md
+Dependencies: None
+Effort: M
+
+---
+
 ## 🟣 PHASE 5: PLATINUM STANDARD ENHANCEMENTS (P0-P3)
 > **BEYOND DIAMOND**: These tasks elevate the template from "excellent" to "platinum standard"
 > Based on industry research, WebAward criteria, and best-in-class professional services sites
-> See PLATINUM_STANDARD_ANALYSIS.md for detailed research and rationale
+> See docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md for detailed research and rationale
 
 ### T-022: Upgrade Next.js to patch CVE-2025-66478
 Priority: P0
@@ -562,7 +310,9 @@ Context:
 - Next.js 15.5.2 has security vulnerability CVE-2025-66478
 - Must upgrade to patched version before template release
 - Critical security issue blocks production use
-- Identified in TEMPLATE_ASSESSMENT_REPORT.md
+- Identified in docs/ARCHIVE/2026/TEMPLATE_ASSESSMENT_REPORT.md
+- Identified in WRONG.md SEC-006 / Dep1.2
+- Identified in PERFECT.md P0-003
 Acceptance Criteria:
 - [ ] T-022.1: Upgrade Next.js to 15.5.3 or latest patched version
 - [ ] T-022.2: Verify build works with Cloudflare adapter
@@ -590,6 +340,7 @@ Context:
 - Recommended migration path is OpenNext: https://opennext.js.org/cloudflare
 - Will resolve critical npm vulnerability
 - Current adapter still works but won't receive updates
+- Identified in WRONG.md Dep1.1
 Acceptance Criteria:
 - [ ] T-023.1: Research OpenNext adapter for Cloudflare
 - [ ] T-023.2: Install OpenNext dependencies
@@ -609,45 +360,6 @@ Dependencies: T-022
 Effort: M
 
 ---
-
-### T-024: Add optional transactional email integration
-Priority: P2
-Type: INFRASTRUCTURE
-Owner: AGENT
-Status: DONE
-Blockers: None
-Completed: 2026-01-21
-Context:
-- Contact form stores leads in Supabase and syncs to CRM
-- No email notifications to business owner or customer
-- Many businesses want email alerts for new leads
-- Should be optional and configurable
-Acceptance Criteria:
-- [x] T-024.1: Add email provider options to env.ts:
-  - SendGrid (most popular)
-  - Postmark (developer-friendly)
-  - Resend (modern, simple)
-- [x] T-024.2: Create /lib/email.ts with email sending logic
-- [x] T-024.3: Add email templates:
-  - Lead notification to business owner
-  - Thank you email to customer (optional)
-- [x] T-024.4: Update contact form action to send emails (optional)
-- [x] T-024.5: Add environment variables:
-  - EMAIL_PROVIDER (sendgrid|postmark|resend|none)
-  - EMAIL_API_KEY
-  - EMAIL_FROM_ADDRESS
-  - EMAIL_TO_ADDRESS (business owner)
-- [x] T-024.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [x] T-024.7: Add to .env.example with clear instructions
-- [x] T-024.8: Test email sending with each provider
-References:
-- /lib/actions.ts
-- /lib/email.ts (new)
-- /lib/env.ts
-- /.env.example
-- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: T-010
-Effort: M
 
 ---
 
@@ -761,7 +473,7 @@ Context:
 - Provides 24/7 instant engagement
 - Qualifies leads automatically
 - Critical differentiator for modern professional services
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
 - [ ] T-030.1: Research and select chatbot provider (Intercom, Drift, Tidio, or custom)
 - [ ] T-030.2: Create chatbot component wrapper for React integration
@@ -786,44 +498,40 @@ Effort: M
 
 ---
 
-### T-032: Integrate Appointment Scheduling (Calendly/Cal.com)
+### T-031: Add Client Logo Showcase & Trust Badge Component
 Priority: P1
-Type: INFRASTRUCTURE
+Type: QUALITY
 Owner: AGENT
-Status: DONE
+Status: READY
 Blockers: None
-Completed: 2026-01-21
 Context:
-- Reduces booking friction by 40% according to conversion studies
-- Standard feature on 73% of consulting/professional services sites
-- Eliminates back-and-forth email scheduling
-- Improves user experience significantly
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Social proof increases conversion by 25% on average
+- Client logos are standard on 82% of professional services sites
+- Builds immediate credibility and trust
+- WebAward criterion: demonstrate authority and expertise
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
-- [x] T-032.1: Create AppointmentScheduler component
-  - Support Calendly embed
-  - Support Cal.com (open source alternative)
-  - Configurable via environment variables
-- [x] T-032.2: Add scheduling CTAs to:
-  - Homepage
-  - Services pages
-  - Contact page
-  - Pricing page
-- [x] T-032.3: Create modal/popup option for inline booking
-- [x] T-032.4: Add environment variables:
-  - SCHEDULING_PROVIDER (calendly|calcom|none)
-  - CALENDLY_URL or CALCOM_USERNAME
-- [x] T-032.5: Style to match template design system
-- [x] T-032.6: Document setup in TEMPLATE_CUSTOMIZATION_GUIDE.md
-- [x] T-032.7: Test booking flow end-to-end
+- [ ] T-031.1: Create ClientLogoShowcase component
+  - Configurable logo grid (3-4 columns, responsive)
+  - Grayscale filter with color on hover
+  - Lazy loading for images
+- [ ] T-031.2: Create TrustBadge component for certifications/awards
+  - Displays badges with tooltips
+  - Configurable positioning
+- [ ] T-031.3: Add placeholder logos to /public/clients/
+- [ ] T-031.4: Integrate on homepage below hero section
+- [ ] T-031.5: Document logo requirements (size, format) in customization guide
+- [ ] T-031.6: Add to vertical examples (law firm shows bar association, etc.)
 References:
-- /components/AppointmentScheduler.tsx (new)
-- /lib/env.ts
-- /.env.example
-- /app/contact/page.tsx
+- /components/ClientLogoShowcase.tsx (new)
+- /components/TrustBadge.tsx (new)
+- /public/clients/ (new directory)
+- /app/page.tsx
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
-Dependencies: T-010
+Dependencies: T-010, T-011
 Effort: S
+
+---
 
 ---
 
@@ -838,7 +546,7 @@ Context:
 - Standard on 58% of high-performing marketing sites
 - Data-driven decision making
 - WebAward criterion: innovation and optimization
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
 - [ ] T-033.1: Research and select A/B testing solution:
   - Vercel Analytics (if deploying to Vercel)
@@ -878,7 +586,7 @@ Context:
 - 78% of professional services firms offer downloadable resources
 - Builds email list for nurture campaigns
 - Demonstrates expertise and thought leadership
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
 - [ ] T-034.1: Create /app/resources/page.tsx - library listing
 - [ ] T-034.2: Create resource download component with email gate
@@ -905,6 +613,86 @@ Effort: M
 
 ---
 
+### T-035: Add Video Content Support
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Video increases engagement by 35% according to marketing research
+- 89% of professional services sites use video content
+- Trust-building through visual storytelling
+- Supports testimonials, case studies, team introductions
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-035.1: Create VideoPlayer component
+  - Support YouTube embed
+  - Support Vimeo embed
+  - Support direct video file (with native HTML5 player)
+  - Responsive sizing
+  - Lazy loading
+- [ ] T-035.2: Create VideoTestimonial component
+  - Grid layout for multiple testimonials
+  - Play on hover option
+  - Full-screen mode
+- [ ] T-035.3: Add video support to blog posts (MDX)
+- [ ] T-035.4: Create example video embeds:
+  - Hero section video option
+  - About page team video
+  - Service explainer video
+- [ ] T-035.5: Document video hosting options and setup
+- [ ] T-035.6: Add to vertical examples
+References:
+- /components/VideoPlayer.tsx (new)
+- /components/VideoTestimonial.tsx (new)
+- /components/Hero.tsx (update for video option)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010, T-011
+Effort: S
+
+---
+
+### T-036: Implement Exit-Intent Popup System
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Recovers 10-15% of abandoning visitors
+- Standard on 61% of lead-generation sites
+- Non-intrusive when implemented correctly
+- Provides last-chance conversion opportunity
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
+Acceptance Criteria:
+- [ ] T-036.1: Create ExitIntentPopup component
+  - Detect mouse leaving viewport
+  - Show once per session (cookie/localStorage)
+  - Responsive design
+  - Easy dismiss
+- [ ] T-036.2: Create popup content variants:
+  - Newsletter signup offer
+  - Resource download offer
+  - Consultation booking offer
+  - Contact form simplified
+- [ ] T-036.3: Add configuration options:
+  - Delay before showing (e.g., 5 seconds on page)
+  - Pages to show/hide
+  - Popup frequency (once per session/day/week)
+- [ ] T-036.4: Integrate with analytics to track effectiveness
+- [ ] T-036.5: Document configuration in customization guide
+- [ ] T-036.6: Test on mobile (disable or adapt)
+References:
+- /components/ExitIntentPopup.tsx (new)
+- /lib/exit-intent.ts (new)
+- /app/layout.tsx (add popup)
+- /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
+Dependencies: T-010
+Effort: M
+
+---
+
 ### T-037: Create Team Member Profiles Section
 Priority: P2
 Type: QUALITY
@@ -916,7 +704,7 @@ Context:
 - 91% of professional services sites have team pages
 - Critical for relationship-based businesses
 - WebAward criterion: demonstrate expertise
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
 - [ ] T-037.1: Create /app/team/page.tsx - team listing
 - [ ] T-037.2: Create /app/team/[slug]/page.tsx - individual profiles
@@ -956,7 +744,7 @@ Context:
 - High engagement (2-3x time on page)
 - Generates qualified leads
 - Industry-specific tool adds value
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
 - [ ] T-038.1: Create ROICalculator component framework
   - Form inputs for key variables
@@ -997,7 +785,7 @@ Context:
 - Standard on 68% of professional services sites
 - Builds marketing email list
 - Can offer lead magnet incentive
-- Identified in PLATINUM_STANDARD_ANALYSIS.md
+- Identified in docs/ARCHIVE/2026/PLATINUM_STANDARD_ANALYSIS.md
 Acceptance Criteria:
 - [ ] T-039.1: Create NewsletterPopup component
   - Timed trigger (e.g., after 30 seconds)
@@ -1026,27 +814,2223 @@ Effort: S
 
 ---
 
+## 🟤 PHASE 6: AUDIT REMEDIATION (WRONG.md)
+> Remediate issues identified in `WRONG.md` (baseline + deep sweep).
+
+### T-040: Fix rate limiter race condition (WRONG #001)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #001/C001: rate limiter singleton can initialize multiple times
+- Concurrent requests can create multiple limiter instances and inconsistent enforcement
+Acceptance Criteria:
+- [ ] T-040.1: Implement Promise-based singleton initialization in `lib/actions.ts`
+- [ ] T-040.2: Add test or concurrency simulation verifying single instance initialization
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-041: Guard root layout search index build (WRONG #014)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #014: unhandled error from `getSearchIndex()` can crash entire app
+Acceptance Criteria:
+- [ ] T-041.1: Add try/catch fallback around `getSearchIndex()` in `app/layout.tsx`
+- [ ] T-041.2: Log error via logger and keep navigation functional with empty items
+References:
+- /app/layout.tsx
+- /lib/search.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #002/SEC-002: leads are inserted before rate limit check, enabling spam
+Acceptance Criteria:
+- [ ] T-042.1: Move rate limit enforcement before `insertLead()` in `lib/actions.ts`
+- [ ] T-042.2: Add test for rate-limited submissions not writing records
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-043: Fix HubSpot sync error swallowing (BUG #003 / #006)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md BUG #003/#006: HubSpot sync failures are swallowed and status updates can fail silently
+- Leads can be stuck in pending state with no visibility or recovery path
+Acceptance Criteria:
+- [ ] T-043.1: Persist sync failure state with error details when CRM sync fails
+- [ ] T-043.2: Return a safe warning or status indicator to callers when sync fails
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-044: Remediate MDX XSS vulnerability (BUG #008)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md BUG #008: MDX rendering allows script injection without sanitization
+Acceptance Criteria:
+- [ ] T-044.1: Add MDX sanitization (e.g., `rehype-sanitize`) with a strict allowlist
+- [ ] T-044.2: Audit current MDX content for unsafe nodes/scripts
+- [ ] T-044.3: Define scope and affected files before changes.
+- [ ] T-044.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /components/BlogPostContent.tsx
+- /content/blog/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-045: Prevent header injection in HubSpot name fields (BUG #011)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md BUG #011: first/last names are sent to HubSpot without newline sanitization
+Acceptance Criteria:
+- [ ] T-045.1: Sanitize first/last names to strip CR/LF and control chars
+- [ ] T-045.2: Add tests covering CR/LF injection attempts
+References:
+- /lib/actions.ts
+- /lib/sanitize.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-046: Prevent path traversal in blog loader (SEC-001)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md SEC-001: slug-based path building allows path traversal
+Acceptance Criteria:
+- [ ] T-046.1: Validate slugs with a strict allowlist before reading files
+- [ ] T-046.2: Add tests for traversal payloads returning undefined/404
+References:
+- /lib/blog.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-047: Validate Content-Length header in middleware (WRONG #003 / SEC-001)
+Priority: P1
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #003/S001: malformed Content-Length can bypass size checks
+Acceptance Criteria:
+- [ ] T-047.1: Reject missing/invalid/negative Content-Length values
+- [ ] T-047.2: Add tests for invalid header values and oversized payloads
+References:
+- /middleware.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-048: Add explicit null handling in logger sanitize (WRONG #004)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #004: sanitizeValue relies on implicit null handling
+Acceptance Criteria:
+- [ ] T-048.1: Handle null/undefined explicitly in `sanitizeValue`
+- [ ] T-048.2: Add unit test for null log context values
+References:
+- /lib/logger.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-049: Fix mobile menu focus management (WRONG #010)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #010: focus restoration uses stale refs on menu close
+Acceptance Criteria:
+- [ ] T-049.1: Capture focus before opening and restore on close if element exists
+- [ ] T-049.2: Add E2E test for keyboard focus restoration
+References:
+- /components/Navigation.tsx
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-050: Add error handling to blog listing page (WRONG #015)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #015: blog listing crashes on malformed MDX/frontmatter
+Acceptance Criteria:
+- [ ] T-050.1: Wrap `getAllPosts()`/`getAllCategories()` in try/catch with fallback UI
+- [ ] T-050.2: Add test for malformed MDX returning safe UI
+References:
+- /app/blog/page.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-051: Fix metadata handling for missing blog posts (WRONG #016)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #016: `generateMetadata()` returns 200 metadata for missing posts
+Acceptance Criteria:
+- [ ] T-051.1: Return noindex metadata for missing posts
+- [ ] T-051.2: Verify `notFound()` still triggers 404 in page render
+References:
+- /app/blog/[slug]/page.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-052: Add Suspense fallback on search page (WRONG #017)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #017: Suspense without fallback yields blank UI
+Acceptance Criteria:
+- [ ] T-052.1: Provide a loading fallback in `app/search/page.tsx`
+- [ ] T-052.2: Add UI test asserting fallback renders on slow load
+References:
+- /app/search/page.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-053: Replace index keys in SocialProof lists (WRONG #019)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #019: React key anti-pattern risks state corruption
+Acceptance Criteria:
+- [ ] T-053.1: Use stable unique keys for testimonials and metrics
+- [ ] T-053.2: Add test or lint rule to prevent index keys in mapped UI
+References:
+- /components/SocialProof.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-054: Clean up InstallPrompt timeout (WRONG #020)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #020: timeout not cleared in effect cleanup
+Acceptance Criteria:
+- [ ] T-054.1: Store and clear timeout in effect cleanup
+- [ ] T-054.2: Add test to ensure no setState after unmount
+References:
+- /components/InstallPrompt.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-055: Announce search keyboard shortcut to screen readers (WRONG #021)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #021: aria-label does not mention Cmd/Ctrl+K shortcut
+Acceptance Criteria:
+- [ ] T-055.1: Update aria-label to include shortcut hint
+- [ ] T-055.2: Verify with a11y snapshot or test
+References:
+- /components/SearchDialog.tsx
+- /components/Navigation.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-056: Refactor Navigation god component (Q001)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Q001: `Navigation.tsx` mixes multiple responsibilities
+Acceptance Criteria:
+- [ ] T-056.1: Extract mobile menu into separate component
+- [ ] T-056.2: Extract focus management and path normalization into hooks/utils
+- [ ] T-056.3: Define scope and affected files before changes.
+- [ ] T-056.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /components/Navigation.tsx
+- /lib/utils.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-057: Auto-generate static pages list for search (Q002)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Q002: hardcoded static pages array in `lib/search.ts`
+Acceptance Criteria:
+- [ ] T-057.1: Generate static pages list from filesystem or metadata at build time
+- [ ] T-057.2: Remove manual duplication with `app/sitemap.ts`
+- [ ] T-057.3: Define scope and affected files before changes.
+- [ ] T-057.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/search.ts
+- /app/sitemap.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-058: Centralize validation logic for contact flow (Q003)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Q003: validation logic duplicated across client/server
+Acceptance Criteria:
+- [ ] T-058.1: Consolidate validation in `lib/contact-form-schema.ts`
+- [ ] T-058.2: Reuse single schema on client and server
+References:
+- /lib/contact-form-schema.ts
+- /components/ContactForm.tsx
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-059: Implement analytics provider selection (I001 / D1.1)
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md I001/D1.1: analytics provider is stubbed; no real tracking
+Acceptance Criteria:
+- [ ] T-059.1: Add provider selection with env validation
+- [ ] T-059.2: Implement GA4 or Plausible adapter and tests
+- [ ] T-059.3: Define scope and affected files before changes.
+- [ ] T-059.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/analytics.ts
+- /lib/env.public.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-060: Add HubSpot retry logic (Phase 4 checklist)
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 4: HubSpot sync lacks retry queue
+Acceptance Criteria:
+- [ ] T-060.1: Implement retry mechanism for failed CRM sync
+- [ ] T-060.2: Record retry attempts and final failure state
+- [ ] T-060.3: Define retry strategy (attempt count, backoff, terminal failure)
+- [ ] T-060.4: Add verification (unit/integration) for retry and final failure states
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: T-043
+Effort: M
+
+---
+### T-061: Add error boundaries in critical paths (D1.3)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md D1.3: missing error boundaries for routes and CRM failures
+Acceptance Criteria:
+- [ ] T-061.1: Add error boundary for critical pages/components
+- [ ] T-061.2: Ensure failures degrade gracefully with user-safe UI
+- [ ] T-061.3: Define scope and affected files before changes.
+- [ ] T-061.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /app/
+- /components/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-062: Decouple search index from blog module (A001)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md A001: tight coupling between `lib/search.ts` and `lib/blog.ts`
+Acceptance Criteria:
+- [ ] T-062.1: Introduce content registry or interface for search sources
+- [ ] T-062.2: Update search indexing to use registry
+- [ ] T-062.3: Define scope and affected files before changes.
+- [ ] T-062.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/search.ts
+- /lib/blog.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-063: Increase critical path test coverage (T1.1)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md T1.1: critical paths have low coverage (rate limit, CRM sync, blog parsing)
+Acceptance Criteria:
+- [ ] T-063.1: Add tests for rate limiter concurrency and Upstash init
+- [ ] T-063.2: Add tests for HubSpot timeout and malformed MDX handling
+- [ ] T-063.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-063.4: Implement tests and wire them into existing scripts.
+References:
+- /__tests__/
+- /WRONG.md
+Dependencies: None
+Effort: L
+
+---
+### T-064: Add cleanup to in-memory rate limiter (WRONG #005)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #005: in-memory rate limiter Map grows without cleanup
+Acceptance Criteria:
+- [ ] T-064.1: Add periodic cleanup or TTL cache
+- [ ] T-064.2: Document fallback limitations in code
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-065: Add SearchDialog backdrop click to close (WRONG #011)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #011: modal lacks backdrop click handler
+Acceptance Criteria:
+- [ ] T-065.1: Close dialog when backdrop is clicked
+- [ ] T-065.2: Ensure clicks inside modal do not close
+References:
+- /components/SearchDialog.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-066: Add focus indicator for SearchDialog container (WRONG #013)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #013: focusable dialog container has no visible focus state
+Acceptance Criteria:
+- [ ] T-066.1: Make dialog focusable and apply visible focus styles
+- [ ] T-066.2: Ensure focus shifts to dialog on open
+References:
+- /components/SearchDialog.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-067: Log Sentry client load failures (WRONG #012)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #012: Sentry functions silently fail without warning
+Acceptance Criteria:
+- [ ] T-067.1: Log or report failure when Sentry import fails
+- [ ] T-067.2: Ensure callers can detect failure or fallback safely
+References:
+- /lib/sentry-client.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-068: Add error handling for BlogPostContent dynamic import (WRONG #018)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #018: dynamic import has loading state but no error handling
+Acceptance Criteria:
+- [ ] T-068.1: Add error boundary or fallback for BlogPostContent import failures
+- [ ] T-068.2: Provide user-visible error state when content fails to load
+References:
+- /app/blog/[slug]/page.tsx
+- /components/BlogPostContent.tsx
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-069: Standardize blog module return values (WRONG #009)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #009: `getAllPosts()` and `getPostBySlug()` return inconsistent fallbacks
+Acceptance Criteria:
+- [ ] T-069.1: Document or standardize return patterns in `lib/blog.ts`
+- [ ] T-069.2: Add tests verifying consistent behavior
+References:
+- /lib/blog.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-070: Remove unused analytics params and dead helpers (D001 + Deep Sweep)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md D001 + Deep Sweep: unused params and dead tracking helpers in analytics
+Acceptance Criteria:
+- [ ] T-070.1: Remove unused params (`_location`, `_destination`)
+- [ ] T-070.2: Remove or implement dead helpers (trackPageView, trackOutboundLink, trackDownload, trackScrollDepth, trackTimeOnPage)
+References:
+- /lib/analytics.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-071: Remove unused error variables in catch blocks (D002)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md D002: catch blocks declare unused `error` variables
+Acceptance Criteria:
+- [ ] T-071.1: Replace unused `error` with `catch {}` or use the value
+- [ ] T-071.2: Ensure logger captures real error details where needed
+References:
+- /lib/
+- /components/
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-072: Remove orphaned RateLimiter type (D003)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md D003: RateLimiter type definition is unused/inlineable
+Acceptance Criteria:
+- [ ] T-072.1: Remove or inline unused type definition
+- [ ] T-072.2: Confirm TypeScript build passes
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-073: Remove unused Tailwind classes (Phase 3 low)
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 3 low: unused Tailwind classes in config
+Acceptance Criteria:
+- [ ] T-073.1: Remove unused classes from Tailwind config
+- [ ] T-073.2: Verify styles unchanged via lint/build
+References:
+- /tailwind.config.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-074: Remove unused env vars from .env.example (Phase 3 low)
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 3 low: .env.example lists unused variables
+Acceptance Criteria:
+- [ ] T-074.1: Remove unused env vars or wire them into code
+- [ ] T-074.2: Keep .env.example aligned with `lib/env.ts` and `lib/env.public.ts`
+References:
+- /.env.example
+- /lib/env.ts
+- /lib/env.public.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-075: Move social URLs to env vars (WRONG #008 / CF001)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md #008/CF001: structured data uses hardcoded social URLs
+Acceptance Criteria:
+- [ ] T-075.1: Add env vars for social URLs in `lib/env.public.ts` and `.env.example`
+- [ ] T-075.2: Update structured data to use env values with safe filtering
+References:
+- /app/layout.tsx
+- /lib/env.public.ts
+- /.env.example
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-076: Replace rate-limit magic numbers with config (Phase 2 / Phase 10)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: magic numbers in rate limit logic and config
+Acceptance Criteria:
+- [ ] T-076.1: Move rate limit constants to config/env with validation
+- [ ] T-076.2: Update usage across `lib/actions.ts`
+References:
+- /lib/actions.ts
+- /lib/env.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-077: Reduce long functions (Phase 2 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: long functions like `submitContactForm` reduce maintainability
+Acceptance Criteria:
+- [ ] T-077.1: Extract smaller helpers from `submitContactForm`
+- [ ] T-077.2: Keep behavior unchanged with tests
+- [ ] T-077.3: Define scope and affected files before changes.
+- [ ] T-077.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-078: Reduce deep nesting in components (Phase 2 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: deep nesting makes components harder to maintain
+Acceptance Criteria:
+- [ ] T-078.1: Refactor nested JSX into subcomponents/helpers
+- [ ] T-078.2: Verify UI behavior unchanged
+- [ ] T-078.3: Define scope and affected files before changes.
+- [ ] T-078.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /components/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-079: Standardize component file naming (Phase 2 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: inconsistent naming conventions across components
+Acceptance Criteria:
+- [ ] T-079.1: Align naming conventions with BESTPR.md
+- [ ] T-079.2: Update imports to match renamed files
+References:
+- /components/
+- /BESTPR.md
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-080: Remove unused imports (Phase 2 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: unused imports in multiple files
+Acceptance Criteria:
+- [ ] T-080.1: Remove unused imports and ensure lint passes
+- [ ] T-080.2: Confirm no build or test regressions
+References:
+- /app/
+- /components/
+- /lib/
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-081: Simplify complex conditions (Phase 2 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: complex if conditions reduce readability
+Acceptance Criteria:
+- [ ] T-081.1: Extract boolean helpers for complex conditions
+- [ ] T-081.2: Keep behavior identical with unit tests
+References:
+- /lib/
+- /components/
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-082: Add missing JSDoc for exported functions (Phase 2 medium)
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: documentation gaps for exported APIs
+Acceptance Criteria:
+- [ ] T-082.1: Add JSDoc for exported functions lacking docs
+- [ ] T-082.2: Ensure new docs match existing style in BESTPR.md
+References:
+- /lib/
+- /components/
+- /WRONG.md
+- /BESTPR.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-083: Remove console.log statements in production code (Phase 2 low)
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: console.log statements should use logger
+Acceptance Criteria:
+- [ ] T-083.1: Replace console.log with logger helpers
+- [ ] T-083.2: Ensure no console output in production paths
+References:
+- /lib/logger.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-084: Remove commented-out code blocks (Phase 2 low)
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: commented-out code in components/ should be removed
+Acceptance Criteria:
+- [ ] T-084.1: Remove commented-out blocks or convert to TODOs
+- [ ] T-084.2: Confirm no behavior changes
+References:
+- /components/
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-085: Add request ID correlation for logging (Phase 4 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: logs lack request ID correlation
+Acceptance Criteria:
+- [ ] T-085.1: Generate/request ID and attach to log context
+- [ ] T-085.2: Document request ID usage in logger helpers
+- [ ] T-085.3: Define scope and affected files before changes.
+- [ ] T-085.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/logger.ts
+- /middleware.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-086: Validate Supabase/HubSpot config at startup (Phase 10 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: credentials not validated at startup
+Acceptance Criteria:
+- [ ] T-086.1: Add startup validation for required server env vars
+- [ ] T-086.2: Ensure missing vars fail fast with clear errors
+References:
+- /lib/env.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-087: Add env drift checks across environments (Phase 10 medium)
+Priority: P2
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: no automated check for env parity across dev/staging/prod
+Acceptance Criteria:
+- [ ] T-087.1: Add script or doc for verifying env parity
+- [ ] T-087.2: Document usage in relevant docs
+- [ ] T-087.3: Define scope and affected files before changes.
+- [ ] T-087.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /scripts/
+- /docs/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-088: Move structured data contact email to env var (Phase 10 medium)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: structured data uses hardcoded contact email
+Acceptance Criteria:
+- [ ] T-088.1: Add env var for contact email and use in structured data
+- [ ] T-088.2: Update `.env.example` accordingly
+References:
+- /app/layout.tsx
+- /lib/env.public.ts
+- /.env.example
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-089: Add client-side search analytics (Phase 4 checklist)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: search analytics not implemented
+Acceptance Criteria:
+- [ ] T-089.1: Track search queries/events client-side
+- [ ] T-089.2: Respect privacy settings and opt-outs
+References:
+- /components/SearchDialog.tsx
+- /lib/analytics.ts
+- /WRONG.md
+Dependencies: T-059
+Effort: S
+
+---
+
+### T-090: Add frontmatter validation for blog posts (Phase 4 checklist)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: frontmatter validation not implemented
+Acceptance Criteria:
+- [ ] T-090.1: Validate required fields in blog frontmatter with Zod
+- [ ] T-090.2: Fail gracefully with clear error messages
+References:
+- /lib/blog.ts
+- /content/blog/
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-091: Add blog post caching in dev builds (Phase 4 checklist)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: blog content not cached for dev performance
+Acceptance Criteria:
+- [ ] T-091.1: Implement dev-only caching layer for blog reads
+- [ ] T-091.2: Ensure production behavior unchanged
+References:
+- /lib/blog.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-092: Add fuzzy search support (Phase 4 checklist)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: fuzzy search not implemented
+Acceptance Criteria:
+- [ ] T-092.1: Add fuzzy matching for search queries
+- [ ] T-092.2: Document behavior and performance impact
+- [ ] T-092.3: Choose fuzzy matching approach and configure thresholds
+- [ ] T-092.4: Add tests/examples covering fuzzy matches and ranking
+References:
+- /lib/search.ts
+- /components/SearchDialog.tsx
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-093: Fix success message disappearing on navigation (Phase 4 medium #009)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 4 medium #009: success message disappears on navigation
+Acceptance Criteria:
+- [ ] T-093.1: Identify affected component and persist success state across navigation
+- [ ] T-093.2: Add regression test for the success message
+References:
+- /components/ContactForm.tsx
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-094: Implement nonce-based CSP (SEC-004 / Phase 4 checklist)
+Priority: P2
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md SEC-004: CSP uses 'unsafe-inline'
+Acceptance Criteria:
+- [ ] T-094.1: Add nonce-based CSP headers in middleware
+- [ ] T-094.2: Update scripts/styles to use nonce safely
+- [ ] T-094.3: Thread nonce through rendering paths that inject scripts/styles
+- [ ] T-094.4: Verify CSP headers and update SECURITY docs with the nonce pattern
+References:
+- /middleware.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-095: Strengthen IP hash salt (SEC-003)
+Priority: P2
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md SEC-003: hardcoded salt weakens hashing
+Acceptance Criteria:
+- [ ] T-095.1: Use environment-provided salt with safe fallback
+- [ ] T-095.2: Document new env var in `.env.example`
+References:
+- /lib/actions.ts
+- /.env.example
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-096: Sanitize error responses (SEC-005)
+Priority: P2
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md SEC-005: error responses may expose internal details
+Acceptance Criteria:
+- [ ] T-096.1: Replace user-facing errors with generic messages
+- [ ] T-096.2: Ensure detailed errors are logged server-side only
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-097: Update Zod to latest supported version (SEC-007)
+Priority: P2
+Type: DEPENDENCY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md SEC-007: Zod version is behind latest
+Acceptance Criteria:
+- [ ] T-097.1: Update Zod to latest version and run tests
+- [ ] T-097.2: Update CHANGELOG.md if version changes
+References:
+- /package.json
+- /package-lock.json
+- /CHANGELOG.md
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-098: Add pre-commit secret scanning (S003)
+Priority: P2
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md S003: client secret scan runs only post-build
+Acceptance Criteria:
+- [ ] T-098.1: Add pre-commit hook or CI step to run secret scan
+- [ ] T-098.2: Document setup in developer docs
+References:
+- /scripts/check-client-secrets.mjs
+- /docs/
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-099: Add CRM/Supabase abstraction layer (Architecture)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: direct API calls in actions.ts make layering brittle
+Acceptance Criteria:
+- [ ] T-099.1: Introduce repository/service layer for Supabase and HubSpot
+- [ ] T-099.2: Update `lib/actions.ts` to use the new layer
+- [ ] T-099.3: Define scope and affected files before changes.
+- [ ] T-099.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/actions.ts
+- /lib/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-100: Reduce direct lib imports from components (Architecture)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: components import `lib/` directly, bypassing layers
+Acceptance Criteria:
+- [ ] T-100.1: Introduce intermediate interfaces where needed
+- [ ] T-100.2: Update components to use the new interfaces
+- [ ] T-100.3: Define scope and affected files before changes.
+- [ ] T-100.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /components/
+- /lib/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-101: Guard env/logger circular dependency risk (Architecture)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md: env/logger circular dependency risk
+Acceptance Criteria:
+- [ ] T-101.1: Audit imports between env and logger modules
+- [ ] T-101.2: Add guard or refactor to prevent circular dependency
+References:
+- /lib/env.ts
+- /lib/logger.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-102: Add analytics setup documentation (Do1.1)
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Do1.1: missing analytics setup guide
+Acceptance Criteria:
+- [ ] T-102.1: Create `docs/ANALYTICS_SETUP.md` with GA4/Plausible options
+- [ ] T-102.2: Link guide from README or customization docs
+- [ ] T-102.3: Define scope and affected files before changes.
+- [ ] T-102.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /docs/
+- /README.md
+- /WRONG.md
+Dependencies: T-059
+Effort: M
+
+---
+### T-103: Update brittle tests for placeholder content (T1.2)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md T1.2: tests expect old marketing content
+Acceptance Criteria:
+- [ ] T-103.1: Update tests to use placeholder-driven assertions
+- [ ] T-103.2: Ensure tests pass with current template content
+References:
+- /__tests__/
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-104: Add integration tests for contact/blog/search (Phase 9)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: missing integration tests for critical paths
+Acceptance Criteria:
+- [ ] T-104.1: Add integration tests for contact form submission flow
+- [ ] T-104.2: Add integration tests for blog parsing and search indexing
+- [ ] T-104.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-104.4: Implement tests and wire them into existing scripts.
+References:
+- /__tests__/
+- /tests/
+- /WRONG.md
+Dependencies: None
+Effort: L
+
+---
+### T-105: Add E2E tests for mobile menu, form, and PWA (Phase 9)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: E2E coverage is limited
+Acceptance Criteria:
+- [ ] T-105.1: Add E2E tests for mobile menu keyboard navigation
+- [ ] T-105.2: Add E2E tests for form submission and PWA prompt
+- [ ] T-105.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-105.4: Implement tests and wire them into existing scripts.
+References:
+- /tests/
+- /WRONG.md
+Dependencies: None
+Effort: L
+
+---
+### T-106: Add automated accessibility tests (Phase 9)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: no automated a11y testing
+Acceptance Criteria:
+- [ ] T-106.1: Add axe-core or similar to E2E suite
+- [ ] T-106.2: Document a11y test workflow
+- [ ] T-106.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-106.4: Implement tests and wire them into existing scripts.
+References:
+- /tests/
+- /docs/ACCESSIBILITY.md
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-107: Improve test quality (Phase 9)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: tests over-mock, lack negative cases, potential flakiness
+Acceptance Criteria:
+- [ ] T-107.1: Reduce over-mocking and add negative-path tests
+- [ ] T-107.2: Stabilize async tests with proper waits/timeouts
+- [ ] T-107.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-107.4: Implement tests and wire them into existing scripts.
+References:
+- /__tests__/
+- /tests/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-108: Remove dead getPostsByCategory helper (Deep Sweep)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Deep Sweep: `getPostsByCategory()` is unused
+Acceptance Criteria:
+- [ ] T-108.1: Remove the unused helper or add a real caller
+- [ ] T-108.2: Ensure blog build still succeeds
+References:
+- /lib/blog.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-109: Recalculate TODO effort estimate after audit tasks
+Priority: P3
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Estimated total effort is now **UNKNOWN** after adding audit remediation tasks
+Acceptance Criteria:
+- [ ] T-109.1: Recalculate total effort based on task list
+- [ ] T-109.2: Update TODO summary estimate with a validated range
+References:
+- /TODO.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-110: Consolidate duplicate search logic (Deep Sweep Q001)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Deep Sweep Q001: SearchDialog and SearchPage duplicate search logic
+Acceptance Criteria:
+- [ ] T-110.1: Extract shared search logic into a common helper or hook
+- [ ] T-110.2: Update SearchDialog and SearchPage to use shared logic
+- [ ] T-110.3: Add regression checks for search behavior parity
+- [ ] T-110.4: Document the shared helper usage and extension points
+References:
+- /components/SearchDialog.tsx
+- /components/SearchPage.tsx
+- /lib/search.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-111: Reduce ServiceDetailLayout size/complexity (Deep Sweep Q004)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Deep Sweep Q004: ServiceDetailLayout is a large component
+Acceptance Criteria:
+- [ ] T-111.1: Extract repeated sections into subcomponents
+- [ ] T-111.2: Keep layout rendering behavior unchanged
+- [ ] T-111.3: Add regression coverage for the extracted sections
+- [ ] T-111.4: Document the new subcomponent responsibilities
+References:
+- /components/ServiceDetailLayout.tsx
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-112: Reduce Navigation ↔ SearchDialog coupling (Deep Sweep Q005)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Deep Sweep Q005: tight coupling between Navigation and SearchDialog
+Acceptance Criteria:
+- [ ] T-112.1: Introduce a shared interface or helper for search trigger behavior
+- [ ] T-112.2: Update Navigation and SearchDialog to use the shared interface
+- [ ] T-112.3: Add verification for keyboard shortcut and open/close behavior
+- [ ] T-112.4: Document the new interface and expected usage
+References:
+- /components/Navigation.tsx
+- /components/SearchDialog.tsx
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-113: Add stricter contact form schema validation (C1.2)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md C1.2: message length, phone format, and website protocol lack validation
+Acceptance Criteria:
+- [ ] T-113.1: Add max length for message and company fields
+- [ ] T-113.2: Add phone format validation and website protocol validation
+References:
+- /lib/contact-form-schema.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-114: Reduce ESLint suppressions and migrate ignore config (C1.3)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md C1.3: overly broad ESLint suppressions and deprecated .eslintignore usage
+Acceptance Criteria:
+- [ ] T-114.1: Replace .eslintignore usage with eslint config exclusions
+- [ ] T-114.2: Remove unnecessary @ts-expect-error or unused param suppressions
+References:
+- /.eslintignore
+- /eslint.config.mjs
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-115: Resolve remaining npm audit vulnerabilities (Dep1.2)
+Priority: P1
+Type: DEPENDENCY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Dep1.2: high-severity transitive vulnerabilities (glob, etc.)
+Acceptance Criteria:
+- [ ] T-115.1: Run npm audit and document remaining vulnerabilities
+- [ ] T-115.2: Upgrade or pin dependencies to resolve high-severity issues
+References:
+- /package.json
+- /package-lock.json
+- /WRONG.md
+Dependencies: T-022
+Effort: S
+
+---
+
+### T-116: Track test coverage in CI (Phase 5 test debt)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 5: coverage not tracked in CI
+Acceptance Criteria:
+- [ ] T-116.1: Add CI or local script to capture coverage thresholds
+- [ ] T-116.2: Document coverage workflow in README or testing docs
+References:
+- /docs/TESTING_STRATEGY.md
+- /repo.manifest.yaml
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-117: Add contract tests for external APIs (Phase 9)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: no contract tests for external APIs (Supabase/HubSpot)
+Acceptance Criteria:
+- [ ] T-117.1: Add contract tests or mocks validating request/response shapes
+- [ ] T-117.2: Document test approach for external APIs
+- [ ] T-117.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-117.4: Implement tests and wire them into existing scripts.
+References:
+- /__tests__/
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-118: Add performance/load testing baseline (Phase 9)
+Priority: P3
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: no performance or load tests
+Acceptance Criteria:
+- [ ] T-118.1: Define minimal load test plan for contact + search flows
+- [ ] T-118.2: Document how to run performance tests
+- [ ] T-118.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-118.4: Implement tests and wire them into existing scripts.
+References:
+- /docs/TESTING_STRATEGY.md
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+### T-119: Add E2E coverage for middleware security headers (Phase 9)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 9: no E2E verification of middleware security headers
+Acceptance Criteria:
+- [ ] T-119.1: Add E2E test asserting security headers on key routes
+- [ ] T-119.2: Document expected header values in tests
+References:
+- /tests/
+- /middleware.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-120: Generate API documentation for public modules (Doc debt)
+Priority: P3
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- WRONG.md Phase 5: API documentation could be generated
+Acceptance Criteria:
+- [ ] T-120.1: Define API doc generation approach (TypeDoc or manual)
+- [ ] T-120.2: Produce initial API docs for public modules
+- [ ] T-120.3: Define scope and affected files before changes.
+- [ ] T-120.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /docs/
+- /lib/
+- /WRONG.md
+Dependencies: None
+Effort: M
+
+---
+
+## 🟢 PHASE 7: PERFECT.md CLEANUP & QUALITY (P0-P2)
+> Tasks migrated from `PERFECT.md` to align with TODO.md as the task truth source.
+### T-121: Fix failing tests after sanitization (PERFECT P0-001)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P0-001: 8 tests failing due to outdated marketing content expectations
+- Overlaps with placeholder test updates already tracked
+Acceptance Criteria:
+- [ ] T-121.1: Update test expectations to generic template content
+- [ ] T-121.2: Run `npm test` with all tests passing
+- [ ] T-121.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-121.4: Implement tests and wire them into existing scripts.
+References:
+- /__tests__/components/HomePage.test.tsx
+- /__tests__/components/MarketingSections.test.tsx
+- /__tests__/components/pages/pages.test.tsx
+- /__tests__/lib/actions.rate-limit.test.ts
+- /PERFECT.md
+Dependencies: T-103
+Effort: M
+
+---
+### T-122: Resolve linting warnings (PERFECT P0-002)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P0-002: 8 lint warnings (eslint ignore, ts-ignore usage, unused params/imports)
+Acceptance Criteria:
+- [ ] T-122.1: Address all listed lint warnings in PERFECT.md
+- [ ] T-122.2: Run `npm run lint` with 0 warnings/errors
+References:
+- /eslint.config.mjs
+- /.eslintignore
+- /next.config.mjs
+- /sentry.client.config.ts
+- /sentry.edge.config.ts
+- /sentry.server.config.ts
+- /vitest.setup.tsx
+- /PERFECT.md
+Dependencies: T-114, T-080
+Effort: S
+
+---
+
+### T-123: Run security audit & document findings (PERFECT P0-004)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P0-004: 18 npm vulnerabilities and deprecated adapter need assessment
+Acceptance Criteria:
+- [ ] T-123.1: Run `npm audit` and record findings by severity
+- [ ] T-123.2: Document mitigations in `docs/SECURITY_AUDIT_RESULTS.md`
+- [ ] T-123.3: Address critical/high issues or document rationale
+- [ ] T-123.4: Define scope and checklist for the audit targets.
+References:
+- /SECURITY.md
+- /SECURITYAUDIT.md
+- /docs/SECURITY_AUDIT_RESULTS.md
+- /PERFECT.md
+Dependencies: T-115
+Effort: M
+
+---
+### T-124: Establish test coverage baseline (PERFECT P0-005)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P0-005: coverage baseline is unknown
+Acceptance Criteria:
+- [ ] T-124.1: Run `npm run test:coverage` and capture metrics
+- [ ] T-124.2: Identify files below 50% coverage
+- [ ] T-124.3: Document baseline in `docs/COVERAGE_BASELINE.md`
+References:
+- /vitest.config.ts
+- /docs/COVERAGE_BASELINE.md
+- /PERFECT.md
+Dependencies: None
+Effort: S
+
+---
+
+### T-125: Dead code elimination sweep (PERFECT P1-001)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P1-001: remove unused imports, dead functions, and commented blocks
+Acceptance Criteria:
+- [ ] T-125.1: Identify unused imports/functions and unreachable code
+- [ ] T-125.2: Remove or document dead code in `docs/DEAD_CODE_ANALYSIS.md`
+- [ ] T-125.3: Ensure tests/build still pass
+- [ ] T-125.4: Define scope and checklist for the audit targets.
+References:
+- /app/
+- /components/
+- /lib/
+- /docs/DEAD_CODE_ANALYSIS.md
+- /PERFECT.md
+Dependencies: T-070, T-071, T-072, T-108, T-073, T-084
+Effort: L
+
+---
+### T-126: TODO/FIXME resolution audit (PERFECT P1-002)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P1-002: identify TODO/FIXME/HACK/XXX notes and classify
+Acceptance Criteria:
+- [ ] T-126.1: Run `scripts/check-todo-comments.mjs`
+- [ ] T-126.2: Document findings in `docs/TODO_FIXME_AUDIT.md`
+- [ ] T-126.3: Create follow-on tasks for P0/P1 findings
+- [ ] T-126.4: Define scope and checklist for the audit targets.
+References:
+- /scripts/check-todo-comments.mjs
+- /docs/TODO_FIXME_AUDIT.md
+- /PERFECT.md
+Dependencies: None
+Effort: M
+
+---
+### T-127: Error handling consistency audit (PERFECT P1-003)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P1-003: audit error handling across API routes, server actions, and client boundaries
+Acceptance Criteria:
+- [ ] T-127.1: Audit `/app/api/` and server actions for consistent handling
+- [ ] T-127.2: Verify error boundaries and Sentry capture
+- [ ] T-127.3: Document patterns in `docs/ERROR_HANDLING_GUIDE.md`
+- [ ] T-127.4: Define scope and checklist for the audit targets.
+References:
+- /app/api/
+- /lib/actions.ts
+- /lib/logger.ts
+- /lib/sentry-*.ts
+- /docs/ERROR_HANDLING_GUIDE.md
+- /PERFECT.md
+Dependencies: T-061, T-067, T-068, T-096
+Effort: L
+
+---
+### T-128: Type safety enhancement sweep (PERFECT P1-004)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P1-004: remove implicit any and improve type definitions
+Acceptance Criteria:
+- [ ] T-128.1: Identify implicit any/unsafe casts and add types
+- [ ] T-128.2: Document improvements in `docs/TYPE_SAFETY_IMPROVEMENTS.md`
+- [ ] T-128.3: Type-check passes with no implicit any
+- [ ] T-128.4: Define scope and checklist for the audit targets.
+References:
+- /tsconfig.json
+- /docs/TYPE_SAFETY_IMPROVEMENTS.md
+- /PERFECT.md
+Dependencies: None
+Effort: M
+
+---
+### T-129: Extract magic numbers and strings (PERFECT P1-005)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P1-005: extract hardcoded numbers/strings to constants
+Acceptance Criteria:
+- [ ] T-129.1: Inventory magic numbers/strings and extract to constants
+- [ ] T-129.2: Document in `docs/CONSTANTS_REFACTOR.md`
+- [ ] T-129.3: Define scope and affected files before changes.
+- [ ] T-129.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/
+- /docs/CONSTANTS_REFACTOR.md
+- /PERFECT.md
+Dependencies: T-076
+Effort: M
+
+---
+### T-130: Add file-level documentation headers (PERFECT P2-001)
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P2-001: add headers to all source/test files
+Acceptance Criteria:
+- [ ] T-130.1: Add headers to `/app`, `/components`, `/lib`, and tests
+- [ ] T-130.2: Document standards in `docs/DOCUMENTATION_STANDARDS.md`
+- [ ] T-130.3: Define scope and affected files before changes.
+- [ ] T-130.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /docs/DOCUMENTATION_STANDARDS.md
+- /PERFECT.md
+Dependencies: None
+Effort: XL
+
+---
+### T-131: Document public APIs with JSDoc (PERFECT P2-002)
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P2-002: document all exported functions/components
+Acceptance Criteria:
+- [ ] T-131.1: Add JSDoc to exported APIs in `/lib` and `/components`
+- [ ] T-131.2: Ensure IDE renders docs correctly
+- [ ] T-131.3: Define scope and affected files before changes.
+- [ ] T-131.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/
+- /components/
+- /PERFECT.md
+Dependencies: T-120
+Effort: L
+
+---
+### T-132: Add inline comments for complex logic (PERFECT P2-003)
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P2-003: explain complex algorithms, edge cases, and assumptions
+Acceptance Criteria:
+- [ ] T-132.1: Review functions >20 lines and add rationale comments
+- [ ] T-132.2: Avoid over-commenting; focus on "why"
+- [ ] T-132.3: Define scope and affected files before changes.
+- [ ] T-132.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /app/
+- /components/
+- /lib/
+- /PERFECT.md
+Dependencies: None
+Effort: M
+
+---
+### T-133: Code duplication analysis (PERFECT P3-001)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P3-001: identify and refactor duplicated logic
+Acceptance Criteria:
+- [ ] T-133.1: Document duplication in `docs/DUPLICATION_ANALYSIS.md`
+- [ ] T-133.2: Extract shared utilities and refactor duplicates
+- [ ] T-133.3: Define scope and checklist for the audit targets.
+- [ ] T-133.4: Record findings and create follow-up tasks for any issues.
+References:
+- /docs/DUPLICATION_ANALYSIS.md
+- /PERFECT.md
+Dependencies: None
+Effort: L
+
+---
+### T-134: Reduce cyclomatic complexity (PERFECT P3-002)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P3-002: target average cyclomatic complexity < 10
+Acceptance Criteria:
+- [ ] T-134.1: Measure function complexity and identify >20
+- [ ] T-134.2: Refactor complex functions with docs
+- [ ] T-134.3: Define scope and affected files before changes.
+- [ ] T-134.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /docs/
+- /PERFECT.md
+Dependencies: None
+Effort: L
+
+---
+### T-135: Simplify large components (PERFECT P3-003)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P3-003: split components >300 lines and extract hooks
+Acceptance Criteria:
+- [ ] T-135.1: Identify large components and split into subcomponents
+- [ ] T-135.2: Preserve behavior and update tests
+- [ ] T-135.3: Define scope and affected files before changes.
+- [ ] T-135.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /components/
+- /app/
+- /PERFECT.md
+Dependencies: T-056, T-111, T-078
+Effort: M
+
+---
+### T-136: Organize utility functions in lib (PERFECT P3-004)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P3-004: reorganize `/lib` utilities for discoverability
+Acceptance Criteria:
+- [ ] T-136.1: Group utilities and add index exports
+- [ ] T-136.2: Update imports across codebase
+- [ ] T-136.3: Define scope and affected files before changes.
+- [ ] T-136.4: Add verification steps (tests or manual checklist) and record results.
+References:
+- /lib/
+- /PERFECT.md
+Dependencies: None
+Effort: M
+
+---
+### T-137: Increase test coverage to 90%+ (PERFECT P4-001)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: BLOCKED
+Blockers: Requires coverage baseline (T-124)
+Context:
+- PERFECT.md P4-001: raise coverage to Diamond Standard target
+Acceptance Criteria:
+- [ ] T-137.1: Identify files below 50% coverage
+- [ ] T-137.2: Add unit/integration tests to reach 90%+
+- [ ] T-137.3: Document results in `docs/TEST_COVERAGE_REPORT.md`
+- [ ] T-137.4: Identify target scenarios and fixtures for coverage.
+References:
+- /__tests__/
+- /vitest.config.ts
+- /docs/TEST_COVERAGE_REPORT.md
+- /PERFECT.md
+Dependencies: T-124
+Effort: XL
+
+---
+### T-138: Edge case testing sweep (PERFECT P4-002)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P4-002: add boundary and error-path tests
+Acceptance Criteria:
+- [ ] T-138.1: Add edge case tests for validation and error paths
+- [ ] T-138.2: Document edge cases in test names
+- [ ] T-138.3: Define scope and checklist for the audit targets.
+- [ ] T-138.4: Record findings and create follow-up tasks for any issues.
+References:
+- /__tests__/
+- /PERFECT.md
+Dependencies: None
+Effort: L
+
+---
+### T-139: Enhance E2E testing coverage (PERFECT P4-003)
+Priority: P2
+Type: QUALITY
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- PERFECT.md P4-003: expand Playwright coverage and a11y checks
+Acceptance Criteria:
+- [ ] T-139.1: Audit existing E2E tests and add critical flows
+- [ ] T-139.2: Include accessibility checks and responsive assertions
+- [ ] T-139.3: Identify target scenarios and fixtures for coverage.
+- [ ] T-139.4: Implement tests and wire them into existing scripts.
+References:
+- /tests/
+- /playwright.config.ts
+- /PERFECT.md
+Dependencies: T-105, T-106
+Effort: M
+
+---
+### T-140: Final code review gate (PERFECT P5-001)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: BLOCKED
+Blockers: All prior PERFECT phases complete
+Context:
+- PERFECT.md P5-001: final code review required before completion
+Acceptance Criteria:
+- [ ] T-140.1: Request code review
+- [ ] T-140.2: Address feedback and document decisions
+- [ ] T-140.3: Define scope and checklist for the audit targets.
+- [ ] T-140.4: Record findings and create follow-up tasks for any issues.
+References:
+- /PERFECT.md
+Dependencies: T-121, T-122, T-123, T-124, T-125, T-126, T-127, T-128, T-129, T-130, T-131, T-132, T-133, T-134, T-135, T-136, T-137, T-138, T-139
+Effort: L
+
+---
+### T-141: Final security scan gate (PERFECT P5-002)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: BLOCKED
+Blockers: All code changes complete
+Context:
+- PERFECT.md P5-002: run codeql_checker and resolve findings
+Acceptance Criteria:
+- [ ] T-141.1: Run codeql_checker and remediate findings
+- [ ] T-141.2: Document security scan results
+- [ ] T-141.3: Define scope and checklist for the audit targets.
+- [ ] T-141.4: Record findings and create follow-up tasks for any issues.
+References:
+- /PERFECT.md
+Dependencies: T-123
+Effort: M
+
+---
+### T-142: Performance validation gate (PERFECT P5-003)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: BLOCKED
+Blockers: All changes complete
+Context:
+- PERFECT.md P5-003: run Lighthouse audits and check Core Web Vitals
+Acceptance Criteria:
+- [ ] T-142.1: Run Lighthouse audits on key pages
+- [ ] T-142.2: Document performance results
+- [ ] T-142.3: Define scope and checklist for the audit targets.
+- [ ] T-142.4: Record findings and create follow-up tasks for any issues.
+References:
+- /.lighthouserc.json
+- /scripts/lighthouse-audit.mjs
+- /PERFECT.md
+Dependencies: T-019
+Effort: M
+
+---
+### T-143: Final validation gate (PERFECT P5-004)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: BLOCKED
+Blockers: All prior PERFECT gates complete
+Context:
+- PERFECT.md P5-004: ensure tests/lint/type-check/security/coverage pass
+Acceptance Criteria:
+- [ ] T-143.1: Verify tests, lint, type-check, build, and coverage targets
+- [ ] T-143.2: Confirm documentation is complete
+References:
+- /PERFECT.md
+Dependencies: T-140, T-141, T-142
+Effort: S
+
+---
+
+## 🟤 PHASE 8: GOVERNANCE & DOCS HYGIENE (P2)
+> Documentation accuracy and template consistency improvements.
+
+### T-144: Reconcile non-binding tasks source references
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Docs and scripts reference a non-binding specs task file that does not exist
+- Inconsistent references cause confusion about task truth source
+- sync-todo helper should be clear about optional inputs
+Acceptance Criteria:
+- [ ] T-144.1: Decide on a canonical non-binding tasks note file (or remove references entirely)
+- [ ] T-144.2: Align `scripts/sync-todo.sh` input path and header text with the chosen file
+- [ ] T-144.3: Update docs to match (ENHANCEMENT_SUMMARY, GOVERNANCE_HEALTH, REPO_MAP)
+- [ ] T-144.4: Update `scripts/README.md` and `scripts/AGENTS.md` if paths or behavior changed
+- [ ] T-144.5: Keep `TODO.md` as the task truth source in all docs
+References:
+- /scripts/sync-todo.sh
+- /scripts/README.md
+- /scripts/AGENTS.md
+- /docs/ENHANCEMENT_SUMMARY.md
+- /docs/GOVERNANCE_HEALTH.md
+- /docs/REPO_MAP.md
+- /specs/
+Dependencies: None
+Effort: S
+
+---
+
+### T-145: Sanitize remaining marketing-branding in docs
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Several docs still reference "Your Dedicated Marketer" and marketing-specific branding
+- This conflicts with the template's generic positioning
+- Some of these docs may be historical and should be archived instead
+Acceptance Criteria:
+- [ ] T-145.1: Update or archive branding-specific docs (start-here, product, architecture)
+- [ ] T-145.2: Replace brand references with template-safe placeholders
+- [ ] T-145.3: Update any cross-references if files are archived
+- [ ] T-145.4: Run a repo-wide search for "Your Dedicated Marketer"/"YD Marketer" and ensure only archived docs remain
+References:
+- /docs/start-here/README.md
+- /docs/product/CONTENT-STRATEGY.md
+- /docs/product/SERVICES.md
+- /docs/architecture/DESIGN-SYSTEM.md
+- /docs/architecture/CODEBASE-ANALYSIS.md
+Dependencies: None
+Effort: M
+
+---
+
+### T-148: Define template versioning and changelog policy
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Release tasks exist but versioning/changelog rules are not explicit
+- Template users need clear guidance on semantic versioning and change communication
+- Prevents inconsistent release notes across future updates
+Acceptance Criteria:
+- [ ] T-148.1: Define semantic versioning rules (breaking/feature/fix)
+- [ ] T-148.2: Document changelog update requirements and format
+- [ ] T-148.3: Add versioning guidance to release checklist and CONTRIBUTING
+- [ ] T-148.4: Add examples of release notes for minor/patch releases
+References:
+- /CHANGELOG.md
+- /docs/TEMPLATE_RELEASE_CHECKLIST.md
+- /docs/CONTRIBUTING.md
+Dependencies: T-013
+Effort: M
+
+---
+
 ## Summary
 
-**Total Tasks**: 39 (T-001 through T-039; completed tasks archived in TODOCOMPLETED.md)
-**Estimated Total Effort**: ~10-12 days of focused work
+**Total Tasks**: 148 (T-001 through T-148; completed tasks archived in TODOCOMPLETED.md)
+**Active Tasks**: 128 (all tasks listed in this file)
+**Estimated Total Effort**: **UNKNOWN** (audit remediation tasks added; update estimate)
 
 ### By Priority
-- **P0 (Critical)**: 9 tasks - Template sanitization, core verification, security fixes
-- **P1 (High)**: 9 tasks - Documentation, platinum-standard essentials
-- **P2 (Medium)**: 10 tasks - Infrastructure, advanced platinum features
-- **P3 (Low)**: 11 tasks - Quality improvements, elite differentiators
+- **P0 (Critical)**: 16 tasks - Security fixes and release blockers
+- **P1 (High)**: 30 tasks - Documentation, platinum-standard essentials, audit fixes
+- **P2 (Medium)**: 68 tasks - Infrastructure, quality improvements, audit fixes
+- **P3 (Low)**: 14 tasks - Cleanup and backlog items
 
 ### By Phase
-- **Phase 1 (Sanitization)**: 8 tasks - Convert marketing firm to generic template ✅ DONE
-- **Phase 2 (Documentation)**: 5 tasks - T-009, T-010, T-011, T-012 complete; T-013 in review (repo-owner steps pending)
-- **Phase 3 (Infrastructure)**: 4 tasks - Deployment and configuration support
-- **Phase 4 (Quality)**: 4 tasks - Performance and accessibility optimization
-- **Phase 5 (Platinum Standard)**: 18 tasks - Industry-leading enhancements
+- **Phase 1 (Sanitization)**: 0 active tasks - Complete and archived in TODOCOMPLETED.md
+- **Phase 2 (Documentation)**: 1 task - T-013 in review (repo-owner steps pending)
+- **Phase 3 (Infrastructure)**: 1 task - Cloudflare Pages setup guidance
+- **Phase 4 (Quality)**: 5 tasks - Performance, accessibility, and validation tooling
+- **Phase 5 (Platinum Standard)**: 14 tasks - Industry-leading enhancements
+- **Phase 6 (Audit Remediation)**: 81 tasks - WRONG.md findings remediation
+- **Phase 7 (Perfect Cleanup)**: 23 tasks - PERFECT.md open items
+- **Phase 8 (Governance & Docs Hygiene)**: 3 tasks - Documentation accuracy, branding cleanup, release policy
 
 ### Platinum Standard Path
 - **Phase 5A (Essentials)**: T-022, T-023, T-024, T-030, T-031, T-032, T-033 → 88/100 (Industry Standard)
-- **Phase 5B (Advanced)**: T-034, T-036, T-037, T-039 → 95/100 (Exceeds Standard)
+- **Phase 5B (Advanced)**: T-034, T-035, T-036, T-037, T-039 → 95/100 (Exceeds Standard)
 - **Phase 5C (Elite)**: T-025, T-026, T-027, T-028, T-029, T-038 → 98/100 (Platinum)
 
 ### What Changes (Content Only)
@@ -1082,4 +3066,4 @@ Effort: S
 
 ---
 
-**Next Steps**: Complete remaining external steps for T-013 (repo settings + GitHub release), then Phase 5A for platinum-standard essentials.
+**Next Steps**: Complete remaining external steps for T-013, then address Phase 6 P0 security fixes (T-040–T-046) before starting Phase 5A.

@@ -301,6 +301,6 @@ Enhancements          ███████████████████�
 
 ---
 
-**For Details**: See `TEMPLATE_ASSESSMENT_REPORT.md` (full 50+ page analysis)  
+**For Details**: See `docs/ARCHIVE/2026/TEMPLATE_ASSESSMENT_REPORT.md` (full 50+ page analysis)  
 **For Summary**: See `EXECUTIVE_SUMMARY.md` (10-page overview)  
 **For Tasks**: See `TODO.md` (complete task list with acceptance criteria)

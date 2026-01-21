@@ -28,12 +28,12 @@ Last Updated: 2026-01-20
 - `TEMPLATE_ARCHITECTURE.md`
 
 ## Ops & Deployment
-- `docs/DEPLOYMENT.md` (Cloudflare Pages source of truth)
-- `docs/ops/SMOKE_TEST.md` (Mobile-first release checklist)
-- `docs/ops/CODE_AUDIT_SUMMARY.md`
+- `DEPLOYMENT.md` (Cloudflare Pages source of truth)
+- `ops/SMOKE_TEST.md` (Mobile-first release checklist)
+- `ops/CODE_AUDIT_SUMMARY.md`
 
 ## Archive
-- `docs/ARCHIVE/ops/DEPLOYMENT.md` (Historical deployment notes)
+- `ARCHIVE/ops/DEPLOYMENT.md` (Historical deployment notes)
 
 ## Standards & health
 - `DIAMOND_STANDARD.md` (quality targets & roadmap)
