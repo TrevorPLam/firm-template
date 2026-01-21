@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Article and Service structured data on blog posts and service pages for richer SEO signals
 - Added template privacy policy and terms of service pages with placeholder guidance
 - Added Dependabot configuration for weekly dependency updates with grouped minor/patch and separate major updates
+- Added optional transactional email notifications for the contact form (SendGrid/Postmark/Resend)
 
 ### Security
 - Added hashed IP + email rate limiting for contact form submissions
@@ -46,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refreshed accessibility documentation and linked the validation workflow from the README
 - Documented client logos and trust badges across the customization guide and vertical examples
 - Documented how to enable, auto-merge (patch-only), or disable Dependabot updates
+- Documented transactional email notification setup and optional thank-you emails
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`

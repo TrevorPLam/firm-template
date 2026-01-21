@@ -1,6 +1,6 @@
 # PRODUCTION-ENV-CHECKLIST.md — Production Environment Checklist
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 Status: Active
 
 Purpose: Ensure production deployments have the correct environment variables configured, with clear verification steps for each value.
@@ -29,6 +29,11 @@ Optional variables enhance production readiness but are not strictly required.
 | `NEXT_PUBLIC_ANALYTICS_ID` | Enables analytics tracking (provider-specific). | Analytics provider dashboard. | `G-XXXXXXX` | Public value; safe to expose. | Trigger a page view and verify events in provider real-time view. |
 | `UPSTASH_REDIS_REST_URL` | Enables distributed rate limiting. | Upstash Redis database settings. | `https://xxxx-redis.upstash.io` | Server-side secret; keep private. | Check logs for `Initialized distributed rate limiting with Upstash Redis`. |
 | `UPSTASH_REDIS_REST_TOKEN` | Auth token for Upstash Redis. | Upstash Redis database settings. | `AXXXXXX...` | Server-side secret; keep private. | Confirm rate limiting uses Redis (no fallback log). |
+| `EMAIL_PROVIDER` | Selects transactional email provider. | SendGrid/Postmark/Resend dashboard. | `sendgrid` | Server-side value; keep private. | Submit contact form and confirm owner notification email sends. |
+| `EMAIL_API_KEY` | Auth key for email provider. | Email provider settings. | `SG.xxxxx` | Server-side secret; keep private. | Submit contact form and confirm email provider accepts request. |
+| `EMAIL_FROM_ADDRESS` | Sender address for notifications. | Email provider configuration. | `notifications@yourfirm.com` | Server-side value; keep private. | Verify the From address in received emails. |
+| `EMAIL_TO_ADDRESS` | Owner inbox for contact alerts. | Internal decision. | `owner@yourfirm.com` | Server-side value; keep private. | Confirm the notification arrives in the correct inbox. |
+| `EMAIL_SEND_THANK_YOU` | Sends a thank-you email to the customer. | Internal decision. | `true` | Server-side value; keep private. | Submit a contact form and confirm the customer receives the thank-you email. |
 | `SENTRY_AUTH_TOKEN` | Uploads source maps/releases. | Sentry account settings. | `sntrys_...` | Server-side secret; keep private. | Run a production build and confirm Sentry release upload. |
 | `SENTRY_ORG` | Identifies your Sentry organization. | Sentry organization settings. | `your-org-slug` | Server-side value; keep private. | Confirm release creation uses the correct org. |
 | `SENTRY_PROJECT` | Identifies your Sentry project. | Sentry project settings. | `your-project-slug` | Server-side value; keep private. | Confirm release creation uses the correct project. |
@@ -51,4 +56,3 @@ These values are helpful for local development and are not required in productio
 - Keep all secrets in your deployment platform’s environment variable settings.
 - Use `.env.local` for local development; it is ignored by git.
 - If any required variable is missing, halt deployment until the issue is resolved.
-

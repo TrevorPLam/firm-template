@@ -9,6 +9,11 @@ const forbiddenTokens = [
   'SUPABASE_URL',
   'SUPABASE_SERVICE_ROLE_KEY',
   'HUBSPOT_PRIVATE_APP_TOKEN',
+  'EMAIL_PROVIDER',
+  'EMAIL_API_KEY',
+  'EMAIL_FROM_ADDRESS',
+  'EMAIL_TO_ADDRESS',
+  'EMAIL_SEND_THANK_YOU',
 ]
 
 const walkFiles = (dirPath) => {

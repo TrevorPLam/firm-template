@@ -33,6 +33,7 @@ This is not a task list; tasks belong in `TODO.md`.
 - ✅ Client logo showcase and trust badges added to the homepage (T-031)
 - ✅ Dependabot configuration drafted for weekly dependency updates (T-028; manual trigger pending)
 - ✅ SEO audit script and SEO customization guidance added (T-027)
+- ✅ Optional transactional email notifications added to the contact form (T-024)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)

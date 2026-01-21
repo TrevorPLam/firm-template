@@ -140,6 +140,20 @@ Use these examples as structured mappings for services, pricing, and blog topics
 - Follow [`docs/HUBSPOT_SETUP.md`](HUBSPOT_SETUP.md)
 - Required variable: `HUBSPOT_PRIVATE_APP_TOKEN`
 
+### Transactional email notifications (optional)
+The contact form can send owner notifications (and optional customer thank-you emails) via SendGrid,
+Postmark, or Resend.
+
+1. Choose a provider and create an API key.
+2. Set the following variables in `.env.local`:
+   - `EMAIL_PROVIDER` (`sendgrid`, `postmark`, `resend`, or `none`)
+   - `EMAIL_API_KEY`
+   - `EMAIL_FROM_ADDRESS`
+   - `EMAIL_TO_ADDRESS` (business owner inbox)
+3. Optional: enable customer thank-you emails with `EMAIL_SEND_THANK_YOU=true`.
+
+If `EMAIL_PROVIDER` is `none`, the contact flow skips email sending entirely.
+
 ### Analytics
 - The template ships with a provider-agnostic tracking wrapper in [`lib/analytics.ts`](../lib/analytics.ts).
 - Analytics events are recorded via `trackEvent`, `trackFormSubmission`, and `trackCTAClick`.
