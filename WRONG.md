@@ -1,9 +1,9 @@
 # Codebase Audit Report
 
-**Last Updated:** 2026-01-21 04:50  
+**Last Updated:** 2026-01-21 04:55  
 **Current Phase:** [Phase 1] - Bugs & Defects  
-**Files Analyzed:** 18 / 96 total files  
-**Total Issues:** 13 (Critical: 1 | High: 4 | Medium: 7 | Low: 1)
+**Files Analyzed:** 25 / 96 total files  
+**Total Issues:** 18 (Critical: 2 | High: 7 | Medium: 8 | Low: 1)
 
 ---
 
@@ -11,9 +11,9 @@
 
 | Metric | Count |
 |--------|-------|
-| Critical Issues | 1 |
-| High Priority | 4 |
-| Medium Priority | 7 |
+| Critical Issues | 2 |
+| High Priority | 7 |
+| Medium Priority | 8 |
 | Low Priority | 1 |
 | Dead Code (LOC) | TBD |
 | Test Coverage | TBD% |
@@ -23,7 +23,7 @@
 
 ## Phase Progress
 
-- [x] Phase 1: Bugs & Defects - IN PROGRESS (18/96 files analyzed)
+- [x] Phase 1: Bugs & Defects - IN PROGRESS (25/96 files analyzed)
 - [ ] Phase 2: Code Quality Issues
 - [ ] Phase 3: Dead & Unused Code
 - [ ] Phase 4: Incomplete & Broken Features
@@ -85,17 +85,66 @@ async function getRateLimiter() {
 **Effort:** 1-2 hours  
 **Priority Justification:** Race conditions can cause unpredictable behavior in production under load. Rate limiting is a security feature, and its failure could allow DoS attacks or excessive resource consumption.
 
----
+-----
+
+### #014 - [Severity: CRITICAL] Unhandled Error in Root Layout - Application-Wide Failure  
+**Location:** `app/layout.tsx:205`  
+**Type:** Catastrophic Error / Missing Error Handling  
+**Description:** `getSearchIndex()` is called at the root layout level without any error handling, meaning a single failure in search indexing crashes the entire application for all users
+
+**Impact:** If the search index build fails (MDX parsing error, file system issue, memory issue), the entire application becomes unavailable. This affects ALL pages since layout.tsx wraps every route. A single malformed blog post could bring down the production site.
+
+**Code Snippet:**
+```typescript
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const searchItems = getSearchIndex()  // ❌ No try/catch, no fallback
+  
+  return (
+    <html lang="en">
+      <Navigation searchItems={searchItems} />  {/* Crash propagates here */}
+```
+
+**Root Cause:** Critical operation without error boundaries. Search indexing runs at build time but can fail due to:
+- Malformed MDX files in content/blog/
+- File system permissions issues
+- Out of memory during build
+- Invalid frontmatter in blog posts
+
+**Recommended Fix:**
+```typescript
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  let searchItems: SearchItem[] = []
+  
+  try {
+    searchItems = getSearchIndex()
+  } catch (error) {
+    console.error('Failed to build search index:', error)
+    // Application still works, just without search
+    // Could also: log to Sentry, send alert, use cached index
+  }
+  
+  return (
+    <html lang="en">
+      <Navigation searchItems={searchItems} />
+```
+
+**Effort:** 1 hour  
+**Priority Justification:** Single point of failure that can crash the entire production application. Affects all users, all pages. This is a production-killing bug.
+
+-----
 
 ## Phase 1: Bugs & Defects
 
 **Status:** In Progress  
-**Files Analyzed:** 18/96  
-**Issues Found:** 13 (Critical: 1 | High: 4 | Medium: 7 | Low: 1)
+**Files Analyzed:** 25/96  
+**Issues Found:** 18 (Critical: 2 | High: 7 | Medium: 8 | Low: 1)
 
 ### Critical Issues
 
 #### #001 - Race Condition in Rate Limiter Initialization
+[See CRITICAL ISSUES section above]
+
+#### #014 - Unhandled Error in Root Layout - Application-Wide Failure
 [See CRITICAL ISSUES section above]
 
 ---
@@ -531,6 +580,47 @@ export async function setSentryUser(user: { id?: string; email?: string; name?: 
 
 ---
 
+#### #018 - [Severity: MEDIUM] Dynamic Import Without Error Handler
+**Location:** `app/blog/[slug]/page.tsx:9-12`  
+**Type:** Error Handling Gap / Incomplete Implementation  
+**Description:** `BlogPostContent` is dynamically imported with loading state but no error handler. If the import fails, users see "Loading..." indefinitely
+
+**Impact:** If the BlogPostContent component fails to load (network issue, bundling error, runtime error), users see "Loading article content..." forever with no way to recover. The article metadata and layout load fine, but content never appears.
+
+**Code Snippet:**
+```typescript
+const BlogPostContent = dynamic(() => import('@/components/BlogPostContent'), {
+  loading: () => <div className="sr-only">Loading article content…</div>,
+  ssr: true,  // ❌ No error handler
+})
+```
+
+**Root Cause:** Next.js dynamic() accepts an optional `error` callback but it's not provided. Import failures silently hang.
+
+**Recommended Fix:**
+```typescript
+const BlogPostContent = dynamic(() => import('@/components/BlogPostContent'), {
+  loading: () => (
+    <div className="text-center py-8 text-gray-500">
+      Loading article content...
+    </div>
+  ),
+  ssr: true,
+  onError: (error) => {
+    console.error('Failed to load blog content:', error)
+  },
+})
+
+// Or handle in the component itself with error boundary
+```
+
+Note: Next.js dynamic() doesn't have a direct `error` prop, so the proper fix is to wrap in an Error Boundary or add error handling inside BlogPostContent component.
+
+**Effort:** 1-2 hours  
+**Priority Justification:** Users can't read blog content if component fails to load. Affects core content consumption experience.
+
+---
+
 #### #013 - [Severity: MEDIUM] Inconsistent Focus Indicator on SearchDialog Backdrop
 **Location:** `components/SearchDialog.tsx:92`  
 **Type:** Accessibility Issue / Missing Focus State  
@@ -672,28 +762,197 @@ useEffect(() => {
 
 ---
 
+#### #015 - [Severity: HIGH] Missing Error Handling in Blog Listing Page
+**Location:** `app/blog/page.tsx:12-13`  
+**Type:** Unhandled Error / No Fallback  
+**Description:** `getAllPosts()` and `getAllCategories()` are called without try-catch blocks, causing page crash if filesystem or MDX parsing fails
+
+**Impact:** If any blog post has malformed frontmatter or MDX syntax errors, the entire blog listing page crashes with no fallback UI. Users see a blank page or Next.js error screen. This affects discoverability of ALL blog content.
+
+**Code Snippet:**
+```typescript
+export default function BlogPage() {
+  const posts = getAllPosts()        // ❌ No error handling
+  const categories = getAllCategories() // ❌ No error handling
+  
+  return (
+    // ... render posts
+  )
+}
+```
+
+**Root Cause:** No error handling for filesystem operations and MDX parsing. A single malformed blog post breaks the entire listing.
+
+**Recommended Fix:**
+```typescript
+export default function BlogPage() {
+  let posts: BlogPost[] = []
+  let categories: string[] = []
+  let error: string | null = null
+  
+  try {
+    posts = getAllPosts()
+    categories = getAllCategories()
+  } catch (err) {
+    console.error('Failed to load blog posts:', err)
+    error = 'Unable to load blog posts. Please try again later.'
+  }
+  
+  return (
+    <div>
+      {error ? (
+        <div className="text-center py-20">
+          <p className="text-red-600">{error}</p>
+        </div>
+      ) : (
+        // ... render posts
+      )}
+    </div>
+  )
+}
+```
+
+**Effort:** 1 hour  
+**Priority Justification:** Single malformed blog post breaks entire blog section. Affects content discoverability and SEO.
+
+---
+
+#### #016 - [Severity: HIGH] Inconsistent Null Handling in Blog Post Metadata vs Page
+**Location:** `app/blog/[slug]/page.tsx:25-46`  
+**Type:** Logic Bug / SEO Issue  
+**Description:** `generateMetadata()` returns incomplete metadata for missing posts (still HTTP 200), while the page function correctly returns 404
+
+**Impact:** Missing blog posts get indexed by search engines with "Post Not Found" title, creating poor SEO and wasting crawl budget. Users can land on these pages from search results. Next.js caches the metadata response, so the invalid state persists.
+
+**Code Snippet:**
+```typescript
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
+
+  if (!post) {
+    return {
+      title: 'Post Not Found',  // ❌ Returns 200 status with minimal metadata
+    }
+  }
+  // ...
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
+
+  if (!post) {
+    notFound()  // ✓ Correctly returns 404
+  }
+  // ...
+}
+```
+
+**Root Cause:** Metadata and page use different error handling strategies. Metadata doesn't have access to `notFound()` helper, but should still signal the error state properly.
+
+**Recommended Fix:**
+```typescript
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
+
+  if (!post) {
+    // Return minimal metadata - page will handle 404
+    return {
+      title: '404: Not Found',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    }
+  }
+  
+  return {
+    title: `${post.title} | Blog | Your Firm Name`,
+    description: post.description,
+  }
+}
+```
+
+**Effort:** 30 minutes  
+**Priority Justification:** SEO issue causing search engines to index non-existent pages. Wastes crawl budget and confuses users.
+
+---
+
+#### #017 - [Severity: HIGH] Missing Suspense Fallback UI
+**Location:** `app/search/page.tsx:17`  
+**Type:** UX Bug / Missing Loading State  
+**Description:** `<Suspense>` wrapper has no `fallback` prop, causing the page to show nothing while loading. If SearchPage throws an error during loading, users see a blank page indefinitely.
+
+**Impact:** Users see a blank page during initial page load or when navigating to search. If the SearchPage component encounters an error during lazy loading or data fetching, users are stuck with no UI and no way to recover.
+
+**Code Snippet:**
+```typescript
+export default async function SearchRoute() {
+  const items = getSearchIndex()
+
+  return (
+    <Suspense>  {/* ❌ Missing fallback prop */}
+      <SearchPage items={items} initialQuery="" />
+    </Suspense>
+  )
+}
+```
+
+**Root Cause:** Suspense boundary without fallback UI. React requires a fallback but it's optional in TypeScript, leading to runtime blank page.
+
+**Recommended Fix:**
+```typescript
+export default async function SearchRoute() {
+  const items = getSearchIndex()
+
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-gray-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading search...</p>
+        </div>
+      </div>
+    }>
+      <SearchPage items={items} initialQuery="" />
+    </Suspense>
+  )
+}
+```
+
+**Effort:** 30 minutes  
+**Priority Justification:** Users see blank page during loading. Poor UX and potential error state with no recovery.
+
+---
+
 ## Pattern Analysis
 
 ### Recurring Issues
 
-1. **Silent Failures** - Found in 3 locations (HubSpot sync, Sentry client, rate limiter)
-2. **Missing Error Propagation** - Found in 2 locations (actions.ts rate limiter, HubSpot sync)
-3. **Hardcoded Configuration** - Found in layout.tsx structured data, search.ts static pages
-4. **Accessibility Issues** - Found in 2 locations (Navigation focus management, SearchDialog focus indicators)
-5. **Unused Parameters** - Found in analytics.ts helper functions
-6. **Initialization Race Conditions** - Rate limiter singleton pattern
+1. **Missing Error Handling** - Found in 6 locations (layout search index, blog pages, dynamic imports, rate limiter, HubSpot sync)
+2. **Silent Failures** - Found in 4 locations (HubSpot sync, Sentry client, rate limiter, dynamic imports)
+3. **Missing Error Propagation** - Found in 2 locations (actions.ts rate limiter, HubSpot sync)
+4. **Hardcoded Configuration** - Found in layout.tsx structured data, search.ts static pages
+5. **Accessibility Issues** - Found in 3 locations (Navigation focus management, SearchDialog focus indicators, Suspense missing fallback)
+6. **Unused Parameters** - Found in analytics.ts helper functions
+7. **Initialization Race Conditions** - Rate limiter singleton pattern
 
 ### Hotspots (Files with Most Issues)
 
 1. `lib/actions.ts` - 4 issues (1 critical, 2 high, 1 medium)
-2. `components/SearchDialog.tsx` - 2 issues (2 medium)
-3. `components/Navigation.tsx` - 1 issue (1 high)
-4. `lib/sentry-client.ts` - 1 issue (1 medium)
-5. `lib/analytics.ts` - 1 issue (1 medium)
-6. `middleware.ts` - 1 issue (1 high)
-7. `lib/logger.ts` - 1 issue (1 high)
-8. `app/layout.tsx` - 1 issue (1 medium)
-9. `lib/blog.ts` - 1 issue (1 low)
+2. `app/layout.tsx` - 2 issues (1 critical, 1 medium)
+3. `app/blog/[slug]/page.tsx` - 2 issues (1 high, 1 medium)
+4. `components/SearchDialog.tsx` - 2 issues (2 medium)
+5. `components/Navigation.tsx` - 1 issue (1 high)
+6. `app/blog/page.tsx` - 1 issue (1 high)
+7. `app/search/page.tsx` - 1 issue (1 high)
+8. `lib/sentry-client.ts` - 1 issue (1 medium)
+9. `lib/analytics.ts` - 1 issue (1 medium)
+10. `middleware.ts` - 1 issue (1 high)
+11. `lib/logger.ts` - 1 issue (1 high)
+12. `lib/blog.ts` - 1 issue (1 low)
 
 ---
 
@@ -701,10 +960,14 @@ useEffect(() => {
 
 ### Immediate (This Week)
 
-1. **FIX #001** - Implement Promise-based singleton for rate limiter initialization
-2. **FIX #002** - Move rate limit check before database insertion
-3. **FIX #003** - Add validation for Content-Length header in middleware
-4. **FIX #010** - Fix focus management in mobile menu (accessibility)
+1. **FIX #014** - Add error handling to root layout search index (CRITICAL - app-wide crash)
+2. **FIX #001** - Implement Promise-based singleton for rate limiter initialization (CRITICAL)
+3. **FIX #002** - Move rate limit check before database insertion (HIGH)
+4. **FIX #003** - Add validation for Content-Length header in middleware (HIGH)
+5. **FIX #010** - Fix focus management in mobile menu (HIGH - accessibility)
+6. **FIX #015** - Add error handling to blog listing page (HIGH)
+7. **FIX #016** - Fix inconsistent metadata handling for missing posts (HIGH - SEO)
+8. **FIX #017** - Add Suspense fallback to search page (HIGH - UX)
 
 ### Short-term (1-4 Weeks)
 
@@ -715,6 +978,7 @@ useEffect(() => {
 5. Add backdrop click handler to SearchDialog (#011)
 6. Add focus indicators to SearchDialog (#013)
 7. Add error logging to Sentry client functions (#012)
+8. Add error boundary for dynamic imports (#018)
 
 ### Long-term (1-6 Months)
 
@@ -760,3 +1024,9 @@ useEffect(() => {
 - Focus: Client-side components, UI elements, accessibility
 - Key findings: Focus management bug (HIGH), missing modal UX patterns, silent Sentry failures
 - Time spent: ~25 minutes
+
+**Batch 3 (Files 19-25): COMPLETE**
+- Files analyzed: app/layout.tsx (re-audit), app/blog/page.tsx, app/blog/[slug]/page.tsx, app/search/page.tsx, and additional route analysis
+- Focus: App routes, pages, SSG/SSR patterns, error boundaries
+- Key findings: Root layout crash risk (CRITICAL), missing error handling in blog pages, inconsistent metadata handling, missing Suspense fallbacks
+- Time spent: ~20 minutes (with explore agent assistance)
