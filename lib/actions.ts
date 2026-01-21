@@ -389,11 +389,16 @@ function checkRateLimitInMemory(identifier: string): boolean {
  * - IP addresses are hashed before storage
  * - Neither plaintext emails nor IPs are stored in Redis or logs
  * 
+ * **IP Handling:**
+ * - When IP is "unknown", IP-based rate limiting is skipped
+ * - Only email-based rate limiting applies in this case
+ * - Returns true for the IP check when IP is unknown
+ * 
  * @param email - User's email address (hashed before use)
  * @param clientIp - Client IP address (hashed before storage)
- * @returns true if both limits pass, false if either limit exceeded, or null if IP is unknown
+ * @returns true if both limits pass (or IP is unknown and email passes), false if either limit exceeded
  */
-async function checkRateLimit(email: string, clientIp: string): Promise<boolean | null> {
+async function checkRateLimit(email: string, clientIp: string): Promise<boolean> {
   const limiter = await getRateLimiter()
   const emailIdentifier = `email:${hashEmail(email)}`
   
