@@ -26,7 +26,9 @@
  * **RATE LIMIT DESIGN**:
  * - Dual limiting: per-email AND per-IP (both must pass)
  * - 3 requests/hour per identifier
+ * - Email hashed with SHA-256 before storage (privacy)
  * - IP hashed with SHA-256 before storage (privacy)
+ * - IP-based limiting skipped when IP is unknown (avoids grouping)
  * - Falls back to in-memory Map when Upstash not configured
  *
  * **AI ITERATION HINTS**:
@@ -38,6 +40,8 @@
  * - [ ] All user inputs pass through escapeHtml() before HTML context
  * - [ ] CRM payload uses sanitizeName() / sanitizeEmail()
  * - [ ] No raw IP addresses logged (use hashedIp)
+ * - [ ] No raw email addresses in rate-limit keys (use hashEmail)
+ * - [ ] Rate limit checked BEFORE lead insertion
  * - [ ] Errors return generic messages (no internal details)
  *
  * **KNOWN ISSUES / TECH DEBT**:
@@ -380,14 +384,21 @@ function checkRateLimitInMemory(identifier: string): boolean {
  * - Uses Upstash Redis if configured (production)
  * - Falls back to in-memory if not configured (development)
  * 
- * @param email - User's email address (not hashed for email-based limiting)
+ * **Privacy:**
+ * - Email addresses are hashed before being used as rate-limit keys
+ * - IP addresses are hashed before storage
+ * - Neither plaintext emails nor IPs are stored in Redis or logs
+ * 
+ * @param email - User's email address (hashed before use)
  * @param clientIp - Client IP address (hashed before storage)
- * @returns true if both limits pass, false if either limit exceeded
+ * @returns true if both limits pass, false if either limit exceeded, or null if IP is unknown
  */
-async function checkRateLimit(email: string, clientIp: string): Promise<boolean> {
+async function checkRateLimit(email: string, clientIp: string): Promise<boolean | null> {
   const limiter = await getRateLimiter()
-  const emailIdentifier = `email:${email}`
-  const ipIdentifier = `ip:${hashIdentifier(clientIp)}`
+  const emailIdentifier = `email:${hashEmail(email)}`
+  
+  // Skip IP-based rate limiting if IP is unknown to avoid grouping all unknown clients
+  const ipIdentifier = clientIp === 'unknown' ? null : `ip:${hashIdentifier(clientIp)}`
 
   if (limiter) {
     // Use Upstash distributed rate limiting
@@ -396,8 +407,13 @@ async function checkRateLimit(email: string, clientIp: string): Promise<boolean>
       return false
     }
 
-    const ipLimit = await limiter.limit(ipIdentifier)
-    return ipLimit.success
+    // Only check IP limit if we have a valid IP
+    if (ipIdentifier) {
+      const ipLimit = await limiter.limit(ipIdentifier)
+      return ipLimit.success
+    }
+    
+    return true
   } else {
     // Fall back to in-memory rate limiting
     const emailAllowed = checkRateLimitInMemory(emailIdentifier)
@@ -405,7 +421,12 @@ async function checkRateLimit(email: string, clientIp: string): Promise<boolean>
       return false
     }
 
-    return checkRateLimitInMemory(ipIdentifier)
+    // Only check IP limit if we have a valid IP
+    if (ipIdentifier) {
+      return checkRateLimitInMemory(ipIdentifier)
+    }
+
+    return true
   }
 }
 
@@ -414,31 +435,34 @@ async function checkRateLimit(email: string, clientIp: string): Promise<boolean>
  * 
  * **Flow:**
  * 1. Validate input with Zod schema (contactFormSchema)
- * 2. Check rate limits (email + IP)
- * 3. Sanitize inputs for storage and CRM sync
- * 4. Insert lead into Supabase (required)
- * 5. Attempt HubSpot sync (best-effort)
- * 6. Log result to Sentry (errors) and logger (info/warn)
+ * 2. Check rate limits (email + IP) - BEFORE any data insertion
+ * 3. Return error immediately if rate limit exceeded (no lead created)
+ * 4. Sanitize inputs for storage and CRM sync
+ * 5. Insert lead into Supabase (only if rate limit passed)
+ * 6. Attempt HubSpot sync (best-effort)
+ * 7. Log result to Sentry (errors) and logger (info/warn)
  * 
  * **Rate Limiting:**
- * - 3 requests per hour per email address
- * - 3 requests per hour per IP address
+ * - 3 requests per hour per email address (hashed for privacy)
+ * - 3 requests per hour per IP address (hashed for privacy)
+ * - IP-based limiting skipped when IP is unknown (avoids grouping all unknown clients)
  * - Uses Upstash Redis (distributed) or in-memory fallback
  * - Returns "Too many submissions" message on limit exceeded
  * 
  * **Security:**
  * - All inputs sanitized with escapeHtml() to prevent XSS
  * - IP addresses hashed before storage (SHA-256 with salt)
+ * - Email addresses hashed before rate limit storage (SHA-256 with salt)
  * - Payload size limited by middleware (1MB max)
  * - Contact data stored in Supabase (server-only access)
  * 
  * **Lead Capture:**
- * - Supabase insert is required (fails if not configured)
+ * - Supabase insert only happens after rate limit passes
  * - HubSpot sync is best-effort (failures marked for retry)
  * 
  * **Error Handling:**
  * - Validation errors (Zod): Returns field-specific error messages
- * - Rate limit errors: Returns "try again later" message
+ * - Rate limit errors: Returns "try again later" message (no lead created)
  * - Network/API errors: Returns generic error, logs to Sentry
  * - Never exposes internal error details to users
  * 
@@ -487,26 +511,30 @@ export async function submitContactForm(data: ContactFormData) {
     const safePhone = validatedData.phone ? escapeHtml(validatedData.phone) : ''
     const safeMessage = escapeHtml(validatedData.message)
 
-    // Rate limiting check
+    // Rate limiting check - MUST be checked before inserting lead
     const rateLimitPassed = await checkRateLimit(safeEmail, clientIp)
-    const isSuspicious = !rateLimitPassed
+    
+    if (!rateLimitPassed) {
+      logWarn('Rate limit exceeded for contact form', {
+        emailHash: hashEmail(safeEmail),
+        ip: hashedIp,
+      })
+      return {
+        success: false,
+        message: 'Too many submissions. Please try again later.',
+      }
+    }
 
+    // Only insert lead if rate limit check passed
     const lead = await insertLead({
       name: safeName,
       email: safeEmail,
       phone: safePhone,
       message: safeMessage,
-      is_suspicious: isSuspicious,
-      suspicion_reason: isSuspicious ? 'rate_limit' : null,
+      is_suspicious: false,
+      suspicion_reason: null,
       hubspot_sync_status: 'pending',
     })
-
-    if (isSuspicious) {
-      logWarn('Rate limit exceeded for contact form', {
-        emailHash: hashEmail(safeEmail),
-        ip: hashedIp,
-      })
-    }
 
     const { firstName, lastName } = splitName(safeName)
     const hubspotProperties: Record<string, string> = {
@@ -541,13 +569,6 @@ export async function submitContactForm(data: ContactFormData) {
         })
       } catch (updateError) {
         logError('Failed to update HubSpot sync status', updateError)
-      }
-    }
-
-    if (!rateLimitPassed) {
-      return {
-        success: false,
-        message: 'Too many submissions. Please try again later.',
       }
     }
 

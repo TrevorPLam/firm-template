@@ -133,21 +133,20 @@ describe('contact form rate limiting', () => {
     expect(logError).not.toHaveBeenCalled()
   })
 
-  it('stores a lead marked suspicious when rate limiting is exceeded', async () => {
+  it('does not store a lead when rate limiting is exceeded', async () => {
     const email = 'ratelimit@example.com'
 
     for (let i = 0; i < 3; i++) {
       await submitContactForm(buildPayload(email));
     }
 
+    const initialLeadCount = insertPayloads.length
+
     const fourth = await submitContactForm(buildPayload(email))
 
     expect(fourth.success).toBe(false)
-    const lastInsert = insertPayloads.at(-1)
-    expect(lastInsert).toMatchObject({
-      is_suspicious: true,
-      suspicion_reason: 'rate_limit',
-    })
+    // No new lead should be inserted when rate limit is exceeded
+    expect(insertPayloads.length).toBe(initialLeadCount)
   })
 
   it('returns success when HubSpot sync fails after saving the lead', async () => {
