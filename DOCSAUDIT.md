@@ -92,7 +92,7 @@ Required outputs:
   - (none)
 
 ### 2026-01-21 — Summary
-- Agent: AGENT
+- Agent: [Specify Agent/Author Name]
 - Scope: `docs/ARCHIVE`, `docs/DOCS_INDEX.md`, `P3TODO.md`
 - Findings:
   - ✅ Added archive README to explain deprecated documentation handling.
