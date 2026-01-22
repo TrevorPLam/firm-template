@@ -88,11 +88,16 @@ function isSensitiveKey(key: string): boolean {
 }
 
 function sanitizeValue(value: unknown): unknown {
+  if (value === null || value === undefined) {
+    // WHY: keep explicit null/undefined values intact for accurate log context.
+    return value
+  }
+
   if (Array.isArray(value)) {
     return value.map((item) => sanitizeValue(item))
   }
 
-  if (value && typeof value === 'object') {
+  if (typeof value === 'object') {
     if (value instanceof Error || value instanceof Date || value instanceof RegExp) {
       return value
     }

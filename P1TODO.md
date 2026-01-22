@@ -362,33 +362,6 @@ Dependencies: None
 Effort: S
 ---
 
-### T-048: Add explicit null handling in logger sanitize (WRONG #004)
-Priority: P1
-Type: QUALITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- WRONG.md #004: sanitizeValue relies on implicit null handling
-Acceptance Criteria:
-- [ ] T-048.1: Handle null/undefined explicitly in `sanitizeValue`
-- [ ] T-048.2: Add unit test for null log context values
-Prompt Scaffold:
-- Role: Quality engineer.
-- Goal: Complete T-048: Add explicit null handling in logger sanitize (WRONG #004) per Acceptance Criteria.
-- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
-- Context: WRONG.md #004: sanitizeValue relies on implicit null handling.
-- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
-- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/logger.ts, /WRONG.md).
-- Validation: Satisfy all checklist items and acceptance criteria outputs.
-- Output Format: Update referenced files (/lib/logger.ts, /WRONG.md) and record task status if required.
-- Uncertainty: None.
-References:
-- /lib/logger.ts
-- /WRONG.md
-Dependencies: None
-Effort: XS
----
 
 ### T-049: Fix mobile menu focus management (WRONG #010)
 Priority: P1

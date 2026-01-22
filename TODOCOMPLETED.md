@@ -200,6 +200,45 @@ Effort: M
 
 ---
 
+### T-041: Guard root layout search index build (WRONG #014)
+Priority: P0
+Type: QUALITY
+Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-22 (commit: 48b3b06)
+Context:
+- WRONG.md #014: unhandled error from `getSearchIndex()` can crash entire app
+Acceptance Criteria:
+- [x] T-041.1: Add try/catch fallback around `getSearchIndex()` in `app/layout.tsx`
+- [x] T-041.2: Log error via logger and keep navigation functional with empty items
+References:
+- /app/layout.tsx
+- /lib/search.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
+### T-048: Add explicit null handling in logger sanitize (WRONG #004)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-22 (commit: 48b3b06)
+Context:
+- WRONG.md #004: sanitizeValue relies on implicit null handling
+Acceptance Criteria:
+- [x] T-048.1: Handle null/undefined explicitly in `sanitizeValue`
+- [x] T-048.2: Add unit test for null log context values
+References:
+- /lib/logger.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
 ### T-006: Update navigation and footer to be generic
 Priority: P0
 Type: TEMPLATE
