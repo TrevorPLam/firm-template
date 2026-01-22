@@ -1072,3 +1072,479 @@ References:
 - /PERFECT.md
 Dependencies: None
 Effort: M
+
+---
+
+## 🟣 PHASE 8: VISUAL UI/UX EDITOR (P1)
+> Client-facing visual editor for customizing colors, fonts, images, videos, and layouts
+> Enables non-technical users to customize the template without coding
+> Based on research of industry best practices (Webflow, TinaCMS, Builder.io)
+
+### T-200: Research Visual UI/UX Editor Architecture
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: DONE
+Blockers: None
+Context:
+- Client-facing UI/UX editor portal needed for non-technical users
+- Users need ability to customize colors, fonts, images, videos, layouts
+- Research completed on industry best practices and technical approaches
+- TinaCMS, Plasmic, Builder.io, and dotCMS evaluated as potential solutions
+- Design token management and CDN integration patterns analyzed
+Acceptance Criteria:
+- [x] T-200.1: Research no-code/low-code visual editor best practices
+- [x] T-200.2: Evaluate headless CMS solutions (TinaCMS, Plasmic, Builder.io)
+- [x] T-200.3: Research authentication and authorization patterns for enterprise
+- [x] T-200.4: Analyze media management and CDN integration approaches
+- [x] T-200.5: Review design token management systems
+- [x] T-200.6: Document findings and recommendations
+Prompt Scaffold:
+- Role: Technical architect.
+- Goal: Complete T-200: Research Visual UI/UX Editor Architecture per Acceptance Criteria.
+- Non-Goals: Do not implement the feature, only research and document.
+- Context: Professional services template needs client-facing customization portal for non-developers.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; focus on industry-standard solutions.
+- Examples: Webflow, WordPress Gutenberg, Builder.io, TinaCMS, Plasmic.
+- Validation: Document comprehensive findings with citations.
+- Output Format: Research documented in task notes and architecture decision records.
+- Uncertainty: None.
+References:
+- Research sources: Industry blogs, vendor documentation, security guidelines
+Dependencies: None
+Effort: M
+---
+
+### T-201: Design Visual UI/UX Editor System Architecture
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Based on T-200 research findings
+- Need to define technical approach for client-facing customization portal
+- Must support color/font/image/video editing without coding
+- Integration with existing Next.js 15 + Tailwind CSS + design token system
+- Security and multi-tenancy considerations for enterprise use
+Acceptance Criteria:
+- [ ] T-201.1: Define scope of customizable elements (colors, fonts, images, videos, layouts)
+- [ ] T-201.2: Choose technical approach (headless CMS vs custom builder vs hybrid)
+- [ ] T-201.3: Design authentication/authorization model (RBAC with roles: Admin, Editor, Viewer)
+- [ ] T-201.4: Design design token persistence strategy (database vs config files)
+- [ ] T-201.5: Design preview and deployment workflow
+- [ ] T-201.6: Define security requirements (input validation, CSRF protection, rate limiting)
+- [ ] T-201.7: Design media management approach (upload, CDN, optimization)
+- [ ] T-201.8: Document architecture in `/docs/VISUAL_EDITOR_ARCHITECTURE.md`
+Prompt Scaffold:
+- Role: Technical architect.
+- Goal: Complete T-201: Design Visual UI/UX Editor System Architecture per Acceptance Criteria.
+- Non-Goals: Do not implement, only design and document architecture.
+- Context: Building on T-200 research to create detailed system design.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; must integrate with existing stack.
+- Examples: Use existing theme-editor as reference; follow Tailwind design token patterns.
+- Validation: Architecture document reviewed and approved.
+- Output Format: Create `/docs/VISUAL_EDITOR_ARCHITECTURE.md` with detailed design.
+- Uncertainty: None.
+References:
+- /docs/VISUAL_EDITOR_ARCHITECTURE.md (new)
+- /app/theme-editor/theme-editor-client.tsx (reference)
+- /tailwind.config.ts
+- /lib/env.ts
+- /lib/env.public.ts
+Dependencies: T-200
+Effort: L
+---
+
+### T-202: Implement Authentication System for Visual Editor
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: T-201 architecture design must be complete
+Context:
+- Visual editor requires secure authentication for client access
+- Need RBAC with roles: Admin (full access), Editor (content/design), Viewer (read-only)
+- Should integrate with NextAuth.js or similar for production-ready auth
+- Must support password-based auth with MFA option
+- Session management and token expiration required
+Acceptance Criteria:
+- [ ] T-202.1: Install and configure NextAuth.js or similar auth solution
+- [ ] T-202.2: Implement user model with roles (Admin, Editor, Viewer)
+- [ ] T-202.3: Create login/logout pages and API routes
+- [ ] T-202.4: Implement session management with secure tokens
+- [ ] T-202.5: Add middleware to protect editor routes
+- [ ] T-202.6: Implement RBAC authorization checks
+- [ ] T-202.7: Add audit logging for authentication events
+- [ ] T-202.8: Document authentication setup in `/docs/VISUAL_EDITOR_AUTH.md`
+- [ ] T-202.9: Add required env vars to `.env.example`
+- [ ] T-202.10: Write tests for authentication flows
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-202: Implement Authentication System for Visual Editor per Acceptance Criteria.
+- Non-Goals: Do not implement the editor UI, only authentication infrastructure.
+- Context: Secure access control required before building editor features.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md security best practices; use industry-standard auth libraries.
+- Examples: NextAuth.js with credential provider, Auth0, Clerk.
+- Validation: Authentication tests pass; manual testing of login/logout flows.
+- Output Format: Authentication system implemented and documented.
+- Uncertainty: None.
+References:
+- /docs/VISUAL_EDITOR_AUTH.md (new)
+- /app/editor-auth/ (new directory)
+- /lib/auth.ts (new)
+- /middleware.ts
+- /.env.example
+- /package.json
+Dependencies: T-201
+Effort: L
+---
+
+### T-203: Implement Design Token Management API
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: T-201 architecture design must be complete
+Context:
+- Visual editor needs API to read/write design tokens (colors, fonts, spacing)
+- Tokens should persist to database or config files
+- Must support preview mode (unsaved changes) and publish workflow
+- Should validate token values (color format, font availability, etc.)
+Acceptance Criteria:
+- [ ] T-203.1: Create database schema or config structure for design tokens
+- [ ] T-203.2: Implement API routes for CRUD operations on tokens:
+  - GET /api/editor/tokens (read current tokens)
+  - PUT /api/editor/tokens (update tokens with validation)
+  - POST /api/editor/tokens/preview (create preview session)
+  - POST /api/editor/tokens/publish (publish changes to production)
+- [ ] T-203.3: Add token validation (color format, font names, value ranges)
+- [ ] T-203.4: Implement version history/rollback capability
+- [ ] T-203.5: Add authorization checks (Editor role required)
+- [ ] T-203.6: Write integration tests for API endpoints
+- [ ] T-203.7: Document API in `/docs/VISUAL_EDITOR_API.md`
+Prompt Scaffold:
+- Role: Backend engineer.
+- Goal: Complete T-203: Implement Design Token Management API per Acceptance Criteria.
+- Non-Goals: Do not build UI, only backend API.
+- Context: API layer for managing design tokens used by visual editor.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; validate all inputs; require authentication.
+- Examples: RESTful API with JSON responses; Zod validation schemas.
+- Validation: API tests pass; manual testing with curl/Postman.
+- Output Format: API routes implemented and documented.
+- Uncertainty: None.
+References:
+- /app/api/editor/ (new directory)
+- /lib/design-tokens.ts (new)
+- /docs/VISUAL_EDITOR_API.md (new)
+- /lib/env.ts
+Dependencies: T-201, T-202
+Effort: L
+---
+
+### T-204: Implement Media Upload and Management API
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: T-201 architecture design must be complete
+Context:
+- Visual editor needs ability to upload and manage images and videos
+- Should integrate with cloud storage (Cloudflare R2, AWS S3, or similar)
+- Need automatic image optimization and resizing
+- CDN integration for fast delivery
+- File type validation and size limits for security
+Acceptance Criteria:
+- [ ] T-204.1: Choose and configure cloud storage provider (Cloudflare R2 recommended)
+- [ ] T-204.2: Implement API routes for media management:
+  - POST /api/editor/media/upload (upload with validation)
+  - GET /api/editor/media (list media library)
+  - DELETE /api/editor/media/:id (delete file)
+  - GET /api/editor/media/:id/metadata (get file details)
+- [ ] T-204.3: Add file type validation (images: jpg, png, webp, svg; videos: mp4, webm)
+- [ ] T-204.4: Implement file size limits (images: 5MB, videos: 50MB)
+- [ ] T-204.5: Add image optimization (automatic WebP conversion, resizing)
+- [ ] T-204.6: Configure CDN for media delivery
+- [ ] T-204.7: Add authorization checks (Editor role required)
+- [ ] T-204.8: Implement virus scanning for uploads (ClamAV or cloud service)
+- [ ] T-204.9: Write integration tests for upload API
+- [ ] T-204.10: Document media API in `/docs/VISUAL_EDITOR_API.md`
+- [ ] T-204.11: Add required env vars to `.env.example`
+Prompt Scaffold:
+- Role: Backend engineer.
+- Goal: Complete T-204: Implement Media Upload and Management API per Acceptance Criteria.
+- Non-Goals: Do not build UI, only backend API and storage integration.
+- Context: Secure media management required for visual editor functionality.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md security practices; validate all uploads; enforce size limits.
+- Examples: Multipart form uploads, signed URLs for downloads, CDN integration.
+- Validation: Upload tests pass; manual testing with various file types and sizes.
+- Output Format: Media API implemented and documented.
+- Uncertainty: None.
+References:
+- /app/api/editor/media/ (new directory)
+- /lib/media-storage.ts (new)
+- /lib/image-optimization.ts (new)
+- /docs/VISUAL_EDITOR_API.md
+- /.env.example
+Dependencies: T-201, T-202
+Effort: XL
+---
+
+### T-205: Build Visual Editor UI - Color & Font Customization
+Priority: P1
+Type: FEATURE
+Owner: AGENT
+Status: READY
+Blockers: T-203 must be complete
+Context:
+- First phase of visual editor UI focuses on color and font customization
+- Expand existing theme-editor into full production-ready editor
+- Need live preview of changes before publishing
+- Should show before/after comparison
+Acceptance Criteria:
+- [ ] T-205.1: Create `/app/editor/page.tsx` as main editor interface (protected route)
+- [ ] T-205.2: Build color picker component with palette management
+- [ ] T-205.3: Build font selector with preview of available fonts
+- [ ] T-205.4: Implement live preview panel showing changes in real-time
+- [ ] T-205.5: Add before/after comparison toggle
+- [ ] T-205.6: Integrate with design token API (T-203)
+- [ ] T-205.7: Add save/publish workflow with confirmation
+- [ ] T-205.8: Add reset to defaults option
+- [ ] T-205.9: Implement responsive design for mobile editing
+- [ ] T-205.10: Add keyboard shortcuts for common actions
+- [ ] T-205.11: Write component tests for editor UI
+- [ ] T-205.12: Document editor usage in `/docs/VISUAL_EDITOR_USER_GUIDE.md`
+Prompt Scaffold:
+- Role: Frontend engineer.
+- Goal: Complete T-205: Build Visual Editor UI - Color & Font Customization per Acceptance Criteria.
+- Non-Goals: Do not implement image/video/layout editing yet (separate tasks).
+- Context: Production-ready visual editor for color and font customization.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; use existing design system; ensure accessibility.
+- Examples: Reference /app/theme-editor/theme-editor-client.tsx for patterns.
+- Validation: UI tests pass; manual testing on desktop and mobile; accessibility audit.
+- Output Format: Editor UI implemented and documented.
+- Uncertainty: None.
+References:
+- /app/editor/page.tsx (new)
+- /components/editor/ (new directory)
+- /app/theme-editor/theme-editor-client.tsx (reference)
+- /docs/VISUAL_EDITOR_USER_GUIDE.md (new)
+Dependencies: T-202, T-203
+Effort: XL
+---
+
+### T-206: Build Visual Editor UI - Image & Video Management
+Priority: P1
+Type: FEATURE
+Owner: AGENT
+Status: READY
+Blockers: T-204, T-205 must be complete
+Context:
+- Second phase of visual editor UI adds image and video management
+- Drag-and-drop upload with preview
+- Image cropping and basic editing tools
+- Video thumbnail generation and preview
+Acceptance Criteria:
+- [ ] T-206.1: Add media library panel to editor interface
+- [ ] T-206.2: Implement drag-and-drop upload with progress indication
+- [ ] T-206.3: Build image preview and metadata display
+- [ ] T-206.4: Add image cropping tool for hero images and thumbnails
+- [ ] T-206.5: Implement video thumbnail generation
+- [ ] T-206.6: Add video preview player
+- [ ] T-206.7: Build media search and filtering (by type, date, tags)
+- [ ] T-206.8: Add bulk delete and organize functionality
+- [ ] T-206.9: Integrate with media API (T-204)
+- [ ] T-206.10: Add accessibility features (alt text editor, captions)
+- [ ] T-206.11: Write component tests for media UI
+- [ ] T-206.12: Document media management in `/docs/VISUAL_EDITOR_USER_GUIDE.md`
+Prompt Scaffold:
+- Role: Frontend engineer.
+- Goal: Complete T-206: Build Visual Editor UI - Image & Video Management per Acceptance Criteria.
+- Non-Goals: Do not implement layout editing yet (separate task).
+- Context: Media management interface for visual editor.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; optimize for performance; ensure accessibility.
+- Examples: Similar to WordPress media library, Webflow assets panel.
+- Validation: UI tests pass; manual testing of upload/preview/delete flows.
+- Output Format: Media management UI implemented and documented.
+- Uncertainty: None.
+References:
+- /app/editor/page.tsx
+- /components/editor/MediaLibrary.tsx (new)
+- /docs/VISUAL_EDITOR_USER_GUIDE.md
+Dependencies: T-204, T-205
+Effort: XL
+---
+
+### T-207: Build Visual Editor UI - Layout & Component Customization
+Priority: P1
+Type: FEATURE
+Owner: AGENT
+Status: READY
+Blockers: T-205, T-206 must be complete
+Context:
+- Third phase of visual editor adds layout and component customization
+- Visual drag-and-drop interface for rearranging sections
+- Component visibility toggles
+- Text content editing for hero, value props, services
+Acceptance Criteria:
+- [ ] T-207.1: Build page structure editor showing all sections/components
+- [ ] T-207.2: Implement drag-and-drop reordering of sections
+- [ ] T-207.3: Add visibility toggles for optional components
+- [ ] T-207.4: Build text content editor with rich text support
+- [ ] T-207.5: Add component preset selector (templates for sections)
+- [ ] T-207.6: Implement undo/redo functionality
+- [ ] T-207.7: Add save draft vs publish workflow
+- [ ] T-207.8: Build mobile preview mode
+- [ ] T-207.9: Add component-level help text and tooltips
+- [ ] T-207.10: Write component tests for layout editor
+- [ ] T-207.11: Document layout customization in `/docs/VISUAL_EDITOR_USER_GUIDE.md`
+Prompt Scaffold:
+- Role: Frontend engineer.
+- Goal: Complete T-207: Build Visual Editor UI - Layout & Component Customization per Acceptance Criteria.
+- Non-Goals: Do not implement advanced interactions or animations (future enhancement).
+- Context: Layout editing interface for visual editor.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; maintain component integrity; preserve accessibility.
+- Examples: Similar to Webflow Designer, Builder.io interface.
+- Validation: UI tests pass; manual testing of drag-and-drop and text editing.
+- Output Format: Layout editor UI implemented and documented.
+- Uncertainty: None.
+References:
+- /app/editor/page.tsx
+- /components/editor/LayoutEditor.tsx (new)
+- /docs/VISUAL_EDITOR_USER_GUIDE.md
+Dependencies: T-205, T-206
+Effort: XL
+---
+
+### T-208: Implement Visual Editor Deployment Pipeline
+Priority: P1
+Type: INFRASTRUCTURE
+Owner: AGENT
+Status: READY
+Blockers: T-203, T-204, T-205, T-206, T-207 must be complete
+Context:
+- Visual editor changes need safe deployment workflow
+- Preview environment for testing changes before going live
+- One-click publish to production
+- Rollback capability for emergencies
+Acceptance Criteria:
+- [ ] T-208.1: Create preview environment with unique URLs per draft
+- [ ] T-208.2: Implement publish workflow that updates production config
+- [ ] T-208.3: Add version control for published changes
+- [ ] T-208.4: Build rollback interface to revert to previous versions
+- [ ] T-208.5: Add deployment status tracking and notifications
+- [ ] T-208.6: Implement cache invalidation after publish
+- [ ] T-208.7: Add pre-publish validation checks (broken links, missing images)
+- [ ] T-208.8: Create deployment history view with diffs
+- [ ] T-208.9: Add scheduled publishing option
+- [ ] T-208.10: Write integration tests for deployment pipeline
+- [ ] T-208.11: Document deployment workflow in `/docs/VISUAL_EDITOR_DEPLOYMENT.md`
+Prompt Scaffold:
+- Role: DevOps engineer.
+- Goal: Complete T-208: Implement Visual Editor Deployment Pipeline per Acceptance Criteria.
+- Non-Goals: Do not implement CI/CD for code changes (existing GitHub Actions).
+- Context: Safe deployment workflow for visual editor changes.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; ensure zero-downtime deployments; maintain audit trail.
+- Examples: Vercel preview deployments, Netlify deploy previews.
+- Validation: Deployment tests pass; manual testing of preview/publish/rollback flows.
+- Output Format: Deployment pipeline implemented and documented.
+- Uncertainty: None.
+References:
+- /app/api/editor/deploy/ (new directory)
+- /lib/deployment.ts (new)
+- /docs/VISUAL_EDITOR_DEPLOYMENT.md (new)
+Dependencies: T-203, T-204, T-205, T-206, T-207
+Effort: XL
+---
+
+### T-209: Create Visual Editor User Documentation
+Priority: P1
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: T-205, T-206, T-207 must be complete
+Context:
+- Non-technical users need comprehensive documentation
+- Step-by-step guides for common customization tasks
+- Video tutorials and screenshots for key workflows
+- Troubleshooting guide for common issues
+Acceptance Criteria:
+- [ ] T-209.1: Write getting started guide in `/docs/VISUAL_EDITOR_QUICKSTART.md`
+- [ ] T-209.2: Create customization guides for each feature area:
+  - Colors and branding
+  - Typography and fonts
+  - Images and media
+  - Video content
+  - Layout and sections
+- [ ] T-209.3: Document common workflows with screenshots
+- [ ] T-209.4: Create troubleshooting guide with solutions to common issues
+- [ ] T-209.5: Write best practices guide for design consistency
+- [ ] T-209.6: Document accessibility considerations for editors
+- [ ] T-209.7: Create video tutorial scripts (for future recording)
+- [ ] T-209.8: Add FAQ section for visual editor
+- [ ] T-209.9: Update main README.md to link to visual editor docs
+Prompt Scaffold:
+- Role: Technical writer.
+- Goal: Complete T-209: Create Visual Editor User Documentation per Acceptance Criteria.
+- Non-Goals: Do not create developer documentation (separate from user docs).
+- Context: Comprehensive user-facing documentation for visual editor.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; write for non-technical audience; use clear screenshots.
+- Examples: Similar to WordPress Gutenberg docs, Webflow University.
+- Validation: Docs reviewed for clarity and completeness; tested with non-technical users.
+- Output Format: User documentation created and linked from main docs.
+- Uncertainty: None.
+References:
+- /docs/VISUAL_EDITOR_QUICKSTART.md (new)
+- /docs/VISUAL_EDITOR_USER_GUIDE.md
+- /docs/VISUAL_EDITOR_BEST_PRACTICES.md (new)
+- /docs/VISUAL_EDITOR_TROUBLESHOOTING.md (new)
+- /docs/VISUAL_EDITOR_FAQ.md (new)
+- /README.md
+Dependencies: T-205, T-206, T-207
+Effort: L
+---
+
+### T-210: Security Audit for Visual Editor
+Priority: P1
+Type: SECURITY
+Owner: AGENT
+Status: READY
+Blockers: All visual editor implementation tasks must be complete
+Context:
+- Visual editor exposes significant attack surface
+- Must audit authentication, authorization, input validation
+- File upload security particularly critical
+- Need to verify CSRF protection, XSS prevention, injection attacks
+Acceptance Criteria:
+- [ ] T-210.1: Audit authentication implementation for vulnerabilities
+- [ ] T-210.2: Review authorization checks for privilege escalation risks
+- [ ] T-210.3: Test file upload for malicious file detection
+- [ ] T-210.4: Verify input validation for all editor API endpoints
+- [ ] T-210.5: Test for XSS vulnerabilities in preview/publish workflows
+- [ ] T-210.6: Verify CSRF protection on state-changing operations
+- [ ] T-210.7: Test for SQL/NoSQL injection in database operations
+- [ ] T-210.8: Review rate limiting for editor API endpoints
+- [ ] T-210.9: Test session management for fixation/hijacking
+- [ ] T-210.10: Run automated security scanners (OWASP ZAP, Burp Suite)
+- [ ] T-210.11: Document security findings in `/docs/VISUAL_EDITOR_SECURITY_AUDIT.md`
+- [ ] T-210.12: Remediate any critical or high vulnerabilities found
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-210: Security Audit for Visual Editor per Acceptance Criteria.
+- Non-Goals: Do not implement new features, only audit and fix security issues.
+- Context: Comprehensive security review of visual editor before production release.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; use industry-standard security testing tools; document all findings.
+- Examples: OWASP Top 10 testing, penetration testing methodologies.
+- Validation: Security audit complete; critical vulnerabilities remediated; report documented.
+- Output Format: Security audit report and remediation plan.
+- Uncertainty: None.
+References:
+- /docs/VISUAL_EDITOR_SECURITY_AUDIT.md (new)
+- /app/api/editor/
+- /app/editor/
+- /lib/auth.ts
+- /lib/design-tokens.ts
+- /lib/media-storage.ts
+Dependencies: T-202, T-203, T-204, T-205, T-206, T-207, T-208
+Effort: L
+---
