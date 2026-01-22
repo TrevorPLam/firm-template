@@ -208,9 +208,12 @@ export default function RootLayout({
 
   try {
     searchItems = getSearchIndex()
-  } catch (error) {
+  } catch (error: unknown) {
     // WHY: keep the layout rendering even if search index generation fails at build time.
-    logError('Failed to build search index for navigation.', error)
+    logError(
+      'Failed to build search index for navigation.',
+      error instanceof Error ? error : new Error(String(error)),
+    )
   }
 
   return (
