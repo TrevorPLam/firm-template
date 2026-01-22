@@ -1,7 +1,7 @@
 # docs/ARCHIVE/README.md — Archived Documentation Guide
 
 Last Updated: 2026-01-21
-Owner: Repo Owner
+Owner: [Specify Team or Role]
 Canonical Status: Supporting
 
 ## Purpose
