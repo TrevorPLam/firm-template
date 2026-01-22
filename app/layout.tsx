@@ -207,14 +207,15 @@ export default function RootLayout({
   let searchItems: SearchItem[] = []
 
   try {
-    searchItems = getSearchIndex()
-  } catch (error: unknown) {
-    // WHY: keep the layout rendering even if search index generation fails at build time.
-    logError(
-      'Failed to build search index for navigation.',
-      error instanceof Error ? error : new Error(String(error)),
-    )
-  }
+  const searchItems: SearchItem[] = (() => {
+    try {
+      return getSearchIndex()
+    } catch (error) {
+      // WHY: keep the layout rendering even if search index generation fails at build time.
+      logError('Failed to build search index for navigation.', error)
+      return []
+    }
+  })()
 
   return (
     <html lang="en" className={`${inter.variable} ${plexSans.variable}`}>
