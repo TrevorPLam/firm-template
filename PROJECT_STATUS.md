@@ -41,6 +41,7 @@ This is not a task list; tasks belong in `P0TODO.md, P1TODO.md, P2TODO.md, P3TOD
 - ✅ Rate limiting now blocks lead storage before insert (T-042)
 - ✅ Blog listing error handling added for malformed MDX (T-050)
 - ✅ Middleware now rejects invalid or missing Content-Length headers (T-047)
+- ✅ Blog slug validation now blocks path traversal before filesystem access (T-046)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
