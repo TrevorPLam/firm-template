@@ -90,3 +90,14 @@ Required outputs:
   - T-145: Sanitize remaining marketing-branding in docs (P2, DOCS)
 - Questions for Trevor:
   - (none)
+
+### 2026-01-21 — Summary
+- Agent: AGENT
+- Scope: `docs/ARCHIVE`, `docs/DOCS_INDEX.md`, `P3TODO.md`
+- Findings:
+  - ✅ Added archive README to explain deprecated documentation handling.
+  - ✅ Linked archive README from docs index for faster navigation.
+- Tasks created/updated:
+  - T-211: Review docs for inline TODO/checklist leakage (P3, DOCS)
+- Questions for Trevor:
+  - (none)

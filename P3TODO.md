@@ -608,3 +608,55 @@ References:
 - /WRONG.md
 Dependencies: None
 Effort: M
+
+---
+
+### T-211: Review docs for inline TODO/checklist leakage (Doc hygiene sweep)
+Priority: P3
+Type: DOCS
+Owner: AGENT
+Status: READY
+Blockers: None
+Context:
+- Documentation contains checklists and TODO-style items that may be actionable tasks
+- Governance rules require executable tasks to live in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md
+- Recent audits note historical task leakage in docs that should be reconciled
+Acceptance Criteria:
+- [ ] T-211.1: Review the following docs for actionable TODOs or open checklists and note items that should become tasks:
+  - /docs/ops/IMPROVEMENTS-SUMMARY.md
+  - /docs/ops/SMOKE_TEST.md
+  - /docs/LAUNCH-SMOKE-TEST.md
+  - /docs/ROLLBACK.md
+  - /docs/SENTRY-SETUP.md
+  - /docs/SUPABASE_SETUP.md
+  - /docs/HUBSPOT_SETUP.md
+  - /docs/SECURITY-CSP-ANALYTICS.md
+  - /docs/TEMPLATE_RELEASE_CHECKLIST.md
+  - /docs/PRIVACY_POLICY_TEMPLATE.md
+- [ ] T-211.2: For any actionable items, create or update tasks in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md with file paths and acceptance criteria.
+- [ ] T-211.3: Replace executable directives in docs with “Tracked in TODO: T-###” where appropriate, preserving context.
+Prompt Scaffold:
+- Role: Documentation specialist.
+- Goal: Complete T-211: Review docs for inline TODO/checklist leakage per Acceptance Criteria.
+- Non-Goals: Do not rewrite operational runbook checklists unless they are truly project tasks; avoid changing product behavior.
+- Context: Use the Context section for rationale and the References list for files.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: See Acceptance Criteria for the list of docs to review.
+- Validation: Confirm tasks are created/updated and docs point to T-### entries.
+- Output Format: Update referenced docs and record outcomes in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md.
+- Uncertainty: If a checklist item is ambiguous, mark **UNKNOWN** and add a question in the task context.
+References:
+- /DOCSAUDIT.md
+- /docs/DOCS_INDEX.md
+- /docs/ops/IMPROVEMENTS-SUMMARY.md
+- /docs/ops/SMOKE_TEST.md
+- /docs/LAUNCH-SMOKE-TEST.md
+- /docs/ROLLBACK.md
+- /docs/SENTRY-SETUP.md
+- /docs/SUPABASE_SETUP.md
+- /docs/HUBSPOT_SETUP.md
+- /docs/SECURITY-CSP-ANALYTICS.md
+- /docs/TEMPLATE_RELEASE_CHECKLIST.md
+- /docs/PRIVACY_POLICY_TEMPLATE.md
+Dependencies: None
+Effort: S
