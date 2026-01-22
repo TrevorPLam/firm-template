@@ -1,7 +1,7 @@
 # P0TODO.md - Repository Task List
 
 Document Type: Workflow
-Last Updated: 2026-01-21
+Last Updated: 2026-01-22
 Task Truth Source: **P0TODO.md (P0)**
 Other priorities: `P1TODO.md`, `P2TODO.md`, `P3TODO.md`.
 
@@ -152,33 +152,6 @@ Effort: S
 ---
 
 
-### T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002)
-Priority: P0
-Type: SECURITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- WRONG.md #002/SEC-002: leads are inserted before rate limit check, enabling spam
-Acceptance Criteria:
-- [ ] T-042.1: Move rate limit enforcement before `insertLead()` in `lib/actions.ts`
-- [ ] T-042.2: Add test for rate-limited submissions not writing records
-Prompt Scaffold:
-- Role: Security engineer.
-- Goal: Complete T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002) per Acceptance Criteria.
-- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
-- Context: WRONG.md #002/SEC-002: leads are inserted before rate limit check, enabling spam.
-- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
-- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /WRONG.md).
-- Validation: Satisfy all checklist items and acceptance criteria outputs.
-- Output Format: Update referenced files (/lib/actions.ts, /WRONG.md) and record task status if required.
-- Uncertainty: None.
-References:
-- /lib/actions.ts
-- /WRONG.md
-Dependencies: None
-Effort: XS
----
 
 ### T-043: Fix HubSpot sync error swallowing (BUG #003 / #006)
 Priority: P0

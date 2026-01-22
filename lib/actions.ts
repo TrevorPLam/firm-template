@@ -275,22 +275,18 @@ async function handleContactSubmission(data: ContactFormData) {
   const clientIp = await getClientIp()
   const safeData = getSanitizedContactData(validatedData)
   const rateLimitPassed = await checkRateLimit(safeData.email, clientIp)
-  const isSuspicious = !rateLimitPassed
-  const lead = await insertLead(buildLeadPayload(safeData, isSuspicious))
-
-  if (isSuspicious) {
-    logRateLimitExceeded(safeData.email, clientIp)
-  }
-
-  const hubspotProperties = buildHubSpotProperties(safeData)
-  await syncHubSpotContact(lead.id, hubspotProperties, safeData.email)
-
   if (!rateLimitPassed) {
+    // WHY: Block storage + CRM writes for known spam to avoid noise and avoid data retention risk.
+    logRateLimitExceeded(safeData.email, clientIp)
     return {
       success: false,
       message: 'Too many submissions. Please try again later.',
     }
   }
+
+  const lead = await insertLead(buildLeadPayload(safeData, false))
+  const hubspotProperties = buildHubSpotProperties(safeData)
+  await syncHubSpotContact(lead.id, hubspotProperties, safeData.email)
 
   await sendContactNotifications(safeData)
 

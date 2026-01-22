@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { submitContactForm } from '@/lib/actions'
 import { logError, logWarn } from '@/lib/logger'
 
 let currentIp = '203.0.113.1'
@@ -35,8 +34,14 @@ const buildPayload = (email: string) => ({
   message: 'This is a sufficiently long message for validation.',
 })
 
+const getSubmitContactForm = async () => {
+  const { submitContactForm } = await import('@/lib/actions')
+  return submitContactForm
+}
+
 describe('contact form rate limiting', () => {
   beforeEach(() => {
+    vi.resetModules()
     vi.clearAllMocks()
     currentIp = '203.0.113.1'
     insertPayloads = []
@@ -96,6 +101,7 @@ describe('contact form rate limiting', () => {
   it('enforces email limits even when the IP changes', async () => {
     const email = 'limit@example.com'
 
+    const submitContactForm = await getSubmitContactForm()
     const first = await submitContactForm(buildPayload(email))
     const second = await submitContactForm(buildPayload(email))
     const third = await submitContactForm(buildPayload(email))
@@ -112,6 +118,7 @@ describe('contact form rate limiting', () => {
   it('allows submissions when both email and IP change', async () => {
     const email = 'original@example.com'
 
+    const submitContactForm = await getSubmitContactForm()
     await submitContactForm(buildPayload(email))
     await submitContactForm(buildPayload(email))
     await submitContactForm(buildPayload(email))
@@ -123,6 +130,7 @@ describe('contact form rate limiting', () => {
   })
 
   it('rejects submissions when the honeypot is filled', async () => {
+    const submitContactForm = await getSubmitContactForm()
     const response = await submitContactForm({
       ...buildPayload('bot@example.com'),
       website: 'https://spam.example.com',
@@ -133,27 +141,32 @@ describe('contact form rate limiting', () => {
     expect(logError).not.toHaveBeenCalled()
   })
 
-  it('stores a lead marked suspicious when rate limiting is exceeded', async () => {
+  it('blocks storage and CRM sync when rate limiting is exceeded', async () => {
     const email = 'ratelimit@example.com'
 
+    const submitContactForm = await getSubmitContactForm()
     for (let i = 0; i < 3; i++) {
-      await submitContactForm(buildPayload(email));
+      await submitContactForm(buildPayload(email))
     }
 
     const fourth = await submitContactForm(buildPayload(email))
 
     expect(fourth.success).toBe(false)
-    const lastInsert = insertPayloads.at(-1)
-    expect(lastInsert).toMatchObject({
-      is_suspicious: true,
-      suspicion_reason: 'rate_limit',
+    // WHY: Rate-limited submissions should not create leads or trigger CRM writes.
+    expect(insertPayloads).toHaveLength(3)
+    expect(logWarn).toHaveBeenCalledWith('Rate limit exceeded for contact form', expect.any(Object))
+    const crmCalls = fetchMock.mock.calls.filter(([input]) => {
+      const url = typeof input === 'string' ? input : input.toString()
+      return url.includes('/crm/v3/objects/contacts')
     })
+    expect(crmCalls).toHaveLength(6)
   })
 
   it('returns success when HubSpot sync fails after saving the lead', async () => {
     currentIp = '198.51.100.10' // Use a fresh IP to avoid rate limiting
     hubspotShouldFail = true
 
+    const submitContactForm = await getSubmitContactForm()
     const response = await submitContactForm(buildPayload('hubspot-fail@example.com'))
 
     expect(response.success).toBe(true)
