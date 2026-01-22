@@ -159,40 +159,6 @@ Effort: M
 
 ---
 
-### T-147: Document audit tooling prerequisites
-Priority: P2
-Type: DOCS
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Audit tasks are blocked without Lighthouse/axe/pa11y setup
-- Contributors need a single source of truth (by priority) for tooling installs
-- Reduces friction for quality and accessibility audits
-Acceptance Criteria:
-- [ ] T-147.1: Document required tooling installs and versions
-- [ ] T-147.2: Add environment variable examples (e.g., LIGHTHOUSE_BIN)
-- [ ] T-147.3: Note OS-specific install tips and common failures
-- [ ] T-147.4: Cross-link from testing docs and runbooks
-Prompt Scaffold:
-- Role: Documentation specialist.
-- Goal: Complete T-147: Document audit tooling prerequisites per Acceptance Criteria.
-- Non-Goals: Avoid changes outside Acceptance Criteria and References.
-- Context: Use the Context section for rationale and the References list for files.
-- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
-- Examples: See Acceptance Criteria for required sections, commands, or outputs.
-- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
-- Output Format: Update referenced files and record outcomes in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md/related docs.
-- Uncertainty: None.
-References:
-- /docs/TESTING_STRATEGY.md
-- /docs/CONTRIBUTING.md
-- /docs/OBSERVABILITY.md
-Dependencies: None
-Effort: M
-
----
-
 ### T-023: Migrate from @cloudflare/next-on-pages to OpenNext
 Priority: P2
 Type: INFRASTRUCTURE

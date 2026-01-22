@@ -1,6 +1,6 @@
 # Contributing Guide
 
-**Last Updated:** 2026-01-09  
+**Last Updated:** 2026-01-21  
 **Related Tasks:** T-105 (Governance automation)
 
 ## Development Setup
@@ -10,6 +10,12 @@
 - Node.js 20+ (v20-v22 recommended)
 - npm 10+
 - Git
+- Audit tooling (optional but recommended for verification):
+  - Lighthouse CLI (`npm install -g lighthouse`)
+  - Playwright browsers (`npx playwright install --with-deps`)
+
+Why: audit scripts (`npm run audit:lighthouse`, `npm run audit:a11y`) rely on these CLIs to produce
+deterministic reports and catch regressions early.
 
 ### Installation
 
@@ -36,6 +42,12 @@ npm run type-check
 
 # Lint
 npm run lint
+
+# Lighthouse audit (requires dev server)
+LIGHTHOUSE_BASE_URL=http://localhost:3000 npm run audit:lighthouse
+
+# Accessibility audit (requires dev server)
+A11Y_BASE_URL=http://localhost:3000 npm run audit:a11y
 
 # Format code
 npm run format
@@ -188,6 +200,15 @@ The CI pipeline runs on every PR and push to main:
 - ✅ Build (`npm run build`)
 - ⚠️ Security audit (`npm audit`)
 - ⚠️ TODO comment check (flags technical debt)
+
+## Audit tooling notes
+
+Common failures and fixes:
+- `Lighthouse CLI not found` → install with `npm install -g lighthouse` or set `LIGHTHOUSE_BIN`.
+- `Executable doesn't exist` (Playwright) → run `npx playwright install --with-deps`.
+- `ECONNREFUSED` → ensure `npm run dev` is running or set `*_BASE_URL` env vars.
+
+See `docs/TESTING_STRATEGY.md` and `docs/OBSERVABILITY.md` for the full audit checklist.
 
 ## Code Review Guidelines
 
