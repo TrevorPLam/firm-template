@@ -93,6 +93,7 @@ import readingTime from 'reading-time'
 
 /** Absolute path to blog content directory */
 const postsDirectory = path.join(process.cwd(), 'content/blog')
+const slugAllowlist = /^[a-z0-9]+(?:-[a-z0-9]+)*$/i
 
 /**
  * Blog post data structure.
@@ -117,6 +118,10 @@ export interface BlogPost {
   readingTime: string
   content: string
   featured?: boolean
+}
+
+function isValidSlug(slug: string): boolean {
+  return slugAllowlist.test(slug)
 }
 
 /**
@@ -184,6 +189,10 @@ export function getAllPosts(): BlogPost[] {
  */
 export function getPostBySlug(slug: string): BlogPost | undefined {
   try {
+    if (!isValidSlug(slug)) {
+      return undefined // WHY: enforce allowlist to prevent path traversal.
+    }
+
     const fullPath = path.join(postsDirectory, `${slug}.mdx`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)

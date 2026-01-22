@@ -31,4 +31,10 @@ describe('blog utilities', () => {
     expect(categories.length).toBeGreaterThan(0)
     expect(categories).toEqual([...categories].sort())
   })
+
+  it('rejects path traversal slugs', () => {
+    expect(getPostBySlug('../secret')).toBeUndefined()
+    expect(getPostBySlug('..\\secret')).toBeUndefined()
+    expect(getPostBySlug('example-post-1-industry-insights/../secret')).toBeUndefined()
+  })
 })
