@@ -79,6 +79,36 @@ Effort: XS
 
 ---
 
+### T-047: Validate Content-Length header in middleware (WRONG #003 / SEC-001)
+Priority: P1
+Type: SECURITY
+Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-22 (commit: f9874bc)
+Context:
+- WRONG.md #003/S001: malformed Content-Length can bypass size checks
+Acceptance Criteria:
+- [x] T-047.1: Reject missing/invalid/negative Content-Length values
+- [x] T-047.2: Add tests for invalid header values and oversized payloads
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-047: Validate Content-Length header in middleware (WRONG #003 / SEC-001) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #003/S001: malformed Content-Length can bypass size checks.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/middleware.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/middleware.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
+References:
+- /middleware.ts
+- /WRONG.md
+Dependencies: None
+Effort: S
+
+---
+
 ### T-002: Sanitize homepage content (Hero, ValueProps, CTAs)
 Priority: P0
 Type: TEMPLATE
