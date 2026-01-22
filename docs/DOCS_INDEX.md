@@ -1,6 +1,6 @@
 # docs/DOCS_INDEX.md — Documentation Index
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 
 ## Read order (agents)
 1) `../CODEBASECONSTITUTION.md`
@@ -33,6 +33,7 @@ Last Updated: 2026-01-20
 - `ops/CODE_AUDIT_SUMMARY.md`
 
 ## Archive
+- `ARCHIVE/README.md` (How archived docs are organized and labeled)
 - `ARCHIVE/ops/DEPLOYMENT.md` (Historical deployment notes)
 
 ## Standards & health
