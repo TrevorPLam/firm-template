@@ -75,7 +75,7 @@ Note: Regardless of role, agents must follow READMEAI.md and the output contract
 
 ## Cost Tracking Integration
 
-Each task in specs/project-tasks.md (non-binding notes) (optional, non-binding) should include:
+Each task in specs/project-tasks.md (optional, non-binding) should include:
 - **agent_recommended**: Based on above matrix
 - **budget_allocation**: Estimated tokens/cost
 - **confidence_threshold**: Minimum confidence before escalation

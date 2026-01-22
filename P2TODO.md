@@ -2306,44 +2306,6 @@ Effort: M
 ## 🟤 PHASE 8: GOVERNANCE & DOCS HYGIENE (P2)
 > Documentation accuracy and template consistency improvements.
 
-### T-144: Reconcile non-binding tasks source references
-Priority: P2
-Type: DOCS
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- Docs and scripts reference a non-binding specs task file that does not exist
-- Inconsistent references cause confusion about task truth sources
-- sync-todo helper should be clear about optional inputs
-Acceptance Criteria:
-- [ ] T-144.1: Decide on a canonical non-binding tasks note file (or remove references entirely)
-- [ ] T-144.2: Align `scripts/sync-todo.sh` input path and header text with the chosen file
-- [ ] T-144.3: Update docs to match (ENHANCEMENT_SUMMARY, GOVERNANCE_HEALTH, REPO_MAP)
-- [ ] T-144.4: Update `scripts/README.md` and `scripts/AGENTS.md` if paths or behavior changed
-- [ ] T-144.5: Keep `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` as the task truth sources in all docs
-Prompt Scaffold:
-- Role: Documentation specialist.
-- Goal: Complete T-144: Reconcile non-binding tasks source references per Acceptance Criteria.
-- Non-Goals: Avoid changes outside Acceptance Criteria and References.
-- Context: Use the Context section for rationale and the References list for files.
-- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
-- Examples: See Acceptance Criteria for required sections, commands, or outputs.
-- Validation: Satisfy all Acceptance Criteria items; run any listed commands.
-- Output Format: Update referenced files and record outcomes in P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md/related docs.
-- Uncertainty: None.
-References:
-- /scripts/sync-todo.sh
-- /scripts/README.md
-- /scripts/AGENTS.md
-- /docs/ENHANCEMENT_SUMMARY.md
-- /docs/GOVERNANCE_HEALTH.md
-- /docs/REPO_MAP.md
-- /specs/
-Dependencies: None
-Effort: S
-
----
 
 ### T-145: Sanitize remaining marketing-branding in docs
 Priority: P2

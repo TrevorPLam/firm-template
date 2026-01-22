@@ -37,7 +37,7 @@ This folder contains build-time scripts, validation tools, and utilities for dev
 |--------|---------|-------------|
 | `bootstrap.sh` | Initial repo setup | Once after cloning |
 | `check.sh` | Run all checks (type, lint, test) | Before commits |
-| `sync-todo.sh` | Generate TODO.generated.md | On-demand |
+| `sync-todo.sh` | Generate TODO.generated.md from `specs/project-tasks.md` (optional, non-binding) | On-demand |
 | `validate-enhancements.sh` | Validates enhancement proposals | When reviewing changes |
 | `health-dashboard.sh` | System health report | On-demand monitoring |
 | `cost-tracker.sh` | Track infrastructure costs | Weekly/monthly |

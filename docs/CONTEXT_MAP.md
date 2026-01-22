@@ -8,12 +8,13 @@ This is the shortest “where do I edit?” routing table for humans and AI.
 1) `READMEAI.md` (how to operate)
 2) `PROJECT_STATUS.md` (what to do next)
 3) `repo.manifest.yaml` (how to run/verify)
-4) `specs/project-tasks.md (non-binding notes) (optional, non-binding)` (tasks source of truth)
+4) `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (task truth sources)
 
 ## Common edits
 - Change what the project is: `specs/project-spec.md`
 - Change technical design: `specs/technical-plan.md`
-- Add/modify tasks: `specs/project-tasks.md (non-binding notes) (optional, non-binding)` (then run `scripts/sync-todo.sh`)
+- Add/modify tasks: `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` (authoritative)
+- Optional task notes: `specs/project-tasks.md` (non-binding; then run `scripts/sync-todo.sh`)
 - Update state: `PROJECT_STATUS.md`
 - Security rules: `docs/SECURITY_BASELINE.md`
 - UI conventions: `docs/UI_DESIGN_SYSTEM.md`

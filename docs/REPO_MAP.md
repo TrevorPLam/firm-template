@@ -39,7 +39,8 @@ Hierarchy (what to read first):
 ## 3) specs/
 - `specs/project-spec.md` → what/why
 - `specs/technical-plan.md` → how
-- `specs/*` → non-binding notes (informational only)
+- `specs/project-tasks.md` → optional non-binding task notes (informational only)
+- `specs/*` → additional non-binding notes (informational only)
 
 ---
 
@@ -57,7 +58,7 @@ Hierarchy (what to read first):
 
 ## 5) scripts/
 - `scripts/bootstrap.sh` → initialize hooks + optional TODO.generated.md
-- `scripts/sync-todo.sh` → generate TODO.generated.md from non-binding specs notes when present
+- `scripts/sync-todo.sh` → generate TODO.generated.md from `specs/project-tasks.md` when present
 - `scripts/ai-audit.sh` → governance gate
 - `scripts/security-scan.sh` → secrets hygiene
 - `scripts/check.sh` → best-effort checks
