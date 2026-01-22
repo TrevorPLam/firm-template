@@ -395,13 +395,13 @@ Effort: S
 Priority: P1
 Type: QUALITY
 Owner: AGENT
-Status: READY
+Status: DONE
 Blockers: None
 Context:
 - WRONG.md #015: blog listing crashes on malformed MDX/frontmatter
 Acceptance Criteria:
-- [ ] T-050.1: Wrap `getAllPosts()`/`getAllCategories()` in try/catch with fallback UI
-- [ ] T-050.2: Add test for malformed MDX returning safe UI
+- [x] T-050.1: Wrap `getAllPosts()`/`getAllCategories()` in try/catch with fallback UI
+- [x] T-050.2: Add test for malformed MDX returning safe UI
 Prompt Scaffold:
 - Role: Quality engineer.
 - Goal: Complete T-050: Add error handling to blog listing page (WRONG #015) per Acceptance Criteria.

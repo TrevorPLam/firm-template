@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts, getAllCategories } from '@/lib/blog'
+import { logError } from '@/lib/logger'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -8,9 +9,22 @@ export const metadata: Metadata = {
   description: 'Insights, tips, and strategies to help you grow your business.',
 }
 
+function loadBlogListingData() {
+  try {
+    const posts = getAllPosts()
+    const categories = getAllCategories()
+
+    return { posts, categories, hasError: false }
+  } catch (error) {
+    logError('blog-listing-load-failed', error, { source: 'app/blog/page' })
+
+    // WHY: malformed MDX or file issues should degrade gracefully, not crash the page.
+    return { posts: [], categories: [], hasError: true }
+  }
+}
+
 export default function BlogPage() {
-  const posts = getAllPosts()
-  const categories = getAllCategories()
+  const { posts, categories, hasError } = loadBlogListingData()
 
   return (
     <div className="min-h-screen">
@@ -56,7 +70,14 @@ export default function BlogPage() {
       {/* Blog Posts */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          {posts.length === 0 ? (
+          {/* WHY: prioritize explicit error feedback over empty state to avoid silent failures. */}
+          {hasError ? (
+            <div className="max-w-2xl mx-auto text-center">
+              <p className="text-gray-600 text-lg">
+                We ran into an issue loading blog posts. Please check back soon.
+              </p>
+            </div>
+          ) : posts.length === 0 ? (
             <div className="max-w-2xl mx-auto text-center">
               <p className="text-gray-600 text-lg">
                 No blog posts yet. Check back soon for valuable insights!
