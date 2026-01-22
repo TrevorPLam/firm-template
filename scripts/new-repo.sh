@@ -43,7 +43,7 @@ copy CLAUDE.md CLAUDE.md
 mkdir -p "$TARGET/specs" "$TARGET/docs" "$TARGET/scripts" "$TARGET/.ai/prompts" "$TARGET/.githooks" "$TARGET/githubactions/workflows (disabled by default)" "$TARGET/docs/adr" "$TARGET/.devcontainer" "$TARGET/.cursor/rules/00-governance"
 
 # Copy structured content
-for f in specs/project-spec.md specs/technical-plan.md specs/project-tasks.md (non-binding notes) (optional, non-binding); do
+for f in specs/project-spec.md specs/technical-plan.md specs/project-tasks.md; do
   copy "$f" "$f"
 done
 

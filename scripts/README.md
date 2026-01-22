@@ -16,7 +16,7 @@ These scripts are **optional helpers**. They exist to reduce manual work, but th
 - `scripts/a11y-audit.mjs` — runs axe-core audits against core pages (requires running dev/server)
 - `scripts/lighthouse-audit.mjs` — captures mobile Lighthouse baselines (requires running dev/server + Lighthouse CLI)
 - `scripts/seo-audit.mjs` — validates metadata coverage, sitemap entries, and internal links
-- `scripts/sync-todo.sh` — generates `TODO.generated.md` from `specs/project-tasks.md (non-binding notes)` (non-binding)
+- `scripts/sync-todo.sh` — generates `TODO.generated.md` from `specs/project-tasks.md` (non-binding)
 
 ## Non-binding rule
 - `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` is the task truth sources.
