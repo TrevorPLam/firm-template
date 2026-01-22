@@ -56,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documented video embed customization steps and added video notes to vertical examples
 - Documented exit-intent popup configuration in the customization guide
 - Documented monitoring guidance for transitive build-tool vulnerabilities
+- Documented template versioning policy and release note examples
 
 ### Changed
 - Removed deprecated `api` and `sentry` keys from `next.config.mjs`
@@ -154,3 +155,42 @@ Per DEPENDENCY_HEALTH.md:
 - Note dependency removals and what replaced them
 - Record major version upgrades with impact summary
 - Link to related P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md or DECISIONS.md entries
+
+### Versioning Policy
+Use Semantic Versioning with template-specific guidance:
+- **Major (X.0.0)**: Breaking changes (removed configs, renamed env vars, layout/API contract changes).
+- **Minor (0.X.0)**: Backward-compatible feature additions or new template capabilities.
+- **Patch (0.0.X)**: Backward-compatible fixes, docs-only changes, or dependency updates without user action.
+
+### Changelog Update Requirements
+- Update the `[Unreleased]` section in the same PR as the change.
+- Keep entries grouped by category (Added/Changed/Fixed/Security/Dependencies/Documentation).
+- Include the task ID or decision record when available.
+- Preserve existing entries; do not rewrite history.
+
+### Release Notes Examples
+**Minor release (feature additions):**
+```
+## [1.2.0] - 2026-02-10
+
+### Added
+- Added client logo showcase component with placeholder assets (T-031)
+- Added appointment scheduling embeds with Calendly/Cal.com support (T-032)
+
+### Documentation
+- Added configuration steps for scheduling provider setup
+```
+
+**Patch release (fix/docs/deps):**
+```
+## [1.2.1] - 2026-02-18
+
+### Fixed
+- Fixed mobile navigation focus restoration (T-049)
+
+### Documentation
+- Clarified release checklist verification steps (T-148)
+
+### Dependencies
+- Updated Next.js to patched version (T-022)
+```
