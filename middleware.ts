@@ -150,7 +150,11 @@ export function middleware(request: NextRequest) {
     const contentLengthResult = validateContentLength(request.headers.get('content-length'))
     if (!contentLengthResult.valid) {
       const status = contentLengthResult.reason === 'missing' ? 411 : 400
-      return new NextResponse('Invalid Content-Length header', { status })
+      const message =
+        contentLengthResult.reason === 'missing'
+          ? 'Length Required'
+          : 'Invalid Content-Length header'
+      return new NextResponse(message, { status })
     }
 
     if (contentLengthResult.value > MAX_BODY_SIZE_BYTES) {
