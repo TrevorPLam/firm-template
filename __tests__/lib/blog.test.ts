@@ -1,8 +1,9 @@
-import { describe, expect, it } from 'vitest'
+import fs from 'fs'
+import { describe, expect, it, vi } from 'vitest'
 import { getAllCategories, getAllPosts, getPostBySlug } from '@/lib/blog'
 
 describe('blog utilities', () => {
-  it('returns posts with expected shape', () => {
+  it('test_returns_posts_with_expected_shape', () => {
     const posts = getAllPosts()
 
     expect(posts.length).toBeGreaterThan(0)
@@ -17,7 +18,7 @@ describe('blog utilities', () => {
     )
   })
 
-  it('finds a post by slug', () => {
+  it('test_finds_a_post_by_slug', () => {
     const posts = getAllPosts()
     const post = getPostBySlug(posts[0].slug)
 
@@ -25,24 +26,29 @@ describe('blog utilities', () => {
     expect(post?.slug).toBe(posts[0].slug)
   })
 
-  it('returns sorted categories', () => {
+  it('test_returns_sorted_categories', () => {
     const categories = getAllCategories()
 
     expect(categories.length).toBeGreaterThan(0)
     expect(categories).toEqual([...categories].sort())
   })
 
-  it('rejects path traversal slugs - basic cases', () => {
-    // Test basic path traversal attempts
-    expect(getPostBySlug('../secret')).toBeUndefined()
-    expect(getPostBySlug('..\\secret')).toBeUndefined()
-    expect(getPostBySlug('example-post-1-industry-insights/../secret')).toBeUndefined()
+  it('test_rejects_path_traversal_slugs_without_filesystem_access', () => {
+    // WHY: We want proof that invalid slugs are rejected BEFORE filesystem reads.
+    const readSpy = vi.spyOn(fs, 'readFileSync')
+
+    try {
+      expect(getPostBySlug('../secret')).toBeUndefined()
+      expect(getPostBySlug('..\\secret')).toBeUndefined()
+      expect(getPostBySlug('example-post-1-industry-insights/../secret')).toBeUndefined()
+      expect(readSpy).not.toHaveBeenCalled()
+    } finally {
+      readSpy.mockRestore()
+    }
   })
   
-  it('rejects path traversal slugs - comprehensive security test', () => {
-    // IMPROVED: More comprehensive path traversal tests
-    // These should all return undefined BEFORE any file system access
-    
+  it('test_rejects_path_traversal_slugs_comprehensive', () => {
+    // WHY: Comprehensive variations catch obfuscated traversal patterns.
     const maliciousSlugs = [
       '../secret',                    // Parent directory
       '..\\secret',                   // Windows-style parent
@@ -76,7 +82,7 @@ describe('blog utilities', () => {
       '   ',                          // Whitespace only
       'trailing-',                    // Trailing hyphen
       '-leading',                     // Leading hyphen
-      'has--double',                  // Double hyphens (depending on regex)
+      'has--double',                  // Double hyphens (no empty segments)
     ]
     
     invalidFormatSlugs.forEach(slug => {
@@ -85,8 +91,8 @@ describe('blog utilities', () => {
     })
   })
   
-  it('accepts only valid slug formats', () => {
-    // Document what IS allowed: lowercase alphanumeric with single hyphens
+  it('test_accepts_only_valid_slug_formats', () => {
+    // WHY: Document what IS allowed for safe, predictable routing.
     // These won't find files (unless they exist) but should pass validation
     // and return undefined due to file not found, not security rejection
     
@@ -108,5 +114,33 @@ describe('blog utilities', () => {
       const result = getPostBySlug(slug)
       expect(result === undefined || typeof result === 'object').toBe(true)
     })
+  })
+
+  it('test_returns_undefined_for_empty_slug_without_filesystem_access', () => {
+    // WHY: Empty input is a common edge case that should short-circuit early.
+    const readSpy = vi.spyOn(fs, 'readFileSync')
+
+    try {
+      expect(getPostBySlug('')).toBeUndefined()
+      expect(readSpy).not.toHaveBeenCalled()
+    } finally {
+      readSpy.mockRestore()
+    }
+  })
+
+  it('test_handles_read_errors_gracefully', () => {
+    // WHY: Permission or I/O errors should never crash rendering paths.
+    const readSpy = vi.spyOn(fs, 'readFileSync').mockImplementation(() => {
+      throw new Error('Simulated read failure')
+    })
+    const existsSpy = vi.spyOn(fs, 'existsSync').mockReturnValue(true)
+
+    try {
+      expect(getPostBySlug('example-post-1-industry-insights')).toBeUndefined()
+      expect(readSpy).toHaveBeenCalled()
+    } finally {
+      readSpy.mockRestore()
+      existsSpy.mockRestore()
+    }
   })
 })

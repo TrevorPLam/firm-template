@@ -241,33 +241,6 @@ Dependencies: None
 Effort: XS
 ---
 
-### T-046: Prevent path traversal in blog loader (SEC-001)
-Priority: P0
-Type: SECURITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- WRONG.md SEC-001: slug-based path building allows path traversal
-Acceptance Criteria:
-- [ ] T-046.1: Validate slugs with a strict allowlist before reading files
-- [ ] T-046.2: Add tests for traversal payloads returning undefined/404
-Prompt Scaffold:
-- Role: Security engineer.
-- Goal: Complete T-046: Prevent path traversal in blog loader (SEC-001) per Acceptance Criteria.
-- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
-- Context: WRONG.md SEC-001: slug-based path building allows path traversal.
-- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
-- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/blog.ts, /WRONG.md).
-- Validation: Satisfy all checklist items and acceptance criteria outputs.
-- Output Format: Update referenced files (/lib/blog.ts, /WRONG.md) and record task status if required.
-- Uncertainty: None.
-References:
-- /lib/blog.ts
-- /WRONG.md
-Dependencies: None
-Effort: XS
----
 
 ## 🟢 PHASE 7: PERFECT.md CLEANUP & QUALITY (P0-P2)
 > Tasks migrated from `PERFECT.md` to align with P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md as the task truth sources.
