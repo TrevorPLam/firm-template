@@ -49,6 +49,36 @@ Effort: L
 
 ---
 
+### T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002)
+Priority: P0
+Type: SECURITY
+Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-22 (commit: 26303e5)
+Context:
+- WRONG.md #002/SEC-002: leads are inserted before rate limit check, enabling spam
+Acceptance Criteria:
+- [x] T-042.1: Move rate limit enforcement before `insertLead()` in `lib/actions.ts`
+- [x] T-042.2: Add test for rate-limited submissions not writing records
+Prompt Scaffold:
+- Role: Security engineer.
+- Goal: Complete T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #002/SEC-002: leads are inserted before rate limit check, enabling spam.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/lib/actions.ts, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/lib/actions.ts, /WRONG.md) and record task status if required.
+- Uncertainty: None.
+References:
+- /lib/actions.ts
+- /WRONG.md
+Dependencies: None
+Effort: XS
+
+---
+
 ### T-002: Sanitize homepage content (Hero, ValueProps, CTAs)
 Priority: P0
 Type: TEMPLATE

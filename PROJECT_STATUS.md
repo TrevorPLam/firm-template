@@ -4,7 +4,7 @@ Document Type: Operations
 Canonical Status: Canonical
 Owner: Trevor
 Audience: Humans + agents
-Last Updated: 2026-01-21
+Last Updated: 2026-01-22
 
 ## Purpose
 A lightweight place to record the current state of the project, major decisions, and open questions.
@@ -38,6 +38,7 @@ This is not a task list; tasks belong in `P0TODO.md, P1TODO.md, P2TODO.md, P3TOD
 - ✅ Appointment scheduling embeds added for Calendly/Cal.com (T-032)
 - ✅ Video embed and testimonial support added across hero, about, service, and blog content (T-035)
 - ✅ Exit-intent popup added for last-chance engagement (T-036)
+- ✅ Rate limiting now blocks lead storage before insert (T-042)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
