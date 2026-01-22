@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restored in-memory rate limiting logic and JSDoc formatting in `lib/actions.ts`
 - Added contact form error boundary fallback and accessibility improvements for decorative icons
 - Guarded search index generation in the root layout to avoid rendering failures
+- Added safe fallback UI when blog listings fail to load due to malformed MDX (T-050)
 
 ### Documentation
 - Expanded middleware security header docs and environment helper documentation

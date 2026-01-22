@@ -525,7 +525,7 @@ References:
 - /docs/REPO_MAP.md
 - /specs/
 Dependencies: None
-Effort: S
+Effort: XS
 
 ---
 
@@ -561,3 +561,33 @@ References:
 - /docs/CONTRIBUTING.md
 Dependencies: T-013
 Effort: M
+
+---
+
+### T-050: Add error handling to blog listing page (WRONG #015)
+Priority: P1
+Type: QUALITY
+Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-22 (commit: UNKNOWN)
+Context:
+- WRONG.md #015: blog listing crashes on malformed MDX/frontmatter
+Acceptance Criteria:
+- [x] T-050.1: Wrap `getAllPosts()`/`getAllCategories()` in try/catch with fallback UI
+- [x] T-050.2: Add test for malformed MDX returning safe UI
+Prompt Scaffold:
+- Role: Quality engineer.
+- Goal: Complete T-050: Add error handling to blog listing page (WRONG #015) per Acceptance Criteria.
+- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
+- Context: WRONG.md #015: blog listing crashes on malformed MDX/frontmatter.
+- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
+- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/blog/page.tsx, /WRONG.md).
+- Validation: Satisfy all checklist items and acceptance criteria outputs.
+- Output Format: Update referenced files (/app/blog/page.tsx, /WRONG.md) and record task status if required.
+- Uncertainty: None.
+References:
+- /app/blog/page.tsx
+- /WRONG.md
+Dependencies: None
+Effort: XS

@@ -39,6 +39,7 @@ This is not a task list; tasks belong in `P0TODO.md, P1TODO.md, P2TODO.md, P3TOD
 - ✅ Video embed and testimonial support added across hero, about, service, and blog content (T-035)
 - ✅ Exit-intent popup added for last-chance engagement (T-036)
 - ✅ Rate limiting now blocks lead storage before insert (T-042)
+- ✅ Blog listing error handling added for malformed MDX (T-050)
 - 🔄 **NEXT**: Complete remaining external steps for Phase 2 task T-013 (repo settings + GitHub release)
 
 **Target Audience**: Any professional services firm (law, consulting, accounting, design, etc.)
