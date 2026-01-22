@@ -1,42 +1,45 @@
 # Professional Services Firm Template
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Next.js](https://img.shields.io/badge/Next.js-15.5.9-black)
+![Next.js](https://img.shields.io/badge/Next.js-15.5.2-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
 ![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-orange)
 ![Diamond Standard](https://img.shields.io/badge/Standard-Diamond-b91c1c)
 ![Template](https://img.shields.io/badge/Template-Ready-brightgreen)
 [![Release Checklist](https://img.shields.io/badge/Release-Checklist-blue)](docs/TEMPLATE_RELEASE_CHECKLIST.md)
 
-**A production-ready, customizable website template for professional services firms.** Built to the "Diamond Standard" for engineering excellence—optimized for speed, SEO, accessibility, and maintainability. Easily adaptable for law firms, consulting agencies, accounting practices, design studios, and more.
+**A production-ready, customizable website template for professional services firms.** Built on Next.js App Router with TypeScript and Tailwind CSS. Optimized for Cloudflare Pages and designed to be fast, secure, and accessible out of the box.
 
-> ⚡ **Launch-ready in 2-4 hours** with basic customization  
-> 💎 **Diamond Standard quality** - no compromises on performance, security, or accessibility  
-> 🎨 **Fully customizable** - replace placeholder content with your firm's branding and services
+**Highlights**
+- ✅ **Template-first content** with placeholders + vertical examples
+- ✅ **MDX blog + search** for thought leadership and SEO
+- ✅ **Contact flow** with validation, rate limiting, and optional CRM/email integrations
+- ✅ **Governance + security** baked in (CSP headers, sanitization, audit runbooks)
+- ✅ **Operational docs** for deployment, observability, and maintenance
 
 ---
 
-## 🎯 What Is This Template?
+## Table of Contents
+- [Scope & Fit](#scope--fit)
+- [What You Get](#what-you-get)
+- [Architecture & Constraints](#architecture--constraints)
+- [Quick Start](#quick-start)
+- [Configuration & Customization](#configuration--customization)
+- [Verification & Quality Gates](#verification--quality-gates)
+- [Deployment](#deployment)
+- [Documentation Map](#documentation-map)
+- [Governance for Contributors](#governance-for-contributors)
+- [License](#license)
 
-This is a **complete, production-ready website template** designed specifically for professional services firms. Instead of starting from scratch or using a generic website builder, you get:
+---
 
-- ✅ **Proven architecture** - Next.js 15 App Router with TypeScript and Tailwind CSS
-- ✅ **8 customizable service pages** - Replace placeholders with your offerings
-- ✅ **Built-in blog engine** - MDX-powered with full-text search
-- ✅ **Contact form ready** - Rate limiting, spam protection, CRM integration, optional email alerts
-- ✅ **Diamond Standard quality** - 95+ Lighthouse scores, WCAG accessibility, security best practices
-- ✅ **Edge-optimized** - Deploys to Cloudflare Pages for global performance
-- ✅ **Fully documented** - Comprehensive customization guides included
+## Scope & Fit
 
-**Common Use Cases:**
-- Law firms (corporate law, family law, estate planning, litigation)
-- Consulting agencies (strategy, operations, digital transformation)
-- Accounting practices (tax prep, bookkeeping, audit services)
-- Design studios (brand design, web design, UX/UI)
-- Any professional services business needing a modern website
+**Best for:** law firms, consultancies, accounting practices, design studios, and other professional services businesses that want a modern, high-performance site without starting from scratch.
 
-### Common Verticals (Example Mappings)
-Use the example mappings below to quickly align services, pricing, and blog topics with your vertical:
+**Not a fit for:** multi-tenant SaaS products, dynamic user dashboards, or complex backend workflows (this template is optimized for static content + optional form integrations).
+
+### Example Verticals (Reference Mappings)
 - [Law Firm Example](docs/examples/LAW_FIRM_EXAMPLE.md)
 - [Consulting Firm Example](docs/examples/CONSULTING_FIRM_EXAMPLE.md)
 - [Accounting Firm Example](docs/examples/ACCOUNTING_FIRM_EXAMPLE.md)
@@ -44,61 +47,47 @@ Use the example mappings below to quickly align services, pricing, and blog topi
 
 ---
 
-## 💎 The Diamond Standard
+## What You Get
 
-This repository adheres to a strict "Diamond Standard" of engineering excellence, ensuring that every deployment is:
+### Core Features
+- **Next.js App Router** with React Server Components by default
+- **8 service page templates** for structured offerings
+- **MDX blog engine** with static generation
+- **Client-side search** with pre-indexed content
+- **Contact form** with validation, rate limiting, and spam protection
+- **SEO foundations** (metadata, sitemap, robots, structured data)
+- **Optional scheduling embeds** (Calendly or Cal.com)
+- **Video support** (YouTube/Vimeo embeds and hosted files)
+- **Theme editor (dev-only)** for previewing brand tokens
 
-*   **Secure by Design**: CSP headers, strict input validation (Zod), and secret scanning.
-*   **Edge Native**: Optimized for the Cloudflare Pages Edge Runtime.
-*   **Type Safe**: 100% TypeScript coverage with strict mode enabled.
-*   **Accessible**: Keyboard-friendly UI with documented a11y validation workflow. See [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md).
-*   **Observable**: Integrated Sentry monitoring and comprehensive logging.
-*   **AI-Ready**: Structured specifically for effective collaboration with AI coding agents (`AGENTS.md`, `READMEAI.md`).
+### Quality & Governance
+This repo follows the Diamond Standard for quality and governance. See the full standard here: [docs/DIAMOND_STANDARD.md](docs/DIAMOND_STANDARD.md).
 
-## 🚀 Template Features
+---
 
-*   **Next.js App Router**: Utilizing the latest React Server Components architecture (version 15.5.9, compatible with Cloudflare Pages adapter).
-*   **Content Engine**: MDX-powered blog with static generation - perfect for thought leadership and SEO.
-*   **Client-Side Search**: Zero-latency, pre-indexed search functionality across all content.
-*   **Configurable Services**: 8 service page templates ready to customize for your offerings.
-*   **Contact Form**: Built-in form with rate limiting, spam protection, CRM integration, and optional email alerts.
-*   **Appointment Scheduling**: Optional Calendly or Cal.com embeds for consultation booking.
-*   **Video Support**: YouTube/Vimeo embeds, hosted video files, and video testimonial grids.
-*   **Performance First**: 
-    *   Tailwind CSS for zero-runtime styling.
-    *   Automatic image optimization.
-    *   Static Site Generation (SSG) for core pages.
-    *   Edge deployment for global speed.
-*   **Theme Editor (Dev-Only)**:
-    *   Preview brand colors, fonts, and logo placement.
-    *   Generate Tailwind + CSS variable snippets for fast customization.
-*   **Developer Experience**:
-    *   100% TypeScript with strict mode.
-    *   Vitest for unit testing.
-    *   Playwright for E2E testing.
-    *   ESLint (Flat Config) & Prettier for code quality.
-    *   Dev Container support for consistent environments.
+## Architecture & Constraints
 
-## 🛠️ Tech Stack
+**Stack overview**
+- Framework: Next.js 15.5 (App Router)
+- Language: TypeScript 5 (strict)
+- Styling: Tailwind CSS (design tokens only)
+- Hosting target: Cloudflare Pages (Edge Runtime)
+- Observability: Sentry
 
-| Category | Technology | Purpose |
-|----------|------------|---------|
-| **Framework** | [Next.js](https://nextjs.org/) | React meta-framework (App Router) |
-| **Language** | [TypeScript](https://www.typescriptlang.org/) | Static typing and reliability |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | Utility-first CSS framework |
-| **Icons** | [Lucide React](https://lucide.dev/) | Consistent, lightweight icons |
-| **Validation** | [Zod](https://zod.dev/) | Schema validation for forms/env vars |
-| **Testing** | [Vitest](https://vitest.dev/) / [Playwright](https://playwright.dev/) | Unit & End-to-End testing |
-| **Deployment** | [Cloudflare Pages](https://pages.cloudflare.com/) | Global edge hosting |
-| **Analytics** | [Sentry](https://sentry.io/) | Error tracking and performance monitoring |
+**Key constraints to know**
+- **Edge runtime compatibility:** avoid Node-only APIs at request time.
+- **Static-first content:** blog/search are generated at build time.
+- **Image handling:** Cloudflare Pages uses unoptimized images in build mode (see `next.config.mjs`).
 
-## ⚡ Quick Start
+---
+
+## Quick Start
 
 ### Prerequisites
-*   Node.js 20+ (v20-v22 recommended)
-*   npm 10+
+- Node.js 20+ (v20–v22 recommended)
+- npm 10+
 
-### Installation
+### Install
 
 ```bash
 # Clone or fork this repository
@@ -107,13 +96,17 @@ git clone https://github.com/TrevorPLam/firm-template.git
 # Enter directory
 cd firm-template
 
-# Install dependencies (legacy peer deps required for Cloudflare adapter)
+# Install dependencies
+npm install
+```
+
+If you hit Cloudflare adapter peer-dependency issues, retry with:
+
+```bash
 npm install --legacy-peer-deps
 ```
 
 ### Local Development
-
-Start the development server:
 
 ```bash
 npm run dev
@@ -121,208 +114,129 @@ npm run dev
 
 Visit `http://localhost:3000` to view the application.
 
-### Customization Quick Start
+---
 
-1. **Configure Environment Variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your firm name, contact info, etc.
-   ```
+## Configuration & Customization
 
-2. **Update Branding**
-   - Replace placeholders in `/lib/env.ts` (SITE_NAME, SITE_TAGLINE)
-   - Update logo and favicon in `/public/`
-   - Customize colors in `tailwind.config.ts`
-
-3. **Customize Services**
-   - Edit service pages in `/app/services/service-[1-8]/`
-   - Update service descriptions to match your offerings
-
-4. **Add Your Content**
-   - Update homepage in `/components/Hero.tsx` and `/components/ValueProps.tsx`
-   - Add blog posts to `/content/blog/`
-   - Update pricing in `/app/pricing/page.tsx`
-
-5. **Deploy**
-   - Follow `/docs/CLOUDFLARE_DEPLOYMENT.md` for Cloudflare Pages setup
-   - Or deploy to Vercel, Netlify, or any Next.js-compatible platform
-
-📚 **Full customization guide**: See `/docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
-🧭 **Placeholder reference**: See `/docs/PLACEHOLDER_REFERENCE.md`
-
-### Verification
-
-Run the full suite of "Diamond Standard" checks:
+### 1) Environment Configuration
+Copy the template and set values in your local environment file:
 
 ```bash
-# Run unit tests
+cp .env.example .env.local
+```
+
+See `.env.example` and [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) for required variables (site name, URL, CRM keys, analytics, etc.).
+
+### 2) Branding & Layout
+- **Hero + Value Props:** `components/Hero.tsx`, `components/ValueProps.tsx`
+- **Navigation + Footer:** `components/Navigation.tsx`, `components/Footer.tsx`
+- **Logo + Icons:** `public/` assets
+- **Theme tokens:** `tailwind.config.ts`
+
+### 3) Services & Pages
+- **Services:** `app/services/service-[1-8]/page.tsx`
+- **Pricing:** `app/pricing/page.tsx`
+- **About:** `app/about/page.tsx`
+- **Contact:** `app/contact/page.tsx`
+- **Theme editor:** `app/theme-editor/page.tsx` (dev-only)
+
+### 4) Content
+- **Blog posts:** `content/blog/*.mdx`
+- **Search index:** auto-generated during build
+
+### 5) Forms & Integrations
+- **Contact form:** `components/ContactForm.tsx`
+- **Server actions + integrations:** `lib/actions.ts`
+- **Validation schemas:** `lib/contact-form-schema.ts`
+
+For detailed instructions, start here:
+- **Customization guide:** [docs/TEMPLATE_CUSTOMIZATION_GUIDE.md](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)
+- **Placeholder reference:** [docs/PLACEHOLDER_REFERENCE.md](docs/PLACEHOLDER_REFERENCE.md)
+- **Integration map:** [docs/INTEGRATION_MAP.md](docs/INTEGRATION_MAP.md)
+
+---
+
+## Verification & Quality Gates
+
+Run these commands before release:
+
+```bash
+# Unit tests
 npm run test
 
-# Run type check
+# Type check
 npm run type-check
 
-# Run linting
+# Linting
 npm run lint
 
-# Run full project audit
+# Security + audit scripts
 ./scripts/check.sh
+./scripts/security-scan.sh
+```
 
-# Run SEO validation (metadata, sitemap, internal links)
+Additional audits (optional but recommended):
+
+```bash
 npm run audit:seo
+npm run audit:a11y
+npm run audit:lighthouse
 ```
-
-## 🌍 Deployment
-
-This template is optimized for **Cloudflare Pages** but works with any Next.js-compatible platform.
-
-### Cloudflare Pages (Recommended)
-
-Cloudflare Pages provides:
-- Global edge network for fast delivery worldwide
-- Zero cold starts
-- Built-in analytics
-- Generous free tier
-
-**Build Command:** `npm run pages:build`  
-**Output Directory:** `.vercel/output/static`
-
-**Environment Variables:**
-*   See [`.env.example`](.env.example) for all available variables
-*   Most variables have sensible defaults
-*   Set `NEXT_PUBLIC_SITE_URL` to your production domain
-*   Configure CRM credentials (Supabase, HubSpot, etc.) as needed
-*   Optional: enable email alerts with `EMAIL_PROVIDER`, `EMAIL_API_KEY`, and sender/recipient addresses
-
-📚 **Detailed deployment guide**: See [`docs/CLOUDFLARE_DEPLOYMENT.md`](docs/CLOUDFLARE_DEPLOYMENT.md)
-
-### Alternative Platforms
-
-This template also works with:
-- **Vercel**: Native Next.js support
-- **Netlify**: Use Next.js Runtime
-- **Self-hosted**: Standard Next.js deployment
-
-For platform-specific instructions, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
-
-## 📂 Project Structure
-
-```
-├── app/                  # Next.js App Router pages and API routes
-│   ├── services/         # 8 customizable service pages
-│   ├── pricing/          # Pricing page template
-│   ├── blog/             # Blog listing and post pages
-│   └── contact/          # Contact form
-├── components/           # React components (Atomic design principles)
-│   ├── ui/               # Reusable base UI components
-│   ├── Hero.tsx          # Homepage hero section (customize here)
-│   ├── ValueProps.tsx    # Value propositions (customize here)
-│   └── ...               # Other feature-specific components
-├── content/              # MDX content sources
-│   └── blog/             # Blog posts (replace with your content)
-├── docs/                 # Template documentation and customization guides
-│   ├── TEMPLATE_CUSTOMIZATION_GUIDE.md  # Start here!
-│   ├── PLACEHOLDER_REFERENCE.md         # All placeholder locations
-│   ├── TEMPLATE_ARCHITECTURE.md         # Architecture decisions & rationale
-│   └── ...                              # Technical documentation
-├── lib/                  # Utilities, hooks, and core logic
-├── public/               # Static assets (replace with your images/logos)
-├── scripts/              # Maintenance and verification scripts
-└── tests/                # Test configurations
-```
-
-## 📚 Documentation
-
-- **[Template Customization Guide](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)** - Complete guide to customizing this template
-- **[Placeholder Reference](docs/PLACEHOLDER_REFERENCE.md)** - All placeholder content locations and priorities
-- **[Deployment Guide](docs/CLOUDFLARE_DEPLOYMENT.md)** - Step-by-step deployment instructions
-- **[Diamond Standard](docs/DIAMOND_STANDARD.md)** - Understanding the quality standards
-- **[Architecture Overview](docs/TEMPLATE_ARCHITECTURE.md)** - Technical architecture decisions
-
-**Planned (see `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`):**
-- Vertical-specific examples (law firm, consulting, accounting, design)
-
-## 🔧 Customization Checklist
-
-Use this checklist when adapting the template for your firm:
-
-- [ ] **Environment Setup**
-  - [ ] Copy `.env.example` to `.env`
-  - [ ] Set `NEXT_PUBLIC_SITE_NAME` and `NEXT_PUBLIC_SITE_URL`
-  - [ ] Configure CRM credentials (Supabase, HubSpot, etc.)
-  - [ ] Optional: configure transactional email alerts
-
-- [ ] **Branding**
-  - [ ] Replace logo and favicon in `/public/`
-  - [ ] Update color scheme in `tailwind.config.ts`
-  - [ ] Customize typography if desired
-
-- [ ] **Content**
-  - [ ] Update homepage Hero and ValueProps (`/components/`)
-  - [ ] Customize 8 service pages (`/app/services/service-[1-8]/`)
-  - [ ] Update pricing structure (`/app/pricing/page.tsx`)
-  - [ ] Add your blog posts (`/content/blog/`)
-  - [ ] Update About page (create `/app/about/page.tsx` if needed)
-
-- [ ] **Legal**
-  - [ ] Customize Privacy Policy (`/app/privacy/page.tsx`)
-  - [ ] Customize Terms of Service (`/app/terms/page.tsx`)
-  - [ ] Review with legal counsel
-
-- [ ] **Integrations**
-  - [ ] Set up Supabase database
-  - [ ] Configure CRM integration
-  - [ ] Optional: configure email provider (SendGrid, Postmark, Resend)
-  - [ ] Set up analytics (Google Analytics, Plausible, etc.)
-  - [ ] Configure Sentry for error tracking
-
-- [ ] **Testing & Launch**
-  - [ ] Test contact form submission
-  - [ ] Verify all service pages
-  - [ ] Check mobile responsiveness
-  - [ ] Run Lighthouse audit
-  - [ ] Deploy to production
-
-📋 **Detailed checklist**: See `/docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`
-
-## 🤖 For AI Coding Assistants
-
-If you are an AI coding assistant working on this template, **YOU MUST READ**:
-
-1.  [`AGENTS.md`](AGENTS.md) - Operational guidelines and cost control.
-2.  [`CODEBASECONSTITUTION.md`](CODEBASECONSTITUTION.md) - The supreme laws of the repo.
-3.  [`P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md`](P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md) - The single source of truth (by priority) for tasks.
-
-**Current Phase**: Template Documentation (see P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md Phase 2)  
-**Do not deviate from `P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md` without human approval.**
-
-## 🙋 Getting Help
-
-- **Customization Questions**: See [`docs/TEMPLATE_CUSTOMIZATION_GUIDE.md`](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)
-- **Technical Issues**: Check existing documentation in `/docs/`
-- **Bugs or Feature Requests**: Open an issue on GitHub
-
-## 💡 Why This Template?
-
-Building a professional website from scratch typically costs $10,000-$50,000 and takes weeks or months. This template gives you:
-
-- 🏗️ **Production-ready architecture** - No tech debt, no compromises
-- ⚡ **Instant deployment** - Hours, not weeks
-- 💎 **Diamond Standard quality** - Performance, security, accessibility built-in
-- 🎨 **Fully customizable** - Your brand, your content, your way
-- 📈 **SEO optimized** - Structured data, sitemap, fast page loads
-- 🔒 **Security first** - CSP headers, rate limiting, input validation
-- ♿ **Accessible** - WCAG 2.1 AA compliant
-- 📱 **Mobile-first** - PWA-ready with install prompt
-
-## 📜 License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ---
 
-**Ready to launch your professional services website?**  
-Fork this template, customize it for your firm, and deploy to production in hours.
+## Deployment
+
+**Cloudflare Pages (recommended)**
+
+- **Build command:** `npm run pages:build`
+- **Preview command:** `npm run pages:preview`
+- **Output directory:** `.vercel/output/static`
+
+Docs: [docs/CLOUDFLARE_DEPLOYMENT.md](docs/CLOUDFLARE_DEPLOYMENT.md)
+
+**Other platforms**
+- Vercel, Netlify, or any Next.js-compatible host
+- See the [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying)
 
 ---
 
-*Built with ❤️ using Next.js, TypeScript, and Tailwind CSS*
+## Documentation Map
+
+**Start here**
+- [docs/start-here/README.md](docs/start-here/README.md)
+- [docs/DOCS_INDEX.md](docs/DOCS_INDEX.md)
+
+**Customization & design**
+- [docs/TEMPLATE_CUSTOMIZATION_GUIDE.md](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)
+- [docs/PLACEHOLDER_REFERENCE.md](docs/PLACEHOLDER_REFERENCE.md)
+- [docs/UI_DESIGN_SYSTEM.md](docs/UI_DESIGN_SYSTEM.md)
+
+**Architecture & operations**
+- [docs/TEMPLATE_ARCHITECTURE.md](docs/TEMPLATE_ARCHITECTURE.md)
+- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+- [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md)
+- [docs/ROLLBACK.md](docs/ROLLBACK.md)
+
+**Security & compliance**
+- [docs/SECURITY_BASELINE.md](docs/SECURITY_BASELINE.md)
+- [docs/SECURITY-CSP-ANALYTICS.md](docs/SECURITY-CSP-ANALYTICS.md)
+- [SECURITY.md](SECURITY.md)
+
+---
+
+## Governance for Contributors
+
+If you are modifying code or documentation, **read these first**:
+1. [CODEBASECONSTITUTION.md](CODEBASECONSTITUTION.md)
+2. [READMEAI.md](READMEAI.md)
+3. [BESTPR.md](BESTPR.md)
+4. [P0TODO.md, P1TODO.md, P2TODO.md, P3TODO.md](P0TODO.md)
+
+GitHub Actions are stored under `githubactions/` and are **off by default**.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
