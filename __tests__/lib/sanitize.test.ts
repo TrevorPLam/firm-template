@@ -133,6 +133,15 @@ describe('sanitize utilities', () => {
       const input = 'José García'
       expect(sanitizeName(input)).toBe('José García')
     })
+
+    it('should remove control characters', () => {
+      const input = 'Jane\r\nDoe\t'
+      const result = sanitizeName(input)
+      expect(result).toBe('JaneDoe')
+      expect(result).not.toContain('\r')
+      expect(result).not.toContain('\n')
+      expect(result).not.toContain('\t')
+    })
   })
 
   describe('sanitizeUrl', () => {

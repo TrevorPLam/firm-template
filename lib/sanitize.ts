@@ -263,7 +263,8 @@ export function sanitizeEmail(email: string): string {
  * @returns Sanitized name (safe for display)
  */
 export function sanitizeName(name: string): string {
-  return escapeHtml(name.trim().slice(0, 100))
+  const stripped = name.replace(/[\u0000-\u001F\u007F]/g, '') // WHY: block header/control chars in downstream email/CRM payloads.
+  return escapeHtml(stripped.trim().slice(0, 100))
 }
 
 /**
