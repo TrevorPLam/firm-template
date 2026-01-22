@@ -238,7 +238,7 @@ References:
 - /WRONG.md
 Dependencies: None
 Effort: XS
-
+---
 ### T-006: Update navigation and footer to be generic
 Priority: P0
 Type: TEMPLATE
