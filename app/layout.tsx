@@ -116,7 +116,8 @@ import Providers from '@/app/providers'
 import InstallPrompt from '@/components/InstallPrompt'
 import ExitIntentPopup from '@/components/ExitIntentPopup'
 import { getPublicBaseUrl } from '@/lib/env.public'
-import { getSearchIndex } from '@/lib/search'
+import { logError } from '@/lib/logger'
+import { getSearchIndex, type SearchItem } from '@/lib/search'
 
 import { validatedPublicEnv } from '@/lib/env.public'
 
@@ -203,7 +204,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const searchItems = getSearchIndex()
+  let searchItems: SearchItem[] = []
+
+  try {
+    searchItems = getSearchIndex()
+  } catch (error) {
+    // WHY: keep the layout rendering even if search index generation fails at build time.
+    logError('Failed to build search index for navigation.', error)
+  }
 
   return (
     <html lang="en" className={`${inter.variable} ${plexSans.variable}`}>
