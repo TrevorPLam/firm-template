@@ -431,3 +431,28 @@ References:
 - /docs/TEMPLATE_CUSTOMIZATION_GUIDE.md
 Dependencies: T-010
 Effort: S
+
+---
+
+### T-147: Document audit tooling prerequisites
+Priority: P2
+Type: DOCS
+Owner: AGENT
+Status: DONE
+Blockers: None
+Completed: 2026-01-21
+Context:
+- Audit tasks are blocked without Lighthouse/axe/pa11y setup
+- Contributors need a single source of truth (by priority) for tooling installs
+- Reduces friction for quality and accessibility audits
+Acceptance Criteria:
+- [x] T-147.1: Document required tooling installs and versions
+- [x] T-147.2: Add environment variable examples (e.g., LIGHTHOUSE_BIN)
+- [x] T-147.3: Note OS-specific install tips and common failures
+- [x] T-147.4: Cross-link from testing docs and runbooks
+References:
+- /docs/TESTING_STRATEGY.md
+- /docs/CONTRIBUTING.md
+- /docs/OBSERVABILITY.md
+Dependencies: None
+Effort: M

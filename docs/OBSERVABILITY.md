@@ -1,6 +1,6 @@
 # OBSERVABILITY.md
 
-Last Updated: 2026-01-20
+Last Updated: 2026-01-21
 
 Applies to repos that run services (API, worker, cron, etc.). For libraries/CLI, keep logging conventions only.
 
@@ -37,6 +37,21 @@ Applies to repos that run services (API, worker, cron, etc.). For libraries/CLI,
 - Add alerting later; start with good logs now.
 
 ## Performance baselines (Lighthouse)
+
+### Audit tooling prerequisites
+Why: audits rely on external CLIs/browsers, so missing installs can mask real regressions.
+
+- Lighthouse CLI: `npm install -g lighthouse`
+- Playwright browsers (for a11y audits): `npx playwright install --with-deps`
+- Base URL overrides:
+  - `LIGHTHOUSE_BASE_URL=http://localhost:3000`
+  - `A11Y_BASE_URL=http://localhost:3000`
+- Optional binary override: `LIGHTHOUSE_BIN=/path/to/lighthouse`
+
+Common failures:
+- `Lighthouse CLI not found` → install CLI or set `LIGHTHOUSE_BIN`.
+- `Executable doesn't exist` (Playwright) → run `npx playwright install --with-deps`.
+- `ECONNREFUSED` → ensure `npm run dev` is running or update the base URL.
 
 Run mobile Lighthouse audits locally against the running site:
 
