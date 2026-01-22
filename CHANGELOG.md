@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Added hashed IP + email rate limiting for contact form submissions
 - Enforced rate limits before storing leads to prevent spam records
+- Validated Content-Length headers in middleware to block invalid or missing payload sizes (T-047)
 
 ### Fixed
 - Restored in-memory rate limiting logic and JSDoc formatting in `lib/actions.ts`

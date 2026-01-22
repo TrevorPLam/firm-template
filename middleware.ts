@@ -93,6 +93,30 @@ import type { NextRequest } from 'next/server'
  */
 const MAX_BODY_SIZE_BYTES = 1024 * 1024 // 1MB payload limit for POST requests
 
+type ContentLengthValidation =
+  | { valid: true; value: number }
+  | { valid: false; reason: 'missing' | 'invalid' }
+
+function validateContentLength(rawValue: string | null): ContentLengthValidation {
+  if (!rawValue) {
+    // WHY: Missing Content-Length can bypass size checks on some proxies.
+    return { valid: false, reason: 'missing' }
+  }
+
+  if (!/^\d+$/.test(rawValue)) {
+    // WHY: Reject non-numeric values to avoid partial parsing like "12abc".
+    return { valid: false, reason: 'invalid' }
+  }
+
+  const parsed = Number(rawValue)
+  if (!Number.isSafeInteger(parsed) || parsed < 0) {
+    // WHY: Negative/overflowing values are invalid and should fail closed.
+    return { valid: false, reason: 'invalid' }
+  }
+
+  return { valid: true, value: parsed }
+}
+
 /**
  * Apply security headers and validate requests.
  * 
@@ -123,8 +147,17 @@ export function middleware(request: NextRequest) {
 
   // Block oversized payloads early to reduce DoS risk.
   if (request.method === 'POST') {
-    const contentLength = request.headers.get('content-length')
-    if (contentLength && Number(contentLength) > MAX_BODY_SIZE_BYTES) {
+    const contentLengthResult = validateContentLength(request.headers.get('content-length'))
+    if (!contentLengthResult.valid) {
+      const status = contentLengthResult.reason === 'missing' ? 411 : 400
+      const message =
+        contentLengthResult.reason === 'missing'
+          ? 'Length Required'
+          : 'Invalid Content-Length header'
+      return new NextResponse(message, { status })
+    }
+
+    if (contentLengthResult.value > MAX_BODY_SIZE_BYTES) {
       return new NextResponse('Payload too large', { status: 413 })
     }
   }

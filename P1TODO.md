@@ -361,8 +361,6 @@ References:
 Dependencies: None
 Effort: S
 ---
-
-
 ### T-049: Fix mobile menu focus management (WRONG #010)
 Priority: P1
 Type: QUALITY
