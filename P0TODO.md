@@ -151,34 +151,6 @@ Dependencies: None
 Effort: S
 ---
 
-### T-041: Guard root layout search index build (WRONG #014)
-Priority: P0
-Type: QUALITY
-Owner: AGENT
-Status: READY
-Blockers: None
-Context:
-- WRONG.md #014: unhandled error from `getSearchIndex()` can crash entire app
-Acceptance Criteria:
-- [ ] T-041.1: Add try/catch fallback around `getSearchIndex()` in `app/layout.tsx`
-- [ ] T-041.2: Log error via logger and keep navigation functional with empty items
-Prompt Scaffold:
-- Role: Quality engineer.
-- Goal: Complete T-041: Guard root layout search index build (WRONG #014) per Acceptance Criteria.
-- Non-Goals: Do not modify files outside References; avoid scope beyond Acceptance Criteria.
-- Context: WRONG.md #014: unhandled error from `getSearchIndex()` can crash entire app.
-- Constraints: Follow CODEBASECONSTITUTION.md, READMEAI.md, BESTPR.md; keep diffs minimal; do not introduce secrets.
-- Examples: Use the structures and sections explicitly listed in Acceptance Criteria and referenced docs (/app/layout.tsx, /lib/search.ts, /WRONG.md).
-- Validation: Satisfy all checklist items and acceptance criteria outputs.
-- Output Format: Update referenced files (/app/layout.tsx, /lib/search.ts, /WRONG.md) and record task status if required.
-- Uncertainty: None.
-References:
-- /app/layout.tsx
-- /lib/search.ts
-- /WRONG.md
-Dependencies: None
-Effort: XS
----
 
 ### T-042: Enforce rate limit before database insert (WRONG #002 / SEC-002)
 Priority: P0

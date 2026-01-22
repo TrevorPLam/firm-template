@@ -210,5 +210,21 @@ describe('Logger', () => {
         items: [{ password: '[REDACTED]' }],
       })
     })
+
+    it('should preserve null and undefined values', () => {
+      const result = sanitizeLogContext({
+        optional: null,
+        nested: {
+          value: undefined,
+        },
+      })
+
+      expect(result).toEqual({
+        optional: null,
+        nested: {
+          value: undefined,
+        },
+      })
+    })
   })
 })
