@@ -8,13 +8,14 @@
 ![Template](https://img.shields.io/badge/Template-Ready-brightgreen)
 [![Release Checklist](https://img.shields.io/badge/Release-Checklist-blue)](docs/TEMPLATE_RELEASE_CHECKLIST.md)
 
-**A production-ready, customizable website template for professional services firms.** Built on Next.js 15 App Router with TypeScript and Tailwind CSS. Designed for Cloudflare Pages and optimized for fast, secure, accessible delivery.
+**A production-ready, customizable website template for professional services firms.** Built on Next.js App Router with TypeScript and Tailwind CSS. Optimized for Cloudflare Pages and designed to be fast, secure, and accessible out of the box.
 
 **Highlights**
-- ✅ **Template-first content** with placeholders and vertical examples
-- ✅ **MDX blog + full-text search** for thought leadership and SEO
+- ✅ **Template-first content** with placeholders + vertical examples
+- ✅ **MDX blog + search** for thought leadership and SEO
 - ✅ **Contact flow** with validation, rate limiting, and optional CRM/email integrations
-- ✅ **Security and governance** baked in (CSP headers, sanitization, audit runbooks)
+- ✅ **Governance + security** baked in (CSP headers, sanitization, audit runbooks)
+- ✅ **Operational docs** for deployment, observability, and maintenance
 
 ---
 
@@ -59,7 +60,7 @@
 - **Video support** (YouTube/Vimeo embeds and hosted files)
 - **Theme editor (dev-only)** for previewing brand tokens
 
-### Diamond Standard Commitments
+### Quality & Governance
 This repo follows the Diamond Standard for quality and governance. See the full standard here: [docs/DIAMOND_STANDARD.md](docs/DIAMOND_STANDARD.md).
 
 ---
@@ -124,7 +125,7 @@ Copy the template and set values in your local environment file:
 cp .env.example .env.local
 ```
 
-See `.env.example` for required variables (site name, URL, CRM keys, analytics, etc.).
+See `.env.example` and [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) for required variables (site name, URL, CRM keys, analytics, etc.).
 
 ### 2) Branding & Layout
 - **Hero + Value Props:** `components/Hero.tsx`, `components/ValueProps.tsx`
@@ -137,6 +138,7 @@ See `.env.example` for required variables (site name, URL, CRM keys, analytics, 
 - **Pricing:** `app/pricing/page.tsx`
 - **About:** `app/about/page.tsx`
 - **Contact:** `app/contact/page.tsx`
+- **Theme editor:** `app/theme-editor/page.tsx` (dev-only)
 
 ### 4) Content
 - **Blog posts:** `content/blog/*.mdx`
@@ -150,6 +152,7 @@ See `.env.example` for required variables (site name, URL, CRM keys, analytics, 
 For detailed instructions, start here:
 - **Customization guide:** [docs/TEMPLATE_CUSTOMIZATION_GUIDE.md](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)
 - **Placeholder reference:** [docs/PLACEHOLDER_REFERENCE.md](docs/PLACEHOLDER_REFERENCE.md)
+- **Integration map:** [docs/INTEGRATION_MAP.md](docs/INTEGRATION_MAP.md)
 
 ---
 
@@ -187,6 +190,7 @@ npm run audit:lighthouse
 **Cloudflare Pages (recommended)**
 
 - **Build command:** `npm run pages:build`
+- **Preview command:** `npm run pages:preview`
 - **Output directory:** `.vercel/output/static`
 
 Docs: [docs/CLOUDFLARE_DEPLOYMENT.md](docs/CLOUDFLARE_DEPLOYMENT.md)
@@ -199,12 +203,25 @@ Docs: [docs/CLOUDFLARE_DEPLOYMENT.md](docs/CLOUDFLARE_DEPLOYMENT.md)
 
 ## Documentation Map
 
-- **Start here:** [docs/TEMPLATE_CUSTOMIZATION_GUIDE.md](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)
-- **Placeholder inventory:** [docs/PLACEHOLDER_REFERENCE.md](docs/PLACEHOLDER_REFERENCE.md)
-- **Architecture overview:** [docs/TEMPLATE_ARCHITECTURE.md](docs/TEMPLATE_ARCHITECTURE.md)
-- **Diamond Standard:** [docs/DIAMOND_STANDARD.md](docs/DIAMOND_STANDARD.md)
-- **Testing strategy:** [docs/TESTING_STRATEGY.md](docs/TESTING_STRATEGY.md)
-- **Security baseline:** [docs/SECURITY_BASELINE.md](docs/SECURITY_BASELINE.md)
+**Start here**
+- [docs/start-here/README.md](docs/start-here/README.md)
+- [docs/DOCS_INDEX.md](docs/DOCS_INDEX.md)
+
+**Customization & design**
+- [docs/TEMPLATE_CUSTOMIZATION_GUIDE.md](docs/TEMPLATE_CUSTOMIZATION_GUIDE.md)
+- [docs/PLACEHOLDER_REFERENCE.md](docs/PLACEHOLDER_REFERENCE.md)
+- [docs/UI_DESIGN_SYSTEM.md](docs/UI_DESIGN_SYSTEM.md)
+
+**Architecture & operations**
+- [docs/TEMPLATE_ARCHITECTURE.md](docs/TEMPLATE_ARCHITECTURE.md)
+- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+- [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md)
+- [docs/ROLLBACK.md](docs/ROLLBACK.md)
+
+**Security & compliance**
+- [docs/SECURITY_BASELINE.md](docs/SECURITY_BASELINE.md)
+- [docs/SECURITY-CSP-ANALYTICS.md](docs/SECURITY-CSP-ANALYTICS.md)
+- [SECURITY.md](SECURITY.md)
 
 ---
 
