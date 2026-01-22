@@ -41,6 +41,11 @@ Goal: Provide a repeatable, auditable checklist for confirming the template is r
 - [ ] Structured data uses placeholders for firm name, URL, and logos.
 - [ ] Environment variables are documented in `.env.example` and guides.
 
+## Versioning & Changelog
+- [ ] Release version follows semantic versioning rules (major/minor/patch).
+- [ ] `CHANGELOG.md` includes `[Unreleased]` entries for this release.
+- [ ] Release notes align with the changelog categories and task IDs.
+
 ## Release Preparation
 - [ ] Repository description updated to reflect template positioning.
 - [ ] Topics/tags updated for template discovery (e.g., `nextjs`, `template`, `professional-services`).

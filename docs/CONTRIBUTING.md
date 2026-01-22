@@ -157,6 +157,40 @@ fix(og): escape HTML in OG image titles
 docs(deployment): update Cloudflare Pages instructions
 ```
 
+## Versioning & Changelog Policy
+
+This template follows Semantic Versioning with explicit release rules:
+- **Major (X.0.0)**: Breaking changes (removed configs, renamed env vars, layout/API contract changes).
+- **Minor (0.X.0)**: Backward-compatible feature additions or new template capabilities.
+- **Patch (0.0.X)**: Backward-compatible fixes, docs-only changes, or dependency updates without user action.
+
+**Changelog requirements:**
+- Update `CHANGELOG.md` under `[Unreleased]` in the same PR as the change.
+- Group entries by category (Added/Changed/Fixed/Security/Dependencies/Documentation).
+- Include related task IDs or decision records when available.
+- Avoid rewriting past entries; only append new changes.
+
+**Release note examples:**
+```
+## [1.2.0] - 2026-02-10
+
+### Added
+- Added client logo showcase component with placeholder assets (T-031)
+
+### Documentation
+- Added configuration steps for scheduling provider setup
+```
+
+```
+## [1.2.1] - 2026-02-18
+
+### Fixed
+- Fixed mobile navigation focus restoration (T-049)
+
+### Dependencies
+- Updated Next.js to patched version (T-022)
+```
+
 ## Pull Request Process
 
 1. **Create a feature branch:**
