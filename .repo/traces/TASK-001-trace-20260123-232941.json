@@ -1,0 +1,19 @@
+{
+  "intent": "Refine AGENTS guide",
+  "task_id": "TASK-001",
+  "timestamp": "2026-01-23T23:29:41Z",
+  "files": [
+    "AGENTS.md",
+    ".repo/tasks/TODO.md",
+    ".repo/tasks/BACKLOG.md",
+    ".repo/tasks/ARCHIVE.md"
+  ],
+  "commands": [
+    "npm run lint (failed: ESLint errors in .repo/automation/scripts/* and lib/sanitize.ts)"
+  ],
+  "evidence": [
+    "npm run lint failed with existing ESLint errors in .repo/automation/scripts/* and lib/sanitize.ts."
+  ],
+  "hitl": [],
+  "unknowns": []
+}

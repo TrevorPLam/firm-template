@@ -66,20 +66,19 @@
 
 ---
 
-### [TASK-001] Refine AGENTS.md to Be Concise & Effective
+### [TASK-012] Document or Remove Placeholder Directories
 - **Priority:** P0
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** Current AGENTS.md is 22 lines. Best practice is 50-100 lines that are highly specific and example-driven, NOT verbose documentation.
+- **Context:** `backend/` and `frontend/` directories are empty placeholders causing confusion. They contain Django/React Query references incompatible with this Next.js project.
 
 #### Acceptance Criteria
-- [ ] Include all six core areas: Commands, Testing, Project Structure, Code Style, Git Workflow, Boundaries
-- [ ] Add specific tech stack with versions (Django 4.2 + Python 3.11 + React 18 + TypeScript)
-- [ ] Include 1-2 code examples (showing patterns, not explaining them)
-- [ ] Document clear boundaries (what agents must NEVER do)
-- [ ] Keep total length under 100 lines
+- [ ] Add README.md in each directory explaining they're placeholders, OR
+- [ ] Remove directories entirely (recommended)
+- [ ] Update all documentation to clarify these are not used
+- [ ] Remove or update misleading `.AGENT.md` files with Django references
 
 #### Notes
-- "One real code snippet beats three paragraphs" — GitHub research
-- Tools: Cursor, Codex mobile, Claude mobile, GitHub Copilot mobile
-- Reference: https://agents.md (official spec)
+- Per CODEBASE_ANALYSIS.md: These directories serve no functional purpose
+- `backend/.agent-context.json` correctly identifies as placeholder
+- But `.AGENT.md` files reference Django patterns (incompatible)

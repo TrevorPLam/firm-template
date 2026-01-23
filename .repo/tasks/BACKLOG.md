@@ -47,25 +47,6 @@
 
 ## P0 — Critical
 
-### [TASK-012] Document or Remove Placeholder Directories
-- **Priority:** P0
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** `backend/` and `frontend/` directories are empty placeholders causing confusion. They contain Django/React Query references incompatible with this Next.js project.
-
-#### Acceptance Criteria
-- [ ] Add README.md in each directory explaining they're placeholders, OR
-- [ ] Remove directories entirely (recommended)
-- [ ] Update all documentation to clarify these are not used
-- [ ] Remove or update misleading `.AGENT.md` files with Django references
-
-#### Notes
-- Per CODEBASE_ANALYSIS.md: These directories serve no functional purpose
-- `backend/.agent-context.json` correctly identifies as placeholder
-- But `.AGENT.md` files reference Django patterns (incompatible)
-
----
-
 ### [TASK-013] Make Rate Limiting Production-Ready
 - **Priority:** P0
 - **Status:** Pending
