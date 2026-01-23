@@ -85,8 +85,8 @@ All 9 tasks from `.repo/tasks/REMAINING_TASKS.md` have been successfully complet
   - `.repo/templates/examples/example_test_component.tsx`
   - `.repo/templates/examples/example_test_api_integration.py`
 - **Files Modified:**
-  - `backend/modules/clients/.AGENT.md` - Added test patterns
-  - `frontend/src/components/.AGENT.md` - Added test patterns
+  - `backend/README.md` - Placeholder notice (replacing removed .AGENT.md guidance)
+  - `frontend/README.md` - Placeholder notice (replacing removed .AGENT.md guidance)
   - `.repo/policy/QUALITY_GATES.md` - Added test requirements
   - `.repo/templates/examples/README.md` - Updated with test examples
 - **Features:**

@@ -131,7 +131,7 @@
 ### 5. Testing Guidance
 **Status:** COMPLETED
 **Priority:** MEDIUM
-**Files:** `backend/modules/clients/.AGENT.md`, `frontend/src/components/.AGENT.md`, `.repo/policy/QUALITY_GATES.md`, `.repo/templates/examples/`
+**Files:** `backend/README.md` (placeholder notice), `frontend/README.md` (placeholder notice), `.repo/policy/QUALITY_GATES.md`, `.repo/templates/examples/`
 
 **Tasks:**
 - [x] Add test patterns to folder-level `.AGENT.md` files
@@ -147,6 +147,8 @@
 - [x] Add test validation hints to quality gates
   - [x] Check test files exist
   - [x] Verify coverage doesn't regress
+
+**Note:** Placeholder `.AGENT.md` files were removed to avoid Django/React Query guidance in this Next.js repo. Placeholder notices live in `backend/README.md` and `frontend/README.md`.
 
 **Acceptance Criteria:**
 - [x] Test patterns documented in folder guides
