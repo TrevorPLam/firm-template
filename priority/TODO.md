@@ -1,142 +1,219 @@
-# TODO - Textbook Codebase Standard v2.2 Implementation
+# GitHub Copilot Prompt: Professional Task List Formatting
 
-This document contains tasks derived from analyzing the phase documents (phase1.md through phase9.md) for implementing the Textbook Codebase Standard v2.2 governance framework.
+## Purpose
 
-## Phase 1: Master Handoff Skeleton + Locked Decisions
-- [ ] Review and finalize locked decisions in phase1.md
-- [ ] Establish authority chain: Manifest > Agents > Standards
-- [ ] Document selected principles (P3-P25)
-- [ ] Define quality gates and merge policies
-- [ ] Configure waiver system with auto-generation
-- [ ] Set up security baseline requirements
-- [ ] Define boundary enforcement model (hybrid_domain_feature_layer)
-- [ ] Plan agent execution order
+This prompt guides GitHub Copilot to restructure task lists into a professional, diamond-standard format with proper task abbreviations, hierarchical organization, scope definitions, and traceability.
 
-## Phase 2: Policy Corpus (Authoritative Rules)
-- [ ] Create `/.repo/policy/` directory structure
-- [ ] Create `/.repo/policy/CONSTITUTION.md` with 8 articles
-- [ ] Create `/.repo/policy/PRINCIPLES.md` with P3-P25 operating principles
-- [ ] Create `/.repo/policy/QUALITY_GATES.md` with merge rules
-- [ ] Create `/.repo/policy/SECURITY_BASELINE.md` with security requirements
-- [ ] Create `/.repo/policy/BOUNDARIES.md` with module boundary rules
-- [ ] Create `/.repo/policy/HITL.md` with Human-In-The-Loop procedures
-- [ ] Verify all policy files use plain English (non-coder friendly)
+## Prompt for Copilot
 
-## Phase 3: Manifest + Command Resolution
-- [ ] Create `/.repo/repo.manifest.yaml` with canonical commands
-- [ ] Create `/.repo/docs/standards/manifest.md` with resolution process
-- [ ] Fill `commands.install` from package.json or repo evidence
-- [ ] Fill `commands.check:quick` (fast build + sanity check)
-- [ ] Fill `commands.check:ci` (quick + tests + full build)
-- [ ] Fill `commands.check:release` (ci + security + budgets)
-- [ ] Fill `commands.check:governance` (governance-verify)
-- [ ] Fill `commands.check:boundaries` (boundary checker)
-- [ ] Fill `commands.check:security` (dep scan + secrets + patterns)
-- [ ] Define verify_profiles (quick, ci, release, governance)
-- [ ] Set test requirements (unit+integration)
-- [ ] Configure budget enforcement
-- [ ] Configure security settings
+```
+I need you to restructure this task list into a professional, diamond-standard format following these specifications:
 
-## Phase 4: Agents Framework + Folder-Level Guides
-- [ ] Create `/.repo/agents/` directory structure
-- [ ] Create `/.repo/agents/AGENTS.md` with core rules
-- [ ] Create `/.repo/agents/capabilities.md` listing all agent capabilities
-- [ ] Create `/.repo/agents/roles/primary.md` (full capabilities agent)
-- [ ] Create `/.repo/agents/roles/secondary.md` (modify/refactor only)
-- [ ] Create `/.repo/agents/roles/reviewer.md` (human, controls waivers)
-- [ ] Create `/.repo/agents/roles/release.md` (human, controls releases)
-- [ ] Create folder-level `AGENT.md` guides in:
-  - [ ] `/.repo/AGENT.md`
-  - [ ] `/src/AGENT.md`
-  - [ ] `/src/platform/AGENT.md`
-  - [ ] `/tests/AGENT.md`
-  - [ ] `/docs/AGENT.md`
-  - [ ] `/scripts/AGENT.md`
+## Required Structure
 
-## Phase 5: PR Operating System
-- [ ] Create `/.repo/agents/prompts/` directory
-- [ ] Create `/.repo/agents/prompts/task_packet.md` template
-- [ ] Create `/.repo/agents/prompts/pr_template.md` template
-- [ ] Create `/.repo/agents/checklists/` directory
-- [ ] Create `/.repo/agents/checklists/change-plan.md` checklist
-- [ ] Create `/.repo/agents/checklists/pr-review.md` checklist
-- [ ] Create `/.repo/agents/checklists/incident.md` checklist
-- [ ] Create `/.repo/templates/` directory
-- [ ] Create `/.repo/templates/PR_TEMPLATE.md`
+### 1. Phase Metadata
+Include at the top of each phase document:
+- **Phase**: P[X] (phase number)
+- **Priority**: Critical/High/Medium/Low
+- **Overall Status**: Not Started/In Progress/Blocked/Complete
+- **Owner**: Team/Person responsible
+- **Dependencies**: List prerequisite phases or external dependencies
+- **Target Completion**: Date or Sprint number
 
-## Phase 6: Logging + Trace + Waiver + ADR Templates
-- [ ] Create `/.repo/templates/AGENT_LOG_TEMPLATE.md`
-- [ ] Create `/.repo/templates/AGENT_TRACE_SCHEMA.json` with JSON schema
-- [ ] Create `/.repo/templates/WAIVER_TEMPLATE.md`
-- [ ] Create `/.repo/templates/ADR_TEMPLATE.md`
-- [ ] Create `/.repo/templates/RUNBOOK_TEMPLATE.md`
-- [ ] Create `/.repo/templates/RFC_TEMPLATE.md`
-- [ ] Ensure all templates prohibit secrets and private data
+### 2. Scope Definition
+Clearly separate what is and isn't included:
 
-## Phase 7: Automation Stubs
-- [ ] Create `/.repo/automation/` directory structure
-- [ ] Create `/.repo/automation/ci/governance-verify.yml` CI job template
-- [ ] Create `/.repo/automation/scripts/governance-verify.js` script stub
-- [ ] Create `/.repo/automation/scripts/validate-agent-trace.js` script stub
-- [ ] Wire automation to use manifest-defined commands
+**In Scope:**
+- Specific deliverables and boundaries
+- What IS included in this phase
 
-## Phase 8: Docs Glue (Indexes + Standards + ADR Scaffold)
-- [ ] Create `/.repo/docs/` directory structure
-- [ ] Create `/.repo/docs/DOCS_INDEX.md` with navigation
-- [ ] Create `/.repo/docs/standards/documentation.md`
-- [ ] Create `/.repo/docs/standards/adr.md`
-- [ ] Create `/.repo/docs/standards/api.md`
-- [ ] Create `/.repo/docs/standards/style.md`
-- [ ] Create `/.repo/docs/adr/` directory
-- [ ] Create `/.repo/docs/adr/README.md`
-- [ ] Create `/.repo/docs/adr/0001-example.md` example ADR
+**Out of Scope:**
+- What is explicitly NOT included
+- Deferred items or future considerations
 
-## Phase 9: Root Scaffolds
-- [ ] Update `/README.md` to link to `/.repo/docs/DOCS_INDEX.md`
-- [ ] Create or update `/SECURITY.md` referencing security baseline
-- [ ] Create or update `/CODEOWNERS` file
-- [ ] Review `/LICENSE` file
-- [ ] Create `/P0TODO.md` (highest priority tasks)
-- [ ] Create `/P1TODO.md` (high priority tasks)
-- [ ] Create `/P2TODO.md` (normal priority tasks)
-- [ ] Create `/COMPLETEDTODO.md` (archived completed tasks)
-- [ ] Create `/.repo/archive/todo/README.md` for TODO snapshots
+### 3. Success Criteria
+List measurable outcomes as checkboxes:
+- [ ] Specific, testable criterion 1
+- [ ] Specific, testable criterion 2
 
-## Cross-Phase Integration Tasks
-- [ ] Ensure all filepaths are absolute and correct
-- [ ] Verify plain English requirements in all policy documents
-- [ ] Test command resolution from manifest
-- [ ] Validate boundary enforcement rules
-- [ ] Test HITL workflow end-to-end
-- [ ] Verify waiver system with expiration tracking
-- [ ] Test security check integration
-- [ ] Validate agent trace schema with sample traces
-- [ ] Review governance-verify implementation requirements
+### 4. Work Packages (WP)
+Organize tasks into logical work packages with this structure:
 
-## Verification & Validation
-- [ ] Run governance-verify against the implemented structure
-- [ ] Verify all required artifacts exist at correct paths
-- [ ] Test manifest commands locally
-- [ ] Validate security baseline enforcement
-- [ ] Verify boundary checker functionality
-- [ ] Test HITL item creation and completion workflow
-- [ ] Validate waiver generation and expiration
-- [ ] Run full CI pipeline with governance checks
+**WP-P[X].[Y]: [Work Package Name]**
 
-## Documentation & Training
-- [ ] Document deviation from any phase specification
-- [ ] Create quick-start guide for developers
-- [ ] Document HITL process for non-technical stakeholders
-- [ ] Create examples for common change types
-- [ ] Document rollback procedures
-- [ ] Create troubleshooting guide for governance checks
+**Block**: [Infrastructure/Documentation/Automation/Security/Configuration/Architecture]
+**Priority**: P0/P1/P2/P3 (P0 = highest)
+**Status**: Not Started/In Progress/Blocked/Complete
+**Owner**: Name/Team
+**Effort**: XS/S/M/L/XL (or specific hours)
+**Risk**: 🔴 High | 🟡 Medium | 🟢 Low
 
----
+**Dependencies:**
+- Requires: [List of prerequisite WP IDs or tasks]
+- Blocks: [List of WP IDs that depend on this]
 
-## Notes
-- All tasks must follow the principles outlined in phase documents
-- UNKNOWN values require HITL items before proceeding
-- Evidence required for all completed tasks
-- Filepaths must be included in all task tracking
-- No guessing - refer to repo contents or create HITL items
-- Security and safety checks must be in place before marking phases complete
+**Description:**
+[Clear description of what needs to be done]
+
+**Acceptance Criteria:**
+- [ ] Specific, testable criterion 1
+- [ ] Specific, testable criterion 2
+
+**Tasks:**
+- [ ] **T-P[X].[Y].[Z]**: [Specific actionable task]
+  - Files: [List of files to create/modify]
+  - Commands: [Verification commands to run]
+  - Evidence: [What proves this is complete]
+
+**Out of Scope for This Work Package:**
+- [Things that look related but are NOT part of this work]
+
+**Notes:**
+- [Additional context, links to ADRs, known issues]
+
+### 5. Task Numbering System
+Use this hierarchical system:
+- **P[X]** = Phase number (0-9)
+- **WP-P[X].[Y]** = Work Package (phase X, package Y)
+- **T-P[X].[Y].[Z]** = Task (phase X, package Y, task Z)
+- **T-P[X].[Y].[Z][a-z]** = Subtask (optional, for complex tasks)
+
+Examples:
+- P0 = Phase 0
+- WP-P0.1 = Work Package 1 in Phase 0
+- T-P0.1.1 = Task 1 in Work Package 1 of Phase 0
+- T-P0.1.1a = Subtask 'a' of Task 1
+
+### 6. Effort Sizing
+- **XS**: 1-2 hours
+- **S**: 2-8 hours (up to 1 day)
+- **M**: 8-16 hours (1-2 days)
+- **L**: 16-40 hours (2-5 days)
+- **XL**: 40+ hours (1+ weeks)
+
+### 7. Priority Levels
+- **P0**: Critical path, blocks everything else
+- **P1**: High priority, needed soon
+- **P2**: Medium priority, important but not urgent
+- **P3**: Low priority, nice to have
+
+### 8. Risk Indicators
+- 🔴 **High**: Complex, security-critical, or has many unknowns
+- 🟡 **Medium**: Some complexity or dependencies
+- 🟢 **Low**: Straightforward, well-understood
+
+### 9. Block Categories
+Categorize work packages by type:
+- **Infrastructure**: Directory structure, tooling setup, configuration
+- **Documentation**: Writing docs, standards, guides
+- **Automation**: Scripts, CI/CD, automated checks
+- **Security**: Security controls, scanning, policies
+- **Configuration**: Config files, settings, environment
+- **Architecture**: Design decisions, boundaries, patterns
+
+### 10. End of Phase Sections
+
+**Risks & Mitigation:**
+List high-risk items with mitigation strategies
+
+**Definition of Done:**
+- [ ] All WP-P[X].X work packages marked complete
+- [ ] All files committed and pushed
+- [ ] Peer review completed
+- [ ] No blockers for next phase
+
+**Notes & References:**
+- Related ADRs: [Links]
+- Related PRs: [Links]
+- External Dependencies: [List or "None"]
+
+## Task Traceability Requirements
+
+Every task MUST include:
+1. **Files**: Specific file paths that will be created or modified
+2. **Commands**: Exact commands to verify the task is complete
+3. **Evidence**: Clear criteria that proves completion
+
+Example:
+```markdown
+- [ ] **T-P0.1.1**: Create /.repo directory structure
+  - Files: `/.repo/`, `/.repo/policy/`, `/.repo/agents/`
+  - Commands: `tree /.repo -L 2`
+  - Evidence: Directory structure matches specification
+```
+
+## Scope Boundaries
+
+Always include explicit scope boundaries:
+- **In Scope**: What IS being done in this phase/work package
+- **Out of Scope**: What is explicitly NOT being done (defer to later or exclude entirely)
+
+This prevents scope creep and sets clear expectations.
+
+## Dependencies
+
+Always document:
+- **Requires**: What must be completed before this can start
+- **Blocks**: What cannot start until this is complete
+
+Use work package IDs (WP-P[X].[Y]) or external dependencies.
+
+## Guidelines for Restructuring
+
+1. **Preserve Content**: Don't lose any existing tasks
+2. **Group Logically**: Combine related tasks into work packages
+3. **Add Metadata**: Enhance with effort, risk, owner, dependencies
+4. **Be Specific**: Every task should be actionable with clear success criteria
+5. **No Orphans**: Every task belongs to a work package, every work package belongs to a phase
+6. **Add Context**: Include "why" in descriptions, not just "what"
+7. **Make it Scannable**: Use consistent formatting, clear headers, visual indicators
+
+## Example Output Format
+
+See TODOP0.md and TODOP3.md in this repository for complete examples of the expected format.
+
+## Apply This Format
+
+Please restructure the provided task list using this format. Ensure:
+- Hierarchical task IDs (P[X], WP-P[X].[Y], T-P[X].[Y].[Z])
+- Clear scope boundaries (in-scope/out-of-scope)
+- Metadata for every work package (block, priority, status, owner, effort, risk)
+- Traceability for every task (files, commands, evidence)
+- Explicit dependencies (requires/blocks)
+- Definition of done for the phase
+- Risk mitigation strategies
+```
+
+## Usage Instructions
+
+1. Copy the prompt above
+2. Provide it to GitHub Copilot along with your task list
+3. Review the output for completeness
+4. Adjust work package groupings if needed
+5. Verify all task IDs follow the numbering system
+6. Ensure dependencies are correctly mapped
+
+## Benefits of This Format
+
+- **Traceability**: Every task has a unique ID and can be referenced
+- **Clarity**: Clear scope prevents scope creep
+- **Planning**: Dependencies and effort estimates enable better scheduling
+- **Risk Management**: Visual indicators help prioritize attention
+- **Verifiable**: Commands and evidence make completion objective
+- **Professional**: Consistent format improves communication and handoffs
+
+## Related Documents
+
+- `TODOP0.md` - Example: Phase 0 (Core Infrastructure)
+- `TODOP3.md` - Example: Phase 3 (Manifest & Commands)
+- `TODO.md.old` - Original unstructured task list (for reference)
+
+## Maintenance
+
+When adding new tasks:
+1. Determine which phase they belong to
+2. Find or create appropriate work package
+3. Assign next sequential task ID
+4. Include files, commands, evidence
+5. Update dependencies if needed
+6. Mark scope explicitly
