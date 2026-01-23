@@ -1,0 +1,57 @@
+{
+  "$schema": "../.repo/templates/AGENT_CONTEXT_SCHEMA.json",
+  "version": "1.0.0",
+  "type": "folder_context",
+  "folder": {
+    "path": "frontend/",
+    "purpose": "Frontend source code directory (Note: Main Next.js app is in root app/, components/, lib/)",
+    "layer": "ui",
+    "depends_on": [],
+    "used_by": []
+  },
+  "agent_rules": {
+    "can_do": [
+      "Create frontend-specific utilities if needed",
+      "Organize frontend-specific code"
+    ],
+    "cannot_do": [
+      "Break existing patterns without justification",
+      "Create new abstractions before checking existing patterns in root components/",
+      "Break TypeScript types or skip type checking"
+    ],
+    "requires_hitl": [
+      "Breaking changes",
+      "Security-related changes",
+      "Dependency additions"
+    ]
+  },
+  "patterns": {
+    "note": "Main Next.js application structure is in root: app/, components/, lib/"
+  },
+  "boundaries": {
+    "can_import_from": ["components/", "lib/", "app/"],
+    "cannot_import_from": [],
+    "cross_module_requires_adr": false
+  },
+  "quick_links": {
+    "policy": ".repo/policy/BESTPR.md",
+    "best_practices": ".repo/policy/BESTPR.md"
+  },
+  "common_tasks": [
+    {
+      "task": "Note",
+      "steps": [
+        "Main Next.js application code is in root directory:",
+        "- app/ - Next.js App Router routes and pages",
+        "- components/ - React components",
+        "- lib/ - Utilities and business logic"
+      ],
+      "files": ["app/", "components/", "lib/"]
+    }
+  ],
+  "metrics": {
+    "files_count": 0,
+    "last_modified": "2026-01-23",
+    "test_coverage": 0
+  }
+}

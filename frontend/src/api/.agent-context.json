@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../.repo/templates/AGENT_CONTEXT_SCHEMA.json",
+  "version": "1.0.0",
+  "type": "folder_context",
+  "folder": {
+    "path": "frontend/src/api",
+    "purpose": "Note: This is a placeholder directory. Next.js uses Server Actions (lib/actions.ts) and API routes (app/api/) for API functionality.",
+    "layer": "ui",
+    "depends_on": [],
+    "used_by": []
+  },
+  "agent_rules": {
+    "can_do": [
+      "Create API utilities if needed"
+    ],
+    "cannot_do": [
+      "Reference React Query (not used in this Next.js app)",
+      "Assume this is the main API directory"
+    ],
+    "requires_hitl": [
+      "Any API implementation"
+    ]
+  },
+  "patterns": {
+    "note": "Next.js uses Server Actions in lib/actions.ts and API routes in app/api/ for API functionality. This directory is a placeholder."
+  },
+  "boundaries": {
+    "can_import_from": ["lib/", "app/"],
+    "cannot_import_from": [],
+    "cross_module_requires_adr": false
+  },
+  "quick_links": {
+    "policy": ".repo/policy/BESTPR.md",
+    "best_practices": ".repo/policy/BESTPR.md"
+  },
+  "common_tasks": [
+    {
+      "task": "Note",
+      "steps": [
+        "Next.js uses Server Actions (lib/actions.ts) for server-side operations",
+        "API routes are in app/api/ directory",
+        "This directory is a placeholder",
+        "See .repo/policy/BESTPR.md for actual patterns"
+      ],
+      "files": ["lib/actions.ts", "app/api/"]
+    }
+  ],
+  "metrics": {
+    "files_count": 0,
+    "last_modified": "2026-01-23",
+    "test_coverage": 0
+  }
+}

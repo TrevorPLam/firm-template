@@ -1,28 +1,48 @@
-SHELL := /usr/bin/env bash
+# Makefile for firm-template
+# Wraps npm scripts for convenience
+# Source of truth: package.json scripts and .repo/repo.manifest.yaml
 
-.PHONY: help governance security sync-todo check fix ci
+.PHONY: setup lint test typecheck verify ci e2e build check-governance format format-check
 
-help:
-	@echo "Targets:"
-	@echo "  make sync-todo   - Regenerate TODO.generated.md from specs/project-tasks.md (non-binding)"
-	@echo "  make governance  - Run governance audit"
-	@echo "  make security    - Run lightweight security scan"
-	@echo "  make check       - Run repo checks (best-effort, stack-aware)"
-	@echo "  make ci          - Strict checks for CI"
+setup:
+	@echo "=== SETUP ==="
+	npm install
 
-sync-todo:
-	@./scripts/sync-todo.sh
+lint:
+	@echo "=== LINT ==="
+	npm run lint
 
-governance:
-	@./scripts/ai-audit.sh
+test:
+	@echo "=== TEST ==="
+	npm run test
 
-security:
-	@./scripts/security-scan.sh
+test:e2e:
+	@echo "=== E2E TEST ==="
+	npm run test:e2e
 
-check:
-	@./scripts/check.sh
+typecheck:
+	@echo "=== TYPECHECK ==="
+	npm run type-check
 
-fix:
-	@echo "No universal fixer in template. Add repo-specific fix steps (formatter/autofix) to scripts/check.sh."
+build:
+	@echo "=== BUILD ==="
+	npm run build
 
-ci: sync-todo governance security check
+format:
+	@echo "=== FORMAT ==="
+	npm run format
+
+format-check:
+	@echo "=== FORMAT CHECK ==="
+	npm run format:check
+
+verify: lint typecheck test build
+	@echo "=== VERIFICATION COMPLETE ==="
+
+ci: verify
+	@echo "=== CI COMPLETE ==="
+
+check-governance:
+	@echo "=== GOVERNANCE VERIFICATION ==="
+	chmod +x scripts/governance-verify.sh
+	./scripts/governance-verify.sh

@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../.repo/templates/AGENT_CONTEXT_SCHEMA.json",
+  "version": "1.0.0",
+  "type": "folder_context",
+  "folder": {
+    "path": "frontend/src/components",
+    "purpose": "Note: Main React components are in root components/ directory. This directory may be used for frontend-specific components if needed.",
+    "layer": "ui",
+    "depends_on": [],
+    "used_by": []
+  },
+  "agent_rules": {
+    "can_do": [
+      "Create frontend-specific components if needed"
+    ],
+    "cannot_do": [
+      "Assume this is the main components directory",
+      "Reference React Query patterns (not used in this Next.js app)"
+    ],
+    "requires_hitl": [
+      "Any significant changes"
+    ]
+  },
+  "patterns": {
+    "note": "Main components are in root components/ directory. This is a placeholder directory."
+  },
+  "boundaries": {
+    "can_import_from": ["components/", "lib/", "app/"],
+    "cannot_import_from": [],
+    "cross_module_requires_adr": false
+  },
+  "quick_links": {
+    "policy": ".repo/policy/BESTPR.md",
+    "best_practices": ".repo/policy/BESTPR.md"
+  },
+  "common_tasks": [
+    {
+      "task": "Note",
+      "steps": [
+        "Main React components are in root components/ directory",
+        "This directory is a placeholder",
+        "See .repo/policy/BESTPR.md for actual project structure"
+      ],
+      "files": ["components/"]
+    }
+  ],
+  "metrics": {
+    "files_count": 0,
+    "last_modified": "2026-01-23",
+    "test_coverage": 0
+  }
+}
