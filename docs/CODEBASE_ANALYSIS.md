@@ -23,7 +23,7 @@ This is a well-structured Next.js application template with strong security foun
 - ✅ Server actions pattern correctly implemented
 
 **Critical Issues:**
-- ⚠️ Empty/unused directories (`backend/`, `frontend/`) creating confusion
+- ⚠️ Placeholder directories (`backend/`, `frontend/`) require clear documentation to avoid confusion (now documented)
 - ⚠️ Incomplete test coverage (50% threshold, but gaps in critical paths)
 - ⚠️ Hardcoded values in layout.tsx (structured data URLs)
 - ⚠️ Search index requires manual maintenance
@@ -181,11 +181,11 @@ firm-template/
 │   ├── images/            ✅ Image assets
 │   └── [icons, manifest]   ✅ PWA assets
 │
-├── backend/                ❌ PLACEHOLDER - Empty directories
+├── backend/                ❌ PLACEHOLDER - README + agent context only
 │   ├── api/               ❌ Empty (only subdirectories)
 │   └── modules/           ❌ Empty (only subdirectories)
 │
-├── frontend/               ❌ PLACEHOLDER - Empty directories
+├── frontend/               ❌ PLACEHOLDER - README + agent context only
 │   └── src/               ❌ Empty (only subdirectories)
 │
 ├── __tests__/              ✅ ACTIVE - Unit tests
@@ -1098,30 +1098,25 @@ export default function ServiceDetailLayout({
 **Status:** ❌ **PLACEHOLDER - NOT USED**
 
 **Analysis:**
-- Contains only empty subdirectories:
-  - `api/clients/`
-  - `modules/clients/`, `core/`, `crm/`, `finance/`, `firm/`, `projects/`
+- Contains only placeholder subdirectories with `.agent-context.json` files (no code)
 - Has `.agent-context.json` indicating it's a placeholder
-- Contains `.AGENT.md` files referencing Django patterns (incompatible with Next.js)
+- Now includes `backend/README.md` explaining the directory is unused
 
 **Issues:**
 1. **Confusion:** Directory structure suggests Django backend, but project is Next.js
-2. **Misleading:** Developers might think backend exists
-3. **Documentation Mismatch:** `.AGENT.md` files reference Django patterns (e.g., `backend/modules/core/.AGENT.md` mentions Django models)
+2. **Misleading:** Developers might think backend exists without the README notice
 
 <!-- INLINE: BACKEND_DIRECTORY_ANALYSIS -->
-> **Analysis:** The `backend/` directory contains only empty subdirectories with `.AGENT.md` files that reference Django patterns (models, serializers, viewsets). This is confusing because:
+> **Analysis:** The `backend/` directory contains only placeholder subdirectories and agent context files. This is confusing because:
 > - The project is Next.js, not Django
 > - The `.agent-context.json` correctly identifies it as a placeholder
-> - But the `.AGENT.md` files contain Django-specific patterns
 > - New developers might think there's a backend to implement
 > 
 > The directory serves no functional purpose and creates cognitive overhead.
 
 **Recommendation:**
-- **Option A:** Remove directory entirely (cleanest) - **RECOMMENDED**
-- **Option B:** Add README.md explaining it's for future use (if keeping for roadmap)
-- **Option C:** If keeping, ensure all docs clarify it's placeholder and remove Django references
+- Keep README.md explaining it's for future use (if keeping for roadmap)
+- Ensure all docs clarify it's a placeholder and avoid Django references
 
 **Current State:**
 ```json
@@ -1136,19 +1131,16 @@ export default function ServiceDetailLayout({
 **Status:** ❌ **PLACEHOLDER - NOT USED**
 
 **Analysis:**
-- Contains only `src/api/` and `src/components/` subdirectories (empty)
+- Contains only placeholder `src/` subdirectories with `.agent-context.json` files (no code)
 - Has `.agent-context.json` indicating main app is in root
-- Contains `.AGENT.md` files with React Query patterns (not used in main app)
+- Now includes `frontend/README.md` explaining the directory is unused
 
 **Issues:**
 1. **Redundant:** Main Next.js app is in root (`app/`, `components/`, `lib/`)
 2. **Confusing:** Suggests separate frontend when it's all in root
-3. **Documentation Mismatch:** References React Query, but main app doesn't use it
 
 **Recommendation:**
-- **Option A:** Remove directory (recommended)
-- **Option B:** Use for future separate frontend if needed
-- **Option C:** Document clearly that it's unused
+- Document clearly that it's unused (README)
 
 ### 2.6 `content/` Directory
 

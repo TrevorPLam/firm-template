@@ -47,25 +47,6 @@
 
 ## P0 — Critical
 
-### [TASK-013] Make Rate Limiting Production-Ready
-- **Priority:** P0
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** In-memory rate limiter fallback is not suitable for multi-instance production deployments. Each instance would have its own map, allowing rate limit bypass.
-
-#### Acceptance Criteria
-- [ ] Make Upstash Redis required in production (`NODE_ENV === 'production'`)
-- [ ] Fail-fast with clear error message if Upstash not configured in production
-- [ ] Remove in-memory fallback or clearly document it's dev-only
-- [ ] Update `lib/actions.ts:481-502` to enforce production requirement
-
-#### Notes
-- File: `lib/actions.ts:481-502`
-- Impact: Multi-instance deployments will have inconsistent rate limiting
-- Related: No retry logic for HubSpot sync failures (separate task)
-
----
-
 ### [TASK-014] Add Frontmatter Validation for Blog Posts
 - **Priority:** P0
 - **Status:** Pending

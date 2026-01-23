@@ -36,8 +36,8 @@
 ## Statistics
 | Metric | Count |
 |--------|-------|
-| Total Completed | 1 |
-| P0 Completed | 1 |
+| Total Completed | 2 |
+| P0 Completed | 2 |
 | P1 Completed | 0 |
 | P2 Completed | 0 |
 | P3 Completed | 0 |
@@ -47,6 +47,24 @@
 ---
 
 ## Completed Tasks
+
+### [TASK-012] Document or Remove Placeholder Directories ✓
+- **Priority:** P0
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-23
+- **Context:** `backend/` and `frontend/` directories are empty placeholders causing confusion. They contain Django/React Query references incompatible with this Next.js project.
+
+#### Acceptance Criteria
+- [x] Add README.md in each directory explaining they're placeholders, OR
+- [x] Remove directories entirely (recommended)
+- [x] Update all documentation to clarify these are not used
+- [x] Remove or update misleading `.AGENT.md` files with Django references
+
+#### Outcome
+- Added placeholder README files in `backend/` and `frontend/`.
+- Removed misleading placeholder `.AGENT.md` files.
+- Updated documentation references in `docs/CODEBASE_ANALYSIS.md` and governance task docs.
 
 ### [TASK-001] Refine AGENTS.md to Be Concise & Effective ✓
 - **Priority:** P0

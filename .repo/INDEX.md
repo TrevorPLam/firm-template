@@ -103,8 +103,8 @@ This file catalogs the contents of the `.repo/` governance directory. See [root 
 ## Navigation
 
 - [Root `INDEX.md`](../INDEX.md) - Repository master index
-- [`backend/INDEX.md`](../backend/INDEX.md) - Backend directory index
-- [`frontend/INDEX.md`](../frontend/INDEX.md) - Frontend directory index
+- [`backend/README.md`](../backend/README.md) - Backend placeholder notice
+- [`frontend/README.md`](../frontend/README.md) - Frontend placeholder notice
 
 ## Entry Point Usage
 
