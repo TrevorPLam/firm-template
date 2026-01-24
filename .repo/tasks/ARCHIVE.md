@@ -33,6 +33,39 @@
 
 ---
 
+### [TASK-016] Move Hardcoded Values to Environment/Config ✓
+- **Priority:** P1
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** Multiple files contain hardcoded values (contact info, social links, firm names) that should be configurable for SEO and branding consistency.
+
+#### Acceptance Criteria
+- [x] Create `lib/config.ts` for site configuration (already existed, enhanced)
+- [x] Move structured data URLs from `app/layout.tsx:243-248` to config (already using config)
+- [x] Move contact info from `app/contact/page.tsx` to env vars (already using config)
+- [x] Move hardcoded firm names from blog/service pages to config
+- [x] Update all structured data to use configurable values
+- [x] Add environment variables: `NEXT_PUBLIC_CONTACT_EMAIL`, `NEXT_PUBLIC_CONTACT_PHONE`, `NEXT_PUBLIC_SOCIAL_*` (already present)
+- [x] Add `NEXT_PUBLIC_SOCIAL_TWITTER_HANDLE` to `.env.example`
+
+#### Outcome
+- Updated 21 files across the app/ directory
+- All hardcoded "Your Firm Name" replaced with `validatedPublicEnv.NEXT_PUBLIC_SITE_NAME`
+- Enhanced `lib/config.ts` with Twitter handle configuration
+- Added `NEXT_PUBLIC_SOCIAL_TWITTER_HANDLE` to `.env.example`
+- All pages (blog, services, contact, about, pricing, search, privacy, terms, theme-editor) now use environment-based configuration
+- Structured data in blog posts and layout now dynamically uses site name
+- OG image generation route now uses environment variable for firm name
+
+#### Notes
+- Task was already partially complete - `lib/config.ts` existed with most configuration
+- Main work was replacing hardcoded strings with references to configuration
+- SEO and branding consistency improved significantly
+- Template is now easier to customize for different firms
+
+---
+
 ### [TASK-015] Split lib/actions.ts into Modules ✓
 - **Priority:** P1
 - **Status:** Completed
