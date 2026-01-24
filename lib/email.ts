@@ -65,6 +65,12 @@ function getEmailConfig() {
   }
 }
 
+type EmailConfig = ReturnType<typeof getEmailConfig>
+type EmailConfigWithAddresses = EmailConfig & {
+  toAddress: string
+  fromAddress: string
+}
+
 function buildContactSummary(payload: ContactEmailPayload) {
   const safeMessage = payload.message.trim() || 'No message provided.'
   const message = truncateText(safeMessage, MAX_MESSAGE_LENGTH)
@@ -80,7 +86,7 @@ function buildContactSummary(payload: ContactEmailPayload) {
   ].join('\n')
 }
 
-function buildOwnerNotification(config: ReturnType<typeof getEmailConfig>, payload: ContactEmailPayload) {
+function buildOwnerNotification(config: EmailConfigWithAddresses, payload: ContactEmailPayload): EmailMessage {
   return {
     to: config.toAddress,
     from: config.fromAddress,
@@ -89,7 +95,7 @@ function buildOwnerNotification(config: ReturnType<typeof getEmailConfig>, paylo
   }
 }
 
-function buildCustomerThankYou(config: ReturnType<typeof getEmailConfig>, payload: ContactEmailPayload) {
+function buildCustomerThankYou(config: EmailConfigWithAddresses, payload: ContactEmailPayload): EmailMessage {
   return {
     to: payload.email,
     from: config.fromAddress,
@@ -199,7 +205,27 @@ export async function sendContactEmails(payload: ContactEmailPayload): Promise<C
     return { ownerNotification: { success: false, provider: 'none' } }
   }
 
-  const ownerMessage = buildOwnerNotification(config, payload)
+  if (!config.toAddress) {
+    logError('Email config missing owner recipient address', undefined, {
+      provider: config.provider,
+    })
+    return { ownerNotification: { success: false, provider: config.provider } }
+  }
+
+  if (!config.fromAddress) {
+    logError('Email config missing from address', undefined, {
+      provider: config.provider,
+    })
+    return { ownerNotification: { success: false, provider: config.provider } }
+  }
+
+  const resolvedConfig: EmailConfigWithAddresses = {
+    ...config,
+    toAddress: config.toAddress,
+    fromAddress: config.fromAddress,
+  }
+
+  const ownerMessage = buildOwnerNotification(resolvedConfig, payload)
   const ownerResult = await sendEmail(ownerMessage)
 
   if (ownerResult.success) {
@@ -210,7 +236,7 @@ export async function sendContactEmails(payload: ContactEmailPayload): Promise<C
     return { ownerNotification: ownerResult }
   }
 
-  const customerMessage = buildCustomerThankYou(config, payload)
+  const customerMessage = buildCustomerThankYou(resolvedConfig, payload)
   const customerResult = await sendEmail(customerMessage)
 
   if (customerResult.success) {

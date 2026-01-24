@@ -33,6 +33,58 @@
 
 ---
 
+### [TASK-017] Implement Blog Category Filtering ✓
+- **Priority:** P1
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** Blog listing page generates category filter links but doesn't actually filter posts. Feature is incomplete.
+
+#### Acceptance Criteria
+- [x] Use `searchParams` in `app/blog/page.tsx` to read `category` query param
+- [x] Filter posts using `getPostsByCategory()` from `lib/blog.ts`
+- [x] Update URL state when category changes
+- [x] Ensure "All Posts" displays all posts when no category selected
+- [x] Update UI to visually indicate active category filter
+- [x] Add unit test for category filtering
+
+#### Outcome
+- Added category normalization, validation, and active-state styling on the blog page in `app/blog/page.tsx`.
+- Extended blog utilities to support filtered category queries without duplicate reads in `lib/blog.ts`.
+- Added category-filter coverage in `__tests__/components/pages/BlogPage.test.tsx`.
+
+### [TASK-048] Fix ServiceDetailLayout Hardcoded Values ✓
+- **Priority:** P2
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** ServiceDetailLayout has hardcoded firm name and country in structured data.
+
+#### Acceptance Criteria
+- [x] Use `validatedPublicEnv.NEXT_PUBLIC_SITE_NAME` for firm name
+- [x] Make areaServed configurable
+- [x] Update `components/ServiceDetailLayout.tsx:132-154`
+
+#### Outcome
+- Replaced hardcoded structured data fields with `validatedPublicEnv` values in `components/ServiceDetailLayout.tsx`.
+- Added `NEXT_PUBLIC_AREA_SERVED` defaults and validation in `lib/env.public.ts`, `lib/env.ts`, and `env.example`.
+
+### [TASK-052] Improve Contact Form Schema Validation ✓
+- **Priority:** P2
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** Contact form schema has basic phone validation and no email domain blocklist.
+
+#### Acceptance Criteria
+- [x] Add phone number format validation (regex or library)
+- [x] Consider adding email domain blocklist for common spam domains
+- [x] Update `lib/contact-form-schema.ts:4-13`
+
+#### Outcome
+- Added disposable domain blocking and stronger phone validation in `lib/contact-form-schema.ts`.
+- Added focused schema tests in `__tests__/lib/contact-form-schema.test.ts`.
+
 ### [TASK-032] Create SBOM and SLSA Provenance Workflows ✓
 - **Priority:** P0
 - **Status:** Completed

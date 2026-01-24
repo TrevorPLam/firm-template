@@ -70,27 +70,6 @@
 
 ---
 
-### [TASK-017] Implement Blog Category Filtering
-- **Priority:** P1
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** Blog listing page generates category filter links but doesn't actually filter posts. Feature is incomplete.
-
-#### Acceptance Criteria
-- [ ] Use `searchParams` in `app/blog/page.tsx` to read `category` query param
-- [ ] Filter posts using `getPostsByCategory()` from `lib/blog.ts`
-- [ ] Update URL state when category changes
-- [ ] Ensure "All Posts" displays all posts when no category selected
-- [ ] Update UI to visually indicate active category filter
-- [ ] Add unit test for category filtering
-
-#### Notes
-- File: `app/blog/page.tsx:59` (URL parameter exists but not used)
-- Impact: Medium - Feature completeness
-- Effort: Low
-
----
-
 ### [TASK-018] Add Analytics Tracking to Contact Form
 - **Priority:** P1
 - **Status:** Pending
@@ -790,24 +769,6 @@
 
 ---
 
-### [TASK-048] Fix ServiceDetailLayout Hardcoded Values
-- **Priority:** P2
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** ServiceDetailLayout has hardcoded firm name and country in structured data.
-
-#### Acceptance Criteria
-- [ ] Use `validatedPublicEnv.NEXT_PUBLIC_SITE_NAME` for firm name
-- [ ] Make areaServed configurable
-- [ ] Update `components/ServiceDetailLayout.tsx:132-154`
-
-#### Notes
-- File: `components/ServiceDetailLayout.tsx:132-154`
-- Impact: Low - SEO and branding
-- Per CODEBASE_ANALYSIS.md Issue 16
-
----
-
 ### [TASK-049] Improve SearchDialog with Fuzzy Search
 - **Priority:** P2
 - **Status:** Pending
@@ -861,24 +822,6 @@
 - File: `lib/scheduling.ts:19-31, 56-86`
 - Impact: Low - Analytics and data quality
 - Per CODEBASE_ANALYSIS.md Issue 8
-
----
-
-### [TASK-052] Improve Contact Form Schema Validation
-- **Priority:** P2
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** Contact form schema has basic phone validation and no email domain blocklist.
-
-#### Acceptance Criteria
-- [ ] Add phone number format validation (regex or library)
-- [ ] Consider adding email domain blocklist for common spam domains
-- [ ] Update `lib/contact-form-schema.ts:4-13`
-
-#### Notes
-- File: `lib/contact-form-schema.ts:4-13`
-- Impact: Low - Spam prevention
-- Per CODEBASE_ANALYSIS.md Issue 9
 
 ---
 

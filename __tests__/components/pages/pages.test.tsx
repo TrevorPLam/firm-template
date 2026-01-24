@@ -29,8 +29,9 @@ describe('page components', () => {
     expect(screen.getByRole('heading', { name: /simple, transparent pricing/i })).toBeInTheDocument()
   })
 
-  it('renders the blog page listing', () => {
-    render(<BlogPage />)
+  it('renders the blog page listing', async () => {
+    const element = await BlogPage()
+    render(element)
 
     expect(
       screen.getByRole('heading', { name: /industry insights & strategies/i })
