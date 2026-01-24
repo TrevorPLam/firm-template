@@ -27,7 +27,7 @@
  * - Dual limiting: per-email AND per-IP (both must pass)
  * - 3 requests/hour per identifier
  * - IP hashed with SHA-256 before storage (privacy)
- * - Falls back to in-memory Map when Upstash not configured
+ * - Production requires Upstash Redis; in-memory fallback is development-only
  *
  * **AI ITERATION HINTS**:
  * 1. Schema changes: Update contact-form-schema.ts first, then this file
@@ -41,13 +41,12 @@
  * - [ ] Errors return generic messages (no internal details)
  *
  * **KNOWN ISSUES / TECH DEBT**:
- * - [ ] In-memory rate limiter not suitable for multi-instance production
  * - [ ] No retry logic for HubSpot sync failures
  *
  * ═══════════════════════════════════════════════════════════════════════════════
  *
  * **Features:**
- * - Distributed rate limiting via Upstash Redis (production) or in-memory fallback (development)
+ * - Distributed rate limiting via Upstash Redis (required in production; dev-only fallback)
  * - Input sanitization to prevent XSS and injection attacks
  * - IP address hashing for privacy (SHA-256)
  * - Lead storage in Supabase and CRM sync to HubSpot
@@ -95,7 +94,7 @@ type RateLimiter = {
 let rateLimiter: RateLimiter | null | false = null
 
 /**
- * In-memory rate limit tracking (fallback when Upstash is not configured).
+ * In-memory rate limit tracking (development-only fallback).
  * Maps identifier to request count and reset timestamp.
  */
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
@@ -416,10 +415,10 @@ async function getClientIp(): Promise<string> {
  * - Sliding window algorithm (3 requests per hour)
  * - Analytics enabled for monitoring
  * 
- * **In-Memory (Development/Fallback):**
+ * **In-Memory (Development Only):**
  * - Uses Map for single-instance rate limiting
  * - Not suitable for production (does not sync across instances)
- * - Used when UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN not set
+ * - Used only when UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN not set
  * 
  * @returns RateLimiter instance or null for in-memory fallback
  */
@@ -428,8 +427,19 @@ async function getRateLimiter() {
     return rateLimiter
   }
 
+  const isProduction = validatedEnv.NODE_ENV === 'production'
+  const hasUpstashConfig =
+    Boolean(validatedEnv.UPSTASH_REDIS_REST_URL) &&
+    Boolean(validatedEnv.UPSTASH_REDIS_REST_TOKEN)
+
+  if (!hasUpstashConfig && isProduction) {
+    throw new Error(
+      'Upstash Redis is required in production. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.'
+    )
+  }
+
   // Check if Upstash credentials are configured
-  if (validatedEnv.UPSTASH_REDIS_REST_URL && validatedEnv.UPSTASH_REDIS_REST_TOKEN) {
+  if (hasUpstashConfig) {
     try {
       const { Ratelimit } = await import('@upstash/ratelimit')
       const { Redis } = await import('@upstash/redis')
@@ -449,11 +459,16 @@ async function getRateLimiter() {
       logInfo('Initialized distributed rate limiting with Upstash Redis')
       return rateLimiter
     } catch (error) {
+      if (isProduction) {
+        logError('Failed to initialize Upstash rate limiter in production', error)
+        throw new Error('Failed to initialize Upstash Redis rate limiter in production.')
+      }
+
       logError('Failed to initialize Upstash rate limiter, falling back to in-memory', error)
     }
-  } else {
+  } else if (!isProduction) {
     logWarn(
-      'Upstash Redis not configured, using in-memory rate limiting (not suitable for production)'
+      'Upstash Redis not configured, using in-memory rate limiting (development only)'
     )
   }
 
@@ -463,7 +478,7 @@ async function getRateLimiter() {
 }
 
 /**
- * Check rate limit using in-memory storage (fallback when Upstash unavailable).
+ * Check rate limit using in-memory storage (development-only fallback).
  * 
  * **Algorithm:**
  * - Fixed window: 1 hour sliding
@@ -510,8 +525,8 @@ function checkRateLimitInMemory(identifier: string): boolean {
  * - BOTH limits must pass for request to be allowed
  * 
  * **Implementation:**
- * - Uses Upstash Redis if configured (production)
- * - Falls back to in-memory if not configured (development)
+ * - Uses Upstash Redis (required in production)
+ * - Falls back to in-memory only in development/test
  * 
  * @param email - User's email address (not hashed for email-based limiting)
  * @param clientIp - Client IP address (hashed before storage)
