@@ -33,6 +33,26 @@
 
 ---
 
+### [TASK-015] Split lib/actions.ts into Modules ✓
+- **Priority:** P1
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** `lib/actions.ts` is 623 lines handling multiple concerns (rate limiting, Supabase, HubSpot, email). Violates Single Responsibility Principle and makes testing harder.
+
+#### Acceptance Criteria
+- [x] Create `lib/actions/` directory structure
+- [x] Extract rate limiting to `lib/actions/rate-limit.ts`
+- [x] Extract Supabase operations to `lib/actions/supabase.ts`
+- [x] Extract HubSpot sync to `lib/actions/hubspot.ts`
+- [x] Create main `lib/actions/contact-form.ts` that orchestrates flow
+- [x] Maintain type safety and test coverage
+- [x] Update all imports across codebase
+
+#### Outcome
+- Split contact form server action logic into focused modules in `lib/actions/` and kept a compatibility re-export in `lib/actions.ts`.
+- Updated contact form and test imports to target `lib/actions/contact-form.ts`.
+
 ### [TASK-017] Implement Blog Category Filtering ✓
 - **Priority:** P1
 - **Status:** Completed
@@ -193,10 +213,10 @@
 ## Statistics
 | Metric | Count |
 |--------|-------|
-| Total Completed | 5 |
-| P0 Completed | 5 |
-| P1 Completed | 0 |
-| P2 Completed | 0 |
+| Total Completed | 12 |
+| P0 Completed | 8 |
+| P1 Completed | 2 |
+| P2 Completed | 2 |
 | P3 Completed | 0 |
 
 *Update statistics when archiving tasks.*

@@ -2,11 +2,13 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import ContactForm from '@/components/ContactForm'
-import { submitContactForm } from '@/lib/actions'
+import { submitContactForm } from '@/lib/actions/contact-form'
 
 // Mock the submitContactForm action while keeping the real schema
-vi.mock('@/lib/actions', async () => {
-  const actual = await vi.importActual<typeof import('@/lib/actions')>('@/lib/actions')
+vi.mock('@/lib/actions/contact-form', async () => {
+  const actual = await vi.importActual<typeof import('@/lib/actions/contact-form')>(
+    '@/lib/actions/contact-form'
+  )
   return {
     ...actual,
     submitContactForm: vi.fn(),

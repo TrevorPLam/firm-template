@@ -1,7 +1,7 @@
 /**
  * Security checklist verification for contact form actions.
  * 
- * This test file verifies the security checklist from lib/actions.ts:
+ * This test file verifies the security checklist from lib/actions/contact-form.ts:
  * 1. All user inputs pass through escapeHtml() before HTML context
  * 2. CRM payload uses sanitizeName() / sanitizeEmail()
  * 3. No raw IP addresses logged (use hashedIp)
@@ -76,7 +76,7 @@ describe('Contact Form Security Checklist', () => {
   describe('2. CRM payload sanitization', () => {
     it('test_crm_payload_uses_sanitized_functions', () => {
       // WHY: Verify CRM data uses proper sanitization
-      // This is a documentation test - the actual implementation is in lib/actions.ts
+      // This is a documentation test - the actual implementation is in lib/actions/contact-form.ts
       // Lines 176-179: name uses sanitizeName, email uses sanitizeEmail
       
       const nameSpy = vi.spyOn(sanitize, 'sanitizeName')

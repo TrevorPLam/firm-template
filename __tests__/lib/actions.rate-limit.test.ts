@@ -35,7 +35,7 @@ const buildPayload = (email: string) => ({
 })
 
 const getSubmitContactForm = async () => {
-  const { submitContactForm } = await import('@/lib/actions')
+  const { submitContactForm } = await import('@/lib/actions/contact-form')
   return submitContactForm
 }
 

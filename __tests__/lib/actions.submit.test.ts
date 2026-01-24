@@ -85,7 +85,7 @@ describe('contact form lead pipeline', () => {
   })
 
   it('test_stores_a_sanitized_lead_and_syncs_to_hubspot', async () => {
-    const { submitContactForm } = await import('@/lib/actions')
+    const { submitContactForm } = await import('@/lib/actions/contact-form')
     const response = await submitContactForm(buildPayload('jamie@example.com'))
 
     expect(response.success).toBe(true)
@@ -122,7 +122,7 @@ describe('contact form lead pipeline', () => {
       return buildResponse({ message: 'not found' }, false, 404)
     })
 
-    const { submitContactForm } = await import('@/lib/actions')
+    const { submitContactForm } = await import('@/lib/actions/contact-form')
     const response = await submitContactForm(buildPayload('error@example.com'))
 
     expect(response.success).toBe(true)
