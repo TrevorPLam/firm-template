@@ -57,7 +57,7 @@
  *
  * **KNOWN ISSUES**:
  * - [ ] No skip link target (#main-content) on some pages
- * - [ ] Structured data URLs hardcoded (should use env)
+ * - [x] Structured data URLs moved to lib/config.ts
  *
  * ═══════════════════════════════════════════════════════════════════════════════
  *
@@ -118,6 +118,7 @@ import ExitIntentPopup from '@/components/ExitIntentPopup'
 import { getPublicBaseUrl } from '@/lib/env.public'
 import { logError } from '@/lib/logger'
 import { getSearchIndex, type SearchItem } from '@/lib/search'
+import { siteConfig, getSocialUrls } from '@/lib/config'
 
 import { validatedPublicEnv } from '@/lib/env.public'
 
@@ -240,13 +241,10 @@ export default function RootLayout({
               contactPoint: {
                 '@type': 'ContactPoint',
                 contactType: 'Customer Service',
-                email: 'contact@example.com',
+                email: siteConfig.contact.email,
+                telephone: siteConfig.contact.phone,
               },
-              sameAs: [
-                'https://www.facebook.com/yourfirm',
-                'https://www.twitter.com/yourfirm',
-                'https://www.linkedin.com/company/yourfirm',
-              ],
+              sameAs: getSocialUrls(),
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'US',

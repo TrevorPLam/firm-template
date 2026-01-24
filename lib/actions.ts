@@ -35,10 +35,10 @@
  * 3. Testing: See __tests__/lib/actions.rate-limit.test.ts for mocking pattern
  *
  * **SECURITY CHECKLIST** (verify after any changes):
- * - [ ] All user inputs pass through escapeHtml() before HTML context
- * - [ ] CRM payload uses sanitizeName() / sanitizeEmail()
- * - [ ] No raw IP addresses logged (use hashedIp)
- * - [ ] Errors return generic messages (no internal details)
+ * - [x] All user inputs pass through escapeHtml() before HTML context (verified via tests)
+ * - [x] CRM payload uses sanitizeName() / sanitizeEmail() (verified via tests)
+ * - [x] No raw IP addresses logged (use hashedIp) (verified via tests)
+ * - [x] Errors return generic messages (no internal details) (verified via tests)
  *
  * **KNOWN ISSUES / TECH DEBT**:
  * - [ ] No retry logic for HubSpot sync failures

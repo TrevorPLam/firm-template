@@ -42,9 +42,9 @@
  * - Errors captured with full context in Sentry dashboard
  *
  * **POTENTIAL IMPROVEMENTS**:
- * - [ ] Add structured logging format (JSON) for log aggregation
- * - [ ] Add request ID correlation
- * - [ ] Add performance timing helpers
+ * - [x] Add structured logging format (JSON) for log aggregation
+ * - [x] Add request ID correlation
+ * - [x] Add performance timing helpers
  *
  * ═══════════════════════════════════════════════════════════════════════════════
  *
@@ -66,6 +66,110 @@ type LogLevel = 'info' | 'warn' | 'error'
 
 interface LogContext {
   [key: string]: unknown
+}
+
+/**
+ * Structured log entry for JSON format logging.
+ */
+interface StructuredLogEntry {
+  timestamp: string
+  level: LogLevel
+  message: string
+  requestId?: string
+  context?: LogContext
+  error?: {
+    name: string
+    message: string
+    stack?: string
+  }
+}
+
+/**
+ * Performance timing helper for measuring operation duration.
+ */
+export class PerformanceTimer {
+  private startTime: number
+  private label: string
+
+  constructor(label: string) {
+    this.label = label
+    this.startTime = Date.now()
+  }
+
+  /**
+   * End the timer and log the duration.
+   * 
+   * @param context - Additional context to log
+   * @returns Duration in milliseconds
+   */
+  end(context?: LogContext): number {
+    const duration = Date.now() - this.startTime
+    logInfo(`${this.label} completed`, {
+      duration_ms: duration,
+      ...context,
+    })
+    return duration
+  }
+
+  /**
+   * Get current elapsed time without ending the timer.
+   * 
+   * @returns Elapsed time in milliseconds
+   */
+  elapsed(): number {
+    return Date.now() - this.startTime
+  }
+}
+
+/**
+ * Create a performance timer for measuring operation duration.
+ * 
+ * @param label - Label for the operation
+ * @returns PerformanceTimer instance
+ * 
+ * @example
+ * const timer = startTimer('Database query')
+ * // ... do work ...
+ * timer.end({ query: 'SELECT * FROM users' })
+ */
+export function startTimer(label: string): PerformanceTimer {
+  return new PerformanceTimer(label)
+}
+
+/**
+ * Global request ID for correlating logs within a request.
+ * Set via setRequestId() at the start of a request.
+ * 
+ * **Note**: In serverless/concurrent environments, consider using AsyncLocalStorage
+ * for proper request context isolation. This simple global approach works for
+ * single-threaded Node.js but may have race conditions in edge runtimes.
+ */
+let currentRequestId: string | undefined
+
+/**
+ * Set the request ID for log correlation.
+ * Should be called at the start of each request.
+ * 
+ * @param requestId - Unique identifier for the request
+ */
+export function setRequestId(requestId: string): void {
+  currentRequestId = requestId
+}
+
+/**
+ * Get the current request ID.
+ * 
+ * @returns Current request ID or undefined
+ */
+export function getRequestId(): string | undefined {
+  return currentRequestId
+}
+
+/**
+ * Clear the request ID (call at end of request).
+ */
+export function clearRequestId(): void {
+  currentRequestId = undefined
 }
 
 const SENSITIVE_KEYS = new Set([
@@ -123,6 +227,84 @@ export function sanitizeLogContext(context?: LogContext): LogContext | undefined
 }
 
 /**
+ * Format log entry as JSON string for structured logging.
+ * 
+ * @param level - Log level
+ * @param message - Log message
+ * @param error - Optional error object
+ * @param context - Optional context data
+ * @returns JSON string
+ */
+function formatStructuredLog(
+  level: LogLevel,
+  message: string,
+  error?: Error | unknown,
+  context?: LogContext
+): string {
+  const entry: StructuredLogEntry = {
+    timestamp: new Date().toISOString(),
+    level,
+    message,
+    requestId: currentRequestId,
+    context: sanitizeLogContext(context),
+  }
+
+  if (error instanceof Error) {
+    entry.error = {
+      name: error.name,
+      message: error.message,
+      stack: error.stack,
+    }
+  } else if (error) {
+    entry.error = {
+      name: 'Error',
+      message: String(error),
+    }
+  }
+
+  return JSON.stringify(entry)
+}
+
+/**
+ * Check if structured logging is enabled.
+ * Enabled when STRUCTURED_LOGGING env var is set to 'true'.
+ */
+function isStructuredLoggingEnabled(): boolean {
+  return process.env.STRUCTURED_LOGGING === 'true'
+}
+
+/**
+ * Log with structured format (JSON).
+ * 
+ * @param level - Log level
+ * @param message - Log message
+ * @param error - Optional error object
+ * @param context - Optional context data
+ */
+function logStructured(
+  level: LogLevel,
+  message: string,
+  error?: Error | unknown,
+  context?: LogContext
+): void {
+  const structuredLog = formatStructuredLog(level, message, error, context)
+  
+  // Use appropriate console method to preserve log level semantics
+  // while maintaining JSON structure for log aggregation
+  switch (level) {
+    case 'info':
+      console.info(structuredLog)
+      break
+    case 'warn':
+      console.warn(structuredLog)
+      break
+    case 'error':
+      console.error(structuredLog)
+      break
+  }
+}
+
+/**
  * Check if Sentry is properly configured and available
  */
 function isSentryAvailable(): boolean {
@@ -132,9 +314,16 @@ function isSentryAvailable(): boolean {
 /**
  * Log an informational message
  * In production, sends to Sentry
+ * If STRUCTURED_LOGGING=true, outputs JSON format
  */
 export function logInfo(message: string, context?: LogContext) {
   const sanitizedContext = sanitizeLogContext(context)
+  
+  if (isStructuredLoggingEnabled()) {
+    logStructured('info', message, undefined, sanitizedContext)
+    return
+  }
+  
   if (isDevelopment() || isTest()) {
     console.info('[INFO]', message, sanitizedContext || '')
   } else if (isSentryAvailable()) {
@@ -145,9 +334,16 @@ export function logInfo(message: string, context?: LogContext) {
 /**
  * Log a warning
  * In production, sends to Sentry
+ * If STRUCTURED_LOGGING=true, outputs JSON format
  */
 export function logWarn(message: string, context?: LogContext) {
   const sanitizedContext = sanitizeLogContext(context)
+  
+  if (isStructuredLoggingEnabled()) {
+    logStructured('warn', message, undefined, sanitizedContext)
+    return
+  }
+  
   if (isDevelopment() || isTest()) {
     console.warn('[WARN]', message, sanitizedContext || '')
   } else if (isSentryAvailable()) {
@@ -158,10 +354,17 @@ export function logWarn(message: string, context?: LogContext) {
 /**
  * Log an error
  * In production, sends to Sentry with full error details
+ * If STRUCTURED_LOGGING=true, outputs JSON format
  */
 export function logError(message: string, error?: Error | unknown, context?: LogContext) {
   const sanitizedContext = sanitizeLogContext(context)
   const sanitizedError = error instanceof Error ? error : sanitizeValue(error)
+  
+  if (isStructuredLoggingEnabled()) {
+    logStructured('error', message, error, sanitizedContext)
+    return
+  }
+  
   if (isDevelopment() || isTest()) {
     console.error('[ERROR]', message, sanitizedError, sanitizedContext || '')
   } else if (isSentryAvailable()) {
