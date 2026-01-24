@@ -66,19 +66,19 @@
 
 ---
 
-### [TASK-013] Make Rate Limiting Production-Ready
+### [TASK-014] Add Frontmatter Validation for Blog Posts
 - **Priority:** P0
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** In-memory rate limiter fallback is not suitable for multi-instance production deployments. Each instance would have its own map, allowing rate limit bypass.
+- **Context:** Blog posts can fail at build time with cryptic errors if frontmatter is missing or invalid. No validation currently exists.
 
 #### Acceptance Criteria
-- [ ] Make Upstash Redis required in production (`NODE_ENV === 'production'`)
-- [ ] Fail-fast with clear error message if Upstash not configured in production
-- [ ] Remove in-memory fallback or clearly document it's dev-only
-- [ ] Update `lib/actions.ts:481-502` to enforce production requirement
+- [ ] Create Zod schema matching `BlogPost` interface
+- [ ] Validate frontmatter after parsing with `matter()` in `lib/blog.ts`
+- [ ] Provide clear error messages with file path and missing field
+- [ ] Fail build early with helpful error messages
 
 #### Notes
-- File: `lib/actions.ts:481-502`
-- Impact: Multi-instance deployments will have inconsistent rate limiting
-- Related: No retry logic for HubSpot sync failures (separate task)
+- File: `lib/blog.ts:160-172`
+- Impact: Prevents build failures from invalid frontmatter
+- Current: No validation - could be undefined/invalid format

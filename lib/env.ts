@@ -35,8 +35,8 @@
  * | NEXT_PUBLIC_SITE_URL | url | defaults | Base URL for meta tags |
  * | NEXT_PUBLIC_SITE_NAME | string | defaults | Site name for branding |
  * | NEXT_PUBLIC_ANALYTICS_ID | string | optional | GA4/Plausible ID |
- * | UPSTASH_REDIS_REST_URL | string | optional | Rate limiting |
- * | UPSTASH_REDIS_REST_TOKEN | string | optional | Rate limiting |
+ * | UPSTASH_REDIS_REST_URL | string | optional* | Rate limiting (required in production) |
+ * | UPSTASH_REDIS_REST_TOKEN | string | optional* | Rate limiting (required in production) |
  * | SUPABASE_URL | url | required | Supabase project URL |
  * | SUPABASE_SERVICE_ROLE_KEY | string | required | Server-only service role key |
  * | HUBSPOT_PRIVATE_APP_TOKEN | string | required | HubSpot private app token |
@@ -142,8 +142,8 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 
   /**
-   * Upstash Redis REST URL for distributed rate limiting (optional).
-   * If not set, falls back to in-memory rate limiting (single instance only).
+   * Upstash Redis REST URL for distributed rate limiting (optional in dev/test).
+   * Production requires this to avoid in-memory rate limiting.
    * 
    * @optional
    * @see {@link https://upstash.com/docs/redis/overall/getstarted Upstash Redis}
@@ -151,8 +151,8 @@ const envSchema = z.object({
   UPSTASH_REDIS_REST_URL: z.string().optional(),
 
   /**
-   * Upstash Redis REST token for distributed rate limiting (optional).
-   * Must be set together with UPSTASH_REDIS_REST_URL.
+   * Upstash Redis REST token for distributed rate limiting (optional in dev/test).
+   * Must be set together with UPSTASH_REDIS_REST_URL (required in production).
    * 
    * @optional
    */

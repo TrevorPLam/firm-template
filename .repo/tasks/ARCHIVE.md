@@ -33,11 +33,28 @@
 
 ---
 
+### [TASK-013] Make Rate Limiting Production-Ready ✓
+- **Priority:** P0
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** In-memory rate limiter fallback is not suitable for multi-instance production deployments. Each instance would have its own map, allowing rate limit bypass.
+
+#### Acceptance Criteria
+- [x] Make Upstash Redis required in production (`NODE_ENV === 'production'`)
+- [x] Fail-fast with clear error message if Upstash not configured in production
+- [x] Remove in-memory fallback or clearly document it's dev-only
+- [x] Update `lib/actions.ts:481-502` to enforce production requirement
+
+#### Outcome
+- Enforced Upstash Redis requirement in production with fail-fast behavior and dev-only fallback documentation in `lib/actions.ts`.
+- Documented production requirement for Upstash env vars in `lib/env.ts`.
+
 ## Statistics
 | Metric | Count |
 |--------|-------|
-| Total Completed | 2 |
-| P0 Completed | 2 |
+| Total Completed | 3 |
+| P0 Completed | 3 |
 | P1 Completed | 0 |
 | P2 Completed | 0 |
 | P3 Completed | 0 |
