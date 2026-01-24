@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Briefcase } from 'lucide-react'
 import ServiceDetailLayout from '@/components/ServiceDetailLayout'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 /**
  * TEMPLATE CUSTOMIZATION:
@@ -9,7 +10,7 @@ import ServiceDetailLayout from '@/components/ServiceDetailLayout'
  */
 
 export const metadata: Metadata = {
-  title: 'Core Service 8 | Your Firm Name',
+  title: `Core Service 8 | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   description: 'Professional service solutions tailored to your business needs. Expert guidance and strategic execution to help your organization succeed.',
 }
 

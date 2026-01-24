@@ -8,6 +8,7 @@ import Button from '@/components/ui/Button'
 import Accordion from '@/components/ui/Accordion'
 import AppointmentScheduler from '@/components/AppointmentScheduler'
 import { getSchedulingConfig } from '@/lib/scheduling'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 /**
  * TEMPLATE CUSTOMIZATION:
@@ -22,7 +23,7 @@ import { getSchedulingConfig } from '@/lib/scheduling'
  */
 
 export const metadata: Metadata = {
-  title: 'Pricing | Your Firm Name',
+  title: `Pricing | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   description: 'Transparent pricing for professional services. Choose from Basic, Professional, or Enterprise tiers. No hidden fees.',
 }
 

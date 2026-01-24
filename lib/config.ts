@@ -28,6 +28,7 @@
  * - NEXT_PUBLIC_CONTACT_PHONE - Contact phone number (E.164 format)
  * - NEXT_PUBLIC_SOCIAL_FACEBOOK - Facebook profile URL
  * - NEXT_PUBLIC_SOCIAL_TWITTER - Twitter/X profile URL
+ * - NEXT_PUBLIC_SOCIAL_TWITTER_HANDLE - Twitter/X handle (e.g., @yourfirm)
  * - NEXT_PUBLIC_SOCIAL_LINKEDIN - LinkedIn profile URL
  * - NEXT_PUBLIC_OFFICE_HOURS - Office hours string
  *
@@ -54,6 +55,7 @@ export interface SiteConfig {
   social: {
     facebook?: string
     twitter?: string
+    twitterHandle?: string
     linkedin?: string
   }
 }
@@ -85,6 +87,7 @@ export const siteConfig: SiteConfig = {
   social: {
     facebook: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK || 'https://www.facebook.com/yourfirm',
     twitter: process.env.NEXT_PUBLIC_SOCIAL_TWITTER || 'https://www.twitter.com/yourfirm',
+    twitterHandle: process.env.NEXT_PUBLIC_SOCIAL_TWITTER_HANDLE || '@yourfirmname',
     linkedin: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN || 'https://www.linkedin.com/company/yourfirm',
   },
 }

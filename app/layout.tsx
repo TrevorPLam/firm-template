@@ -196,7 +196,7 @@ export const metadata: Metadata = {
     description:
       'Expert professional services for businesses that want to succeed. Strategic guidance, proven execution, and measurable results.',
     images: [ogImageUrl],
-    creator: '@yourfirmname',
+    creator: siteConfig.social.twitterHandle,
   },
 }
 

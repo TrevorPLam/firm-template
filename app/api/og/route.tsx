@@ -14,6 +14,10 @@
  * **Usage:**
  * - /api/og?title=Custom%20Title&description=Custom%20Description
  * - Used by app/layout.tsx for default OG image
+ * 
+ * **Branding:**
+ * - Firm name can be customized via NEXT_PUBLIC_SITE_NAME environment variable
+ * - Falls back to "Your Firm Name" if not set
  */
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
@@ -39,7 +43,10 @@ export async function GET(request: NextRequest) {
     return new Response('Invalid query parameters', { status: 400 })
   }
 
-  const title = escapeHtml(parseResult.data.title ?? 'Your Firm Name')
+  // Get firm name from environment or use default
+  const firmName = process.env.NEXT_PUBLIC_SITE_NAME || 'Your Firm Name'
+  
+  const title = escapeHtml(parseResult.data.title ?? firmName)
   const description = escapeHtml(
     parseResult.data.description ??
       'Professional services that drive results through strategic guidance and proven execution.'
@@ -76,7 +83,7 @@ export async function GET(request: NextRequest) {
             🚀
           </div>
           <div>
-            <div style={{ fontSize: 28, fontWeight: 700 }}>Your Firm Name</div>
+            <div style={{ fontSize: 28, fontWeight: 700 }}>{firmName}</div>
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
               Professional Services Excellence
             </div>

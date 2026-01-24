@@ -8,9 +8,10 @@ import ErrorBoundary from '@/components/ErrorBoundary'
 import AppointmentScheduler from '@/components/AppointmentScheduler'
 import { getSchedulingConfig } from '@/lib/scheduling'
 import { siteConfig } from '@/lib/config'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Your Firm Name',
+  title: `Contact Us | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   description: 'Get in touch to discuss your goals. Schedule a free consultation or send us a message.',
 }
 

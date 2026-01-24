@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Your Firm Name',
+  title: `Terms of Service | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   description:
-    'Review the terms of service template for Your Firm Name. Replace placeholders with your firm-specific details.',
+    `Review the terms of service template for ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}. Replace placeholders with your firm-specific details.`,
 }
 
 /**
