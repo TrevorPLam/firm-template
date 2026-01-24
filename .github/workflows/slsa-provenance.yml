@@ -40,7 +40,7 @@ jobs:
         run: echo "hashes=$(sha256sum build-artifact.tgz | base64 -w0)" >> "$GITHUB_OUTPUT"
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: build-artifact
           path: build-artifact.tgz
