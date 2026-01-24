@@ -15,12 +15,12 @@
  * **FORM FLOW**:
  * 1. User fills form (validated on blur via react-hook-form)
  * 2. Submit triggers onSubmit handler
- * 3. Calls submitContactForm server action (lib/actions.ts)
+ * 3. Calls submitContactForm server action (lib/actions/contact-form.ts)
  * 4. Displays success/error message based on response
  *
  * **HONEYPOT FIELD**: Hidden 'website' field catches bots.
  * - Rendered as sr-only, tabIndex=-1, autoComplete=off
- * - Server rejects if filled (lib/actions.ts)
+ * - Server rejects if filled (lib/actions/contact-form.ts)
  *
  * **FORM FIELDS** (current schema from contact-form-schema.ts):
  * | Field | Required | Notes |
@@ -39,7 +39,7 @@
  * - Test with __tests__/components/ContactForm.test.tsx
  *
  * **DEPENDENCIES**:
- * - lib/actions.ts — submitContactForm server action
+ * - lib/actions/contact-form.ts — submitContactForm server action
  * - lib/contact-form-schema.ts — Zod validation schema
  * - components/ui/Input, Select, Textarea, Button — form primitives
  * - lib/sentry-client.ts — Sentry context on successful submit
@@ -77,7 +77,7 @@
  * - Error delay: 500ms debounce
  *
  * **Security:**
- * - All inputs sanitized server-side in lib/actions.ts
+ * - All inputs sanitized server-side in lib/actions/contact-form.ts
  * - Rate limited per email and IP address
  * - No sensitive data logged
  *
@@ -89,7 +89,7 @@
  * <ContactForm />
  * ```
  *
- * @see lib/actions.ts for server-side handling
+ * @see lib/actions/contact-form.ts for server-side handling
  * @see lib/contact-form-schema.ts for validation schema
  */
 
@@ -98,7 +98,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { submitContactForm } from '@/lib/actions'
+import { submitContactForm } from '@/lib/actions/contact-form'
 import { contactFormSchema, type ContactFormData } from '@/lib/contact-form-schema'
 import Input from '@/components/ui/Input'
 import Select from '@/components/ui/Select'

@@ -66,22 +66,21 @@
 
 ---
 
-### [TASK-015] Split lib/actions.ts into Modules
+### [TASK-016] Move Hardcoded Values to Environment/Config
 - **Priority:** P1
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** `lib/actions.ts` is 623 lines handling multiple concerns (rate limiting, Supabase, HubSpot, email). Violates Single Responsibility Principle and makes testing harder.
+- **Context:** Multiple files contain hardcoded values (contact info, social links, firm names) that should be configurable for SEO and branding consistency.
 
 #### Acceptance Criteria
-- [ ] Create `lib/actions/` directory structure
-- [ ] Extract rate limiting to `lib/actions/rate-limit.ts`
-- [ ] Extract Supabase operations to `lib/actions/supabase.ts`
-- [ ] Extract HubSpot sync to `lib/actions/hubspot.ts`
-- [ ] Create main `lib/actions/contact-form.ts` that orchestrates flow
-- [ ] Maintain type safety and test coverage
-- [ ] Update all imports across codebase
+- [ ] Create `lib/config.ts` for site configuration
+- [ ] Move structured data URLs from `app/layout.tsx:243-248` to config
+- [ ] Move contact info from `app/contact/page.tsx` to env vars
+- [ ] Move hardcoded firm names from blog/service pages to config
+- [ ] Update all structured data to use configurable values
+- [ ] Add environment variables: `NEXT_PUBLIC_CONTACT_EMAIL`, `NEXT_PUBLIC_CONTACT_PHONE`, `NEXT_PUBLIC_SOCIAL_*`
 
 #### Notes
-- File: `lib/actions.ts` (623 lines)
-- Impact: High - Maintainability and testability
-- Effort: Medium - Requires careful refactoring
+- Files: `app/layout.tsx`, `app/contact/page.tsx`, `app/blog/[slug]/page.tsx`, `components/ServiceDetailLayout.tsx`
+- Impact: Medium - SEO and branding issues
+- Effort: Low

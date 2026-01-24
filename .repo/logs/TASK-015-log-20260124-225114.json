@@ -1,0 +1,30 @@
+{
+  "intent": "Split lib actions into modules",
+  "task_id": "TASK-015",
+  "timestamp": "2026-01-24T22:51:48Z",
+  "plan": [
+    "Create lib/actions modules for rate limiting, Supabase, HubSpot, and contact-form orchestration (files: lib/actions/rate-limit.ts, lib/actions/supabase.ts, lib/actions/hubspot.ts, lib/actions/contact-form.ts).",
+    "Update imports and references to use the new contact-form action module (files: components/ContactForm.tsx, __tests__/components/ContactForm.test.tsx, __tests__/lib/actions.rate-limit.test.ts, __tests__/lib/actions.upstash.test.ts, __tests__/lib/actions.submit.test.ts, __tests__/lib/actions.security.test.ts).",
+    "Keep a lightweight re-export in lib/actions.ts for compatibility (file: lib/actions.ts)."
+  ],
+  "actions": [
+    "Moved rate limiting logic into lib/actions/rate-limit.ts and exported hash helpers (file: lib/actions/rate-limit.ts).",
+    "Extracted Supabase operations into lib/actions/supabase.ts (file: lib/actions/supabase.ts).",
+    "Extracted HubSpot sync logic into lib/actions/hubspot.ts (file: lib/actions/hubspot.ts).",
+    "Created contact-form orchestration in lib/actions/contact-form.ts and wired sanitized payload + notifications (file: lib/actions/contact-form.ts).",
+    "Updated component/test imports and documentation references to the new module (files: components/ContactForm.tsx, __tests__/components/ContactForm.test.tsx, __tests__/lib/actions.rate-limit.test.ts, __tests__/lib/actions.upstash.test.ts, __tests__/lib/actions.submit.test.ts, __tests__/lib/actions.security.test.ts).",
+    "Re-exported submitContactForm from lib/actions.ts for backwards compatibility (file: lib/actions.ts)."
+  ],
+  "evidence": [
+    "npm run lint (fails: missing @eslint/js dependency in environment)."
+  ],
+  "decisions": [
+    "Kept lib/actions.ts as a minimal re-export to avoid breaking any external imports while updating internal call sites (file: lib/actions.ts)."
+  ],
+  "risks": [
+    "Refactor touches multiple imports; mitigated by updating all known imports and keeping a compatibility re-export."
+  ],
+  "follow_ups": [],
+  "reasoning_summary": "Split the large action file into focused modules to improve maintainability while keeping behavior the same. Updated all internal imports to the new contact-form module and preserved a small re-export for compatibility.",
+  "notes": "No secrets. No private data. No raw chain-of-thought."
+}

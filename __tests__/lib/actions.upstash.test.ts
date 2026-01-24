@@ -102,7 +102,7 @@ describe('contact form Upstash rate limiting', () => {
   it('uses Upstash limiter when credentials are present', async () => {
     limitMock.mockResolvedValue({ success: true })
 
-    const { submitContactForm } = await import('@/lib/actions')
+    const { submitContactForm } = await import('@/lib/actions/contact-form')
     const response = await submitContactForm(buildPayload('upstash@example.com'))
 
     expect(response.success).toBe(true)
@@ -115,7 +115,7 @@ describe('contact form Upstash rate limiting', () => {
   it('blocks submissions when Upstash reports a limit breach', async () => {
     limitMock.mockResolvedValueOnce({ success: false })
 
-    const { submitContactForm } = await import('@/lib/actions')
+    const { submitContactForm } = await import('@/lib/actions/contact-form')
     const response = await submitContactForm(buildPayload('blocked@example.com'))
 
     expect(response.success).toBe(false)
