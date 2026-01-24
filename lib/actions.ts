@@ -461,7 +461,7 @@ async function getRateLimiter() {
     } catch (error) {
       if (isProduction) {
         logError('Failed to initialize Upstash rate limiter in production', error)
-        throw new Error('Failed to initialize Upstash Redis rate limiter in production.')
+        throw new Error('Failed to initialize Upstash Redis rate limiter in production.', { cause: error })
       }
 
       logError('Failed to initialize Upstash rate limiter, falling back to in-memory', error)
