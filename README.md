@@ -330,13 +330,15 @@ npm list --depth=0
 
 ```bash
 # Copy example environment file
-cp env.example .env.local
+cp .env.example .env.local
 
 # Edit with your configuration
 # Required variables:
-# - SENTRY_ORG
-# - SENTRY_PROJECT
-# - SENTRY_AUTH_TOKEN
+# - SUPABASE_URL
+# - SUPABASE_SERVICE_ROLE_KEY
+# - HUBSPOT_PRIVATE_APP_TOKEN
+#
+# Recommended in production:
 # - UPSTASH_REDIS_REST_URL
 # - UPSTASH_REDIS_REST_TOKEN
 ```

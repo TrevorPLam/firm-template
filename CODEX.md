@@ -9,6 +9,8 @@ Per policy, detailed chain-of-thought is not recorded here. This file keeps conc
 ## Activity Log
 - 2026-01-23: Initialized CODEX log before task execution.
 - 2026-01-24: Started TASK-013 execution (rate limit production requirement).
+- 2026-01-24: Marked TASK-014 as blocked per request and promoted TASK-002 for environment example setup.
+- 2026-01-24: Added `.env.example`, onboarding documentation, and updated README environment setup reference.
 
 ## Plan
 - Review TASK-013 acceptance criteria and rate limiting implementation details.
@@ -23,7 +25,11 @@ Per policy, detailed chain-of-thought is not recorded here. This file keeps conc
 - Documented Upstash production requirement in server env metadata.
 - Updated task tracking to archive TASK-013 and promote TASK-014.
 - Generated trace and agent logs for TASK-013.
+- Created `.env.example` based on current environment validation and added onboarding instructions.
+- Updated README quick start to reference `.env.example`.
 
 ## Verification
 - `npm run lint` (fails due to pre-existing lint errors in automation scripts and lib/sanitize.ts).
 - `bash ./scripts/validate-trace-log.sh .repo/traces/TASK-013-trace-20260124-000430.json`.
+- `npm run lint` (fails due to existing ESLint errors in .repo/automation scripts and lib/sanitize.ts).
+- `bash ./scripts/validate-trace-log.sh .repo/traces/TASK-002-trace-20260124-002014.json`.
