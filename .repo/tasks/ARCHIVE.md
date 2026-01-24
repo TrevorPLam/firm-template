@@ -50,7 +50,7 @@
 
 #### Outcome
 - Added SAST workflows in `.github/workflows/codeql.yml`, `.github/workflows/trivy.yml`, `.github/workflows/gitleaks.yml`, and `.github/workflows/ossf-scorecard.yml` with PR/main triggers and SARIF uploads.
-- Configured failure thresholds for Trivy (CRITICAL/HIGH) and Gitleaks (exit code on leak).
+- Configured failure thresholds for Trivy (CRITICAL/HIGH), Gitleaks (exit code on leak), and OSSF Scorecard (`fail_on_error` enabled).
 
 ### [TASK-014] Add Frontmatter Validation for Blog Posts ✓
 - **Priority:** P0
