@@ -1,5 +1,14 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { logInfo, logWarn, logError, sanitizeLogContext } from '@/lib/logger'
+import { 
+  logInfo, 
+  logWarn, 
+  logError, 
+  sanitizeLogContext,
+  startTimer,
+  setRequestId,
+  getRequestId,
+  clearRequestId,
+} from '@/lib/logger'
 
 // Mock Sentry
 vi.mock('@sentry/nextjs', () => ({
@@ -11,18 +20,25 @@ describe('Logger', () => {
   let consoleInfoSpy: ReturnType<typeof vi.spyOn>
   let consoleWarnSpy: ReturnType<typeof vi.spyOn>
   let consoleErrorSpy: ReturnType<typeof vi.spyOn>
+  let consoleLogSpy: ReturnType<typeof vi.spyOn>
   let originalNodeEnv: string | undefined
   let originalSentryDSN: string | undefined
+  let originalStructuredLogging: string | undefined
 
   beforeEach(() => {
     // Save original env vars
     originalNodeEnv = process.env.NODE_ENV
     originalSentryDSN = process.env.NEXT_PUBLIC_SENTRY_DSN
+    originalStructuredLogging = process.env.STRUCTURED_LOGGING
+
+    // Clear request ID
+    clearRequestId()
 
     // Create console spies
     consoleInfoSpy = vi.spyOn(console, 'info').mockImplementation(() => {})
     consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
     consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {})
   })
 
   afterEach(() => {
@@ -33,11 +49,17 @@ describe('Logger', () => {
     } else {
       process.env.NEXT_PUBLIC_SENTRY_DSN = originalSentryDSN
     }
+    if (originalStructuredLogging === undefined) {
+      delete process.env.STRUCTURED_LOGGING
+    } else {
+      process.env.STRUCTURED_LOGGING = originalStructuredLogging
+    }
 
     // Restore console methods
     consoleInfoSpy.mockRestore()
     consoleWarnSpy.mockRestore()
     consoleErrorSpy.mockRestore()
+    consoleLogSpy.mockRestore()
   })
 
   describe('logInfo', () => {
@@ -225,6 +247,96 @@ describe('Logger', () => {
           value: undefined,
         },
       })
+    })
+  })
+
+  describe('Structured logging', () => {
+    it('should output JSON format when STRUCTURED_LOGGING=true', () => {
+      process.env.NODE_ENV = 'development'
+      process.env.STRUCTURED_LOGGING = 'true'
+
+      logInfo('Test message', { key: 'value' })
+
+      expect(consoleLogSpy).toHaveBeenCalled()
+      const logCall = consoleLogSpy.mock.calls[0][0]
+      const parsed = JSON.parse(logCall as string)
+      
+      expect(parsed).toMatchObject({
+        level: 'info',
+        message: 'Test message',
+        context: { key: 'value' },
+      })
+      expect(parsed.timestamp).toBeDefined()
+    })
+
+    it('should include request ID in structured logs', () => {
+      process.env.NODE_ENV = 'development'
+      process.env.STRUCTURED_LOGGING = 'true'
+      setRequestId('req-123')
+
+      logInfo('Test message')
+
+      const logCall = consoleLogSpy.mock.calls[0][0]
+      const parsed = JSON.parse(logCall as string)
+      
+      expect(parsed.requestId).toBe('req-123')
+    })
+
+    it('should include error details in structured logs', () => {
+      process.env.NODE_ENV = 'development'
+      process.env.STRUCTURED_LOGGING = 'true'
+      const error = new Error('Test error')
+
+      logError('Error occurred', error)
+
+      const logCall = consoleLogSpy.mock.calls[0][0]
+      const parsed = JSON.parse(logCall as string)
+      
+      expect(parsed.error).toMatchObject({
+        name: 'Error',
+        message: 'Test error',
+      })
+      expect(parsed.error.stack).toBeDefined()
+    })
+  })
+
+  describe('Request ID correlation', () => {
+    it('should set and get request ID', () => {
+      setRequestId('req-456')
+      expect(getRequestId()).toBe('req-456')
+    })
+
+    it('should clear request ID', () => {
+      setRequestId('req-789')
+      clearRequestId()
+      expect(getRequestId()).toBeUndefined()
+    })
+  })
+
+  describe('Performance timing', () => {
+    it('should measure elapsed time', async () => {
+      const timer = startTimer('Test operation')
+      await new Promise(resolve => setTimeout(resolve, 10))
+      const elapsed = timer.elapsed()
+      
+      expect(elapsed).toBeGreaterThanOrEqual(10)
+    })
+
+    it('should log duration when timer ends', async () => {
+      process.env.NODE_ENV = 'development'
+      const timer = startTimer('Test operation')
+      await new Promise(resolve => setTimeout(resolve, 10))
+      const duration = timer.end({ userId: '123' })
+      
+      expect(duration).toBeGreaterThanOrEqual(10)
+      expect(consoleInfoSpy).toHaveBeenCalledWith(
+        '[INFO]',
+        'Test operation completed',
+        expect.objectContaining({
+          duration_ms: expect.any(Number),
+          userId: '123',
+        })
+      )
     })
   })
 })
