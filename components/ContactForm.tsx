@@ -50,7 +50,6 @@
  * - delayError: 500 — debounces error display for smoother UX
  *
  * **POTENTIAL ISSUES**:
- * - [ ] No analytics tracking on form submission (T-064)
  * - [ ] Success message disappears on page navigation
  *
  * ═══════════════════════════════════════════════════════════════════════════════
@@ -100,6 +99,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { submitContactForm } from '@/lib/actions'
 import { contactFormSchema, type ContactFormData } from '@/lib/contact-form-schema'
+import { trackFormSubmission } from '@/lib/analytics'
 import Input from '@/components/ui/Input'
 import Select from '@/components/ui/Select'
 import Textarea from '@/components/ui/Textarea'
@@ -145,12 +145,19 @@ export default function ContactForm() {
         await setSentryContext('contact_form', {
           heardFrom: data.hearAboutUs,
         })
+        
+        // Track successful form submission (no sensitive data)
+        trackFormSubmission('contact', true)
+        
         setSubmitStatus({
           type: 'success',
           message: result.message,
         })
         reset()
       } else {
+        // Track failed form submission
+        trackFormSubmission('contact', false)
+        
         setSubmitStatus({
           type: 'error',
           message: result.message,
