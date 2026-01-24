@@ -90,10 +90,38 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
+import { z } from 'zod'
 
 /** Absolute path to blog content directory */
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 const slugAllowlist = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+const dateFormat = /^\d{4}-\d{2}-\d{2}$/
+
+const blogFrontmatterSchema = z.object({
+  title: z.string().min(1, 'Required'),
+  description: z.string().min(1, 'Required'),
+  date: z
+    .string()
+    .min(1, 'Required')
+    .regex(dateFormat, 'Expected YYYY-MM-DD'),
+  author: z.string().optional().default('Your Firm Team'),
+  category: z.string().optional().default('General'),
+  featured: z.boolean().optional().default(false),
+})
+
+const blogPostSchema = z.object({
+  slug: z
+    .string()
+    .regex(slugAllowlist, 'Invalid slug format'),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  date: z.string().regex(dateFormat, 'Expected YYYY-MM-DD'),
+  author: z.string().min(1),
+  category: z.string().min(1),
+  readingTime: z.string().min(1),
+  content: z.string(),
+  featured: z.boolean().optional(),
+})
 
 /**
  * Blog post data structure.
@@ -123,6 +151,27 @@ export interface BlogPost {
 function isValidSlug(slug: string): boolean {
   // WHY: Strict allowlist blocks traversal attempts and enforces predictable slug format.
   return slugAllowlist.test(slug)
+}
+
+function formatFrontmatterError(filePath: string, error: z.ZodError): string {
+  const details = error.issues
+    .map((issue) => {
+      const field = issue.path.length > 0 ? issue.path.join('.') : 'frontmatter'
+      return `${field}: ${issue.message}`
+    })
+    .join('; ')
+
+  return `Invalid frontmatter in ${filePath}: ${details}`
+}
+
+function parseFrontmatter(data: unknown, filePath: string) {
+  const result = blogFrontmatterSchema.safeParse(data)
+
+  if (!result.success) {
+    throw new Error(formatFrontmatterError(filePath, result.error))
+  }
+
+  return result.data
 }
 
 /**
@@ -158,18 +207,21 @@ export function getAllPosts(): BlogPost[] {
       const fullPath = path.join(postsDirectory, fileName)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data, content } = matter(fileContents)
+      const frontmatter = parseFrontmatter(data, fullPath)
 
-      return {
+      const post = {
         slug,
-        title: data.title,
-        description: data.description,
-        date: data.date,
-        author: data.author || 'Your Firm Team',
-        category: data.category || 'General',
+        title: frontmatter.title,
+        description: frontmatter.description,
+        date: frontmatter.date,
+        author: frontmatter.author,
+        category: frontmatter.category,
         readingTime: readingTime(content).text,
         content,
-        featured: data.featured || false,
-      } as BlogPost
+        featured: frontmatter.featured,
+      }
+
+      return blogPostSchema.parse(post) as BlogPost
     })
 
   // Sort posts by date
@@ -189,34 +241,33 @@ export function getAllPosts(): BlogPost[] {
  * }
  */
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  try {
-    if (!isValidSlug(slug)) {
-      return undefined // WHY: Reject invalid input before any filesystem access.
-    }
-
-    const fullPath = path.join(postsDirectory, `${slug}.mdx`)
-
-    if (!fs.existsSync(fullPath)) {
-      return undefined // WHY: Explicit missing-file handling keeps behavior predictable.
-    }
-
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const { data, content } = matter(fileContents)
-
-    return {
-      slug,
-      title: data.title,
-      description: data.description,
-      date: data.date,
-      author: data.author || 'Your Firm Team',
-      category: data.category || 'General',
-      readingTime: readingTime(content).text,
-      content,
-      featured: data.featured || false,
-    }
-  } catch {
-    return undefined
+  if (!isValidSlug(slug)) {
+    return undefined // WHY: Reject invalid input before any filesystem access.
   }
+
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`)
+
+  if (!fs.existsSync(fullPath)) {
+    return undefined // WHY: Explicit missing-file handling keeps behavior predictable.
+  }
+
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+  const frontmatter = parseFrontmatter(data, fullPath)
+
+  const post = {
+    slug,
+    title: frontmatter.title,
+    description: frontmatter.description,
+    date: frontmatter.date,
+    author: frontmatter.author,
+    category: frontmatter.category,
+    readingTime: readingTime(content).text,
+    content,
+    featured: frontmatter.featured,
+  }
+
+  return blogPostSchema.parse(post) as BlogPost
 }
 
 /**

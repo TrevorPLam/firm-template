@@ -518,25 +518,6 @@
 
 ## P0 — Critical (DIAMOND.md Priority Gaps)
 
-### [TASK-031] Create SAST Workflow Files (CodeQL, Trivy, Gitleaks, OSSF Scorecard)
-- **Priority:** P0
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** DIAMOND.md identifies missing SAST workflow files as priority gaps. These are fundamental security scanning tools required for production readiness.
-
-#### Acceptance Criteria
-- [ ] Create `.github/workflows/codeql.yml` for CodeQL analysis
-- [ ] Create `.github/workflows/trivy.yml` for Trivy vulnerability scanning
-- [ ] Create `.github/workflows/gitleaks.yml` for secret scanning (or verify existing)
-- [ ] Create `.github/workflows/ossf-scorecard.yml` for OSSF Scorecard security best practices
-- [ ] Ensure all workflows run on PRs and main branch
-- [ ] Configure appropriate failure thresholds
-
-#### Notes
-- Per DIAMOND.md Priority Gaps (line 29)
-- These are FUNDAMENTAL security requirements
-- CodeQL and Trivy are industry-standard SAST tools
-
 ---
 
 ### [TASK-032] Create SBOM and SLSA Provenance Workflows
