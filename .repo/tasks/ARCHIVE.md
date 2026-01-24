@@ -33,6 +33,24 @@
 
 ---
 
+### [TASK-032] Create SBOM and SLSA Provenance Workflows ✓
+- **Priority:** P0
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** SBOM generation and SLSA Level 3 provenance are required for supply chain security compliance.
+
+#### Acceptance Criteria
+- [x] Create SBOM generation workflow (SPDX or CycloneDX format)
+- [x] Create SLSA Level 3 provenance generation workflow
+- [x] Store SBOM and provenance artifacts with releases
+- [x] Verify provenance signatures
+- [x] Document in SECURITY.md
+
+#### Outcome
+- Added SBOM and SLSA provenance workflows with release artifact uploads and provenance verification.
+- Documented supply chain integrity practices in SECURITY.md.
+
 ### [TASK-031] Create SAST Workflow Files (CodeQL, Trivy, Gitleaks, OSSF Scorecard) ✓
 - **Priority:** P0
 - **Status:** Completed

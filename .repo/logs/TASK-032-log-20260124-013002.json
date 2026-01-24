@@ -1,0 +1,31 @@
+{
+  "intent": "Add SBOM and SLSA workflows",
+  "plan": [
+    "Add SBOM workflow to generate SPDX SBOM and upload artifacts.",
+    "Add SLSA provenance workflow to build artifact, generate provenance, verify signatures, and upload release assets.",
+    "Update SECURITY.md and task tracking files.",
+    "Run lint and capture evidence."
+  ],
+  "actions": [
+    "Added .github/workflows/sbom.yml for SPDX SBOM generation and release uploads.",
+    "Added .github/workflows/slsa-provenance.yml for build packaging, SLSA Level 3 provenance, verification, and release uploads.",
+    "Documented supply chain integrity practices in SECURITY.md.",
+    "Archived TASK-032 and promoted TASK-015 in task tracking.",
+    "Ran npm run lint."
+  ],
+  "evidence": [
+    "npm run lint failed with pre-existing ESLint errors in automation scripts and lib/sanitize.ts."
+  ],
+  "decisions": [
+    "Used SPDX JSON SBOM output for compatibility with standard tooling.",
+    "Assumed slsa-github-generator publishes a provenance artifact named 'slsa-provenance' containing provenance.intoto.jsonl."
+  ],
+  "risks": [
+    "If the provenance artifact name differs, the verify and release steps may need adjustment."
+  ],
+  "follow_ups": [
+    "Validate the SLSA provenance artifact naming in CI and adjust download paths if needed."
+  ],
+  "reasoning_summary": "Implemented supply-chain workflows required by TASK-032 with release artifact storage and signature verification while updating documentation and task tracking.",
+  "notes": "No secrets. No private data. No raw chain-of-thought."
+}

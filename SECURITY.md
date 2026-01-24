@@ -97,6 +97,12 @@ All user input is validated using Zod schemas and sanitized before processing.
 - **npm audit** - Regular security audits
 - **Security scanning** - Automated vulnerability detection
 
+### Supply Chain Integrity
+
+- **SBOM generation** - `SBOM` workflow publishes an SPDX JSON SBOM as a build artifact and attaches it to releases.
+- **SLSA provenance** - `SLSA Provenance` workflow generates SLSA Level 3 provenance for build artifacts.
+- **Provenance verification** - Provenance signatures are verified in CI using `slsa-verifier`.
+
 ## Security Baseline
 
 This repository follows a security baseline defined in `.repo/policy/SECURITY_BASELINE.md`:
