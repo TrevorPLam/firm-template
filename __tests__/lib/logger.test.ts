@@ -257,8 +257,9 @@ describe('Logger', () => {
 
       logInfo('Test message', { key: 'value' })
 
-      expect(consoleLogSpy).toHaveBeenCalled()
-      const logCall = consoleLogSpy.mock.calls[0][0]
+      // Structured logs use appropriate console method (info for info level)
+      expect(consoleInfoSpy).toHaveBeenCalled()
+      const logCall = consoleInfoSpy.mock.calls[0][0]
       const parsed = JSON.parse(logCall as string)
       
       expect(parsed).toMatchObject({
@@ -276,7 +277,7 @@ describe('Logger', () => {
 
       logInfo('Test message')
 
-      const logCall = consoleLogSpy.mock.calls[0][0]
+      const logCall = consoleInfoSpy.mock.calls[0][0]
       const parsed = JSON.parse(logCall as string)
       
       expect(parsed.requestId).toBe('req-123')
@@ -289,7 +290,7 @@ describe('Logger', () => {
 
       logError('Error occurred', error)
 
-      const logCall = consoleLogSpy.mock.calls[0][0]
+      const logCall = consoleErrorSpy.mock.calls[0][0]
       const parsed = JSON.parse(logCall as string)
       
       expect(parsed.error).toMatchObject({

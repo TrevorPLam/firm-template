@@ -101,6 +101,10 @@ const dateFormat = /^\d{4}-\d{2}-\d{2}$/
  * In-memory cache for blog posts in development mode.
  * Cache is only active when NODE_ENV !== 'production'.
  * 
+ * **Note**: This global cache is suitable for single-instance development
+ * servers but is disabled in production. Next.js handles production caching
+ * at build time via SSG, making this development-only optimization safe.
+ * 
  * Cache invalidation:
  * - Time-based: 5 minute TTL
  * - Manual: Set cache to null to clear

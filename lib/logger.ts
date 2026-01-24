@@ -139,6 +139,10 @@ export function startTimer(label: string): PerformanceTimer {
 /**
  * Global request ID for correlating logs within a request.
  * Set via setRequestId() at the start of a request.
+ * 
+ * **Note**: In serverless/concurrent environments, consider using AsyncLocalStorage
+ * for proper request context isolation. This simple global approach works for
+ * single-threaded Node.js but may have race conditions in edge runtimes.
  */
 let currentRequestId: string | undefined
 
@@ -285,8 +289,19 @@ function logStructured(
 ): void {
   const structuredLog = formatStructuredLog(level, message, error, context)
   
-  // Always use console.log for structured JSON to avoid formatting
-  console.log(structuredLog)
+  // Use appropriate console method to preserve log level semantics
+  // while maintaining JSON structure for log aggregation
+  switch (level) {
+    case 'info':
+      console.info(structuredLog)
+      break
+    case 'warn':
+      console.warn(structuredLog)
+      break
+    case 'error':
+      console.error(structuredLog)
+      break
+  }
 }
 
 /**
