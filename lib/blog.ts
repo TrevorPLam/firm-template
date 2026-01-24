@@ -98,10 +98,11 @@ const slugAllowlist = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const dateFormat = /^\d{4}-\d{2}-\d{2}$/
 
 const blogFrontmatterSchema = z.object({
-  title: z.string({ required_error: 'Required' }).min(1, 'Required'),
-  description: z.string({ required_error: 'Required' }).min(1, 'Required'),
+  title: z.string().min(1, 'Required'),
+  description: z.string().min(1, 'Required'),
   date: z
-    .string({ required_error: 'Required' })
+    .string()
+    .min(1, 'Required')
     .regex(dateFormat, 'Expected YYYY-MM-DD'),
   author: z.string().optional().default('Your Firm Team'),
   category: z.string().optional().default('General'),
