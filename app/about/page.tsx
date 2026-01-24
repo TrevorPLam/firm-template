@@ -3,12 +3,13 @@ import Link from 'next/link'
 import { ArrowRight, Target, Users, TrendingUp, Award, Heart, Lightbulb } from 'lucide-react'
 import VideoPlayer from '@/components/VideoPlayer'
 import VideoTestimonial, { type VideoTestimonialItem } from '@/components/VideoTestimonial'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 // Placeholder IDs keep the layout functional while prompting firms to swap in real footage.
 const teamVideo = {
   provider: 'youtube' as const,
   videoId: 'ysz5S6PUM-U',
-  title: 'Meet the team behind Your Firm Name',
+  title: `Meet the team behind ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   caption: 'Replace with a short team introduction or culture video.',
 }
 
@@ -31,8 +32,8 @@ const testimonialItems: VideoTestimonialItem[] = [
 ]
 
 export const metadata: Metadata = {
-  title: 'About Us | Your Firm Name',
-  description: 'Learn about Your Firm Name - your partner in professional services success. Discover our story, values, and proven approach to helping businesses thrive.',
+  title: `About Us | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
+  description: `Learn about ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME} - your partner in professional services success. Discover our story, values, and proven approach to helping businesses thrive.`,
 }
 
 export default function AboutPage() {
@@ -61,7 +62,7 @@ export default function AboutPage() {
             </h2>
             <div className="prose prose-lg max-w-none text-gray-600 space-y-6">
               <p>
-                Your Firm Name was founded on a simple belief: businesses of all sizes
+                {validatedPublicEnv.NEXT_PUBLIC_SITE_NAME} was founded on a simple belief: businesses of all sizes
                 deserve access to exceptional professional services, without the enterprise price tag.
               </p>
               <p>

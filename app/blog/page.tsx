@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { getAllCategories, getAllPosts, getPostsByCategory } from '@/lib/blog'
 import { logError } from '@/lib/logger'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 export const metadata: Metadata = {
-  title: 'Blog | Your Firm Name',
+  title: `Blog | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   description: 'Insights, tips, and strategies to help you grow your business.',
 }
 
