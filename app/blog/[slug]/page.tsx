@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
+import fs from 'fs'
+import path from 'path'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { getPublicBaseUrl } from '@/lib/env.public'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
@@ -13,6 +15,32 @@ const BlogPostContent = dynamic(() => import('@/components/BlogPostContent'), {
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+/**
+ * Check if a blog post image exists in the public directory.
+ * 
+ * @param slug - Blog post slug
+ * @returns true if image exists, false otherwise
+ */
+function blogImageExists(slug: string): boolean {
+  const imagePath = path.join(process.cwd(), 'public', 'blog', `${slug}.jpg`)
+  return fs.existsSync(imagePath)
+}
+
+/**
+ * Get the image URL for a blog post.
+ * Falls back to the default OG image if blog-specific image doesn't exist.
+ * 
+ * @param slug - Blog post slug
+ * @param baseUrl - Base URL for the site
+ * @returns Image URL
+ */
+function getBlogImageUrl(slug: string, baseUrl: string): string {
+  if (blogImageExists(slug)) {
+    return `${baseUrl}/blog/${slug}.jpg`
+  }
+  return `${baseUrl}/og-image.jpg`
 }
 
 export async function generateStaticParams() {
@@ -54,7 +82,7 @@ export default async function BlogPostPage({ params }: Props) {
     '@type': 'Article',
     headline: post.title,
     description: post.description,
-    image: `${baseUrl}/blog/${post.slug}.jpg`,
+    image: getBlogImageUrl(post.slug, baseUrl),
     datePublished: post.date,
     dateModified: post.date,
     author: {
