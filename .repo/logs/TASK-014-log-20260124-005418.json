@@ -1,0 +1,30 @@
+{
+  "intent": "Add blog frontmatter validation",
+  "plan": [
+    "Add Zod schemas for blog frontmatter and BlogPost in lib/blog.ts.",
+    "Validate frontmatter after gray-matter parsing and throw clear errors with file path.",
+    "Update task tracking files and create required task packet.",
+    "Run npm run lint and capture results.",
+    "Record trace and agent logs."
+  ],
+  "actions": [
+    "Added frontmatter and BlogPost validation with Zod in lib/blog.ts and wired parsing to fail fast.",
+    "Created task packet and updated TODO/ARCHIVE/BACKLOG task tracking files.",
+    "Generated trace and agent logs and ran npm run lint."
+  ],
+  "evidence": [
+    "npm run lint (failed: existing repo lint errors in .repo/automation scripts and lib/sanitize.ts)."
+  ],
+  "decisions": [
+    "Treat validation work as a feature change requiring a task packet.",
+    "Throw on invalid frontmatter to fail builds early with actionable messages."
+  ],
+  "risks": [
+    "Existing content with invalid frontmatter will now fail builds until corrected."
+  ],
+  "follow_ups": [
+    "Address existing lint failures in automation scripts if lint gating is required for CI."
+  ],
+  "reasoning_summary": "Added Zod validation to ensure blog frontmatter aligns with the BlogPost contract and surfaces missing or invalid fields with clear errors, while documenting task progress and verification evidence.",
+  "notes": "No secrets. No private data. No raw chain-of-thought."
+}

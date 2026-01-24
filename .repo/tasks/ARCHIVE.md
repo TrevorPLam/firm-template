@@ -33,6 +33,23 @@
 
 ---
 
+### [TASK-014] Add Frontmatter Validation for Blog Posts ✓
+- **Priority:** P0
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** Blog posts can fail at build time with cryptic errors if frontmatter is missing or invalid. No validation currently exists.
+
+#### Acceptance Criteria
+- [x] Create Zod schema matching `BlogPost` interface
+- [x] Validate frontmatter after parsing with `matter()` in `lib/blog.ts`
+- [x] Provide clear error messages with file path and missing field
+- [x] Fail build early with helpful error messages
+
+#### Outcome
+- Added Zod frontmatter and BlogPost validation to fail fast with clear errors during build-time parsing.
+- Task packet created in `.repo/tasks/packets/TASK-014-packet.json`.
+
 ### [TASK-003] Fix Duplicate Content in CI Workflow ✓
 - **Priority:** P0
 - **Status:** Completed

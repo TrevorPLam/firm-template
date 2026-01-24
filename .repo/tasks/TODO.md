@@ -66,20 +66,21 @@
 
 ---
 
-### [TASK-014] Add Frontmatter Validation for Blog Posts
+### [TASK-031] Create SAST Workflow Files (CodeQL, Trivy, Gitleaks, OSSF Scorecard)
 - **Priority:** P0
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** Blog posts can fail at build time with cryptic errors if frontmatter is missing or invalid. No validation currently exists.
+- **Context:** DIAMOND.md identifies missing SAST workflow files as priority gaps. These are fundamental security scanning tools required for production readiness.
 
 #### Acceptance Criteria
-- [ ] Create Zod schema matching `BlogPost` interface
-- [ ] Validate frontmatter after parsing with `matter()` in `lib/blog.ts`
-- [ ] Provide clear error messages with file path and missing field
-- [ ] Fail build early with helpful error messages
+- [ ] Create `.github/workflows/codeql.yml` for CodeQL analysis
+- [ ] Create `.github/workflows/trivy.yml` for Trivy vulnerability scanning
+- [ ] Create `.github/workflows/gitleaks.yml` for secret scanning (or verify existing)
+- [ ] Create `.github/workflows/ossf-scorecard.yml` for OSSF Scorecard security best practices
+- [ ] Ensure all workflows run on PRs and main branch
+- [ ] Configure appropriate failure thresholds
 
 #### Notes
-- Previously blocked per user request; now promoted to active work.
-- File: `lib/blog.ts:160-172`
-- Impact: Prevents build failures from invalid frontmatter
-- Current: No validation - could be undefined/invalid format
+- Per DIAMOND.md Priority Gaps (line 29)
+- These are FUNDAMENTAL security requirements
+- CodeQL and Trivy are industry-standard SAST tools
