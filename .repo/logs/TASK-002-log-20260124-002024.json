@@ -1,0 +1,31 @@
+{
+  "intent": "Document env example and onboarding",
+  "plan": [
+    "Add .env.example based on existing env validation",
+    "Update README to reference .env.example and required variables",
+    "Create onboarding doc and reference env setup",
+    "Update task tracking files and CODEX log",
+    "Run lint and record results"
+  ],
+  "actions": [
+    "Created .env.example from env.example with required placeholders",
+    "Updated README.md environment setup instructions",
+    "Added docs/getting-started/onboarding.md with setup steps",
+    "Updated CODEX.md and task tracking files",
+    "Ran npm run lint"
+  ],
+  "evidence": [
+    "npm run lint failed due to pre-existing ESLint errors in .repo/automation scripts and lib/sanitize.ts"
+  ],
+  "decisions": [
+    "Used lib/env.ts as the source of required variables since backend is a placeholder and no env_validator.py exists"
+  ],
+  "risks": [
+    "Minimal: documentation and example config updates only"
+  ],
+  "follow_ups": [
+    "Consider resolving existing ESLint errors in .repo/automation scripts and lib/sanitize.ts"
+  ],
+  "reasoning_summary": "Created a .env.example file and updated onboarding documentation to reflect the validated environment variables, keeping placeholders and comments aligned with current config validation.",
+  "notes": "No secrets. No private data. No raw chain-of-thought."
+}

@@ -47,38 +47,23 @@
 
 ## P0 — Critical
 
-### [TASK-002] Create .env.example File
+### [TASK-014] Add Frontmatter Validation for Blog Posts
 - **Priority:** P0
-- **Status:** Pending
+- **Status:** Blocked
 - **Created:** 2026-01-23
-- **Context:** Code references `.env.example` but file doesn't exist. Blocks new environment setup.
+- **Context:** Blog posts can fail at build time with cryptic errors if frontmatter is missing or invalid. No validation currently exists.
 
 #### Acceptance Criteria
-- [ ] Document all required environment variables from `env_validator.py`
-- [ ] Include comments explaining each variable
-- [ ] Add placeholder values (never real secrets)
-- [ ] Reference in README.md and docs/getting-started/onboarding.md
+- [ ] Create Zod schema matching `BlogPost` interface
+- [ ] Validate frontmatter after parsing with `matter()` in `lib/blog.ts`
+- [ ] Provide clear error messages with file path and missing field
+- [ ] Fail build early with helpful error messages
 
 #### Notes
-- Required vars: DJANGO_SECRET_KEY, POSTGRES_*, AWS_*, STRIPE_*, etc.
-- Production vars differ from development vars
-
----
-
-### [TASK-003] Fix Duplicate Content in CI Workflow
-- **Priority:** P0
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** `.github/workflows/ci.yml` has two conflicting workflow definitions causing confusion.
-
-#### Acceptance Criteria
-- [ ] Remove duplicate workflow definition
-- [ ] Ensure single coherent CI pipeline
-- [ ] Verify all jobs run correctly
-- [ ] Test on a branch before merging
-
-#### Notes
-- File currently has 403 lines with overlapping `name: CI` and `name: CI/CD Pipeline`
+- Blocked per user request to pause current task and re-prioritize.
+- File: `lib/blog.ts:160-172`
+- Impact: Prevents build failures from invalid frontmatter
+- Current: No validation - could be undefined/invalid format
 
 ---
 
