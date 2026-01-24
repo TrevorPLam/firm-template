@@ -7,8 +7,7 @@ import ContactForm from '@/components/ContactForm'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import AppointmentScheduler from '@/components/AppointmentScheduler'
 import { getSchedulingConfig } from '@/lib/scheduling'
-
-const CONTACT_EMAIL = 'contact@yourfirm.com'
+import { siteConfig } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Your Firm Name',
@@ -49,10 +48,10 @@ export default function ContactPage() {
                   <div className="rounded-lg border border-error/20 bg-error/5 p-4 text-error">
                     We're having trouble loading the form. Please email us at{' '}
                     <a
-                      href={`mailto:${CONTACT_EMAIL}`}
+                      href={`mailto:${siteConfig.contact.email}`}
                       className="underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error"
                     >
-                      {CONTACT_EMAIL}
+                      {siteConfig.contact.email}
                     </a>
                     .
                   </div>
@@ -75,10 +74,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-charcoal mb-1">Email</h3>
                       <a
-                        href={`mailto:${CONTACT_EMAIL}`}
+                        href={`mailto:${siteConfig.contact.email}`}
                         className="text-teal hover:text-teal-dark transition-colors"
                       >
-                        {CONTACT_EMAIL}
+                        {siteConfig.contact.email}
                       </a>
                     </div>
                   </div>
@@ -92,10 +91,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-charcoal mb-1">Phone</h3>
                       <a
-                        href="tel:+15551234567"
+                        href={`tel:${siteConfig.contact.phone}`}
                         className="text-teal hover:text-teal-dark transition-colors"
                       >
-                        (555) 123-4567
+                        {siteConfig.contact.phoneDisplay}
                       </a>
                     </div>
                   </div>
@@ -163,7 +162,7 @@ export default function ContactPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={`mailto:${siteConfig.contact.email}`}
                 className="inline-flex items-center justify-center bg-teal hover:bg-teal-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors"
               >
                 <Mail className="w-5 h-5 mr-2" aria-hidden="true" />
