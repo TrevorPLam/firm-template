@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "packageManager": "npm",
+  "reporters": ["html", "clear-text", "progress", "dashboard"],
+  "testRunner": "vitest",
+  "testRunnerNodeArgs": ["--no-coverage"],
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+    "lib/**/*.ts",
+    "!**/*.test.{ts,tsx}",
+    "!**/*.spec.{ts,tsx}",
+    "!**/*.stories.{ts,tsx}"
+  ],
+  "mutator": {
+    "plugins": ["typescript"]
+  },
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json",
+  "thresholds": {
+    "high": 80,
+    "low": 70,
+    "break": 60
+  },
+  "timeoutMS": 10000,
+  "dryRunTimeoutMS": 30000,
+  "maxConcurrentTestRunners": 2,
+  "logLevel": "info",
+  "fileLogLevel": "debug"
+}

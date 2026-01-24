@@ -40,9 +40,22 @@ export default tseslint.config(
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "react/no-unescaped-entities": "off",
+      "react/prop-types": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
       "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/ban-ts-comment": "warn"
+      "@typescript-eslint/ban-ts-comment": "warn",
+      "@typescript-eslint/no-unused-expressions": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": "warn",
+      "@typescript-eslint/prefer-optional-chain": "warn",
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/await-thenable": "error",
+      "no-console": ["warn", { "allow": ["warn", "error", "info", "debug"] }],
+      "prefer-const": "error",
+      "no-var": "error",
+      "object-shorthand": "warn",
+      "prefer-arrow-callback": "warn"
     }
   }
 );

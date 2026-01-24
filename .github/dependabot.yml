@@ -5,16 +5,33 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
-      time: "07:00"
-      timezone: "UTC"
+      time: "09:00"
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
     groups:
-      minor-and-patch:
+      production-dependencies:
+        dependency-type: "production"
         update-types:
           - "minor"
           - "patch"
-      major-updates:
+      development-dependencies:
+        dependency-type: "development"
         update-types:
-          - "major"
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "github-actions"
+      - "automated"

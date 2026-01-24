@@ -1,6 +1,14 @@
 import '@testing-library/jest-dom'
-import { vi, afterEach } from 'vitest'
+import { vi, afterEach, expect } from 'vitest'
 import { cleanup } from '@testing-library/react'
+import { toHaveNoViolations } from 'jest-axe'
+import * as fc from 'fast-check'
+
+// Extend Vitest matchers with jest-axe for accessibility testing
+expect.extend(toHaveNoViolations)
+
+// Make fast-check available globally for property-based testing
+global.fc = fc
 
 // Only set test defaults when the environment variables are not already set to avoid clobbering caller-provided values.
 process.env.SUPABASE_URL = process.env.SUPABASE_URL ?? 'https://example.supabase.co'

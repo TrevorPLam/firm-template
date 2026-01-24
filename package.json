@@ -25,6 +25,8 @@
     "test:ui": "vitest --ui",
     "test:coverage": "node scripts/ensure-vitest-coverage.mjs && vitest --coverage",
     "test:e2e": "playwright test",
+    "test:mutation": "stryker run",
+    "test:property": "vitest --testNamePattern='property'",
     "check:security:patterns": "node scripts/check-security-patterns.js",
     "check:security": "npm audit --audit-level=moderate && npm run check:security:patterns",
     "check:boundaries": "node scripts/check-boundaries.js",
@@ -34,6 +36,12 @@
     "check:todo-format": "node scripts/check-todo-format.mjs",
     "check:coverage-ratchet": "node scripts/check-coverage-ratchet.mjs",
     "check:bundle-budget": "node scripts/check-bundle-budget.mjs",
+    "analyze": "node scripts/bundle-analyzer.mjs",
+    "analyze:json": "node scripts/bundle-analyzer.mjs --json",
+    "check:bundle-size": "node scripts/bundle-analyzer.mjs --limit=500000",
+    "coverage:analyze": "node scripts/test-coverage-analyzer.mjs",
+    "coverage:analyze:json": "node scripts/test-coverage-analyzer.mjs --json",
+    "coverage:check": "node scripts/test-coverage-analyzer.mjs --target=80",
     "index:generate": "node scripts/generate-index-json.mjs",
     "index:watch": "node scripts/watch-indexes.mjs",
     "pr:extract": "node scripts/extract-pr-template-data.mjs",
@@ -139,6 +147,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
+    "jest-axe": "^8.0.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.10.5",
     "@types/react": "^19.2.9",
@@ -150,7 +159,9 @@
     "eslint-config-next": "15.1.4",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.0.0",
+    "husky": "^9.1.7",
     "jsdom": "^27.4.0",
+    "lint-staged": "^15.2.0",
     "postcss": "^8.4.49",
     "prettier": "^3.8.0",
     "sharp": "^0.34.5",
@@ -158,6 +169,7 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.53.1",
     "vitest": "^4.0.17",
-    "wrangler": "^4.59.3"
+    "wrangler": "^4.59.3",
+    "fast-check": "^3.24.0"
   }
 }
