@@ -251,23 +251,27 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
     return undefined // WHY: Explicit missing-file handling keeps behavior predictable.
   }
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-  const frontmatter = parseFrontmatter(data, fullPath)
+  try {
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const { data, content } = matter(fileContents)
+    const frontmatter = parseFrontmatter(data, fullPath)
 
-  const post = {
-    slug,
-    title: frontmatter.title,
-    description: frontmatter.description,
-    date: frontmatter.date,
-    author: frontmatter.author,
-    category: frontmatter.category,
-    readingTime: readingTime(content).text,
-    content,
-    featured: frontmatter.featured,
+    const post = {
+      slug,
+      title: frontmatter.title,
+      description: frontmatter.description,
+      date: frontmatter.date,
+      author: frontmatter.author,
+      category: frontmatter.category,
+      readingTime: readingTime(content).text,
+      content,
+      featured: frontmatter.featured,
+    }
+
+    return blogPostSchema.parse(post) as BlogPost
+  } catch {
+    return undefined // WHY: I/O or parse failures should degrade gracefully for callers.
   }
-
-  return blogPostSchema.parse(post) as BlogPost
 }
 
 /**
@@ -284,10 +288,11 @@ export function getFeaturedPosts(): BlogPost[] {
  * Get posts by category.
  * 
  * @param category - Category name to filter by (case-sensitive)
+ * @param posts - Optional preloaded posts to avoid duplicate filesystem reads
  * @returns Array of posts in the specified category
  */
-export function getPostsByCategory(category: string): BlogPost[] {
-  return getAllPosts().filter((post) => post.category === category)
+export function getPostsByCategory(category: string, posts: BlogPost[] = getAllPosts()): BlogPost[] {
+  return posts.filter((post) => post.category === category)
 }
 
 /**

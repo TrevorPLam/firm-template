@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { getAllPosts, getAllCategories } from '@/lib/blog'
+import { getAllCategories, getAllPosts, getPostsByCategory } from '@/lib/blog'
 import { logError } from '@/lib/logger'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 
@@ -9,22 +9,60 @@ export const metadata: Metadata = {
   description: 'Insights, tips, and strategies to help you grow your business.',
 }
 
-function loadBlogListingData() {
+type BlogSearchParams = {
+  category?: string | string[]
+}
+
+type BlogPageProps = {
+  searchParams?: BlogSearchParams | Promise<BlogSearchParams>
+}
+
+async function resolveSearchParams(
+  searchParams: BlogPageProps['searchParams']
+): Promise<BlogSearchParams | undefined> {
+  if (!searchParams) {
+    return undefined
+  }
+
+  return await searchParams
+}
+
+function normalizeCategory(categoryParam: string | string[] | undefined): string | undefined {
+  if (!categoryParam) {
+    return undefined
+  }
+
+  return Array.isArray(categoryParam) ? categoryParam[0] : categoryParam
+}
+
+function getCategoryClasses(isActive: boolean): string {
+  return isActive
+    ? 'px-4 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors'
+    : 'px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors'
+}
+
+function loadBlogListingData(selectedCategory: string | undefined) {
   try {
     const posts = getAllPosts()
     const categories = getAllCategories()
+    const resolvedCategory =
+      selectedCategory && categories.includes(selectedCategory) ? selectedCategory : undefined
+    const filteredPosts = resolvedCategory ? getPostsByCategory(resolvedCategory, posts) : posts
 
-    return { posts, categories, hasError: false }
+    return { posts: filteredPosts, categories, hasError: false, resolvedCategory }
   } catch (error) {
     logError('blog-listing-load-failed', error, { source: 'app/blog/page' })
 
     // WHY: malformed MDX or file issues should degrade gracefully, not crash the page.
-    return { posts: [], categories: [], hasError: true }
+    return { posts: [], categories: [], hasError: true, resolvedCategory: undefined }
   }
 }
 
-export default function BlogPage() {
-  const { posts, categories, hasError } = loadBlogListingData()
+export default async function BlogPage({ searchParams }: BlogPageProps = {}) {
+  const resolvedSearchParams = await resolveSearchParams(searchParams)
+  const selectedCategory = normalizeCategory(resolvedSearchParams?.category)
+  const { posts, categories, hasError, resolvedCategory } = loadBlogListingData(selectedCategory)
+  const isAllPostsActive = !resolvedCategory
 
   return (
     <div className="min-h-screen">
@@ -49,7 +87,8 @@ export default function BlogPage() {
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="/blog"
-                className="px-4 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors"
+                className={getCategoryClasses(isAllPostsActive)}
+                aria-current={isAllPostsActive ? 'page' : undefined}
               >
                 All Posts
               </Link>
@@ -57,7 +96,8 @@ export default function BlogPage() {
                 <Link
                   key={category}
                   href={`/blog?category=${encodeURIComponent(category)}`}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors"
+                  className={getCategoryClasses(category === resolvedCategory)}
+                  aria-current={category === resolvedCategory ? 'page' : undefined}
                 >
                   {category}
                 </Link>

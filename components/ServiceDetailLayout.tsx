@@ -51,7 +51,7 @@ import Section from '@/components/ui/Section'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import Accordion, { AccordionItem } from '@/components/ui/Accordion'
-import { getPublicBaseUrl } from '@/lib/env.public'
+import { getPublicBaseUrl, validatedPublicEnv } from '@/lib/env.public'
 import AppointmentScheduler from '@/components/AppointmentScheduler'
 import { getSchedulingConfig } from '@/lib/scheduling'
 import VideoPlayer from '@/components/VideoPlayer'
@@ -123,6 +123,8 @@ export default function ServiceDetailLayout({
   serviceSlug,
 }: ServiceDetailProps) {
   const baseUrl = getPublicBaseUrl().replace(/\/$/, '')
+  const siteName = validatedPublicEnv.NEXT_PUBLIC_SITE_NAME
+  const areaServed = validatedPublicEnv.NEXT_PUBLIC_AREA_SERVED
   const resolvedServiceUrl = serviceSlug
     ? `${baseUrl}/services/${serviceSlug}`
     : `${baseUrl}/services`
@@ -136,14 +138,14 @@ export default function ServiceDetailLayout({
     description: description,
     provider: {
       '@type': 'Organization',
-      name: 'Your Firm Name',
+      name: siteName,
       url: baseUrl,
     },
     url: resolvedServiceUrl,
     serviceType: title,
     areaServed: {
       '@type': 'Country',
-      name: 'United States',
+      name: areaServed,
     },
     offers: pricing.map((tier) => ({
       '@type': 'Offer',

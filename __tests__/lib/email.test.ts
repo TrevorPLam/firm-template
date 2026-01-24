@@ -67,6 +67,22 @@ describe('sendContactEmails', () => {
     expect(result.ownerNotification.provider).toBe('none')
   })
 
+  it('fails fast when the owner recipient address is missing', async () => {
+    env.EMAIL_TO_ADDRESS = ''
+    env.EMAIL_SEND_THANK_YOU = false
+
+    const { sendContactEmails } = await import('@/lib/email')
+    const result = await sendContactEmails(buildPayload())
+
+    expect(fetchMock).not.toHaveBeenCalled()
+    expect(result.ownerNotification.success).toBe(false)
+    expect(logError).toHaveBeenCalledWith(
+      'Email config missing owner recipient address',
+      undefined,
+      expect.objectContaining({ provider: env.EMAIL_PROVIDER }),
+    )
+  })
+
   it('test_handles_provider_errors_gracefully', async () => {
     env.EMAIL_PROVIDER = 'postmark'
     env.EMAIL_SEND_THANK_YOU = false

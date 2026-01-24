@@ -1,6 +1,6 @@
 # /.repo/repo.manifest.yaml
 # SOURCE OF TRUTH for executable commands + verification profiles.
-# RULE: Agents MUST NOT guess commands. If unknown, set <UNKNOWN> and open HITL.
+# RULE: Agents MUST NOT guess commands. If unknown, set UNKNOWN placeholder and open HITL.
 
 repo:
   ships: true
@@ -20,7 +20,7 @@ commands:
   check:ci: "npm run lint && npm run type-check && npm run test && npm run build"
   check:release: "npm run lint && npm run type-check && npm run test && npm run test:e2e && npm run build && npm audit --audit-level=moderate"
   check:governance: "./scripts/governance-verify.sh"
-  check:boundaries: "<UNKNOWN>"
+  check:boundaries: "node .repo/automation/scripts/check-boundaries.js"
   check:security: "npm audit --audit-level=moderate"
 
 verify_profiles:

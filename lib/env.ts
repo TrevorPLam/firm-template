@@ -34,6 +34,7 @@
  * |-----|------|----------|-------|
  * | NEXT_PUBLIC_SITE_URL | url | defaults | Base URL for meta tags |
  * | NEXT_PUBLIC_SITE_NAME | string | defaults | Site name for branding |
+ * | NEXT_PUBLIC_AREA_SERVED | string | defaults | Service area for structured data |
  * | NEXT_PUBLIC_ANALYTICS_ID | string | optional | GA4/Plausible ID |
  * | UPSTASH_REDIS_REST_URL | string | optional* | Rate limiting (required in production) |
  * | UPSTASH_REDIS_REST_TOKEN | string | optional* | Rate limiting (required in production) |
@@ -123,6 +124,14 @@ const envSchema = z.object({
    * @default 'Your Firm Name'
    */
   NEXT_PUBLIC_SITE_NAME: z.string().default('Your Firm Name'),
+
+  /**
+   * Public service area label for structured data.
+   * Used in schema.org areaServed fields.
+   * 
+   * @default 'United States'
+   */
+  NEXT_PUBLIC_AREA_SERVED: z.string().default('United States'),
 
   /**
    * Analytics tracking ID (optional).
@@ -328,6 +337,7 @@ const envSchema = z.object({
 const env = envSchema.safeParse({
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
+  NEXT_PUBLIC_AREA_SERVED: process.env.NEXT_PUBLIC_AREA_SERVED,
   NEXT_PUBLIC_ANALYTICS_ID: process.env.NEXT_PUBLIC_ANALYTICS_ID,
   NODE_ENV: process.env.NODE_ENV,
   UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,

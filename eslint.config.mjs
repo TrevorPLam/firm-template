@@ -13,7 +13,8 @@ export default tseslint.config(
         "out/**",
         ".typescript-build-info", 
         "next-env.d.ts",
-        "scripts/**"
+        "scripts/**",
+        ".repo/automation/scripts/**"
     ]
   },
   eslint.configs.recommended,
