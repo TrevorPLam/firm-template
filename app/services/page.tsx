@@ -5,6 +5,7 @@ import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
+import { validatedPublicEnv } from '@/lib/env.public'
 
 /**
  * TEMPLATE CUSTOMIZATION:
@@ -14,7 +15,7 @@ import Button from '@/components/ui/Button'
  */
 
 export const metadata: Metadata = {
-  title: 'Professional Services | Your Firm Name',
+  title: `Professional Services | ${validatedPublicEnv.NEXT_PUBLIC_SITE_NAME}`,
   description: 'Comprehensive professional services solutions tailored to your business needs. Expert guidance and strategic execution.',
 }
 
