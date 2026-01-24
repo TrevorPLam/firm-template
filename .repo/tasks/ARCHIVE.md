@@ -33,6 +33,25 @@
 
 ---
 
+### [TASK-031] Create SAST Workflow Files (CodeQL, Trivy, Gitleaks, OSSF Scorecard) ✓
+- **Priority:** P0
+- **Status:** Completed
+- **Created:** 2026-01-23
+- **Completed:** 2026-01-24
+- **Context:** DIAMOND.md identifies missing SAST workflow files as priority gaps. These are fundamental security scanning tools required for production readiness.
+
+#### Acceptance Criteria
+- [x] Create `.github/workflows/codeql.yml` for CodeQL analysis
+- [x] Create `.github/workflows/trivy.yml` for Trivy vulnerability scanning
+- [x] Create `.github/workflows/gitleaks.yml` for secret scanning (or verify existing)
+- [x] Create `.github/workflows/ossf-scorecard.yml` for OSSF Scorecard security best practices
+- [x] Ensure all workflows run on PRs and main branch
+- [x] Configure appropriate failure thresholds
+
+#### Outcome
+- Added SAST workflows in `.github/workflows/codeql.yml`, `.github/workflows/trivy.yml`, `.github/workflows/gitleaks.yml`, and `.github/workflows/ossf-scorecard.yml` with PR/main triggers and SARIF uploads.
+- Configured failure thresholds for Trivy (CRITICAL/HIGH) and Gitleaks (exit code on leak).
+
 ### [TASK-014] Add Frontmatter Validation for Blog Posts ✓
 - **Priority:** P0
 - **Status:** Completed

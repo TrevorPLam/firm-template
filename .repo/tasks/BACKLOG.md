@@ -520,26 +520,6 @@
 
 ---
 
-### [TASK-032] Create SBOM and SLSA Provenance Workflows
-- **Priority:** P0
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** SBOM generation and SLSA Level 3 provenance are required for supply chain security compliance.
-
-#### Acceptance Criteria
-- [ ] Create SBOM generation workflow (SPDX or CycloneDX format)
-- [ ] Create SLSA Level 3 provenance generation workflow
-- [ ] Store SBOM and provenance artifacts with releases
-- [ ] Verify provenance signatures
-- [ ] Document in SECURITY.md
-
-#### Notes
-- Per DIAMOND.md Priority Gaps (line 30)
-- Required for enterprise security compliance
-- SLSA Level 3 provides build integrity guarantees
-
----
-
 ### [TASK-033] Create Release Automation Workflow
 - **Priority:** P0
 - **Status:** Pending

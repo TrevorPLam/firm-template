@@ -66,21 +66,20 @@
 
 ---
 
-### [TASK-031] Create SAST Workflow Files (CodeQL, Trivy, Gitleaks, OSSF Scorecard)
+### [TASK-032] Create SBOM and SLSA Provenance Workflows
 - **Priority:** P0
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** DIAMOND.md identifies missing SAST workflow files as priority gaps. These are fundamental security scanning tools required for production readiness.
+- **Context:** SBOM generation and SLSA Level 3 provenance are required for supply chain security compliance.
 
 #### Acceptance Criteria
-- [ ] Create `.github/workflows/codeql.yml` for CodeQL analysis
-- [ ] Create `.github/workflows/trivy.yml` for Trivy vulnerability scanning
-- [ ] Create `.github/workflows/gitleaks.yml` for secret scanning (or verify existing)
-- [ ] Create `.github/workflows/ossf-scorecard.yml` for OSSF Scorecard security best practices
-- [ ] Ensure all workflows run on PRs and main branch
-- [ ] Configure appropriate failure thresholds
+- [ ] Create SBOM generation workflow (SPDX or CycloneDX format)
+- [ ] Create SLSA Level 3 provenance generation workflow
+- [ ] Store SBOM and provenance artifacts with releases
+- [ ] Verify provenance signatures
+- [ ] Document in SECURITY.md
 
 #### Notes
-- Per DIAMOND.md Priority Gaps (line 29)
-- These are FUNDAMENTAL security requirements
-- CodeQL and Trivy are industry-standard SAST tools
+- Per DIAMOND.md Priority Gaps (line 30)
+- Required for enterprise security compliance
+- SLSA Level 3 provides build integrity guarantees
