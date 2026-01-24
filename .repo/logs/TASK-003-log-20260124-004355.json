@@ -1,0 +1,27 @@
+{
+  "intent": "Remove duplicate CI workflow definition",
+  "plan": [
+    "Remove the duplicate CI workflow file and keep .github/workflows/ci.yml as the single pipeline.",
+    "Update task tracking files and CODEX log.",
+    "Run required lint and capture verification evidence."
+  ],
+  "actions": [
+    "Deleted githubactions/workflows/ci.yml to eliminate the duplicate workflow.",
+    "Updated CODEX.md and task tracking files (TODO, BACKLOG, ARCHIVE).",
+    "Ran npm run lint for verification."
+  ],
+  "evidence": [
+    "npm run lint (fails: existing ESLint errors in .repo/automation scripts and lib/sanitize.ts)"
+  ],
+  "decisions": [
+    "Kept .github/workflows/ci.yml as the canonical CI workflow definition."
+  ],
+  "risks": [
+    "CI job verification is pending due to lint failures; a branch run is still needed."
+  ],
+  "follow_ups": [
+    "Run the CI workflow on a branch once existing lint issues are addressed."
+  ],
+  "reasoning_summary": "Consolidated duplicate CI workflows to avoid confusion while preserving the existing pipeline definition.",
+  "notes": "No secrets. No private data. No raw chain-of-thought."
+}
