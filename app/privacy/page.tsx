@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
+import { siteConfig } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Your Firm Name',
+  title: `Privacy Policy | ${siteConfig.name}`,
   description:
     'Review the privacy policy template for Your Firm Name. Replace placeholders with your firm-specific details.',
 }

@@ -20,6 +20,7 @@ import { NextRequest } from 'next/server'
 import { z } from 'zod'
 
 import { escapeHtml } from '@/lib/sanitize'
+import { siteConfig } from '@/lib/config'
 
 export const runtime = 'edge'
 
@@ -39,10 +40,9 @@ export async function GET(request: NextRequest) {
     return new Response('Invalid query parameters', { status: 400 })
   }
 
-  const title = escapeHtml(parseResult.data.title ?? 'Your Firm Name')
+  const title = escapeHtml(parseResult.data.title ?? siteConfig.name)
   const description = escapeHtml(
-    parseResult.data.description ??
-      'Professional services that drive results through strategic guidance and proven execution.'
+    parseResult.data.description ?? siteConfig.tagline
   )
 
   return new ImageResponse(
@@ -76,9 +76,9 @@ export async function GET(request: NextRequest) {
             🚀
           </div>
           <div>
-            <div style={{ fontSize: 28, fontWeight: 700 }}>Your Firm Name</div>
+            <div style={{ fontSize: 28, fontWeight: 700 }}>{siteConfig.name}</div>
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.75)' }}>
-              Professional Services Excellence
+              {siteConfig.tagline}
             </div>
           </div>
         </div>

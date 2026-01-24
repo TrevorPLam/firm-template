@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { getPublicBaseUrl } from '@/lib/env.public'
+import { siteConfig } from '@/lib/config'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
 
 const BlogPostContent = dynamic(() => import('@/components/BlogPostContent'), {
@@ -61,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Blog | Your Firm Name`,
+    title: `${post.title} | Blog | ${siteConfig.name}`,
     description: post.description,
   }
 }
@@ -91,12 +92,12 @@ export default async function BlogPostPage({ params }: Props) {
     },
     isPartOf: {
       '@type': 'Blog',
-      name: 'Your Firm Blog',
+      name: `${siteConfig.name} Blog`,
       url: `${baseUrl}/blog`,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Your Firm Name',
+      name: siteConfig.name,
       logo: {
         '@type': 'ImageObject',
         url: `${baseUrl}/logo.png`,

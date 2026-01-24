@@ -24,6 +24,8 @@
  * ```
  *
  * **ENVIRONMENT VARIABLES**:
+ * - NEXT_PUBLIC_SITE_NAME - Site name for branding
+ * - NEXT_PUBLIC_SITE_TAGLINE - Site tagline for hero/metadata
  * - NEXT_PUBLIC_CONTACT_EMAIL - Contact email address
  * - NEXT_PUBLIC_CONTACT_PHONE - Contact phone number (E.164 format)
  * - NEXT_PUBLIC_SOCIAL_FACEBOOK - Facebook profile URL
@@ -45,6 +47,8 @@
  * Defines the structure of site-wide configuration.
  */
 export interface SiteConfig {
+  name: string
+  tagline: string
   contact: {
     email: string
     phone: string
@@ -61,6 +65,10 @@ export interface SiteConfig {
 /**
  * Site configuration object.
  * 
+ * **Branding**:
+ * - Name and tagline used across site for titles, metadata, and structured data
+ * - Set via NEXT_PUBLIC_SITE_NAME and NEXT_PUBLIC_SITE_TAGLINE
+ * 
  * **Contact Information**:
  * - Email and phone are required for contact forms and structured data
  * - Phone format: E.164 (e.g., +15551234567) for tel: links
@@ -76,6 +84,8 @@ export interface SiteConfig {
  * Falls back to placeholder values if not set (for development).
  */
 export const siteConfig: SiteConfig = {
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Your Firm Name',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Expert solutions for your business',
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@yourfirm.com',
     phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+15551234567',

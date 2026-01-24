@@ -1,10 +1,17 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/lib/config'
 import Link from 'next/link'
+import { siteConfig } from '@/lib/config'
 import { Briefcase, Target, Users, TrendingUp, Settings, Database, FileText, BarChart } from 'lucide-react'
+import { siteConfig } from '@/lib/config'
 import Container from '@/components/ui/Container'
+import { siteConfig } from '@/lib/config'
 import Section from '@/components/ui/Section'
+import { siteConfig } from '@/lib/config'
 import Card from '@/components/ui/Card'
+import { siteConfig } from '@/lib/config'
 import Button from '@/components/ui/Button'
+import { siteConfig } from '@/lib/config'
 
 /**
  * TEMPLATE CUSTOMIZATION:
@@ -14,7 +21,7 @@ import Button from '@/components/ui/Button'
  */
 
 export const metadata: Metadata = {
-  title: 'Professional Services | Your Firm Name',
+  title: `Professional Services | ${siteConfig.name}`,
   description: 'Comprehensive professional services solutions tailored to your business needs. Expert guidance and strategic execution.',
 }
 

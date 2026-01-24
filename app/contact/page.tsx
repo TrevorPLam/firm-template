@@ -10,7 +10,7 @@ import { getSchedulingConfig } from '@/lib/scheduling'
 import { siteConfig } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Your Firm Name',
+  title: `Contact Us | ${siteConfig.name}`,
   description: 'Get in touch to discuss your goals. Schedule a free consultation or send us a message.',
 }
 

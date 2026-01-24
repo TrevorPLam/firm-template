@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/lib/config'
 import { Briefcase } from 'lucide-react'
 import ServiceDetailLayout from '@/components/ServiceDetailLayout'
 
@@ -9,7 +10,7 @@ import ServiceDetailLayout from '@/components/ServiceDetailLayout'
  */
 
 export const metadata: Metadata = {
-  title: 'Core Service 6 | Your Firm Name',
+  title: `Core Service 6 | ${siteConfig.name}`,
   description: 'Professional service solutions tailored to your business needs. Expert guidance and strategic execution to help your organization succeed.',
 }
 

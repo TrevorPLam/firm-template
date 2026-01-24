@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
+import { siteConfig } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Your Firm Name',
+  title: `Terms of Service | ${siteConfig.name}`,
   description:
     'Review the terms of service template for Your Firm Name. Replace placeholders with your firm-specific details.',
 }

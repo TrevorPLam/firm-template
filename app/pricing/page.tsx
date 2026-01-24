@@ -1,13 +1,23 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/lib/config'
 import Link from 'next/link'
+import { siteConfig } from '@/lib/config'
 import { Check, X } from 'lucide-react'
+import { siteConfig } from '@/lib/config'
 import Container from '@/components/ui/Container'
+import { siteConfig } from '@/lib/config'
 import Section from '@/components/ui/Section'
+import { siteConfig } from '@/lib/config'
 import Card from '@/components/ui/Card'
+import { siteConfig } from '@/lib/config'
 import Button from '@/components/ui/Button'
+import { siteConfig } from '@/lib/config'
 import Accordion from '@/components/ui/Accordion'
+import { siteConfig } from '@/lib/config'
 import AppointmentScheduler from '@/components/AppointmentScheduler'
+import { siteConfig } from '@/lib/config'
 import { getSchedulingConfig } from '@/lib/scheduling'
+import { siteConfig } from '@/lib/config'
 
 /**
  * TEMPLATE CUSTOMIZATION:
@@ -22,7 +32,7 @@ import { getSchedulingConfig } from '@/lib/scheduling'
  */
 
 export const metadata: Metadata = {
-  title: 'Pricing | Your Firm Name',
+  title: `Pricing | ${siteConfig.name}`,
   description: 'Transparent pricing for professional services. Choose from Basic, Professional, or Enterprise tiers. No hidden fees.',
 }
 
