@@ -49,28 +49,6 @@
 
 ## P1 — High
 
-### [TASK-015] Split lib/actions.ts into Modules
-- **Priority:** P1
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** `lib/actions.ts` is 623 lines handling multiple concerns (rate limiting, Supabase, HubSpot, email). Violates Single Responsibility Principle and makes testing harder.
-
-#### Acceptance Criteria
-- [ ] Create `lib/actions/` directory structure
-- [ ] Extract rate limiting to `lib/actions/rate-limit.ts`
-- [ ] Extract Supabase operations to `lib/actions/supabase.ts`
-- [ ] Extract HubSpot sync to `lib/actions/hubspot.ts`
-- [ ] Create main `lib/actions/contact-form.ts` that orchestrates flow
-- [ ] Maintain type safety and test coverage
-- [ ] Update all imports across codebase
-
-#### Notes
-- File: `lib/actions.ts` (623 lines)
-- Impact: High - Maintainability and testability
-- Effort: Medium - Requires careful refactoring
-
----
-
 ### [TASK-016] Move Hardcoded Values to Environment/Config
 - **Priority:** P1
 - **Status:** Pending

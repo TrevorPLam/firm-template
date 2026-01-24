@@ -1,0 +1,25 @@
+{
+  "intent": "Add SBOM and SLSA workflows",
+  "task_id": "TASK-032",
+  "timestamp": "2026-01-24T01:30:00Z",
+  "files": [
+    ".github/workflows/sbom.yml",
+    ".github/workflows/slsa-provenance.yml",
+    "SECURITY.md",
+    ".repo/tasks/TODO.md",
+    ".repo/tasks/BACKLOG.md",
+    ".repo/tasks/ARCHIVE.md",
+    ".repo/traces/TASK-032-trace-20260124-012959.json",
+    ".repo/logs/TASK-032-log-20260124-013002.json"
+  ],
+  "commands": [
+    "npm run lint",
+    "bash scripts/generate-trace-log.sh TASK-032 \"Add SBOM and SLSA workflows\"",
+    "bash scripts/generate-agent-log.sh TASK-032 \"Add SBOM and SLSA workflows\""
+  ],
+  "evidence": [
+    "npm run lint failed with existing ESLint errors in .repo/automation/scripts and lib/sanitize.ts."
+  ],
+  "hitl": [],
+  "unknowns": []
+}
