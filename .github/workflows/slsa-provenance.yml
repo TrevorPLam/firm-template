@@ -79,7 +79,7 @@ jobs:
           path: slsa-provenance
 
       - name: Install slsa-verifier
-        uses: slsa-framework/slsa-verifier/actions/installer@v2.6.0
+        uses: slsa-framework/slsa-verifier/actions/installer@v2.7.1
 
       - name: Verify provenance signature
         run: |
