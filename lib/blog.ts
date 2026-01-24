@@ -43,7 +43,7 @@
  * - lib/search.ts — search index
  *
  * **POTENTIAL IMPROVEMENTS**:
- * - [ ] Add caching layer for dev mode (re-reads on every request)
+ * - [x] Add caching layer for dev mode (5 minute TTL, cleared between tests)
  * - [ ] Add frontmatter validation with Zod
  * - [ ] Add prev/next post navigation helpers
  *
@@ -96,6 +96,48 @@ import { z } from 'zod'
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 const slugAllowlist = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const dateFormat = /^\d{4}-\d{2}-\d{2}$/
+
+/**
+ * In-memory cache for blog posts in development mode.
+ * Cache is only active when NODE_ENV !== 'production'.
+ * 
+ * Cache invalidation:
+ * - Time-based: 5 minute TTL
+ * - Manual: Set cache to null to clear
+ */
+interface BlogCache {
+  posts: BlogPost[]
+  timestamp: number
+}
+
+let blogCache: BlogCache | null = null
+const CACHE_TTL = 5 * 60 * 1000 // 5 minutes in milliseconds
+
+/**
+ * Check if cache is valid (not expired and not in production).
+ */
+function isCacheValid(): boolean {
+  if (process.env.NODE_ENV === 'production') {
+    return false // Never use cache in production
+  }
+  
+  if (!blogCache) {
+    return false
+  }
+  
+  const now = Date.now()
+  const isExpired = now - blogCache.timestamp > CACHE_TTL
+  
+  return !isExpired
+}
+
+/**
+ * Clear the blog post cache.
+ * Useful for testing or manual cache invalidation.
+ */
+export function clearBlogCache(): void {
+  blogCache = null
+}
 
 const blogFrontmatterSchema = z.object({
   title: z.string().min(1, 'Required'),
@@ -186,6 +228,7 @@ function parseFrontmatter(data: unknown, filePath: string) {
  * **Performance:**
  * - Called at build time for SSG
  * - Results are cached by Next.js during build
+ * - In development: Uses in-memory cache with 5 minute TTL
  * 
  * @returns Array of blog posts sorted by date descending
  * 
@@ -194,6 +237,11 @@ function parseFrontmatter(data: unknown, filePath: string) {
  * // Use in getStaticProps or generateStaticParams
  */
 export function getAllPosts(): BlogPost[] {
+  // Check cache first (development only)
+  if (isCacheValid() && blogCache) {
+    return blogCache.posts
+  }
+
   // Create directory if it doesn't exist
   if (!fs.existsSync(postsDirectory)) {
     return []
@@ -225,7 +273,17 @@ export function getAllPosts(): BlogPost[] {
     })
 
   // Sort posts by date
-  return allPosts.sort((a, b) => (a.date > b.date ? -1 : 1))
+  const sortedPosts = allPosts.sort((a, b) => (a.date > b.date ? -1 : 1))
+  
+  // Update cache (development only)
+  if (process.env.NODE_ENV !== 'production') {
+    blogCache = {
+      posts: sortedPosts,
+      timestamp: Date.now(),
+    }
+  }
+  
+  return sortedPosts
 }
 
 /**

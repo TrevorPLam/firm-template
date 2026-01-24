@@ -1,6 +1,6 @@
 import fs from 'fs'
-import { describe, expect, it, vi } from 'vitest'
-import { getAllCategories, getAllPosts, getPostBySlug } from '@/lib/blog'
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest'
+import { getAllCategories, getAllPosts, getPostBySlug, clearBlogCache } from '@/lib/blog'
 
 describe('blog utilities', () => {
   it('test_returns_posts_with_expected_shape', () => {
@@ -142,5 +142,88 @@ describe('blog utilities', () => {
       readSpy.mockRestore()
       existsSpy.mockRestore()
     }
+  })
+})
+
+describe('blog caching', () => {
+  const originalNodeEnv = process.env.NODE_ENV
+
+  beforeEach(() => {
+    // Clear cache before each test
+    clearBlogCache()
+  })
+
+  afterEach(() => {
+    // Restore NODE_ENV after each test
+    process.env.NODE_ENV = originalNodeEnv
+    clearBlogCache()
+  })
+
+  it('test_cache_is_used_in_development_mode', () => {
+    // WHY: Cache should reduce filesystem reads in development
+    process.env.NODE_ENV = 'development'
+    clearBlogCache()
+
+    const readSpy = vi.spyOn(fs, 'readdirSync')
+    
+    // First call should read from filesystem
+    const posts1 = getAllPosts()
+    const readCount1 = readSpy.mock.calls.length
+    expect(readCount1).toBeGreaterThan(0)
+
+    // Second call should use cache
+    const posts2 = getAllPosts()
+    const readCount2 = readSpy.mock.calls.length
+    
+    // No additional reads should have occurred
+    expect(readCount2).toBe(readCount1)
+    expect(posts1).toEqual(posts2)
+
+    readSpy.mockRestore()
+  })
+
+  it('test_cache_is_not_used_in_production_mode', () => {
+    // WHY: Cache should never be active in production
+    process.env.NODE_ENV = 'production'
+    clearBlogCache()
+
+    const readSpy = vi.spyOn(fs, 'readdirSync')
+    
+    // First call
+    getAllPosts()
+    const readCount1 = readSpy.mock.calls.length
+    expect(readCount1).toBeGreaterThan(0)
+
+    // Second call should read again (no cache)
+    getAllPosts()
+    const readCount2 = readSpy.mock.calls.length
+    
+    // Additional reads should have occurred
+    expect(readCount2).toBeGreaterThan(readCount1)
+
+    readSpy.mockRestore()
+  })
+
+  it('test_cache_can_be_manually_cleared', () => {
+    // WHY: Tests need ability to clear cache between test runs
+    process.env.NODE_ENV = 'development'
+    clearBlogCache()
+
+    const readSpy = vi.spyOn(fs, 'readdirSync')
+    
+    // First call
+    getAllPosts()
+    const readCount1 = readSpy.mock.calls.length
+
+    // Clear cache
+    clearBlogCache()
+
+    // Next call should read again
+    getAllPosts()
+    const readCount2 = readSpy.mock.calls.length
+    
+    expect(readCount2).toBeGreaterThan(readCount1)
+
+    readSpy.mockRestore()
   })
 })
