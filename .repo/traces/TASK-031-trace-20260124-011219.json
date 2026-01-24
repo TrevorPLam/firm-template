@@ -1,0 +1,23 @@
+{
+  "intent": "Add SAST GitHub Actions workflows",
+  "task_id": "TASK-031",
+  "timestamp": "2026-01-24T01:12:19Z",
+  "files": [
+    ".github/workflows/codeql.yml",
+    ".github/workflows/gitleaks.yml",
+    ".github/workflows/ossf-scorecard.yml",
+    ".github/workflows/trivy.yml",
+    ".repo/tasks/ARCHIVE.md",
+    ".repo/tasks/BACKLOG.md",
+    ".repo/tasks/TODO.md"
+  ],
+  "commands": [
+    "npm run lint",
+    "bash ./scripts/generate-trace-log.sh TASK-031 \"Add SAST GitHub Actions workflows\""
+  ],
+  "evidence": [
+    "npm run lint failed with existing eslint issues in repo automation scripts and lib/sanitize.ts."
+  ],
+  "hitl": [],
+  "unknowns": []
+}
