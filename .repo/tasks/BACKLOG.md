@@ -47,26 +47,6 @@
 
 ## P0 — Critical
 
-### [TASK-014] Add Frontmatter Validation for Blog Posts
-- **Priority:** P0
-- **Status:** Blocked
-- **Created:** 2026-01-23
-- **Context:** Blog posts can fail at build time with cryptic errors if frontmatter is missing or invalid. No validation currently exists.
-
-#### Acceptance Criteria
-- [ ] Create Zod schema matching `BlogPost` interface
-- [ ] Validate frontmatter after parsing with `matter()` in `lib/blog.ts`
-- [ ] Provide clear error messages with file path and missing field
-- [ ] Fail build early with helpful error messages
-
-#### Notes
-- Blocked per user request to pause current task and re-prioritize.
-- File: `lib/blog.ts:160-172`
-- Impact: Prevents build failures from invalid frontmatter
-- Current: No validation - could be undefined/invalid format
-
----
-
 ## P1 — High
 
 ### [TASK-015] Split lib/actions.ts into Modules

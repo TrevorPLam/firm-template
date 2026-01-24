@@ -1,0 +1,24 @@
+{
+  "intent": "Remove duplicate CI workflow definition",
+  "task_id": "TASK-003",
+  "timestamp": "2026-01-24T00:43:52Z",
+  "files": [
+    "CODEX.md",
+    ".repo/tasks/TODO.md",
+    ".repo/tasks/BACKLOG.md",
+    ".repo/tasks/ARCHIVE.md",
+    "githubactions/workflows/ci.yml",
+    ".repo/traces/TASK-003-trace-20260124-004352.json",
+    ".repo/logs/TASK-003-log-20260124-004355.json"
+  ],
+  "commands": [
+    "npm run lint",
+    "bash scripts/generate-trace-log.sh TASK-003 \"Remove duplicate CI workflow definition\"",
+    "bash scripts/generate-agent-log.sh TASK-003 \"Remove duplicate CI workflow definition\""
+  ],
+  "evidence": [
+    "npm run lint (fails: existing ESLint errors in .repo/automation scripts and lib/sanitize.ts)"
+  ],
+  "hitl": [],
+  "unknowns": []
+}

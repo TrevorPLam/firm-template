@@ -66,17 +66,20 @@
 
 ---
 
-### [TASK-003] Fix Duplicate Content in CI Workflow
+### [TASK-014] Add Frontmatter Validation for Blog Posts
 - **Priority:** P0
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** `.github/workflows/ci.yml` has two conflicting workflow definitions causing confusion.
+- **Context:** Blog posts can fail at build time with cryptic errors if frontmatter is missing or invalid. No validation currently exists.
 
 #### Acceptance Criteria
-- [ ] Remove duplicate workflow definition
-- [ ] Ensure single coherent CI pipeline
-- [ ] Verify all jobs run correctly
-- [ ] Test on a branch before merging
+- [ ] Create Zod schema matching `BlogPost` interface
+- [ ] Validate frontmatter after parsing with `matter()` in `lib/blog.ts`
+- [ ] Provide clear error messages with file path and missing field
+- [ ] Fail build early with helpful error messages
 
 #### Notes
-- File currently has 403 lines with overlapping `name: CI` and `name: CI/CD Pipeline`
+- Previously blocked per user request; now promoted to active work.
+- File: `lib/blog.ts:160-172`
+- Impact: Prevents build failures from invalid frontmatter
+- Current: No validation - could be undefined/invalid format
