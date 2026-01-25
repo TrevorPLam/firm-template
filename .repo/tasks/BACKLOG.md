@@ -456,25 +456,6 @@
 
 ---
 
-### [TASK-033] Create Release Automation Workflow
-- **Priority:** P0
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** Semantic versioning and automated releases are missing. Manual releases are error-prone.
-
-#### Acceptance Criteria
-- [ ] Create `.github/workflows/release.yml` using semantic-release
-- [ ] Configure automated changelog generation
-- [ ] Configure automated Git tagging
-- [ ] Configure automated npm package publishing (if applicable)
-- [ ] Test release workflow on a test branch
-
-#### Notes
-- Per DIAMOND.md Priority Gaps (line 31)
-- semantic-release automates version bumping and changelog
-
----
-
 ### [TASK-034] Create Production Deployment Automation
 - **Priority:** P0
 - **Status:** Pending

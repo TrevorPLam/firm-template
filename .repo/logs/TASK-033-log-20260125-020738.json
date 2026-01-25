@@ -1,0 +1,35 @@
+{
+  "intent": "Implement release automation workflow",
+  "plan": [
+    "Add semantic-release configuration and release workflow",
+    "Add release changelog and update governance changelog",
+    "Add E2E coverage for pricing page",
+    "Run required tests and capture evidence",
+    "Record trace and agent logs"
+  ],
+  "actions": [
+    "Created .releaserc.cjs with semantic-release plugins and npmPublish disabled",
+    "Added .github/workflows/release.yml with dry-run workflow_dispatch support",
+    "Added CHANGELOG.md for automated release notes",
+    "Added pricing page Playwright test",
+    "Updated task tracking and governance changelog"
+  ],
+  "evidence": [
+    "npm install failed due to registry 403, blocking dependency installs",
+    "npm run lint/type-check/test/test:e2e failed because dependencies could not be installed"
+  ],
+  "decisions": [
+    "Use npx with explicit --package flags in the release workflow so plugins resolve without local devDependencies",
+    "Keep npmPublish disabled because the project is marked private"
+  ],
+  "risks": [
+    "Release workflow depends on registry access during GitHub Actions runs",
+    "Local verification is limited until npm registry access is available"
+  ],
+  "follow_ups": [
+    "Run the release workflow in dry-run mode on a test branch in GitHub",
+    "Re-run lint, type-check, unit tests, and E2E tests after dependencies can install"
+  ],
+  "reasoning_summary": "Implemented release automation artifacts and added E2E coverage while documenting the current dependency-installation block that prevents local verification.",
+  "notes": "No secrets. No private data. No raw chain-of-thought."
+}

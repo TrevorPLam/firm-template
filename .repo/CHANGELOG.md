@@ -4,6 +4,19 @@
 
 This file tracks improvements and changes to the governance framework.
 
+## 2026-01-25 - Release Automation Workflow
+
+### Added
+
+- **Semantic-release workflow** to automate tagging, release notes, and changelog updates.
+- **Release configuration** (`.releaserc.cjs`) with inline guidance for release behavior.
+- **Release changelog** (`CHANGELOG.md`) to capture automated release notes.
+
+### Updated
+
+- **Task tracking** to promote TASK-033 into active work.
+- **E2E coverage** with a pricing page sanity check to validate release readiness.
+
 ## 2026-01-23 - World-Class Documentation Structure
 
 ### Added
