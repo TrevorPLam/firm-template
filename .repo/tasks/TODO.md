@@ -54,14 +54,21 @@
 
 ## Active Task
 
-> **Welcome!** 👋 If this section is empty, you need to promote a task from the backlog:
->
-> 1. Read `.repo/tasks/BACKLOG.md` to see available tasks
-> 2. Find the highest priority task (P0 → P1 → P2 → P3)
-> 3. Copy the task block from `BACKLOG.md` to this file
-> 4. Update status from `Pending` to `In Progress`
-> 5. Remove the task from `BACKLOG.md`
->
-> **Then:** Follow the three-pass workflow from `AGENTS.json` to complete the task.
+### [TASK-033] Create Release Automation Workflow
+- **Priority:** P0
+- **Status:** In Progress
+- **Created:** 2026-01-23
+- **Context:** Semantic versioning and automated releases are missing. Manual releases are error-prone.
+
+#### Acceptance Criteria
+- [x] Create `.github/workflows/release.yml` using semantic-release
+- [x] Configure automated changelog generation
+- [x] Configure automated Git tagging
+- [x] Configure automated npm package publishing (if applicable)
+- [ ] Test release workflow on a test branch
+
+#### Notes
+- Per DIAMOND.md Priority Gaps (line 31)
+- semantic-release automates version bumping and changelog
 
 ---
