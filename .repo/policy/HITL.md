@@ -60,6 +60,8 @@ Required fields:
 ### Active
 |ID|Category|Status|Summary|Filepath|
 |---|---|---|---|---|
+|HITL-0001|External Integration|Pending|Test release workflow on a test branch|.repo/hitl/HITL-0001.md|
+|HITL-0002|External Integration|Pending|Create production deployment workflow for Cloudflare Pages|.repo/hitl/HITL-0002.md|
 
 ### Archived
 |ID|Category|Status|Summary|Filepath|

@@ -1,0 +1,22 @@
+{
+  "intent": "Create HITL entry and block release workflow test",
+  "task_id": "TASK-033",
+  "timestamp": "2026-01-25T21:29:11Z",
+  "files": [
+    ".repo/hitl/HITL-0001.md",
+    ".repo/policy/HITL.md",
+    ".repo/tasks/BACKLOG.md",
+    ".repo/tasks/TODO.md"
+  ],
+  "commands": [
+    "bash scripts/create-hitl-item.sh \"External Integration\" \"Test release workflow on a test branch\"",
+    "bash scripts/generate-trace-log.sh TASK-033 \"Create HITL entry and block release workflow test\""
+  ],
+  "evidence": [
+    "No automated tests run (HITL/task management updates only)."
+  ],
+  "hitl": [
+    "HITL-0001"
+  ],
+  "unknowns": []
+}

@@ -1,0 +1,33 @@
+{
+  "goal": "Track successful contact form submissions with analytics and ensure no sensitive data is included.",
+  "non_goals": [
+    "Selecting or configuring a new analytics provider",
+    "Tracking failed submissions or additional form fields beyond the required event"
+  ],
+  "acceptance_criteria": [
+    "Record a contact_form_submitted event on successful form submissions",
+    "Include source page metadata without any user-entered data",
+    "Unit test verifies analytics tracking is triggered"
+  ],
+  "approach": "Add an analytics event call in ContactForm.tsx after a successful submit and use the current pathname as non-sensitive metadata. Mock analytics in unit tests to assert the event is fired.",
+  "files_touched": [
+    "components/ContactForm.tsx",
+    "__tests__/components/ContactForm.test.tsx",
+    ".repo/tasks/packets/TASK-018-packet.json",
+    ".repo/tasks/TODO.md",
+    ".repo/tasks/BACKLOG.md",
+    ".repo/tasks/ARCHIVE.md",
+    ".repo/traces/TASK-018-trace-20260125-214323.json",
+    ".repo/logs/TASK-018-log-20260125-214334.json"
+  ],
+  "verification_plan": [
+    "npm test"
+  ],
+  "risks": [
+    "Accidentally including sensitive user input in analytics payloads",
+    "Breaking existing ContactForm tests"
+  ],
+  "rollback_plan": "Revert the analytics event call and the associated unit test changes.",
+  "hitl_requirements": [],
+  "notes": "Filepaths required. No guessing. UNKNOWN → HITL."
+}

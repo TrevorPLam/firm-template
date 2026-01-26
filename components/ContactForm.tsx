@@ -106,12 +106,15 @@ import Textarea from '@/components/ui/Textarea'
 import Button from '@/components/ui/Button'
 import { Loader2 } from 'lucide-react'
 import { setSentryContext, setSentryUser, withSentrySpan } from '@/lib/sentry-client'
+import { trackEvent } from '@/lib/analytics'
+import { usePathname } from 'next/navigation'
 
 /**
  * Contact form with full validation and server submission.
  * Manages its own submission state and error handling.
  */
 export default function ContactForm() {
+  const pathname = usePathname()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null
@@ -144,6 +147,11 @@ export default function ContactForm() {
         await setSentryUser({ email: data.email, name: data.name })
         await setSentryContext('contact_form', {
           heardFrom: data.hearAboutUs,
+        })
+        trackEvent({
+          action: 'contact_form_submitted',
+          category: 'conversion',
+          label: pathname ?? 'unknown',
         })
         setSubmitStatus({
           type: 'success',

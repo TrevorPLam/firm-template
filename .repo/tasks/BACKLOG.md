@@ -49,44 +49,6 @@
 
 ## P1 — High
 
-### [TASK-018] Add Analytics Tracking to Contact Form
-- **Priority:** P1
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** Contact form doesn't track successful submissions for analytics. Task T-064 referenced but not implemented.
-
-#### Acceptance Criteria
-- [ ] Integrate analytics tracking in `components/ContactForm.tsx`
-- [ ] Track event on successful form submission
-- [ ] Use `lib/analytics.ts` or integrate GA4/Plausible directly
-- [ ] Track event: `contact_form_submitted` with metadata (source page, etc.)
-- [ ] Ensure sensitive user data is not sent to analytics
-- [ ] Add unit test to verify analytics event is triggered
-
-#### Notes
-- File: `components/ContactForm.tsx:53` (comment indicates missing)
-- Related: Task T-064 pending (analytics provider selection)
-- Impact: Medium - Missing conversion tracking
-
----
-
-### [TASK-004] Create .github/copilot-instructions.md
-- **Priority:** P1
-- **Status:** Pending
-- **Created:** 2026-01-23
-- **Context:** Context engineering file for GitHub Copilot and VS Code AI features.
-
-#### Acceptance Criteria
-- [ ] Document product vision and architecture principles
-- [ ] Include contribution guidelines for AI
-- [ ] Reference supporting docs (ARCHITECTURE.md, PRODUCT.md)
-- [ ] Test with Copilot to verify context is picked up
-
-#### Notes
-- Part of the VS Code context engineering workflow standard
-
----
-
 ### [TASK-005] Create PRODUCT.md
 - **Priority:** P1
 - **Status:** Pending
@@ -456,9 +418,29 @@
 
 ---
 
+### [TASK-033] Create Release Automation Workflow
+- **Priority:** P0
+- **Status:** Blocked
+- **Created:** 2026-01-23
+- **Context:** Semantic versioning and automated releases are missing. Manual releases are error-prone.
+
+#### Acceptance Criteria
+- [x] Create `.github/workflows/release.yml` using semantic-release
+- [x] Configure automated changelog generation
+- [x] Configure automated Git tagging
+- [x] Configure automated npm package publishing (if applicable)
+- [ ] Test release workflow on a test branch
+
+#### Notes
+- Per DIAMOND.md Priority Gaps (line 31)
+- semantic-release automates version bumping and changelog
+- HITL-0001 tracks the required manual test run for the release workflow.
+
+---
+
 ### [TASK-034] Create Production Deployment Automation
 - **Priority:** P0
-- **Status:** Pending
+- **Status:** Blocked
 - **Created:** 2026-01-23
 - **Context:** Production deployment is not automated. Manual deployments are risky and slow.
 
@@ -473,6 +455,7 @@
 - Per DIAMOND.md Priority Gaps (line 32)
 - Cloudflare Pages deployment should be automated
 - Should include smoke tests post-deployment
+- HITL-0002 tracks required human confirmation for external deployment workflow setup.
 
 ---
 
