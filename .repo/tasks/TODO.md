@@ -54,21 +54,19 @@
 
 ## Active Task
 
-### [TASK-033] Create Release Automation Workflow
-- **Priority:** P0
+### [TASK-004] Create .github/copilot-instructions.md
+- **Priority:** P1
 - **Status:** In Progress
 - **Created:** 2026-01-23
-- **Context:** Semantic versioning and automated releases are missing. Manual releases are error-prone.
+- **Context:** Context engineering file for GitHub Copilot and VS Code AI features.
 
 #### Acceptance Criteria
-- [x] Create `.github/workflows/release.yml` using semantic-release
-- [x] Configure automated changelog generation
-- [x] Configure automated Git tagging
-- [x] Configure automated npm package publishing (if applicable)
-- [ ] Test release workflow on a test branch
+- [ ] Document product vision and architecture principles
+- [ ] Include contribution guidelines for AI
+- [ ] Reference supporting docs (ARCHITECTURE.md, PRODUCT.md)
+- [ ] Test with Copilot to verify context is picked up
 
 #### Notes
-- Per DIAMOND.md Priority Gaps (line 31)
-- semantic-release automates version bumping and changelog
+- Part of the VS Code context engineering workflow standard
 
 ---

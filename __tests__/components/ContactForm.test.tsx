@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import ContactForm from '@/components/ContactForm'
 import { submitContactForm } from '@/lib/actions/contact-form'
+import { trackEvent } from '@/lib/analytics'
 
 // Mock the submitContactForm action while keeping the real schema
 vi.mock('@/lib/actions/contact-form', async () => {
@@ -14,6 +15,14 @@ vi.mock('@/lib/actions/contact-form', async () => {
     submitContactForm: vi.fn(),
   }
 })
+
+vi.mock('@/lib/analytics', () => ({
+  trackEvent: vi.fn(),
+}))
+
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/contact',
+}))
 
 describe('ContactForm', () => {
   beforeEach(() => {
@@ -110,6 +119,33 @@ describe('ContactForm', () => {
 
     await waitFor(() => {
       expect(screen.getByText(/thank you for contacting us/i)).toBeInTheDocument()
+    })
+  })
+
+  it('tracks analytics event on successful submission', async () => {
+    const user = userEvent.setup()
+    const mockSubmit = vi.mocked(submitContactForm)
+    const mockTrack = vi.mocked(trackEvent)
+    mockSubmit.mockResolvedValue({
+      success: true,
+      message: 'Thank you for contacting us!',
+    })
+
+    render(<ContactForm />)
+
+    await user.type(screen.getByLabelText(/name/i), 'John Smith')
+    await user.type(screen.getByLabelText(/email/i), 'john@example.com')
+    await user.type(screen.getByLabelText(/phone/i), '555-123-4567')
+    await user.type(screen.getByRole('textbox', { name: /message/i }), 'Test message with enough characters')
+
+    await user.click(screen.getByRole('button', { name: /send message/i }))
+
+    await waitFor(() => {
+      expect(mockTrack).toHaveBeenCalledWith({
+        action: 'contact_form_submitted',
+        category: 'conversion',
+        label: '/contact',
+      })
     })
   })
 
