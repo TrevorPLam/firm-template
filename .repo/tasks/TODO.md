@@ -61,12 +61,13 @@
 - **Context:** Context engineering file for GitHub Copilot and VS Code AI features.
 
 #### Acceptance Criteria
-- [ ] Document product vision and architecture principles
-- [ ] Include contribution guidelines for AI
-- [ ] Reference supporting docs (ARCHITECTURE.md, PRODUCT.md)
+- [x] Document product vision and architecture principles
+- [x] Include contribution guidelines for AI
+- [x] Reference supporting docs (ARCHITECTURE.md, PRODUCT.md)
 - [ ] Test with Copilot to verify context is picked up
 
 #### Notes
 - Part of the VS Code context engineering workflow standard
+- Copilot verification requires a manual check in VS Code/GitHub Copilot.
 
 ---
