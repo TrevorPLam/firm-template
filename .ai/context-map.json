@@ -1,0 +1,22 @@
+{
+  "repository": "firm-template",
+  "type": "full-stack-template",
+  "frontend": {
+    "framework": "nextjs-app-router",
+    "location": "app/",
+    "components": "components/",
+    "features": "features/"
+  },
+  "backend": {
+    "framework": "python-django",
+    "location": "backend/",
+    "modules": "backend/modules/",
+    "api": "backend/api/"
+  },
+  "structure": {
+    "app": "Next.js pages and routes",
+    "components": "React components",
+    "features": "Feature modules",
+    "backend": "Python backend service"
+  }
+}
