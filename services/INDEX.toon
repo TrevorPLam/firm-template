@@ -1,0 +1,27 @@
+# INDEX.toon
+
+meta{root, generated_at}:
+services, 2026-01-29T08:08:01Z
+
+entries[21]{path, type}:
+api-gateway, dir
+api-gateway/.ai-context.md, file
+api-gateway/backend, dir
+api-gateway/backend/.agent-context.json, file
+api-gateway/backend/api, dir
+api-gateway/backend/api/clients, dir
+api-gateway/backend/api/clients/.agent-context.json, file
+api-gateway/backend/modules, dir
+api-gateway/backend/modules/clients, dir
+api-gateway/backend/modules/clients/.agent-context.json, file
+api-gateway/backend/modules/core, dir
+api-gateway/backend/modules/core/.agent-context.json, file
+api-gateway/backend/modules/crm, dir
+api-gateway/backend/modules/crm/.agent-context.json, file
+api-gateway/backend/modules/finance, dir
+api-gateway/backend/modules/finance/.agent-context.json, file
+api-gateway/backend/modules/firm, dir
+api-gateway/backend/modules/firm/.agent-context.json, file
+api-gateway/backend/modules/projects, dir
+api-gateway/backend/modules/projects/.agent-context.json, file
+api-gateway/package.json, file
