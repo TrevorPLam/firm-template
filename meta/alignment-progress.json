@@ -1,0 +1,38 @@
+{
+  "repository": "firm-template",
+  "started": "2026-01-30",
+  "last_updated": "2026-01-30T13:36:00Z",
+  "decision_points": {
+    "is_versioned_project": true,
+    "project_type": "monorepo",
+    "primary_language": "TypeScript",
+    "cicd_platform": "github",
+    "is_public_repo": false
+  },
+  "sections": {
+    "0": {
+      "status": "in_progress",
+      "tasks_complete": 4,
+      "tasks_total": 5,
+      "completed_tasks": [
+        "Identified as versioned monorepo",
+        "Primary language: TypeScript",
+        "Package manager: pnpm",
+        "CI/CD platform: GitHub Actions"
+      ],
+      "pending_tasks": [
+        "Document decisions in alignment-progress.json"
+      ],
+      "notes": "Platform for multiple marketing sites with shared foundations"
+    }
+  },
+  "next_section": 1,
+  "blockers": [],
+  "overall_progress": {
+    "p0_complete": 0,
+    "p0_total": 13,
+    "p1_complete": 0,
+    "p1_total": 13,
+    "health_score": 5
+  }
+}

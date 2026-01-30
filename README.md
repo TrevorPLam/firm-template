@@ -72,7 +72,7 @@ See [docs/CLIENT_SITES.md](docs/CLIENT_SITES.md) for complete guide.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
 ## License
 
