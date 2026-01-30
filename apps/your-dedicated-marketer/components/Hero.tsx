@@ -14,7 +14,7 @@ export default function Hero() {
     ctaSecondary: { label: 'Get a Free Marketing Plan', href: '/contact' },
     disclaimer: 'No contracts · Cancel anytime · Free strategy call, no obligation',
     media: (
-      <div className="bg-gradient-to-br from-foreground to-primary/20 rounded-2xl p-4 aspect-square flex items-center justify-center shadow-lg">
+      <div className="bg-gradient-to-br from-foreground to-primary/20 p-4 aspect-square flex items-center justify-center">
         <Image
           src="/images/hero-growth.svg"
           alt="Stylized bar chart climbing upward to represent marketing growth"
