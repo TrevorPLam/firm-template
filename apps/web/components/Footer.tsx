@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -110,8 +111,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10 text-center">
+        {/* Copyright + Theme switcher (Phase 1: proves token theme switching) */}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col items-center gap-4">
+          <ThemeSwitcher />
           <p className="text-white/60">
             © {currentYear} Your Firm LLC. All rights reserved.
           </p>

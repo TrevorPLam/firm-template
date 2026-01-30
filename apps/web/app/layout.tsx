@@ -216,8 +216,13 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${inter.variable} ${plexSans.variable}`}>
+    <html lang="en" className={`${inter.variable} ${plexSans.variable}`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=document.documentElement.getAttribute('data-theme')||localStorage.getItem('theme')||'default';document.documentElement.setAttribute('data-theme',t);})();`,
+          }}
+        />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0ea5e9" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -269,7 +274,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans bg-off-white text-charcoal">
+      <body className="font-sans bg-background text-foreground">
         <SkipToContent />
         <Navigation searchItems={searchItems} />
         <Providers>

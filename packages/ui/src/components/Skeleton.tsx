@@ -12,18 +12,20 @@ interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
 export function Skeleton({ className, ...props }: SkeletonProps) {
   return (
     <div
-      className={cn('animate-pulse rounded-md bg-gray-200', className)}
+      className={cn('animate-pulse rounded-md bg-border', className)}
       {...props}
     />
   )
 }
+
+export default Skeleton
 
 /**
  * Card skeleton for service/case study cards
  */
 export function CardSkeleton() {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+    <div className="bg-background-alt rounded-lg shadow-sm border border-border p-8">
       <Skeleton className="h-6 w-24 mb-4" />
       <Skeleton className="h-8 w-full mb-3" />
       <Skeleton className="h-4 w-full mb-2" />
@@ -42,7 +44,7 @@ export function CardSkeleton() {
  */
 export function BlogPostSkeleton() {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+    <div className="bg-background-alt rounded-lg shadow-sm border border-border p-8">
       <Skeleton className="h-5 w-20 rounded-full mb-4" />
       <Skeleton className="h-7 w-full mb-3" />
       <Skeleton className="h-4 w-full mb-2" />

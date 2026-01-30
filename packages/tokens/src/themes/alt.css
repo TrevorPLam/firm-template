@@ -1,0 +1,48 @@
+/**
+ * Alt theme – alternate palette to prove theme switching.
+ * Same structure as default; different primary (blue) and slightly warmer neutrals.
+ */
+[data-theme="alt"] {
+  --color-background: #F8F9FC;
+  --color-background-alt: #ffffff;
+  --color-foreground: #0F1419;
+  --color-foreground-muted: #5C6470;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #3b82f6;
+  --color-primary-foreground: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-muted: rgba(92, 100, 112, 0.2);
+
+  --charcoal: var(--color-foreground);
+  --off-white: var(--color-background);
+  --slate: var(--color-foreground-muted);
+  --teal: var(--color-primary);
+  --teal-dark: var(--color-primary-hover);
+  --teal-light: var(--color-primary-light);
+
+  /* Spacing, radius, motion unchanged */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-heading: var(--font-plex), 'IBM Plex Sans', system-ui, sans-serif;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@repo/tokens",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./themes/default.css": "./src/themes/default.css",
+    "./themes/alt.css": "./src/themes/alt.css"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

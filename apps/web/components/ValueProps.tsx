@@ -1,24 +1,13 @@
+/**
+ * Value propositions – thin wrapper around @repo/patterns Features with app content.
+ */
 import React, { memo } from 'react'
 import { Target, DollarSign, Settings } from 'lucide-react'
-import { Container } from '@repo/ui'
-import { Section } from '@repo/ui'
-import { Card } from '@repo/ui'
-
-/**
- * TEMPLATE CUSTOMIZATION:
- * Replace these value propositions with your firm's unique benefits.
- * Keep the structure (icon, title, description) but update content to match your vertical.
- * 
- * Examples by industry:
- * - Law Firm: "Experienced legal counsel", "Client-first approach", "Proven track record"
- * - Consulting: "Strategic insights", "Implementation support", "Measurable outcomes"
- * - Accounting: "Tax optimization", "Compliance expertise", "Financial clarity"
- * - Design Agency: "Creative excellence", "Brand strategy", "Collaborative process"
- */
+import { Features as FeaturesPattern } from '@repo/patterns'
 
 const valueProps = [
   {
-    icon: Target,
+    icon: <Target className="w-6 h-6" aria-hidden />,
     title: 'Expert guidance, strategic execution',
     description: (
       <>
@@ -30,12 +19,12 @@ const valueProps = [
           <li>Proactive recommendations, not just execution</li>
           <li>Ongoing accountability and results tracking</li>
         </ul>
-        <p>That's the value we deliver.</p>
+        <p>That&apos;s the value we deliver.</p>
       </>
     ),
   },
   {
-    icon: DollarSign,
+    icon: <DollarSign className="w-6 h-6" aria-hidden />,
     title: 'True partnership approach',
     description: (
       <>
@@ -55,18 +44,18 @@ const valueProps = [
     ),
   },
   {
-    icon: Settings,
+    icon: <Settings className="w-6 h-6" aria-hidden />,
     title: 'Ideal for ambitious organizations',
     description: (
       <>
         <p>This approach works best if:</p>
         <ul className="list-disc list-inside pl-4 space-y-1">
-          <li>You're a leader looking for strategic partnership</li>
+          <li>You&apos;re a leader looking for strategic partnership</li>
           <li>You want senior-level expertise and ownership</li>
           <li>You prefer depth over managing multiple vendors</li>
           <li>You value clarity, momentum, and follow-through</li>
         </ul>
-        <p>If you're looking for a hands-off vendor or one-time project, this may not be the right fit.</p>
+        <p>If you&apos;re looking for a hands-off vendor or one-time project, this may not be the right fit.</p>
         <p>If you want a dedicated partner invested in your success, it is.</p>
       </>
     ),
@@ -75,24 +64,10 @@ const valueProps = [
 
 function ValueProps() {
   return (
-    <Section className="bg-white">
-      <Container>
-        <div className="grid md:grid-cols-3 gap-8">
-          {valueProps.map((prop, index) => {
-            const Icon = prop.icon
-            return (
-              <Card key={index} variant="default">
-                <div className="w-12 h-12 bg-teal/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-teal" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">{prop.title}</h3>
-                <div className="text-slate leading-relaxed space-y-4">{prop.description}</div>
-              </Card>
-            )
-          })}
-        </div>
-      </Container>
-    </Section>
+    <FeaturesPattern
+      content={{ items: valueProps }}
+      className="bg-background-alt"
+    />
   )
 }
 

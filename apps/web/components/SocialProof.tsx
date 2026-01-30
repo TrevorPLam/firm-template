@@ -1,7 +1,8 @@
+/**
+ * Testimonials / social proof – thin wrapper around @repo/patterns Testimonials with app content.
+ */
 import React, { memo } from 'react'
-import { Container } from '@repo/ui'
-import { Section } from '@repo/ui'
-import { Card } from '@repo/ui'
+import { Testimonials as TestimonialsPattern } from '@repo/patterns'
 
 const testimonials = [
   {
@@ -32,41 +33,15 @@ const metrics = [
 
 function SocialProof() {
   return (
-    <Section className="bg-white">
-      <Container>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-            Trusted by clients we work with
-          </h2>
-          <p className="text-lg text-slate max-w-2xl mx-auto">
-            Here's what clients say about working with us
-          </p>
-        </div>
-
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} variant="testimonial">
-              <p className="text-slate mb-6 italic leading-relaxed">{testimonial.quote}</p>
-              <div>
-                <p className="font-semibold text-charcoal">{testimonial.author}</p>
-                <p className="text-slate text-sm">{testimonial.company}, {testimonial.title}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Metrics */}
-        <div className="grid grid-cols-3 gap-8 text-center">
-          {metrics.map((metric, index) => (
-            <div key={index}>
-              <div className="text-4xl md:text-5xl font-bold text-teal mb-2">{metric.value}</div>
-              <div className="text-slate font-medium">{metric.label}</div>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </Section>
+    <TestimonialsPattern
+      content={{
+        title: 'Trusted by clients we work with',
+        description: "Here's what clients say about working with us",
+        testimonials,
+        metrics,
+      }}
+      className="bg-background-alt"
+    />
   )
 }
 

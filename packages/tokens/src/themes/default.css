@@ -1,0 +1,58 @@
+/**
+ * Default theme – design tokens (single source of styling truth).
+ * Maps to current app palette: charcoal, off-white, slate, teal.
+ * Consumed by apps via import; Tailwind theme extends from these variables.
+ */
+:root,
+[data-theme="default"] {
+  /* Colors – semantic */
+  --color-background: #F6F7F9;
+  --color-background-alt: #ffffff;
+  --color-foreground: #0F1115;
+  --color-foreground-muted: #6B7280;
+  --color-primary: #0EA5A4;
+  --color-primary-hover: #0d8f8e;
+  --color-primary-light: #10b5b4;
+  --color-primary-foreground: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-muted: rgba(107, 114, 128, 0.2);
+
+  /* Legacy aliases (apps can migrate to semantic names) */
+  --charcoal: var(--color-foreground);
+  --off-white: var(--color-background);
+  --slate: var(--color-foreground-muted);
+  --teal: var(--color-primary);
+  --teal-dark: var(--color-primary-hover);
+  --teal-light: var(--color-primary-light);
+
+  /* Spacing scale (4px base) */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Typography – font stacks (apps set --font-inter, --font-plex via next/font) */
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-heading: var(--font-plex), 'IBM Plex Sans', system-ui, sans-serif;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+}

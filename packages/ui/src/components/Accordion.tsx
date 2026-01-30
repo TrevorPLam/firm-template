@@ -28,7 +28,7 @@ export default function Accordion({ items, className }: AccordionProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="bg-off-white rounded-lg border border-gray-200 overflow-hidden"
+          className="bg-background rounded-lg border border-border overflow-hidden"
         >
           {(() => {
             const buttonId = `${accordionId}-button-${index}`
@@ -39,14 +39,14 @@ export default function Accordion({ items, className }: AccordionProps) {
           <button
             id={buttonId}
             onClick={() => toggleItem(index)}
-            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-background-alt transition-colors"
             aria-expanded={openIndex === index}
             aria-controls={panelId}
           >
-            <span className="font-semibold text-charcoal pr-4">{item.question}</span>
+            <span className="font-semibold text-foreground pr-4">{item.question}</span>
             <ChevronDown
               className={cn(
-                'w-5 h-5 text-slate transition-transform flex-shrink-0',
+                'w-5 h-5 text-foreground-muted transition-transform flex-shrink-0',
                 openIndex === index && 'transform rotate-180'
               )}
             />
@@ -58,7 +58,7 @@ export default function Accordion({ items, className }: AccordionProps) {
               aria-labelledby={buttonId}
               className="px-6 pb-4"
             >
-              <p className="text-slate leading-relaxed">{item.answer}</p>
+              <p className="text-foreground-muted leading-relaxed">{item.answer}</p>
             </div>
           )}
               </>
