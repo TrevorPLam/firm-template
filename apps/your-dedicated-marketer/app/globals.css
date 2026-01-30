@@ -4,10 +4,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --font-inter: 'Inter';
-    --font-plex: 'IBM Plex Sans';
-  }
 
   * {
     @apply border-gray-200;
