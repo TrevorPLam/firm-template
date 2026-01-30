@@ -2,7 +2,7 @@
  * Homepage component.
  * 
  * **Purpose:**
-\* Main landing page for the professional services website.
+ * Main landing page for the professional services website.
  * Showcases services, social proof, and drives conversions.
  * 
  * **Section Order:**

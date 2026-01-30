@@ -1,7 +1,7 @@
 # AGENTS.toon - Agent-optimized repository guidance
 
 meta{repo, description, package_manager, last_updated}:
-firm-template, Firm template monorepo, pnpm@8.0.0, 2026-01-29
+firm-template, Firm template monorepo, pnpm@8.15.0, 2026-01-30
 
 scope{workspaces, primary_stack}:
 apps/*; packages/*, TypeScript + Turbo + pnpm

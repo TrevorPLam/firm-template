@@ -13,6 +13,8 @@ This repo implements a **baked-in client architecture** where adding a new clien
 pnpm install
 ```
 
+Copy `.env.example` to `.env` and fill in values for local development (required for apps using Supabase/HubSpot; see [CONTRIBUTING.md](CONTRIBUTING.md)).
+
 ## Usage
 
 ```bash
@@ -35,7 +37,7 @@ pnpm type-check
 
 ## Project Structure
 
-This repo is structured as a **platform for many marketing sites**. See [docs/PLATFORM.md](docs/PLATFORM.md) and [docs/CLIENT_SITES.md](docs/CLIENT_SITES.md).
+This repo is structured as a **platform for many marketing sites**. See [docs/PLATFORM.md](docs/PLATFORM.md) and [docs/archive/CLIENT_SITES.md](docs/archive/CLIENT_SITES.md).
 
 - **apps/**
   - `web/` – Main Next.js app 
@@ -68,7 +70,7 @@ This repo is structured as a **platform for many marketing sites**. See [docs/PL
 3. Configure content and integrations per client
 4. Compose pages using patterns + capabilities
 
-See [docs/CLIENT_SITES.md](docs/CLIENT_SITES.md) for complete guide.
+See [docs/archive/CLIENT_SITES.md](docs/archive/CLIENT_SITES.md) for complete guide.
 
 ## Contributing
 
