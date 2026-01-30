@@ -53,7 +53,7 @@ This repo is structured as a **platform for many marketing sites**. See [docs/PL
 
 ## Platform Status
 
-✅ **Refactoring Complete** - All phases from [REFACTOR.md](REFACTOR.md) implemented:
+✅ **Refactoring Complete** - All phases implemented (see [docs/PLATFORM.md](docs/PLATFORM.md)):
 
 - **Phase 1 (Tokens):** CSS variables with semantic naming, default + alt themes, Tailwind integration
 - **Phase 2 (UI Primitives):** Complete component library using tokens only
@@ -72,7 +72,7 @@ See [docs/CLIENT_SITES.md](docs/CLIENT_SITES.md) for complete guide.
 
 ## Contributing
 
-See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines on how to contribute to this project.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
 ## License
 

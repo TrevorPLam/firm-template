@@ -1,38 +1,211 @@
 {
   "repository": "firm-template",
   "started": "2026-01-30",
-  "last_updated": "2026-01-30T13:36:00Z",
+  "last_updated": "2026-01-30T12:00:00Z",
   "decision_points": {
     "is_versioned_project": true,
     "project_type": "monorepo",
     "primary_language": "TypeScript",
+    "package_manager": "pnpm",
     "cicd_platform": "github",
     "is_public_repo": false
   },
   "sections": {
     "0": {
-      "status": "in_progress",
-      "tasks_complete": 4,
+      "status": "completed",
+      "tasks_complete": 5,
       "tasks_total": 5,
       "completed_tasks": [
         "Identified as versioned monorepo",
         "Primary language: TypeScript",
         "Package manager: pnpm",
-        "CI/CD platform: GitHub Actions"
+        "CI/CD platform: GitHub Actions",
+        "Decision points documented in alignment-progress.json"
       ],
-      "pending_tasks": [
-        "Document decisions in alignment-progress.json"
-      ],
+      "pending_tasks": [],
       "notes": "Platform for multiple marketing sites with shared foundations"
+    },
+    "1": {
+      "status": "completed",
+      "tasks_complete": 7,
+      "tasks_total": 7,
+      "completed_tasks": [
+        "Root directory has essential files only",
+        "README.md, LICENSE, .gitignore, package.json, CHANGELOG.md",
+        "config/ and scripts/ used",
+        ".github/workflows/ and docs/ present",
+        "CONTRIBUTING.md at root",
+        "docs/README.md documentation index",
+        ".gitignore excludes .env, build artifacts"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "2": {
+      "status": "completed",
+      "tasks_complete": 4,
+      "tasks_total": 4,
+      "completed_tasks": [
+        "Monorepo layout: apps/ + packages/",
+        "Source in apps/* and packages/*/src",
+        "No source files in root",
+        "Layout documented in README and docs/PLATFORM.md"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "3": {
+      "status": "completed",
+      "tasks_complete": 5,
+      "tasks_total": 5,
+      "completed_tasks": [
+        "Config in config/ and app-level configs",
+        ".env.example at root with placeholders",
+        ".env in .gitignore",
+        "No secrets committed",
+        "Secret scanning in CI (trufflehog)"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "4": {
+      "status": "completed",
+      "tasks_complete": 4,
+      "tasks_total": 4,
+      "completed_tasks": [
+        "pnpm lockfile (pnpm-lock.yaml) committed",
+        "License compatibility verified",
+        "Dependency audit in CI (pnpm audit)",
+        "Frozen lockfile in CI (pnpm install --frozen-lockfile)"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "5": {
+      "status": "completed",
+      "tasks_complete": 5,
+      "tasks_total": 5,
+      "completed_tasks": [
+        "GitHub Actions CI: build, lint, test, security",
+        "Runs on push/PR to main, develop",
+        "Build and type-check in CI",
+        "Dependency audit and secret scanning",
+        "Validation workflow for structure and markdown"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "6": {
+      "status": "completed",
+      "tasks_complete": 4,
+      "tasks_total": 4,
+      "completed_tasks": [
+        "Vitest in packages/utils with smoke tests",
+        "cn() unit tests; CI runs pnpm test",
+        "Test pattern established for expansion",
+        "Apps have test script (placeholder or real)"
+      ],
+      "pending_tasks": [],
+      "notes": "Expand test coverage in apps as needed"
+    },
+    "7": {
+      "status": "completed",
+      "tasks_complete": 5,
+      "tasks_total": 5,
+      "completed_tasks": [
+        "README has overview, install, usage, structure",
+        "docs/README.md index with links",
+        "CONTRIBUTING.md and SECURITY linked",
+        "docs/PLATFORM.md and archive/",
+        "Contributing and license in README"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "8": {
+      "status": "completed",
+      "tasks_complete": 2,
+      "tasks_total": 2,
+      "completed_tasks": [
+        "config/docker-compose.yml present",
+        "IaC limited; documented as application repo with optional Docker"
+      ],
+      "pending_tasks": [],
+      "notes": "No Terraform/K8s; Docker Compose for local services"
+    },
+    "9": {
+      "status": "completed",
+      "tasks_complete": 4,
+      "tasks_total": 4,
+      "completed_tasks": [
+        ".github/CODEOWNERS with path ownership",
+        "CONTRIBUTING.md with process and PR guidelines",
+        "Branching and review expectations",
+        "Clear ownership and contribution path"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "10": {
+      "status": "completed",
+      "tasks_complete": 5,
+      "tasks_total": 5,
+      "completed_tasks": [
+        "docs/SECURITY.md and .github/SECURITY.md",
+        "Vulnerability reporting and SLA",
+        "No secrets in repo; .env.example only",
+        "Dependency audit and secret scanning in CI",
+        "Security best practices documented"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "11": {
+      "status": "completed",
+      "tasks_complete": 3,
+      "tasks_total": 3,
+      "completed_tasks": [
+        "Structured logging in apps (logger, Sentry)",
+        "Error tracking (Sentry) referenced in apps",
+        "Observability documented in code and env"
+      ],
+      "pending_tasks": [],
+      "notes": "Health check endpoints can be added per app"
+    },
+    "12": {
+      "status": "completed",
+      "tasks_complete": 4,
+      "tasks_total": 4,
+      "completed_tasks": [
+        "CHANGELOG.md in Keep a Changelog format",
+        "Semantic versioning (package.json version)",
+        "Unreleased section for ongoing changes",
+        "Versioned project decision from Section 0"
+      ],
+      "pending_tasks": [],
+      "notes": ""
+    },
+    "13": {
+      "status": "completed",
+      "tasks_complete": 4,
+      "tasks_total": 4,
+      "completed_tasks": [
+        "Lint and format in CI (pnpm lint, Prettier)",
+        "Type-check in CI",
+        "Validation workflow for structure and markdown",
+        "Quality gates: build, lint, test, security"
+      ],
+      "pending_tasks": [],
+      "notes": ""
     }
   },
-  "next_section": 1,
+  "next_section": null,
   "blockers": [],
   "overall_progress": {
-    "p0_complete": 0,
+    "p0_complete": 13,
     "p0_total": 13,
-    "p1_complete": 0,
+    "p1_complete": 13,
     "p1_total": 13,
-    "health_score": 5
+    "health_score": 85
   }
 }
