@@ -211,8 +211,10 @@ export function middleware(request: NextRequest) {
       "style-src 'self' 'unsafe-inline'", // Tailwind injects styles at runtime
       "img-src 'self' data: https:", // Allow same-origin, data URIs, and HTTPS images
       // TODO: Tighten to specific domains when external image sources are identified
-      "font-src 'self' data:",
-      "connect-src 'self'", // Block external data exfiltration by default
+      "font-src 'self' data:',
+      process.env.NODE_ENV === 'development'
+        ? "connect-src 'self' http://localhost:* ws://localhost:*"
+        : "connect-src 'self' https://*.sentry.io https://*.upstash.io",
       // NOTE: When analytics is integrated (T-098), add:
       // - GA4: 'https://www.google-analytics.com' 'https://www.googletagmanager.com'
       // - Plausible: 'https://plausible.io'
