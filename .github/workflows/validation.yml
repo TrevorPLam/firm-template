@@ -151,10 +151,11 @@ jobs:
           echo "::endgroup::"
           
           if [ $BROKEN_LINKS -gt 0 ]; then
-            echo "::warning::Found $BROKEN_LINKS potentially broken links"
-          else
-            echo "✅ No broken links found"
+            echo "::error::Found $BROKEN_LINKS potentially broken links"
+            exit 1
           fi
+
+          echo "✅ No broken links found"
 
   validate-shell-scripts:
     name: Validate Shell Scripts
@@ -253,4 +254,7 @@ jobs:
             }' > .markdownlint.json
           fi
           
-          markdownlint '**/*.md' --ignore node_modules || echo "::warning::Markdown linting found issues"
+          if ! markdownlint '**/*.md' --ignore node_modules; then
+            echo "::error::Markdown linting found issues"
+            exit 1
+          fi
