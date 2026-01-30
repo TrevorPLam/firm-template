@@ -36,14 +36,14 @@
  * - OG image generated via /api/og route
  * - Structured data: Organization + WebSite schemas in <head>
  *
- * **FONTS** (Google Fonts via next/font):
- * - Inter: --font-inter (body text, sans-serif default)
- * - IBM Plex Sans: --font-plex (headings, .font-authority class)
+ * **FONTS** (system stack):
+ * - Inter fallback via --font-inter for body text
+ * - IBM Plex Sans fallback via --font-plex for headings
  *
  * **AI ITERATION HINTS**:
  * - Adding global script? Add to <head> section
  * - GA4 script is injected after consent when NEXT_PUBLIC_ANALYTICS_ID is set
- * - Changing fonts? Update font imports and CSS variables
+ * - Changing fonts? Update the CSS variables in globals.css
  * - Changing nav links? Edit Navigation.tsx navLinks array
  * - Adding global provider? Wrap in Providers component
  *
@@ -109,7 +109,6 @@
 
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
-import { IBM_Plex_Sans, Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -122,15 +121,6 @@ import { getPublicBaseUrl, validatedPublicEnv } from '@/lib/env.public'
 import { logError, logWarn } from '@/lib/logger'
 import { getSearchIndex } from '@/lib/search'
 import { ORGANIZATION } from '@/lib/constants'
-
-// Font configuration with CSS variables
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
-const plexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  variable: '--font-plex',
-  display: 'swap',
-  weight: ['400', '600', '700'],
-})
 
 const siteUrl = getPublicBaseUrl()
 const analyticsId = validatedPublicEnv.NEXT_PUBLIC_ANALYTICS_ID
@@ -235,7 +225,7 @@ export default async function RootLayout({
   const cspNonce = resolveCspNonce(requestHeaders)
 
   return (
-    <html lang="en" className={`${inter.variable} ${plexSans.variable}`}>
+    <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0ea5e9" />
