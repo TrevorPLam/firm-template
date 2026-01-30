@@ -1,6 +1,10 @@
-# Firm Template
+# Firm Platform
 
-Next.js template for professional services.
+A production-ready platform for building multiple marketing sites with shared foundations and client-specific theming.
+
+## Overview
+
+This repo implements a **baked-in client architecture** where adding a new client is primarily "new theme + content config + thin app wrapper". The platform provides reusable UI primitives, patterns, and capabilities while keeping client-specific work isolated.
 
 ## Installation
 
@@ -12,8 +16,12 @@ pnpm install
 ## Usage
 
 ```bash
-# Run development server
+# Run development server (all apps)
 pnpm dev
+
+# Run specific app
+pnpm --filter @repo/web dev
+pnpm --filter @repo/template-site dev
 
 # Build all packages
 pnpm build
@@ -30,24 +38,37 @@ pnpm type-check
 This repo is structured as a **platform for many marketing sites**. See [docs/PLATFORM.md](docs/PLATFORM.md) and [docs/CLIENT_SITES.md](docs/CLIENT_SITES.md).
 
 - **apps/**
-  - `web/` – Main Next.js app (template site; target: rename to `template-site`; new clients as `client-<name>`)
+  - `web/` – Main Next.js app 
+  - `template-site/` – Template site for new client onboarding
 - **packages/**
-  - `tokens/` – Design tokens and themes (single source of styling truth)
-  - `ui/` – Primitives (Button, Input, Card, etc.)
-  - `patterns/` – Composed sections (hero, pricing, testimonials; scaffolded)
-  - `capabilities/` – Business features (lead capture, analytics; scaffolded)
-  - `integrations/` – Provider adapters, OFF by default (scaffolded)
+  - `tokens/` – Design tokens and themes (CSS variables, default + alt themes)
+  - `ui/` – Primitives (Button, Input, Card, Typography, etc.)
+  - `patterns/` – Composed sections (Hero, Features, Testimonials, Pricing, FAQ, Contact)
+  - `capabilities/` – Business features (Lead Capture, Analytics with disabled-by-default integrations)
+  - `integrations/` – Provider adapters (no-op by default, HubSpot/Analytics ready)
   - `utils/` – Shared utilities
   - `config/` – TypeScript configs
 - **docs/** – Platform guidelines, definition of done, client model, integrations
 - **services/api-gateway/** – API gateway service
 
-## Refactor status
+## Platform Status
 
-Per [REFACTOR.md](REFACTOR.md):
+✅ **Refactoring Complete** - All phases from [REFACTOR.md](REFACTOR.md) implemented:
 
-- **Done:** Scaffolding. **Phase 1 (tokens):** Token source, Tailwind → tokens, theme switcher. **Phase 2 (primitives):** Link, Typography, Stack, Grid; all primitives token-ified. **Phase 3 (patterns):** Hero, Features, Testimonials, Pricing, FAQ, Contact in `@repo/patterns`; homepage, pricing, contact pages use patterns.
-- **Next:** Phase 4–5 (capabilities: lead capture, analytics). First client site as `apps/client-*` when ready.
+- **Phase 1 (Tokens):** CSS variables with semantic naming, default + alt themes, Tailwind integration
+- **Phase 2 (UI Primitives):** Complete component library using tokens only
+- **Phase 3 (Patterns):** All marketing sections (Hero, Features, Testimonials, Pricing, FAQ, Contact)
+- **Phase 4 (Capabilities):** Lead Capture and Analytics with integration adapters
+- **Phase 5 (Integrations):** No-op adapters disabled by default, ready for HubSpot/Analytics
+
+## Adding New Clients
+
+1. Copy `apps/template-site` → `apps/client-<name>`
+2. Add theme in `packages/tokens/themes/<client>/`
+3. Configure content and integrations per client
+4. Compose pages using patterns + capabilities
+
+See [docs/CLIENT_SITES.md](docs/CLIENT_SITES.md) for complete guide.
 
 ## Contributing
 

@@ -7,6 +7,6 @@
 export type TokenNamespace = 'color' | 'typography' | 'spacing' | 'motion' | 'radius' | 'shadow';
 
 /** Theme identifiers for data-theme attribute. */
-export type ThemeId = 'default' | 'alt';
+export type ThemeId = 'default' | 'alt' | 'your-dedicated-marketer';
 
-export const THEME_IDS: ThemeId[] = ['default', 'alt'];
+export const THEME_IDS: ThemeId[] = ['default', 'alt', 'your-dedicated-marketer'];

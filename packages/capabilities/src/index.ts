@@ -4,5 +4,31 @@
  * @see docs/PLATFORM.md
  */
 
-// Placeholder: export capability APIs as they are implemented (Phase 4–5)
-export {};
+export {
+  LeadCapture,
+  createLeadCapture,
+  validateLeadData,
+  validateEmail,
+  validatePhone,
+  defaultLeadFormConfig,
+  type LeadFormData,
+  type LeadFormConfig,
+  type LeadCaptureConfig,
+  type ValidationError,
+  type SubmissionResult,
+} from './lead-capture';
+
+export {
+  Analytics,
+  createAnalytics,
+  getAnalytics,
+  initializeAnalytics,
+  track,
+  identify,
+  defaultAnalyticsConfig,
+  type AnalyticsEvent,
+  type AnalyticsConfig,
+  type PageViewEvent,
+  type ClickEvent,
+  type FormSubmissionEvent,
+} from './analytics';

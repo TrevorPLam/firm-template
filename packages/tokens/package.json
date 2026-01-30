@@ -7,7 +7,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./themes/default.css": "./src/themes/default.css",
-    "./themes/alt.css": "./src/themes/alt.css"
+    "./themes/alt.css": "./src/themes/alt.css",
+    "./themes/your-dedicated-marketer.css": "./src/themes/your-dedicated-marketer.css"
   },
   "scripts": {
     "lint": "eslint .",
