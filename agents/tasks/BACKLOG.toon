@@ -1,17 +1,15 @@
 # BACKLOG.toon – Alignment and improvement ideas
 
 meta{status, owner, last_updated}:
-Active, Team, 2026-01-30
+Active, Team, 2026-01-31
 
 intake_rules[3]{rule}:
 Only uncommitted ideas and future work
 Must have clear problem statement
 Must include expected outcome
 
-backlog[6]{id, title, priority, owner, requested_by, target_window, problem_statement, proposed_outcome, dependencies, notes}:
-BACKLOG-001, Replace security@example.com in SECURITY.md, P2, Team, Alignment, When publishing, SECURITY.md uses placeholder security@example.com for disclosure contact., Replace with real contact or instructions; document in Section 10 recommendation., , .alignment STANDARDS-VALIDATION-REPORT.
+backlog[4]{id, title, priority, owner, requested_by, target_window, problem_statement, proposed_outcome, dependencies, notes}:
 BACKLOG-002, Section 6 coverage and e2e, P2, Team, Q2, P1 coverage thresholds and e2e not required for aligned; add over time., Add coverage thresholds (e.g. 80/60); Add e2e where critical; Document in docs/testing.md., ALIGN-007, Standards Section 6 P1.
 BACKLOG-003, Shared env schema or doc, P2, Team, Q2, Env validation duplicated across web and your-dedicated-marketer; drift risk., Single source of truth: shared package or doc listing all env vars and validation rules; apps extend or reference., , Reduces duplication.
 BACKLOG-004, CI install efficiency, P2, Team, Q2, CI runs four jobs each with full checkout and pnpm install; 4x install cost., Single job or composite with cache; or reuse install artifact across build lint test security., , .github/workflows/ci.yml.
-BACKLOG-005, Add your-dedicated-marketer to root README, P2, Team, 2026-02, README lists only web and template-site under apps; your-dedicated-marketer exists but not listed., Update README project structure to include your-dedicated-marketer; Clarify role (second client vs template)., ALIGN-003, Discoverability.
-BACKLOG-006, Optional Section 0 and 2 alignment fields, P2, Team, When touching meta, alignment-progress.json omits optional Section 0 and section_2.source_structure., Add structure_type has_code_in_root etc. and section_2.source_structure (e.g. apps+packages) for completeness., , STANDARDS-VALIDATION-REPORT optional.
+BACKLOG-007, Token class migration for your-dedicated-marketer, P2, Team, Q2, 41 instances of hardcoded colors remain in your-dedicated-marketer components., Migrate all hardcoded color classes to use design tokens from @repo/tokens., ALIGN-003, Component-by-component refactoring needed.

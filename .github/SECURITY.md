@@ -15,7 +15,7 @@ We take security vulnerabilities seriously. If you discover a security vulnerabi
 
 ### How to Report
 
-1. Email security concerns to: security@example.com
+1. Report security vulnerabilities via [GitHub Security Advisories](https://github.com/TrevorPLam/firm-template/security/advisories/new)
 2. Include the following information:
    - Type of vulnerability
    - Full paths of source file(s) related to the vulnerability

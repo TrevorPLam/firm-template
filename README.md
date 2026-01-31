@@ -42,6 +42,7 @@ This repo is structured as a **platform for many marketing sites**. See [docs/PL
 - **apps/**
   - `web/` – Main Next.js app 
   - `template-site/` – Template site for new client onboarding
+  - `your-dedicated-marketer/` – Second client site (dedicated marketer theme)
 - **packages/**
   - `tokens/` – Design tokens and themes (CSS variables, default + alt themes)
   - `ui/` – Primitives (Button, Input, Card, Typography, etc.)

@@ -14,7 +14,7 @@ import {
   getAnalyticsConsent,
   setAnalyticsConsent,
   type AnalyticsConsentState,
-} from '@/lib/analytics-consent'
+} from '@/features/analytics'
 
 interface AnalyticsConsentBannerProps {
   analyticsId?: string

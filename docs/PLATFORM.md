@@ -50,4 +50,4 @@ If a bespoke module is reused by 2+ sites, it must be promoted:
 - Bespoke -> Pattern or Capability
 
 ## Definition of Done
-See [docs/archive/DEFINITION_OF_DONE.md](archive/DEFINITION_OF_DONE.md)
+See [archive/DEFINITION_OF_DONE.md](archive/DEFINITION_OF_DONE.md)

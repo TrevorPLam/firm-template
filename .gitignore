@@ -38,6 +38,7 @@ ENV/
 # Build artifacts
 dist/
 build/
+.next/
 *.egg-info/
 
 # Environment files
