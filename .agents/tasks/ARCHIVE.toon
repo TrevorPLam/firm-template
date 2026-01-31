@@ -1,8 +1,16 @@
 # AI Work Archive (TOON Template)
 
 meta{status, owner, last_updated}:
-[Archived], [Team or Individual], [YYYY-MM-DD]
+Archived, Team, 2026-01-31
 
-archived[1]{id, title, final_status, owner, closed_on, summary, outcome, related_items, artifacts}:
-[ARCHIVE-001], [Title], [Completed|Dropped|Superseded], [Name/Team], [YYYY-MM-DD], [What was done or why it was closed], [Result or impact], [TASK-xxx|BACKLOG-xxx], [Links or paths]
+archived[9]{id, title, final_status, owner, closed_on, summary, outcome, related_items, artifacts}:
+ARCHIVE-001, Fix broken documentation links, Completed, Team, 2026-01-31, Fixed relative link path in docs/PLATFORM.md to correctly reference docs/archive/DEFINITION_OF_DONE.md, No broken internal links; validation workflow passes, ALIGN-001, docs/PLATFORM.md
+ARCHIVE-002, Fix apps/web page comment typo, Completed, Team, 2026-01-31, Verified no escaped asterisk exists in current code - already fixed in previous work, No action needed; code already correct, ALIGN-002, apps/web/app/page.tsx
+ARCHIVE-003, Validation workflow fail on errors, Completed, Team, 2026-01-31, Verified validation.yml already implements exit 1 for both link check and markdown-lint failures, Workflow properly fails on errors as required, ALIGN-004, .github/workflows/validation.yml
+ARCHIVE-004, Section 3 env copy instruction, Completed, Team, 2026-01-31, Verified README.md line 16 already contains explicit env setup instruction, README has required instruction; no changes needed, ALIGN-005, README.md
+ARCHIVE-005, Add real tests for apps, Completed, Team, 2026-01-31, Added vitest and smoke tests to all three apps (web template-site your-dedicated-marketer); updated turbo.json to use pipeline instead of tasks, All apps now have real tests; pnpm test passes with 9 tests total, ALIGN-007, apps/*/app.test.ts apps/*/vitest.config.ts apps/*/package.json turbo.json
+ARCHIVE-006, Create docs referenced by AGENTS.toon, Completed, Team, 2026-01-31, Created quality-attributes.md security-review-triggers.md and docs/adr/ with README; updated docs/README.md index, Agent workflow documentation complete and linked, ALIGN-008, docs/quality-attributes.md docs/security-review-triggers.md docs/adr/README.md
+ARCHIVE-007, Add your-dedicated-marketer to root README, Completed, Team, 2026-01-31, Added your-dedicated-marketer to README project structure section with description, Improved discoverability of second client app, BACKLOG-005, README.md
+ARCHIVE-008, Replace security@example.com in SECURITY.md, Completed, Team, 2026-01-31, Replaced placeholder email with GitHub Security Advisories link in both SECURITY.md files, Production-ready security reporting mechanism, BACKLOG-001, docs/SECURITY.md .github/SECURITY.md
+ARCHIVE-009, Optional Section 0 and 2 alignment fields, Completed, Team, 2026-01-31, Added structure_type has_code_in_root has_secrets_in_repo repository_owners to decision_points and source_structure to section 2, Complete alignment-progress.json metadata, BACKLOG-006, meta/alignment-progress.json
 

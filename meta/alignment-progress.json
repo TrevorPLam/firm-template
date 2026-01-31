@@ -8,7 +8,11 @@
     "primary_language": "TypeScript",
     "package_manager": "pnpm",
     "cicd_platform": "github",
-    "is_public_repo": false
+    "is_public_repo": false,
+    "structure_type": "monorepo",
+    "has_code_in_root": false,
+    "has_secrets_in_repo": false,
+    "repository_owners": "Team"
   },
   "sections": {
     "0": {
@@ -52,7 +56,8 @@
         "Layout documented in README and docs/PLATFORM.md"
       ],
       "pending_tasks": [],
-      "notes": ""
+      "notes": "",
+      "source_structure": "apps+packages"
     },
     "3": {
       "status": "completed",
