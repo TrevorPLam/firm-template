@@ -1,9 +1,14 @@
+# filepath: agents/tasks/ARCHIVE.toon
+# purpose: Record completed work items with summaries and artifacts.
+# last_updated: 2026-01-31
+# related_tasks: ALIGN-003
 # AI Work Archive (TOON Template)
 
 meta{status, owner, last_updated}:
 Archived, Team, 2026-01-31
 
-archived[9]{id, title, final_status, owner, closed_on, summary, outcome, related_items, artifacts}:
+archived[10]{id, title, final_status, owner, closed_on, summary, outcome, related_items, artifacts}:
+ARCHIVE-010, Align your-dedicated-marketer with platform, Completed, Team, 2026-01-31, Replaced component hardcoded colors with semantic tokens and aligned CTA/navigation styling to platform tokens, Components now use semantic color tokens for backgrounds and text, ALIGN-003, apps/your-dedicated-marketer/components/AnalyticsConsentBanner.tsx apps/your-dedicated-marketer/components/Breadcrumbs.tsx apps/your-dedicated-marketer/components/ErrorBoundary.tsx apps/your-dedicated-marketer/components/FinalCTA.tsx apps/your-dedicated-marketer/components/Footer.tsx apps/your-dedicated-marketer/components/InstallPrompt.tsx apps/your-dedicated-marketer/components/Navigation.tsx apps/your-dedicated-marketer/components/SkipToContent.tsx apps/your-dedicated-marketer/components/SocialProof.tsx apps/your-dedicated-marketer/components/ValueProps.tsx
 ARCHIVE-001, Fix broken documentation links, Completed, Team, 2026-01-31, Fixed relative link path in docs/PLATFORM.md to correctly reference docs/archive/DEFINITION_OF_DONE.md, No broken internal links; validation workflow passes, ALIGN-001, docs/PLATFORM.md
 ARCHIVE-002, Fix apps/web page comment typo, Completed, Team, 2026-01-31, Verified no escaped asterisk exists in current code - already fixed in previous work, No action needed; code already correct, ALIGN-002, apps/web/app/page.tsx
 ARCHIVE-003, Validation workflow fail on errors, Completed, Team, 2026-01-31, Verified validation.yml already implements exit 1 for both link check and markdown-lint failures, Workflow properly fails on errors as required, ALIGN-004, .github/workflows/validation.yml
@@ -13,4 +18,3 @@ ARCHIVE-006, Create docs referenced by AGENTS.toon, Completed, Team, 2026-01-31,
 ARCHIVE-007, Add your-dedicated-marketer to root README, Completed, Team, 2026-01-31, Added your-dedicated-marketer to README project structure section with description, Improved discoverability of second client app, BACKLOG-005, README.md
 ARCHIVE-008, Replace security@example.com in SECURITY.md, Completed, Team, 2026-01-31, Replaced placeholder email with GitHub Security Advisories link in both SECURITY.md files, Production-ready security reporting mechanism, BACKLOG-001, docs/SECURITY.md .github/SECURITY.md
 ARCHIVE-009, Optional Section 0 and 2 alignment fields, Completed, Team, 2026-01-31, Added structure_type has_code_in_root has_secrets_in_repo repository_owners to decision_points and source_structure to section 2, Complete alignment-progress.json metadata, BACKLOG-006, meta/alignment-progress.json
-

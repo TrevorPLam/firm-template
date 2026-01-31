@@ -1,5 +1,11 @@
 'use client'
 
+/**
+ * filepath: apps/your-dedicated-marketer/components/Breadcrumbs.tsx
+ * purpose: Render schema-backed breadcrumb navigation for internal pages.
+ * last_updated: 2026-01-31
+ * related_tasks: ALIGN-003
+ */
 import React, { useMemo } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -52,29 +58,32 @@ export default function Breadcrumbs() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="bg-white/90 backdrop-blur sticky top-16 z-30 border-b border-charcoal/5"
+      className="bg-background/90 backdrop-blur sticky top-16 z-30 border-b border-foreground/5"
     >
-      <ol className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-sm text-slate">
+      <ol className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-sm text-foreground-muted">
         <li>
-          <Link href="/" className="inline-flex items-center gap-1 text-teal font-semibold hover:text-teal-dark">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1 text-primary font-semibold hover:text-primary-hover"
+          >
             <Home className="w-4 h-4" aria-hidden="true" />
             <span className="sr-only">Home</span>
           </Link>
         </li>
         {crumbs.map((crumb, index) => (
           <React.Fragment key={crumb.href}>
-            <span aria-hidden="true" className="text-charcoal/60">
+            <span aria-hidden="true" className="text-foreground/60">
               /
             </span>
             <li>
               {index === crumbs.length - 1 ? (
-                <span className="text-charcoal font-semibold" aria-current="page">
+                <span className="text-foreground font-semibold" aria-current="page">
                   {crumb.label}
                 </span>
               ) : (
                 <Link
                   href={crumb.href}
-                  className="text-teal font-semibold hover:text-teal-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+                  className="text-primary font-semibold hover:text-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   {crumb.label}
                 </Link>
