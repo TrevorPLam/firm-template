@@ -1,22 +1,43 @@
-# Contributing to Firm Platform
+# Contributing to Firm Template
 
-Thank you for your interest in contributing to the Firm Platform. This document explains how to contribute to this project.
+Thank you for your interest in contributing to the Firm Template repository! This document provides guidelines for contributing to this project.
 
 ## Quick Links
 
 - [Platform overview](README.md)
 - [Documentation index](docs/README.md)
-- [Security policy](.github/SECURITY.md)
+- [Security policy](SECURITY.md)
+- [ALIGNMENT Contribution Guidelines](.alignment/CONTRIBUTING.md) - Comprehensive guide for ALIGNMENT contributions
 
-## How to Contribute
+## Development Setup
 
-### 1. Get Started
+### Prerequisites
+- Node.js 20+
+- pnpm 8+
 
-- **Prerequisites:** Node.js 20+, pnpm 8+
-- **Install:** `pnpm install`
-- **Develop:** `pnpm dev`
-- **Test:** `pnpm test`
-- **Lint:** `pnpm lint`
+### Quick Start
+```bash
+# Clone and setup
+git clone <your-fork>
+cd firm-template
+pnpm install
+
+# Start development
+pnpm dev
+
+# Run tests
+pnpm test
+
+# Check code quality
+pnpm lint
+```
+
+### Project Structure
+- `apps/` - Template applications (template-site, web, your-dedicated-marketer)
+- `packages/` - Reusable template components (capabilities, integrations, patterns)
+- `services/` - Backend template services
+- `content/` - Template content and documentation
+- `docs/` - Template documentation and guides
 
 ### 2. Contribution Process
 

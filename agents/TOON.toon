@@ -1,7 +1,7 @@
 # TOON (Token-Oriented Object Notation)
 
 purpose{statement}:
-+Define a compact, agent-optimized data format that reduces token overhead compared to JSON while remaining fully convertible.
++Define a compact, agents/-optimized data format that reduces token overhead compared to JSON while remaining fully convertible.
 +
 +core_problem{summary}:
 +JSON carries repeated syntax and key names that inflate token usage for LLMs (quotes, braces, commas, repeated keys).
@@ -29,7 +29,7 @@ purpose{statement}:
 +Lines of Code, 100+, ~50, ~50%
 +Agent Parse Time, Full JSON parse, Direct table scan, ~70%
 +
-+agent_usage[4]{step, description}:
++agents/_usage[4]{step, description}:
 +Pattern Recognition, Header reveals table schema and row count
 +Efficient Querying, Scan a column for a value
 +Memory Efficiency, Fewer tokens means more task context
@@ -52,4 +52,4 @@ purpose{statement}:
 +More Context, Token savings free space for reasoning
 +Faster Navigation, Agents scan tables quickly
 +Lower Costs, Fewer tokens per session
-+Clear Interfaces, Separate human vs agent formats
++Clear Interfaces, Separate human vs agents/ formats
