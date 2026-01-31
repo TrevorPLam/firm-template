@@ -1,7 +1,7 @@
 # TOON (Token-Oriented Object Notation)
 
 purpose{statement}:
-+Define a compact, agents/-optimized data format that reduces token overhead compared to JSON while remaining fully convertible.
++Define a compact, agent-optimized data format that reduces token overhead compared to JSON while remaining fully convertible.
 +
 +core_problem{summary}:
 +JSON carries repeated syntax and key names that inflate token usage for LLMs (quotes, braces, commas, repeated keys).

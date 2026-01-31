@@ -13,9 +13,12 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Configuration
-SOURCE_REPO="c:/dev/OS"
-TARGET_REPOS=("c:/dev/aios" "c:/dev/studio" "c:/dev/firm-template")
+# Configuration - use current repo as source, sync to sibling repos
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+PARENT_DEV="$(dirname "$REPO_ROOT")"
+SOURCE_REPO="$REPO_ROOT"
+TARGET_REPOS=("$PARENT_DEV/aios" "$PARENT_DEV/studio" "$PARENT_DEV/OS" "$PARENT_DEV/firm-template")
 SYNC_ITEMS=(
     "agents/hitl/templates"
     "agents/tasks/templates"
