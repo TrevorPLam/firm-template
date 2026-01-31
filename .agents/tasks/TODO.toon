@@ -1,14 +1,18 @@
 # TODO.toon – Full alignment tasks
 
 meta{status, owner, last_updated}:
-Active, Team, 2026-01-30
+Active, Team, 2026-01-31
 
-active_work[8]{id, title, status, priority, owner, due, description, acceptance_criteria, dependencies, notes}:
-ALIGN-001, Fix broken documentation links, Not Started, P0, Team, 2026-02-15, README and PLATFORM link to CLIENT_SITES.md and DEFINITION_OF_DONE.md but files live in docs/archive/. Update links to archive paths or restore docs to docs/., Update README to point to docs/archive/CLIENT_SITES.md; Update PLATFORM to point to docs/archive/DEFINITION_OF_DONE.md or move files; No broken internal links., , Validation workflow may flag these.
-ALIGN-002, Fix apps/web page comment typo, Not Started, P0, Team, 2026-02-15, apps/web/app/page.tsx line 6: escaped asterisk \* in Purpose comment breaks intended markdown., Change \* to * so line reads * Main landing page...; Lint and build pass., , Trivial one-line fix.
-ALIGN-003, Align your-dedicated-marketer with platform, Not Started, P0, Team, 2026-02-28, App uses custom Hero and hardcoded colors (white slate-800); no @repo/patterns; no middleware. Bring to platform baseline., Use @repo/patterns Hero (thin wrapper with content); Replace white/slate-800 with token classes (e.g. background-alt foreground-muted); Add middleware.ts ported from web (security headers payload limit); Document or remove any intentional deviations., , Largest alignment task; subtasks: Hero wrapper; token classes; middleware.
-ALIGN-004, Validation workflow fail on errors, Not Started, P0, Team, 2026-02-20, validation.yml link check and markdown-lint currently warn only; job does not fail., Either make link check exit 1 when broken links; Make markdown-lint fail job on violations; Or document in workflow that both are advisory-only., , See .github/workflows/validation.yml.
-ALIGN-005, Section 3 env copy instruction, Not Started, P0, Team, 2026-02-15, Standards Section 3: add explicit env setup sentence to README or docs., Add sentence to README or docs: Copy .env.example to .env and fill in values for local development.; Re-run standards validation., , .alignment/STANDARDS-VALIDATION-REPORT recommendation.
-ALIGN-006, Section 1 root file count, Not Started, P1, Team, 2026-02-28, Root has 14 files; standard asks ≤10. Either reduce or document deviation., Option A: Move .markdownlint.json .prettierrc.js .prettierignore to config/ and update tool config. Option B: Keep as is and confirm deviation in STANDARDS-VALIDATION-REPORT., , Many tools expect config in root; Option B common.
-ALIGN-007, Add real tests for apps, Not Started, P1, Team, 2026-02-28, All three apps use test script that exits 0 with no tests; only packages/utils has tests., At least one test per app or one shared smoke test; pnpm test runs real tests; CI test job reflects real coverage., ALIGN-003, Section 6 P1; can start with single smoke or one test per app.
-ALIGN-008, Create docs referenced by AGENTS.toon, Not Started, P1, Team, 2026-02-28, AGENTS.toon references docs/quality-attributes.md docs/security-review-triggers.md and docs/adr/; none exist., Create docs/quality-attributes.md (Quality Gate); Create docs/security-review-triggers.md (Security Gate); Create docs/adr/ with README; Update AGENTS.toon if paths change., , Stub content OK; enables agent workflow.
+active_work[3]{id, title, status, priority, owner, due, description, acceptance_criteria, dependencies, notes}:
+ALIGN-003, Align your-dedicated-marketer with platform, Partially Complete, P0, Team, 2026-02-28, App uses custom Hero and hardcoded colors (white slate-800); no @repo/patterns; no middleware. Bring to platform baseline., Use @repo/patterns Hero (thin wrapper with content); Replace white/slate-800 with token classes (e.g. background-alt foreground-muted); Add middleware.ts ported from web (security headers payload limit); Document or remove any intentional deviations., , STATUS: Hero now uses @repo/patterns; middleware exists; remaining work is token class migration (41 instances of hardcoded colors in components).
+ALIGN-006, Section 1 root file count, Complete, P1, Team, 2026-02-28, Root has 14 files; standard asks ≤10. Either reduce or document deviation., Option A: Move .markdownlint.json .prettierrc.js .prettierignore to config/ and update tool config. Option B: Keep as is and confirm deviation in STANDARDS-VALIDATION-REPORT., , Deviation documented in STANDARDS-VALIDATION-REPORT line 55: many tools expect config in root.
+BACKLOG-005, Add your-dedicated-marketer to root README, P2, Team, 2026-02, README lists only web and template-site under apps; your-dedicated-marketer exists but not listed., Update README project structure to include your-dedicated-marketer; Clarify role (second client vs template)., ALIGN-003, Moved from BACKLOG for completion.
+
+completed[5]{id, title, completed_on, outcome}:
+ALIGN-001, Fix broken documentation links, 2026-01-31, Fixed PLATFORM.md link to DEFINITION_OF_DONE.md (archive/ path)
+ALIGN-002, Fix apps/web page comment typo, 2026-01-31, Already fixed - no escaped asterisk found in current code
+ALIGN-004, Validation workflow fail on errors, 2026-01-31, Already implemented - both link check and markdown-lint exit 1 on errors
+ALIGN-005, Section 3 env copy instruction, 2026-01-31, Already present in README.md line 16
+ALIGN-007, Add real tests for apps, 2026-01-31, Added vitest to all apps with smoke tests; all tests passing
+ALIGN-008, Create docs referenced by AGENTS.toon, 2026-01-31, Created quality-attributes.md security-review-triggers.md and adr/README.md
+
