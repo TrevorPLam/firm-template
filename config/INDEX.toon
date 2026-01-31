@@ -1,0 +1,9 @@
+# INDEX.toon
+
+meta{root, generated_at}:
+config, 2026-01-31T04:41:45Z
+
+entries[3]{path, type}:
+docker-compose.yml, file
+tsconfig.base.json, file
+tsconfig.json, file

@@ -1,0 +1,25 @@
+# INDEX.toon
+
+meta{root, generated_at}:
+docs, 2026-01-31T04:41:45Z
+
+entries[19]{path, type}:
+CONTRIBUTING.md, file
+PLATFORM.md, file
+README.md, file
+SECURITY.md, file
+TEMPLATE_MAINTENANCE.md, file
+adr, dir
+adr\.gitkeep, file
+adr\README.md, file
+api, dir
+architecture, dir
+archive, dir
+archive\CLIENT_SITES.md, file
+archive\DEFINITION_OF_DONE.md, file
+archive\INTEGRATIONS.md, file
+archive\MIGRATION_COMPLETE.md, file
+decisions, dir
+onboarding, dir
+quality-attributes.md, file
+security-review-triggers.md, file

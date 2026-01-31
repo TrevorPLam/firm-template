@@ -1,20 +1,40 @@
 # AGENTS.md
 
-This repository uses **TOON (Token‑Oriented Object Notation)** to store structured, agent-friendly data with lower token overhead than JSON. TOON files declare a schema once and list rows as compact tables, making them efficient for AI agents to parse.
+**⚠️ This is a human-readable pointer. The canonical agent instructions are in `agents/AGENTS.toon`.**
 
-**Physical path:** All agent files live under `agents/` (this directory). In TOON and docs, "AGENTS" refers to this folder.
+## What this repo is
+Firm Template monorepo with TypeScript-first architecture using pnpm + Turbo.
 
-## Canonical Agents Registry
+## Project structure
+- `apps/` - React + Vite frontend applications
+- `packages/` - Shared UI components, utilities, contracts, API SDK
+- `scripts/` - Setup and verification scripts
+- `agents/` - Agent governance and task management
 
-The canonical registry of agents for this repo is:
-- `agents/AGENTS.toon` (or agents/AGENTS.toon when referring to this directory)
+## Exact commands
+- **setup**: `make setup`
+- **verify**: `make verify`
 
-`agents/AGENTS.toon` is the single source of truth. If an agent definition changes, update that file.
+## Rules
+- Keep changes small and focused; prefer the existing patterns.
+- Do not add dependencies without approval.
+- `make verify` must pass for any PR.
 
-## Related Files
+## How to test locally
+```bash
+make setup
+make verify
+```
 
-- `agents/TOON.toon` — format definition and examples
-- `agents/tasks/BACKLOG.toon` — idea intake
-- `agents/tasks/TODO.toon` — active work
-- `agents/tasks/ARCHIVE.toon` — completed work
-- `agents/hitl/` — Human-In-The-Loop items (HITL-XXX.md)
+## Agent-optimized instructions
+**Read `agents/AGENTS.toon` for complete agent guidance.**
+
+This repository uses **TOON (Token‑Oriented Object Notation)** for agent-optimized data storage with lower token overhead than JSON.
+
+### Key files
+- `agents/AGENTS.toon` - **Canonical agent registry** (source of truth)
+- `agents/TOON.toon` - Format definition and examples
+- `agents/tasks/TODO.toon` - Active work
+- `agents/tasks/BACKLOG.toon` - Idea intake
+- `agents/tasks/ARCHIVE.toon` - Completed work
+- `agents/hitl/` - Human-In-The-Loop items (HITL-XXX.md)

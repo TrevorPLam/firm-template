@@ -1,10 +1,11 @@
 # TODO.toon – Full alignment tasks
+# actor: AGENT = autonomous agent can execute; USER = human decision/approval required.
 
-meta{status, owner, last_updated}:
-Active, Team, 2026-01-31
+meta{status, owner, last_updated, source}:
+Active, Team, 2026-01-31, REPOSITORY-STATE-REPORT.md
 
-active_work[1]{id, title, status, priority, owner, due, description, acceptance_criteria, dependencies, notes}:
-ALIGN-003, Align your-dedicated-marketer with platform, Partially Complete, P0, Team, 2026-02-28, App uses custom Hero and hardcoded colors (white slate-800); no @repo/patterns; no middleware. Bring to platform baseline., Use @repo/patterns Hero (thin wrapper with content); Replace white/slate-800 with token classes (e.g. background-alt foreground-muted); Add middleware.ts ported from web (security headers payload limit); Document or remove any intentional deviations., , STATUS: Hero now uses @repo/patterns; middleware exists; remaining work is token class migration (41 instances of hardcoded colors in components).
+active_work[1]{id, parent_id, title, status, priority, owner, actor, due, description, acceptance_criteria, dependencies, notes}:
+ALIGN-003, , Align your-dedicated-marketer with platform, Partially Complete, P0, Team, AGENT, 2026-02-28, App uses custom Hero and hardcoded colors (white slate-800); no @repo/patterns; no middleware. Bring to platform baseline., Use @repo/patterns Hero (thin wrapper with content); Replace white/slate-800 with token classes (e.g. background-alt foreground-muted); Add middleware.ts ported from web (security headers payload limit); Document or remove any intentional deviations., , STATUS: Hero now uses @repo/patterns; middleware exists; remaining work is token class migration (41 instances of hardcoded colors in components).
 
 completed[8]{id, title, completed_on, outcome}:
 ALIGN-001, Fix broken documentation links, 2026-01-31, Fixed PLATFORM.md link to DEFINITION_OF_DONE.md (archive/ path)
