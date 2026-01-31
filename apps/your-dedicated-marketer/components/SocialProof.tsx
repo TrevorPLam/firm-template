@@ -1,3 +1,9 @@
+/**
+ * filepath: apps/your-dedicated-marketer/components/SocialProof.tsx
+ * purpose: Showcase testimonials and metrics as social proof.
+ * last_updated: 2026-01-31
+ * related_tasks: ALIGN-003
+ */
 import React, { memo } from 'react'
 import { Container, Section, Card } from '@repo/ui'
 
@@ -30,13 +36,13 @@ const metrics = [
 
 function SocialProof() {
   return (
-    <Section className="bg-white">
+    <Section className="bg-background">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Trusted by founders and teams I work with
           </h2>
-          <p className="text-lg text-slate max-w-2xl mx-auto">
+          <p className="text-lg text-foreground-muted max-w-2xl mx-auto">
             Here’s what people say about having me embedded in their marketing
           </p>
         </div>
@@ -45,10 +51,12 @@ function SocialProof() {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial) => (
             <Card key={testimonial.author} variant="testimonial">
-              <p className="text-slate mb-6 italic leading-relaxed">{testimonial.quote}</p>
+              <p className="text-foreground-muted mb-6 italic leading-relaxed">{testimonial.quote}</p>
               <div>
-                <p className="font-semibold text-charcoal">{testimonial.author}</p>
-                <p className="text-slate text-sm">{testimonial.company}, {testimonial.title}</p>
+                <p className="font-semibold text-foreground">{testimonial.author}</p>
+                <p className="text-foreground-muted text-sm">
+                  {testimonial.company}, {testimonial.title}
+                </p>
               </div>
             </Card>
           ))}
@@ -58,8 +66,10 @@ function SocialProof() {
         <div className="grid grid-cols-3 gap-8 text-center">
           {metrics.map((metric) => (
             <div key={metric.label}>
-              <div className="text-4xl md:text-5xl font-bold text-teal mb-2">{metric.value}</div>
-              <div className="text-slate font-medium">{metric.label}</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                {metric.value}
+              </div>
+              <div className="text-foreground-muted font-medium">{metric.label}</div>
             </div>
           ))}
         </div>

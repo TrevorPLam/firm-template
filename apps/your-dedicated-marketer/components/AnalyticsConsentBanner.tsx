@@ -1,6 +1,11 @@
 'use client'
 
 /**
+ * filepath: apps/your-dedicated-marketer/components/AnalyticsConsentBanner.tsx
+ * purpose: Gate analytics scripts behind consent and display the prompt UI.
+ * last_updated: 2026-01-31
+ * related_tasks: ALIGN-003
+ *
  * AnalyticsConsentBanner — Analytics consent prompt and script gate.
  *
  * @example
@@ -70,15 +75,15 @@ function ConsentPrompt({
 }) {
   return (
     <div
-      className="fixed bottom-4 left-4 right-4 z-50 rounded-xl border border-slate-200 bg-white p-4 shadow-lg md:left-auto md:right-6 md:max-w-md"
+      className="fixed bottom-4 left-4 right-4 z-50 rounded-xl border border-border bg-background p-4 shadow-lg md:left-auto md:right-6 md:max-w-md"
       role="dialog"
       aria-live="polite"
       aria-labelledby="analytics-consent-heading"
     >
-      <h2 id="analytics-consent-heading" className="text-sm font-semibold text-charcoal">
+      <h2 id="analytics-consent-heading" className="text-sm font-semibold text-foreground">
         Analytics consent
       </h2>
-      <p className="mt-2 text-xs text-slate-600">
+      <p className="mt-2 text-xs text-foreground-muted">
         We use analytics cookies to understand site usage and improve the experience. You can accept or decline.
       </p>
       <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">

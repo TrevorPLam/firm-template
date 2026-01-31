@@ -1,4 +1,9 @@
 /**
+ * filepath: apps/your-dedicated-marketer/components/Navigation.tsx
+ * purpose: Render the global navigation with desktop/mobile menus and search.
+ * last_updated: 2026-01-31
+ * related_tasks: ALIGN-003
+ *
  * Site navigation component with responsive mobile menu.
  *
  * @component Navigation
@@ -44,7 +49,7 @@
  * - searchItems: SearchItem[] — passed from layout.tsx via getSearchIndex()
  *
  * **STYLING NOTES**:
- * - bg-charcoal: dark header background
+ * - bg-foreground: dark header background
  * - sticky top-0 z-50: fixed header behavior
  * - Breakpoint: md (768px) for desktop/mobile switch
  *
@@ -55,7 +60,7 @@
  * ═══════════════════════════════════════════════════════════════════════════════
  *
  * **Features:**
- * - Sticky header with dark charcoal background
+ * - Sticky header with dark foreground background
  * - Desktop: Horizontal nav links with search and CTA
  * - Mobile: Hamburger menu with slide-down panel
  * - Keyboard accessible (Escape closes mobile menu)
@@ -106,7 +111,7 @@ const navLinks = [
 
 /**
  * Navigation component props.
- * 
+ *
  * @property searchItems - Search index from lib/search.ts
  */
 interface NavigationProps {
@@ -189,11 +194,14 @@ export default function Navigation({ searchItems }: NavigationProps) {
   }, [isMobileMenuOpen])
 
   return (
-    <nav className="bg-charcoal shadow-sm sticky top-0 z-50" role="navigation" aria-label="Primary">
+    <nav className="bg-foreground shadow-sm sticky top-0 z-50" role="navigation" aria-label="Primary">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white hover:text-white/90 transition-colors">
+          <Link
+            href="/"
+            className="text-2xl font-bold text-background hover:text-background/90 transition-colors"
+          >
             YD Marketer
           </Link>
 
@@ -204,8 +212,8 @@ export default function Navigation({ searchItems }: NavigationProps) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-white/80 hover:text-white font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white border-b-2 border-transparent pb-1',
-                  isActiveLink(link.href) && 'text-white border-white'
+                  'text-background/80 hover:text-background font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background border-b-2 border-transparent pb-1',
+                  isActiveLink(link.href) && 'text-background border-background'
                 )}
               >
                 {link.label}
@@ -225,7 +233,7 @@ export default function Navigation({ searchItems }: NavigationProps) {
             <button
               onClick={toggleMobileMenu}
               ref={mobileToggleButtonRef}
-              className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="text-background p-2 hover:bg-background/10 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -241,7 +249,7 @@ export default function Navigation({ searchItems }: NavigationProps) {
         <div
           id="mobile-menu"
           ref={mobileMenuRef}
-          className="md:hidden bg-charcoal border-t border-white/10"
+          className="md:hidden bg-foreground border-t border-background/10"
           role="menu"
           aria-label="Mobile navigation"
           onKeyDown={(event) => {
@@ -273,8 +281,8 @@ export default function Navigation({ searchItems }: NavigationProps) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'block text-white/80 hover:text-white font-semibold py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-md px-2 -mx-2',
-                  isActiveLink(link.href) && 'text-white bg-white/10'
+                  'block text-background/80 hover:text-background font-semibold py-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background rounded-md px-2 -mx-2',
+                  isActiveLink(link.href) && 'text-background bg-background/10'
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
                 role="menuitem"

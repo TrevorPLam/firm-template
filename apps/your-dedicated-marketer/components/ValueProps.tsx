@@ -1,3 +1,9 @@
+/**
+ * filepath: apps/your-dedicated-marketer/components/ValueProps.tsx
+ * purpose: Highlight core value propositions in a three-card layout.
+ * last_updated: 2026-01-31
+ * related_tasks: ALIGN-003
+ */
 import React, { memo } from 'react'
 import { Target, DollarSign, Settings } from 'lucide-react'
 import { Container, Section, Card } from '@repo/ui'
@@ -61,18 +67,18 @@ const valueProps = [
 
 function ValueProps() {
   return (
-    <Section className="bg-white">
+    <Section className="bg-background">
       <Container>
         <div className="grid md:grid-cols-3 gap-8">
           {valueProps.map((prop) => {
             const Icon = prop.icon
             return (
               <Card key={prop.title} variant="default">
-                <div className="w-12 h-12 bg-teal/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-teal" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">{prop.title}</h3>
-                <div className="text-slate leading-relaxed space-y-4">{prop.description}</div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">{prop.title}</h3>
+                <div className="text-foreground-muted leading-relaxed space-y-4">{prop.description}</div>
               </Card>
             )
           })}

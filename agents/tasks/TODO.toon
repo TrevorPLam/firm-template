@@ -1,13 +1,17 @@
+# filepath: agents/tasks/TODO.toon
+# purpose: Track active and completed alignment tasks for the repo.
+# last_updated: 2026-01-31
+# related_tasks: ALIGN-003
 # TODO.toon – Full alignment tasks
 # actor: AGENT = autonomous agent can execute; USER = human decision/approval required.
 
 meta{status, owner, last_updated, source}:
 Active, Team, 2026-01-31, REPOSITORY-STATE-REPORT.md
 
-active_work[1]{id, parent_id, title, status, priority, owner, actor, due, description, acceptance_criteria, dependencies, notes}:
-ALIGN-003, , Align your-dedicated-marketer with platform, Partially Complete, P0, Team, AGENT, 2026-02-28, App uses custom Hero and hardcoded colors (white slate-800); no @repo/patterns; no middleware. Bring to platform baseline., Use @repo/patterns Hero (thin wrapper with content); Replace white/slate-800 with token classes (e.g. background-alt foreground-muted); Add middleware.ts ported from web (security headers payload limit); Document or remove any intentional deviations., , STATUS: Hero now uses @repo/patterns; middleware exists; remaining work is token class migration (41 instances of hardcoded colors in components).
+active_work[0]{id, parent_id, title, status, priority, owner, actor, due, description, acceptance_criteria, dependencies, notes}:
 
-completed[8]{id, title, completed_on, outcome}:
+completed[9]{id, title, completed_on, outcome}:
+ALIGN-003, Align your-dedicated-marketer with platform, 2026-01-31, Replaced hardcoded component colors with semantic token classes and aligned CTA/navigation styling to platform tokens.
 ALIGN-001, Fix broken documentation links, 2026-01-31, Fixed PLATFORM.md link to DEFINITION_OF_DONE.md (archive/ path)
 ALIGN-002, Fix apps/web page comment typo, 2026-01-31, Already fixed - no escaped asterisk found in current code
 ALIGN-004, Validation workflow fail on errors, 2026-01-31, Already implemented - both link check and markdown-lint exit 1 on errors
@@ -18,4 +22,3 @@ ALIGN-008, Create docs referenced by AGENTS.toon, 2026-01-31, Created quality-at
 BACKLOG-005, Add your-dedicated-marketer to root README, 2026-01-31, Added to README project structure section
 BACKLOG-001, Replace security@example.com in SECURITY.md, 2026-01-31, Updated both SECURITY.md files to use GitHub Security Advisories
 BACKLOG-006, Optional Section 0 and 2 alignment fields, 2026-01-31, Added structure_type has_code_in_root has_secrets_in_repo repository_owners and section_2.source_structure to alignment-progress.json
-
