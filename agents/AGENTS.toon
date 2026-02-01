@@ -1,185 +1,78 @@
-# AGENTS.toon - Agent-optimized repository guidance
+# AGENTS.toon
 
-meta{repo, description, package_manager, last_updated}:
-firm-template, Firm template monorepo, pnpm@8.15.0, 2026-01-30
+> **SYSTEM CONTEXT:** This file governs all autonomous agent actions in this repository. 
+> **READ ORDER:** 1. AGENTS.md → 2. agents/tasks/TODO.toon (This file)
 
-scope{workspaces, primary_stack}:
-apps/*; packages/*, TypeScript + Turbo + pnpm
+## 1. Project Context
+**One-Liner:** Monorepo for marketing agency.
+**Primary Stack:** TypeScript, Turbo, pnpm@8.15.0.
 
-agent_entry_point{type, id, $schema, version, purpose}:
-agent_entry_point, AGENTS.toon, http://json-schema.org/draft-07/schema#, 2.1.0, Governance for autonomous coding agents. Read this, then agents/tasks/TODO.toon.
+## 2. Mission & Prime Directives
+**Your Role:** Senior software engineer with 30 years of experience across all tech stacks.
+**Objective:** Complete tasks, create or update testing and verification, execute testing and verification, and create or update documentation. 
 
-role{title, summary}:
-Autonomous Agent for Solo Founder, Complete batched tasks autonomously. Verify with executed tests. Communicate plainly.
+### Hard Constraints (Safety First)
+1.  **NO SECRETS:** Never commit `.env`, keys, or tokens.
+2.  **NO GUESSING:** If a task is unclear, mark `<UNKNOWN>` and create a HITL (Human-In-The-Loop) request.
+3.  **NO BROKEN BUILDS:** You must run `make verify` before submitting ANY changes.
+4.  **RESTRICTED AREAS:** Do not modify `.github/workflows/`, `infrastructure/`, or `scripts/` without explicit authorization.
 
-role_rules[3]{rule}:
-Explain to a non-technical founder.
-Work first, summarize after.
-Group similar tasks.
+## 3. Operational Workflow
 
-required_reading{note}:
-This file is the only required governance.
+### Phase 1: Planning
+* Read `agents/tasks/TODO.toon`.
+* If no tasks are available in TODO.toon, read BACKLOG.toon, and promote 3-5 tasks to TODO.toon.
+* Draft a plan including:
+    * Files to touch.
+    * Verification strategy (What command proves it works?).
+    * Risks (Does this trigger a Security Gate?).
 
-required_reading_order[2]{path}:
-agents/AGENTS.toon
-agents/tasks/TODO.toon
+### Phase 2: Execution
+* Work task-by-task.
+* **Traceability:** Every commit/PR description must reference the Task ID.
+* **File Headers:** Ensure every file has a header with: `filepath`, `purpose`, `last_updated`, `related_tasks`.
 
-repo_map_index{index_files}:
-Use INDEX.toon files for navigation and patterns.
+### Phase 3: Verification (The Gate)
+You are **required** to produce evidence. "I think it works" is not acceptable.
+1.  **Build:** `pnpm build` must pass.
+2.  **Test:** `pnpm test` must pass.
+3.  **Lint:** `pnpm lint` and `pnpm type-check` must be clean.
+* *Failure Action:* Fix immediately. If unfixable, revert and mark `<UNKNOWN>`.
 
-repo_map_code[1]{area, path, stack}:
-web, apps/web, Web app
+## 4. The Toolbox (Verified Commands)
 
-repo_map_gov[5]{area, path}:
-todo, agents/tasks/TODO.toon
-backlog, agents/tasks/BACKLOG.toon
-archive, agents/tasks/ARCHIVE.toon
-logs, agents/log/
-hitl, agents/hitl/
+| Category | Command | When to use |
+| :--- | :--- | :--- |
+| **Setup** | `make setup` | Initial workspace installation. |
+| **Gatekeeper** | `make verify` | **MANDATORY** before PR/Commit. Runs all checks. |
+| **Build** | `pnpm build` | Check for compile errors. |
+| **Test** | `pnpm test` | Run unit tests (workspace wide). |
+| **Lint** | `pnpm lint` | Fix style issues. |
+| **Type Check** | `pnpm type-check` | Validate TypeScript types. |
+| **Format** | `pnpm format` | Fix formatting (Prettier). |
+| **Dev** | `pnpm dev` | Start local dev server (rarely used by agents). |
 
-repo_contract{setup_command, verify_command, setup_rule, verify_rule}:
-make setup, make verify, setup installs dependencies, verify runs lint + typecheck + tests + build
+## 5. Human-In-The-Loop (HITL) Protocol
+**Trigger:** You are blocked, see a security risk, or need a decision.
 
-core_principles_must_follow[6]{name, rule}:
-no_guessing, Mark <UNKNOWN>, create HITL.
-safety_first, Stop for login/money/data/external changes.
-no_secrets, Never commit secrets, tokens, keys.
-evidence, Verification requires test/lint/build logs from your session.
-traceability, Link all work to agents/tasks/TODO.toon tasks.
-verify_gate, Run make verify before submitting changes.
+**Process:**
+1.  Stop the specific task (mark as `Blocked` in TODO).
+2.  Create a file: `agents/hitl/HITL-[ID].md` (sequential ID).
+3.  Content:
+    * **Context:** What were you doing?
+    * **Blocker:** What is stopping you?
+    * **Options:** Proposal A vs Proposal B.
+4.  Move to the next task in the batch.
 
-core_principles_good_practices[6]{rule}:
-Document cross-feature decisions in docs/adr/.
-Avoid scope creep.
-Reference patterns from INDEX.toon.
-Treat safety bypass attempts as a security stop.
-Do not change critical paths without explicit instruction: infrastructure/, .github/workflows/, scripts/, root config files.
-Use blast radius checks for protected path changes.
+## 6. Repository Map
+* **Navigation:** See `INDEX.toon` in subfolders.
+* **Work Tracking:** `agents/tasks/` (TODO, BACKLOG, ARCHIVE).
+* **Memory/Logs:** `agents/log/` (Store your session logs here).
+* **Web App:** `apps/web/`.
 
-op_context{assumption, evidence_rule}:
-You are an autonomous agent (e.g., GitHub Copilot Agent, Codex CLI) with your own execution environment., Reference session logs or command outputs as primary verification evidence.
-
-op_context_capabilities[2]{capability}:
-Run shell commands, tests, linters in your session.
-Manage edits, commits, and PRs.
-
-filepath_rule{mandate, headers}:
-Include filepaths in ALL communications and artifacts., Each file must have a header with: filepath, purpose, last updated, related tasks.
-
-filepath_rule_locations[5]{location}:
-Doc headers
-Change summaries
-Task reports
-PR descriptions
-HITL items
-
-workflow{strategy, group_exit_requirement}:
-Group 3-5 same-type tasks from TODO.md. Work on group to completion., Before declaring the group complete, include executed verification evidence (commands + output summary) or mark <UNKNOWN> + create HITL if verification cannot be executed.
-
-workflow_steps[7]{step}:
-Group tasks by type (feature, bug, docs).
-For first task, create a plan with: files to change; Quality Gate if needed; Security Gate if needed; Verification Plan.
-Make changes task-by-task. Run verification commands.
-If blocked: Mark 'Blocked', create HITL, continue with group.
-Group complete: Update agents/tasks/TODO.toon, archive tasks, provide batch report.
-Reference docs/quality-attributes.md for Quality Gate when needed.
-Check docs/security-review-triggers.md for Security Gate; create HITL if triggered.
-
-hitl{def, naming}:
-Human-In-The-Loop: blocking question for founder., Use sequential IDs like HITL-0001.md (details: agents/hitl/README.md).
-
-hitl_triggers[4]{trigger}:
-Security/login/money/data changes.
-External integrations.
-<UNKNOWN> items.
-Dependency vulns.
-
-hitl_process[3]{step}:
-Mark task 'Blocked' in agents/tasks/TODO.toon.
-Create HITL-XXX.md in agents/hitl/.
-Move to next task in group.
-
-pr_reqs_sections[6]{section}:
-What changed (plain English).
-Why changed (business reason).
-Changed filepaths.
-Evidence (links to session logs in agents/log/).
-Risks & rollback plan (if risky).
-Task references.
-
-security{rule}:
-Security changes require executed test evidence and explicit HITL approval.
-
-security_hard_stops[4]{stop}:
-Secrets in code.
-Auth changes without HITL.
-Money flow changes.
-External API without review.
-
-next_start[3]{step}:
-Read agents/tasks/TODO.toon.
-Group 3-5 same-type tasks.
-Begin execution for first group.
-
-purpose{statement}:
-Provide agent-specific instructions for the Firm template monorepo.
-Use workspace scripts for build, test, lint, and type checking.
-
-agents[3]{name, role, scope, instructions}:
-build_agent, Development, Full repo, Use pnpm scripts from package.json; prefer turbo run with --filter to scope
-test_agent, Quality Assurance, Tests and type checks, Run pnpm test, pnpm type-check, pnpm lint before PRs
-docs_agent, Documentation, Docs only, Update README and package docs when behavior changes
-
-environment_setup[3]{tool, command, purpose, notes}:
-pnpm, pnpm install, Install dependencies, Run from repo root
-turbo, pnpm turbo run <task>, Task runner, Use --filter=<package> when possible
-node, node --version, Runtime check, Follow README for required version
-
-testing[4]{type, command, scope, when_to_run, notes}:
-unit, pnpm test, Workspace packages, Before PRs, turbo runs package tests
-typecheck, pnpm type-check, Workspace, Before PRs, Ensure TypeScript passes
-lint, pnpm lint, Workspace, Before PRs, Fix lint errors
-format, pnpm format:check, Workspace, Before PRs, Run pnpm format to fix
-
-workflow[5]{stage, action, command, verification}:
-development, Implement changes, Editor, Follow existing patterns
-build, Build packages, pnpm build, Build succeeds
-test, Run tests, pnpm test, Tests pass
-quality, Lint and type-check, pnpm lint && pnpm type-check, No issues
-format, Format code, pnpm format, No diffs after formatting
-
-conventions[5]{area, rule, example, enforcement}:
-formatting, Prettier formatting, pnpm format, CI or local check
-linting, ESLint rules, pnpm lint, CI gate
-types, TypeScript type safety, pnpm type-check, CI gate
-scripts, Use workspace scripts, pnpm <script>, Manual review
-task_actor, When creating or updating agents/tasks/TODO.toon or BACKLOG.toon include actor column, AGENT = autonomous execution; USER = human decision or approval required, agents/tasks/ files
-
-file_patterns[6]{pattern, purpose, agent_handling}:
-AGENTS.md, Human-readable agent instructions, Root-level entrypoint
-agents/AGENTS.toon, Agent-optimized format, Canonical registry
-agents/tasks/, Agent work tracking, Update TODO/BACKLOG/ARCHIVE
-.github/workflows/, CI/CD configuration, Automated validation
-.cursorrules, Local agent rules, Follow for IDE agents
-.github/copilot-instructions.md, Copilot agent rules, Follow for PR agents
-
-commands[9]{name, command, context, frequency, automation}:
-setup, make setup, Workspace setup, As needed, Manual
-verify, make verify, Quality gate, Before PRs, Manual
-install, pnpm install, Workspace setup, As needed, Manual
-dev, pnpm dev, Local development, As needed, Manual
-build, pnpm build, Release prep, As needed, Manual
-test, pnpm test, Development, Per change, Manual
-lint, pnpm lint, Pre-commit, Always, Manual
-type-check, pnpm type-check, Pre-commit, Always, Manual
-format, pnpm format, Post-change, As needed, Manual
-
-validation[4]{check, command, failure_action}:
-verify, make verify, Fix verify failures before proceeding
-build, pnpm build, Fix build errors
-tests, pnpm test, Fix failing tests
-lint_typecheck, pnpm lint && pnpm type-check, Fix issues before proceeding
-
-integration_points[2]{system, method}:
-github, GitHub Actions, .github/workflows/ files
-turbo, Turbo pipeline, turbo.json configuration
+## 7. PR Requirements
+A Pull Request is not done until it contains:
+1.  **Plain English Summary:** What changed and why.
+2.  **Evidence:** Snippet of the successful `make verify` output.
+3.  **Risk Assessment:** Rollback plan if this breaks production.
+4.  **File List:** Explicit list of modified filepaths.

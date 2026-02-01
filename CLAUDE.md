@@ -3,7 +3,7 @@
 ## Required Agent Path
 1. AGENTS.md (or CLAUDE.md or copilot-instructions.md or cursorrules.md)
 2. AGENTS.toon
-3. TODO.toon 
+3. TODO.toon
 
 ## REPO NAVIGATION/ARCHITECTURE
 1. INDEX.toon
