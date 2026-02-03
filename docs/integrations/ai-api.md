@@ -16,18 +16,20 @@ description: Implementation notes for AI API calls, retries, and observability.
 ```ts
 import { AiError } from "@firm/capabilities/ai";
 
+const generationOptions = {
+  prompt,
+  model: "gpt-4.1-mini", // Use the default draft model.
+  tags: ["client", "draft"],
+};
+
 try {
-  const response = await aiClient.generate({
-    prompt,
-    model: "gpt-4.1-mini", // Use the default draft model.
-    tags: ["client", "draft"],
-  });
+  const response = await aiClient.generate(generationOptions);
 
   return response.output;
 } catch (error) {
   if (error instanceof AiError && error.retryable) {
     // Retry transient failures like 429 or 503.
-    return aiClient.generate({ prompt, retryCount: 1 });
+    return aiClient.generate({ ...generationOptions, retryCount: 1 });
   }
 
   // Escalate non-retryable failures to monitoring.
