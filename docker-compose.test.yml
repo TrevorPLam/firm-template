@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: firm_test
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "test"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  wiremock:
+    image: wiremock/wiremock:3.6.0
+    ports:
+      - "8089:8080"
+    volumes:
+      - ./tests/integration/mocks/wiremock:/home/wiremock
