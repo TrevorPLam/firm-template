@@ -15,11 +15,18 @@ description: Health scoring and monitoring cadence for client portfolios.
 ## Health Score Model
 
 ```ts
+const WEIGHTS = {
+  DELIVERY: 0.35,
+  QUALITY: 0.25,
+  STAKEHOLDER: 0.25,
+  CHANGE_REQUESTS: 0.15,
+};
+
 const healthScore = (
-  deliveryScore * 0.35 +
-  qualityScore * 0.25 +
-  stakeholderScore * 0.25 +
-  changeScore * 0.15
+  deliveryScore * WEIGHTS.DELIVERY +
+  qualityScore * WEIGHTS.QUALITY +
+  stakeholderScore * WEIGHTS.STAKEHOLDER +
+  changeScore * WEIGHTS.CHANGE_REQUESTS
 );
 
 const status = healthScore >= 85 ? "green" : healthScore >= 70 ? "yellow" : "red";
