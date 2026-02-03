@@ -1,3 +1,8 @@
+---
+title: Platform Guidelines
+description: Architecture, layers, and guardrails for the Firm platform.
+---
+
 # Platform Guidelines (Next.js Marketing Platform)
 
 ## Goal
@@ -20,6 +25,22 @@ We will ship reusable foundations and keep client-specific work isolated.
 In plain terms:
 - UI should never import HubSpot/GA/Calendly SDKs.
 - Only capabilities talk to external providers, via integrations adapters.
+
+### Example: layered imports with inline commentary
+
+```ts
+// ✅ tokens may be imported by ui, patterns, and apps.
+import { colors } from "@firm/tokens";
+
+// ✅ ui components can depend on tokens.
+import { Button } from "@firm/ui";
+
+// ✅ patterns can compose ui and capabilities.
+import { NewsletterSignup } from "@firm/patterns";
+
+// ❌ integrations should only be used inside capabilities, not directly in apps.
+// import { marketingApi } from "@firm/integrations";
+```
 
 ## Next.js-specific rules
 - Use Server Components by default. Only add `"use client"` where required.
