@@ -1,8 +1,20 @@
 # INDEX.toon
 
 meta{root, generated_at}:
-scripts, 2026-01-31T04:41:45Z
+scripts, 2026-02-03T02:07:57Z
 
-entries[2]{path, type}:
+entries[14]{path, type}:
+automation, dir
+automation\check-hitl-quality.sh, file
+automation\check-task-quality.sh, file
+automation\sync-workflows.sh, file
 generate-index-toon.py, file
+metrics, dir
+metrics\generate-metrics-dashboard.sh, file
+metrics\track-workflow-performance.sh, file
 refresh-indexes.sh, file
+security, dir
+security\check-blast-radius.sh, file
+security\protected-paths.txt, file
+setup.sh, file
+verify.sh, file

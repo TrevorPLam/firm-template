@@ -1,7 +1,7 @@
 # INDEX.toon
 
 meta{root, generated_at}:
-services, 2026-01-31T04:41:45Z
+services, 2026-02-03T02:07:57Z
 
 entries[25]{path, type}:
 api-gateway, dir

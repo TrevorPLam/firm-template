@@ -36,7 +36,7 @@
       "completed_tasks": [
         "Root directory has essential files only",
         "README.md, LICENSE, .gitignore, package.json, CHANGELOG.md",
-        "config/ and scripts/ used",
+        "Root-level shared config files and scripts/ used",
         ".github/workflows/ and docs/ present",
         "CONTRIBUTING.md at root",
         "docs/README.md documentation index",
@@ -64,7 +64,7 @@
       "tasks_complete": 5,
       "tasks_total": 5,
       "completed_tasks": [
-        "Config in config/ and app-level configs",
+        "Shared config at repo root and app-level configs",
         ".env.example at root with placeholders",
         ".env in .gitignore",
         "No secrets committed",
@@ -132,7 +132,7 @@
       "tasks_complete": 2,
       "tasks_total": 2,
       "completed_tasks": [
-        "config/docker-compose.yml present",
+        "docker-compose.yml present at repo root",
         "IaC limited; documented as application repo with optional Docker"
       ],
       "pending_tasks": [],

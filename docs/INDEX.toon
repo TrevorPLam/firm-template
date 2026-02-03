@@ -1,13 +1,15 @@
 # INDEX.toon
 
 meta{root, generated_at}:
-docs, 2026-01-31T04:41:45Z
+docs, 2026-02-03T02:07:57Z
 
-entries[19]{path, type}:
+entries[21]{path, type}:
+AGENTIC_WORKFLOWS_ANALYSIS.md, file
 CONTRIBUTING.md, file
 PLATFORM.md, file
 README.md, file
 SECURITY.md, file
+SHARED_PATTERNS.md, file
 TEMPLATE_MAINTENANCE.md, file
 adr, dir
 adr\.gitkeep, file

@@ -65,7 +65,7 @@ pnpm lint
 - **apps/** – Next.js applications (web, template-site, your-dedicated-marketer).
 - **packages/** – Shared packages (ui, tokens, patterns, capabilities, integrations, utils, config).
 - **docs/** – Project documentation.
-- **config/** – Shared configuration (e.g. TypeScript, Docker).
+- **Repo root** – Shared configuration (`tsconfig.base.json`, `turbo.json`, `pnpm-workspace.yaml`, `docker-compose.yml`).
 
 For more detail, see [docs/PLATFORM.md](docs/PLATFORM.md).
 
