@@ -5,6 +5,6 @@ set -euo pipefail
 
 BASE_URL="${1:-http://localhost:8089}"
 
-curl -fsS "${BASE_URL}/health" >/dev/null
+curl -fsS --max-time 10 "${BASE_URL}/health" >/dev/null
 
 echo "Integration dependencies are responding"
