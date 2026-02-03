@@ -3,7 +3,12 @@
 const fs = require('fs')
 const path = require('path')
 
-const minimum = Number(process.env.COVERAGE_MIN_LINES || 70)
+const envCoverageMin = process.env.COVERAGE_MIN_LINES
+const minimum = envCoverageMin !== undefined ? Number(envCoverageMin) : 70
+if (!Number.isFinite(minimum)) {
+  console.error('COVERAGE_MIN_LINES must be a valid number')
+  process.exit(1)
+}
 
 const coverageFiles = []
 const ignored = new Set(['node_modules', '.git', 'dist', '.next'])
