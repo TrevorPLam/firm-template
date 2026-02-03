@@ -30,6 +30,15 @@ This directory contains documentation for the Firm Platform.
 - **[api/README.md](api/README.md)** – API gateway documentation index.
 - **[i18n/README.md](i18n/README.md)** – Internationalization setup and workflow.
 - **[storybook/README.md](storybook/README.md)** – Storybook component documentation guide.
+- **[ai/README.md](ai/README.md)** – AI setup, usage patterns, and governance guidance.
+- **[pwa/README.md](pwa/README.md)** – PWA setup, testing, and deployment checklist.
+- **[cms/README.md](cms/README.md)** – Headless CMS integration and content workflows.
+- **[realtime/README.md](realtime/README.md)** – Real-time collaboration and WebSocket guidance.
+- **[business/README.md](business/README.md)** – Market segmentation, ROI, and positioning docs.
+- **[operations/README.md](operations/README.md)** – Client onboarding, workflows, and SLAs.
+- **[scaling/README.md](scaling/README.md)** – Team scaling and automation playbooks.
+- **[analytics/README.md](analytics/README.md)** – Business intelligence and KPI tracking guides.
+- **[enterprise/README.md](enterprise/README.md)** – Enterprise pricing and contract management docs.
 
 ### Reference
 
