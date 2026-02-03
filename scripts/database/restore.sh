@@ -18,5 +18,5 @@ if [[ ! -f "$BACKUP_FILE" ]]; then
   exit 1
 fi
 
-echo "Restoring ${BACKUP_FILE} into ${DATABASE_URL}"
+echo "Restoring ${BACKUP_FILE} into configured database"
 # Example: pg_restore --clean --no-owner --dbname "$DATABASE_URL" "$BACKUP_FILE"
