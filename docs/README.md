@@ -34,6 +34,7 @@ This directory contains documentation for the Firm Platform.
 - **[pwa/README.md](pwa/README.md)** – PWA setup, testing, and deployment checklist.
 - **[cms/README.md](cms/README.md)** – Headless CMS integration and content workflows.
 - **[realtime/README.md](realtime/README.md)** – Real-time collaboration and WebSocket guidance.
+
 - **[business/README.md](business/README.md)** – Market segmentation, ROI, and positioning docs.
 - **[operations/README.md](operations/README.md)** – Client onboarding, workflows, and SLAs.
 - **[scaling/README.md](scaling/README.md)** – Team scaling and automation playbooks.
