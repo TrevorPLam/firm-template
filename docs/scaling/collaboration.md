@@ -20,7 +20,7 @@ description: Communication patterns, rituals, and documentation standards.
 - Rollback plan:
 ```
 
-> Keep summaries within 10 lines to maintain scanability.
+> Keep summaries within 10 lines to maintain scannability.
 
 ## Feedback Loop
 
