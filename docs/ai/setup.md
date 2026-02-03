@@ -16,7 +16,7 @@ description: Configure AI providers, credentials, and baseline model settings.
 ```
 # .env.local (example)
 AI_PROVIDER=openai
-AI_MODEL=gpt-4.1-mini // Default model for content drafts.
+AI_MODEL=gpt-4o-mini // Default model for content drafts.
 AI_MAX_TOKENS=2048   // Cap output to control cost.
 AI_TEMPERATURE=0.4   // Keep copy consistent and on-brand.
 ```
