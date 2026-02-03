@@ -13,5 +13,10 @@ if [[ -z "$BACKUP_FILE" ]]; then
   exit 1
 fi
 
+if [[ ! -f "$BACKUP_FILE" ]]; then
+  echo "Error: Backup file not found at '${BACKUP_FILE}'" >&2
+  exit 1
+fi
+
 echo "Restoring ${BACKUP_FILE} into ${DATABASE_URL}"
 # Example: pg_restore --clean --no-owner --dbname "$DATABASE_URL" "$BACKUP_FILE"
