@@ -1,8 +1,0 @@
-# INDEX.toon
-
-meta{root, generated_at}:
-tools, 2026-02-03T02:07:57Z
-
-entries[2]{path, type}:
-ai-helpers, dir
-codegen, dir
