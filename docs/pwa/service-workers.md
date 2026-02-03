@@ -25,12 +25,22 @@ if ("serviceWorker" in navigator) {
 
 ## Offline Fallback
 
-```js
 self.addEventListener("fetch", (event) => {
+  // Use network-first for navigation requests (HTML) to get the freshest content.
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // Fallback to cache if the network is unavailable.
+        return caches.match(event.request);
+      })
+    );
+    return;
+  }
+
+  // For other requests (e.g., static assets), use cache-first for performance.
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return cached || fetch(event.request); // Use cache when offline.
+    caches.match(event.request).then((cachedResponse) => {
+      return cachedResponse || fetch(event.request);
     })
   );
 });
-```
