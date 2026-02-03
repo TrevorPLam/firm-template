@@ -37,35 +37,4 @@ Global Rules:
 
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
 
-## task_begin
-### # [id:TASK-20260203-024][type:ci][priority:medium][component:infrastructure] Set up database migration and environment management
-
-**Status:** todo  
-**Description:** Implement database migration strategy, environment configuration management, and backup/restore procedures for reliable deployments.  
-**Acceptance Criteria:**
-
-- [ ] Create database migration framework and scripts
-- [ ] Set up environment configuration management
-- [ ] Implement backup and restore procedures
-- [ ] Add database seeding and test data setup
-- [ ] Document environment and database management
-
-**Relevant Files:** `scripts/database/`, `services/api-gateway/backend/`, `.env.example`
-## task_end
-
-## task_begin
-### # [id:TASK-20260203-025][type:ci][priority:medium][component:testing] Create integration testing infrastructure
-
-**Status:** todo  
-**Description:** Build integration testing infrastructure for third-party services, webhooks, and API integrations with proper mocking and monitoring.  
-**Acceptance Criteria:**
-
-- [ ] Set up integration testing environment
-- [ ] Create webhook testing infrastructure
-- [ ] Add third-party service mocking framework
-- [ ] Implement integration monitoring and alerting
-- [ ] Document integration testing procedures
-
-**Relevant Files:** `packages/integrations/src/`, `tests/integration/`, `docker-compose.test.yml`
-## task_end
-
+<!-- (empty) -->

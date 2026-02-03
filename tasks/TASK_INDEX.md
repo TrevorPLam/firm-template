@@ -89,9 +89,10 @@ title: Enhance security scanning and vulnerability management
 type: ci
 priority: high
 component: automation
-status: in-progress
-location: backlog/ci-high/todo/TODO.md
+status: done
+location: backlog/ci-high/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Create comprehensive GitHub Actions CI/CD pipeline
 ## index_entry_end
 
@@ -100,9 +101,10 @@ title: Create comprehensive GitHub Actions CI/CD pipeline
 type: ci
 priority: high
 component: automation
-status: in-progress
-location: backlog/ci-high/todo/TODO.md
+status: done
+location: backlog/ci-high/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Add automated testing pipeline with multiple test types
 ## index_entry_end
 
@@ -177,9 +179,10 @@ title: Implement automated security testing and compliance checks
 type: ci
 priority: high
 component: automation
-status: in-progress
-location: backlog/ci-high/todo/TODO.md
+status: done
+location: backlog/ci-high/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Implement automated deployment and environment promotion
 ## index_entry_end
 
@@ -188,9 +191,10 @@ title: Implement automated deployment and environment promotion
 type: ci
 priority: medium
 component: infrastructure
-status: in-progress
-location: backlog/ci-medium/todo/TODO.md
+status: done
+location: backlog/ci-medium/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Set up database migration and environment management
 ## index_entry_end
 
@@ -199,9 +203,10 @@ title: Set up database migration and environment management
 type: ci
 priority: medium
 component: testing
-status: in-progress
-location: backlog/ci-medium/todo/TODO.md
+status: done
+location: backlog/ci-medium/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Create integration testing infrastructure
 ## index_entry_end
 
@@ -941,6 +946,17 @@ status: todo
 location: backlog/devex/TASK-20260203-079.md
 created: 2026-02-03
 title: Configure Storybook build and deployment
+## index_entry_end
+
+## index_entry_begin
+[id:TASK-20260203-080]
+type: ci
+priority: medium
+component: testing
+status: todo
+location: backlog/ci-medium/TASK-20260203-080.md
+created: 2026-02-03
+title: Add Playwright dependency and lockfile update
 ## index_entry_end
 
 <!--

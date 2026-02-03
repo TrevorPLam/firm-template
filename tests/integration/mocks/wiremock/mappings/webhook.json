@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/webhook",
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.event" }
+    ]
+  },
+  "response": {
+    "status": 202,
+    "jsonBody": {
+      "accepted": true
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
