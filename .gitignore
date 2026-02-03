@@ -1,52 +1,161 @@
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
+# Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+.pnp.*
+
+# Production builds
+dist/
+build/
+.out/
+.next/
+.nuxt/
+.vuepress/dist/
+**/dist/
+**/build/
+**/.next/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+turbo-*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache/
+.parcel-cache/
+
+# Storybook build outputs
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+*.tmp
+*.temp
 
 # Editor directories and files
 .vscode/
 .idea/
+.cursor/
 *.swp
 *.swo
 *~
-.project
-.classpath
-.settings/
+.cursorrules
 
-# Temporary files
-*.tmp
-*.log
-*.cache
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Turbo
+.turbo/
+
+# Docker
+.dockerignore
+
+# Local development
+.local/
+
+# Package manager lock files (keeping pnpm-lock.yaml)
+yarn.lock
+package-lock.json
+
+# Test results
+test-results/
+playwright-report/
+test-results.xml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
 *.bak
+*.backup
 
-# Node modules (if any)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Vite
+.vite/
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
+# Vitest
+.vitest/
 
-# Build artifacts
-dist/
-build/
-.next/
-*.egg-info/
+# ESLint
+.eslintcache
 
-# Environment files
-.env
-.env.local
-.env.*.local
-.env.production
+# Prettier
+.prettierignore
 
-# IDE
-*.sublime-project
-*.sublime-workspace
+# Markdown lint
+.markdownlint.json
+
+# EditorConfig
+.editorconfig
+
+# Git hooks
+.git/hooks/*.sample
+.git/refs/original/
+.git/logs/
+
+# Workspace files
+INDEX.toon
+
+# AI context files
+.ai-context.md
+
+# Security
+scripts/security/protected-paths.txt
