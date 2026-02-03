@@ -12,7 +12,7 @@ for dir in apps packages; do
     find "$dir" -maxdepth 3 -type d \( -name dist -o -name .next \) -print0 | while IFS= read -r -d '' build_dir; do
       target="$ARTIFACT_DIR/${build_dir}"
       mkdir -p "$(dirname "$target")"
-      cp -R "$build_dir" "$target" || true
+      cp -R "$build_dir" "$target"
     done
   fi
 done
