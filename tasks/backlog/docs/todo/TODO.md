@@ -30,7 +30,7 @@ Global Rules:
 
 ## 🎯 Current Batch Focus
 **Batch Type:** docs  
-**Batch Goal:** Execute documentation tasks.  
+**Batch Goal:** Deliver next-wave documentation guides for product expansion.  
 **Batch Size Target:** 5
 
 ---
@@ -38,83 +38,85 @@ Global Rules:
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
 
 ## task_begin
-### # [id:TASK-20260203-001][type:docs][priority:high][component:documentation] Create comprehensive API documentation for backend services
+### # [id:TASK-20260203-026][type:docs][priority:high][component:business] Create competitive analysis and market positioning documentation
 
 **Status:** todo  
-**Description:** Generate complete API documentation for the API gateway and all backend endpoints to support developer onboarding and integration.  
+**Description:** Document comprehensive competitive analysis, market positioning strategy, and differentiation points for the firm template platform.  
 **Acceptance Criteria:**
 
-- [ ] Document all API endpoints with request/response schemas
-- [ ] Include authentication and authorization examples
-- [ ] Add integration examples for frontend consumption
-- [ ] Generate OpenAPI/Swagger specification
-- [ ] Documentation accessible via `/docs` endpoint
+- [ ] Document competitive landscape analysis for marketing firm platforms
+- [ ] Create market positioning and differentiation strategy
+- [ ] Add target market segmentation and ideal customer profiles
+- [ ] Document ROI analysis and value proposition
+- [ ] Create sales and marketing collateral templates
 
-**Relevant Files:** `services/api-gateway/backend/`, `docs/`
+**Relevant Files:** `docs/business/`, `docs/marketing/`, `docs/competitive/`
 ## task_end
 
 ## task_begin
-### # [id:TASK-20260203-002][type:docs][priority:high][component:documentation] Add internationalization (i18n) setup and documentation
+### # [id:TASK-20260203-049][type:docs][priority:medium][component:documentation] Create AI integration guides and best practices documentation
 
 **Status:** todo  
-**Description:** Implement next-intl framework and create comprehensive documentation for multi-language support across all client sites.  
+**Description:** Develop comprehensive documentation for AI-powered content generation features including setup guides, usage patterns, and best practices.  
 **Acceptance Criteria:**
 
-- [ ] Install and configure next-intl with locale routing
-- [ ] Extract all hardcoded strings to translation files
-- [ ] Create documentation for i18n workflow
-- [ ] Add RTL language support preparation
-- [ ] Document content translation process for clients
+- [ ] Create AI service setup and configuration guides
+- [ ] Document AI content generation patterns and examples
+- [ ] Add AI usage guidelines and ethical considerations
+- [ ] Create troubleshooting and optimization guides
+- [ ] Document AI API integration and error handling
 
-**Relevant Files:** `apps/*/app/[locale]/`, `packages/*/src/`, `docs/`
+**Dependencies:** TASK-20260203-017
+**Relevant Files:** `docs/ai/`, `docs/integrations/`, `packages/capabilities/src/ai/`
 ## task_end
 
 ## task_begin
-### # [id:TASK-20260203-003][type:docs][priority:high][component:documentation] Create component library documentation with Storybook
+### # [id:TASK-20260203-050][type:docs][priority:medium][component:documentation] Create PWA implementation and deployment documentation
 
 **Status:** todo  
-**Description:** Implement Storybook for the UI component library with interactive examples, accessibility documentation, and design token references.  
+**Description:** Document PWA features implementation, configuration, and deployment processes for development teams.  
 **Acceptance Criteria:**
 
-- [ ] Set up Storybook with all UI components
-- [ ] Add interactive controls and variant examples
-- [ ] Document accessibility features and keyboard navigation
-- [ ] Include design token references and theme examples
-- [ ] Deploy Storybook as documentation site
+- [ ] Create PWA setup and configuration guides
+- [ ] Document service worker implementation patterns
+- [ ] Add push notification integration documentation
+- [ ] Create PWA testing and debugging guides
+- [ ] Document PWA performance optimization best practices
 
-**Relevant Files:** `packages/ui/`, `.storybook/`, `docs/`
+**Dependencies:** TASK-20260203-018
+**Relevant Files:** `docs/pwa/`, `docs/deployment/`, `packages/capabilities/src/pwa/`
 ## task_end
 
 ## task_begin
-### # [id:TASK-20260203-015-D][type:docs][priority:medium][component:documentation] Add API versioning and comprehensive documentation
+### # [id:TASK-20260203-051][type:docs][priority:medium][component:documentation] Create headless CMS integration and content management documentation
 
 **Status:** todo  
-**Description:** Implement API versioning strategy and generate comprehensive API documentation for all endpoints.  
+**Description:** Develop comprehensive documentation for headless CMS integration, content workflows, and multi-channel distribution.  
 **Acceptance Criteria:**
 
-- [ ] Implement URL-based API versioning (v1, v2)
-- [ ] Add OpenAPI/Swagger specification generation
-- [ ] Create interactive API documentation
-- [ ] Add API changelog and migration guides
-- [ ] Set up API testing documentation and examples
+- [ ] Create CMS setup and integration guides
+- [ ] Document content management workflows and patterns
+- [ ] Add multi-channel content distribution documentation
+- [ ] Create content preview and editing guides
+- [ ] Document CMS API usage and webhook integration
 
-**Dependencies:** TASK-20260203-015-C
-**Relevant Files:** `services/api-gateway/backend/docs/`, `services/api-gateway/backend/api/`
+**Dependencies:** TASK-20260203-036
+**Relevant Files:** `docs/cms/`, `docs/content/`, `packages/capabilities/src/cms/`
 ## task_end
 
 ## task_begin
-### # [id:TASK-20260203-019][type:docs][priority:high][component:training] Create comprehensive team training materials and onboarding curriculum
+### # [id:TASK-20260203-052][type:docs][priority:medium][component:documentation] Create real-time feature development documentation
 
 **Status:** todo  
-**Description:** Develop structured training materials for new team members covering platform architecture, development workflows, and best practices.  
+**Description:** Document real-time collaboration features, WebSocket implementation, and notification system development.  
 **Acceptance Criteria:**
 
-- [ ] Create platform architecture overview and tutorials
-- [ ] Document development setup and workflows
-- [ ] Add coding standards and best practices guide
-- [ ] Create client onboarding process documentation
-- [ ] Build interactive learning exercises and examples
+- [ ] Create WebSocket infrastructure setup guides
+- [ ] Document real-time collaboration implementation patterns
+- [ ] Add push notification integration documentation
+- [ ] Create real-time data synchronization guides
+- [ ] Document real-time feature testing and debugging
 
-**Relevant Files:** `docs/training/`, `docs/onboarding/`, `CONTRIBUTING.md`
+**Dependencies:** TASK-20260203-037
+**Relevant Files:** `docs/realtime/`, `docs/websockets/`, `packages/capabilities/src/realtime/`
 ## task_end
-

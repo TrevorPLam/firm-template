@@ -1,3 +1,8 @@
+---
+title: Documentation Index
+description: Navigation hub for Firm platform documentation.
+---
+
 # Documentation Index
 
 This directory contains documentation for the Firm Platform.
@@ -9,6 +14,8 @@ This directory contains documentation for the Firm Platform.
 - **[README.md](../README.md)** (repository root) – Project overview, installation, usage, and structure.
 - **[PLATFORM.md](PLATFORM.md)** – Platform architecture and how apps/packages fit together.
 - **[CONTRIBUTING.md](../CONTRIBUTING.md)** – How to contribute to this project.
+- **[onboarding/README.md](onboarding/README.md)** – New contributor onboarding checklist.
+- **[training/README.md](training/README.md)** – Team training curriculum and exercises.
 
 ### Security and Governance
 
@@ -17,6 +24,12 @@ This directory contains documentation for the Firm Platform.
 - **[.github/CODEOWNERS](../.github/CODEOWNERS)** – Code ownership and review expectations.
 - **[security-review-triggers.md](security-review-triggers.md)** – Security gate triggers for autonomous agents.
 - **[quality-attributes.md](quality-attributes.md)** – Quality gate standards for autonomous agents.
+
+### Product and Engineering Guides
+
+- **[api/README.md](api/README.md)** – API gateway documentation index.
+- **[i18n/README.md](i18n/README.md)** – Internationalization setup and workflow.
+- **[storybook/README.md](storybook/README.md)** – Storybook component documentation guide.
 
 ### Reference
 

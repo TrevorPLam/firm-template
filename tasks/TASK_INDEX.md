@@ -31,9 +31,10 @@ Rules:
 type: docs
 priority: high
 component: documentation
-status: in-progress
-location: backlog/docs/todo/TODO.md
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Create comprehensive API documentation for backend services
 ## index_entry_end
 
@@ -42,9 +43,10 @@ title: Create comprehensive API documentation for backend services
 type: docs
 priority: high
 component: documentation
-status: in-progress
-location: backlog/docs/todo/TODO.md
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Add internationalization (i18n) setup and documentation
 ## index_entry_end
 
@@ -53,9 +55,10 @@ title: Add internationalization (i18n) setup and documentation
 type: docs
 priority: high
 component: documentation
-status: in-progress
-location: backlog/docs/todo/TODO.md
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Create component library documentation with Storybook
 ## index_entry_end
 
@@ -251,9 +254,10 @@ title: Implement PWA features for offline capabilities
 type: docs
 priority: high
 component: training
-status: in-progress
-location: backlog/docs/todo/TODO.md
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Create comprehensive team training materials and onboarding curriculum
 ## index_entry_end
 
@@ -328,9 +332,10 @@ title: Build integration endpoints for forms and analytics
 type: docs
 priority: medium
 component: documentation
-status: in-progress
-location: backlog/docs/todo/TODO.md
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Add API versioning and comprehensive documentation
 ## index_entry_end
 
@@ -339,8 +344,8 @@ title: Add API versioning and comprehensive documentation
 type: docs
 priority: high
 component: business
-status: todo
-location: backlog/docs/TASK-20260203-026.md
+status: in-progress
+location: backlog/docs/todo/TODO.md
 created: 2026-02-03
 title: Create competitive analysis and market positioning documentation
 ## index_entry_end
@@ -592,8 +597,8 @@ title: Implement WebAssembly integration testing
 type: docs
 priority: medium
 component: documentation
-status: todo
-location: backlog/docs/TASK-20260203-049.md
+status: in-progress
+location: backlog/docs/todo/TODO.md
 created: 2026-02-03
 title: Create AI integration guides and best practices documentation
 ## index_entry_end
@@ -603,8 +608,8 @@ title: Create AI integration guides and best practices documentation
 type: docs
 priority: medium
 component: documentation
-status: todo
-location: backlog/docs/TASK-20260203-050.md
+status: in-progress
+location: backlog/docs/todo/TODO.md
 created: 2026-02-03
 title: Create PWA implementation and deployment documentation
 ## index_entry_end
@@ -614,8 +619,8 @@ title: Create PWA implementation and deployment documentation
 type: docs
 priority: medium
 component: documentation
-status: todo
-location: backlog/docs/TASK-20260203-051.md
+status: in-progress
+location: backlog/docs/todo/TODO.md
 created: 2026-02-03
 title: Create headless CMS integration and content management documentation
 ## index_entry_end
@@ -625,8 +630,8 @@ title: Create headless CMS integration and content management documentation
 type: docs
 priority: medium
 component: documentation
-status: todo
-location: backlog/docs/TASK-20260203-052.md
+status: in-progress
+location: backlog/docs/todo/TODO.md
 created: 2026-02-03
 title: Create real-time feature development documentation
 ## index_entry_end
@@ -906,6 +911,28 @@ created: 2026-02-03
 title: Research quantum computing applications for marketing optimization
 ## index_entry_end
 
+## index_entry_begin
+[id:TASK-20260203-078]
+type: infra
+priority: medium
+component: documentation
+status: todo
+location: backlog/infra/TASK-20260203-078.md
+created: 2026-02-03
+title: Implement API docs endpoint and OpenAPI pipeline
+## index_entry_end
+
+## index_entry_begin
+[id:TASK-20260203-079]
+type: devex
+priority: medium
+component: tooling
+status: todo
+location: backlog/devex/TASK-20260203-079.md
+created: 2026-02-03
+title: Configure Storybook build and deployment
+## index_entry_end
+
 <!--
 Template:
 
@@ -920,4 +947,3 @@ created: YYYY-MM-DD
 title: Short task title
 ## index_entry_end
 -->
-
