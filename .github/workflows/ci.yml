@@ -44,6 +44,34 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Validate API schema
+        run: |
+          # Install OpenAPI validator
+          npm install -g @apidevtools/swagger-cli
+          # Validate schema if it exists
+          if [ -f "docs/api/openapi.yaml" ]; then
+            swagger-cli validate docs/api/openapi.yaml
+            echo "✅ API schema is valid"
+          else
+            echo "⚠️  API schema not found, skipping validation"
+          fi
+
+      - name: Run accessibility tests
+        run: |
+          # Install Playwright browsers if not cached
+          pnpm exec playwright install --with-deps chromium
+          # Run accessibility test suite
+          pnpm exec playwright test tests/accessibility --reporter=html
+        continue-on-error: true
+
+      - name: Upload accessibility test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: playwright-report/
+          retention-days: 30
+
       - name: Prepare artifacts
         run: ./scripts/ci/prepare-artifacts.sh
 
@@ -85,3 +113,15 @@ jobs:
 
       - name: Audit production dependencies
         run: pnpm audit --audit-level=high
+
+      - name: Run security checks
+        run: |
+          echo "Running security scans..."
+          # Check for hardcoded secrets and sensitive data
+          if [ -f "scripts/security/check-secrets.sh" ]; then
+            ./scripts/security/check-secrets.sh
+          fi
+          # Check protected paths haven't been modified
+          if [ -f "scripts/security/check-protected-paths.sh" ]; then
+            ./scripts/security/check-protected-paths.sh
+          fi

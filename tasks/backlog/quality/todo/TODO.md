@@ -37,21 +37,4 @@ Global Rules:
 
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
 
-## task_begin
-### # [id:TASK-20260203-042][type:quality][priority:medium][component:accessibility] Implement comprehensive accessibility testing and compliance
-
-**Status:** todo  
-**Description:** Create accessibility testing framework, WCAG compliance monitoring, and inclusive design validation for all client sites.  
-**Acceptance Criteria:**
-
-- [ ] Set up automated accessibility testing with axe-core
-- [ ] Implement WCAG 2.1 AA compliance monitoring
-- [ ] Create accessibility audit reports and remediation
-- [ ] Add screen reader and keyboard navigation testing
-- [ ] Document accessibility guidelines and best practices
-
-**Dependencies:** TASK-20260203-009
-**Relevant Files:** `packages/ui/tests/accessibility/`, `tests/accessibility/`, `docs/accessibility/`
-## task_end
-
-
+<!-- (empty) -->

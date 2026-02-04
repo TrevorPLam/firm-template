@@ -1,0 +1,11 @@
+# API Documentation Dependencies
+# For generating and serving OpenAPI/Swagger documentation
+
+# OpenAPI schema generation for Django REST Framework
+drf-spectacular==0.27.2
+
+# YAML support for schema export
+PyYAML==6.0.1
+
+# Markdown support for documentation
+Markdown==3.5.2

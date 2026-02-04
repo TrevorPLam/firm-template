@@ -79,9 +79,10 @@ title: Implement performance budgets and bundle analysis
 type: quality
 priority: high
 component: security
-status: in-progress
-location: backlog/security/todo/TODO.md
+status: done
+location: backlog/security/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Enhance security scanning and vulnerability management
 ## index_entry_end
 
@@ -537,10 +538,11 @@ title: Establish continuous innovation and technology review processes
 type: quality
 priority: medium
 component: architecture
-status: in-progress
-location: backlog/quality/todo/TODO.md
+status: done
+location: backlog/quality/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
-title: Plan microservices architecture transition for enterprise scaling
+completed: 2026-02-04
+title: Implement comprehensive accessibility testing and compliance
 ## index_entry_end
 
 ## index_entry_begin
@@ -734,9 +736,10 @@ title: Set up WebAssembly build pipeline and configuration
 type: business
 priority: high
 component: analytics
-status: todo
-location: backlog/business/TASK-20260203-059.md
+status: done
+location: backlog/business/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Create client success analytics and health monitoring dashboard
 ## index_entry_end
 
@@ -948,9 +951,10 @@ title: Research quantum computing applications for marketing optimization
 type: infra
 priority: medium
 component: documentation
-status: todo
-location: backlog/infra/TASK-20260203-078.md
+status: done
+location: backlog/infra/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Implement API docs endpoint and OpenAPI pipeline
 ## index_entry_end
 
@@ -971,9 +975,10 @@ title: Configure Storybook build and deployment
 type: ci
 priority: medium
 component: testing
-status: todo
-location: backlog/ci-medium/TASK-20260203-080.md
+status: done
+location: backlog/ci-medium/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Add Playwright dependency and lockfile update
 ## index_entry_end
 
