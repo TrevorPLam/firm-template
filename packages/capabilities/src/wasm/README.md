@@ -4,7 +4,11 @@ High-performance WebAssembly integration for performance-critical computations w
 
 ## Overview
 
-This package provides a production-ready infrastructure for integrating WebAssembly modules into your application. It includes:
+This package provides a production-ready **TypeScript infrastructure layer** for integrating WebAssembly modules into your application. 
+
+> **Note**: This implementation includes TypeScript wrappers and JavaScript fallbacks that demonstrate the API design. Actual WASM binary compilation requires Rust (with wasm-pack) or C/C++ (with Emscripten). The current version uses optimized JavaScript implementations to simulate WASM behavior.
+
+**Features:**
 
 - 🚀 **Performance-critical operations**: Image processing and complex mathematical calculations
 - 🔄 **Automatic fallbacks**: Graceful degradation to JavaScript when WASM is unavailable
