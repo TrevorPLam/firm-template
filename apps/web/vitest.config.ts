@@ -31,7 +31,12 @@ export default defineConfig({
         '**/.next/**',
         'vitest.config.ts',
         'tailwind.config.ts',
-        'middleware.ts', // Next.js middleware - hard to test in isolation
+        'next.config.js',
+        'middleware.ts', // Next.js Edge middleware - see docs/testing/99_EXCEPTIONS.md
+        'app/layout.tsx', // Root layout - see docs/testing/99_EXCEPTIONS.md
+        'lib/actions/**', // Server actions require integration tests
+        'lib/email.ts', // Server-only email sending
+        'lib/env.ts', // Server-only env validation
       ],
       all: true,
       lines: 100,

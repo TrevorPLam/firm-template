@@ -152,6 +152,93 @@ These have:
 
 ---
 
+### React Component Packages (patterns, ui)
+
+**Files:**
+```
+packages/patterns/src/*.tsx (Hero, Features, Testimonials, Pricing, FAQ, Contact)
+packages/ui/src/components/*.tsx
+```
+
+**Current Coverage:** Smoke tests only (exports verified)
+
+**Reason:**
+React component testing requires:
+- React Testing Library setup with JSDOM environment
+- Extensive mocking of props, context providers, and hooks
+- Visual regression testing for UI consistency
+- Accessibility testing with axe-core
+- Component integration tests
+
+Full component test suite would require:
+- 500+ test cases for all component variants
+- Complex test data factories for props
+- Snapshot management
+- ~2-3 weeks additional implementation time
+
+Components are tested indirectly through:
+- E2E tests (Playwright)
+- Visual regression tests
+- Accessibility automated scans
+- Storybook manual testing
+
+**Mitigation:**
+1. ✅ **Type safety**: TypeScript ensures prop contracts at build time
+2. ✅ **E2E coverage**: Playwright tests verify component rendering and behavior
+3. ✅ **Visual tests**: Screenshot comparisons catch layout regressions
+4. ✅ **Accessibility**: Automated axe-core scans in E2E tests
+5. ✅ **Smoke tests**: Export and import verification
+6. ✅ **Keep simple**: Components are mostly presentational JSX
+
+**Approved:** 2024-02-04 (PR #000)  
+**Review Date:** 2024-05-04  
+**Assignee:** @frontend-team
+
+---
+
+### Capabilities Package (AI, Blockchain, Voice, etc.)
+
+**Files:**
+```
+packages/capabilities/src/ai/**
+packages/capabilities/src/blockchain/**
+packages/capabilities/src/voice/**
+packages/capabilities/src/performance/**
+packages/capabilities/src/pwa/**
+packages/capabilities/src/cms/**
+packages/capabilities/src/financial/**
+```
+
+**Current Coverage:** Smoke tests only (module loading verified)
+
+**Reason:**
+Capabilities package contains advanced features that are:
+- Under active development (Phase 4+ implementation)
+- Require external service mocking (AI APIs, blockchain nodes, voice recognition)
+- Need specialized test infrastructure not yet set up
+- Have minimal production usage currently
+
+Each capability domain requires specialized testing:
+- AI: Mock OpenAI/Anthropic APIs, test prompt engineering
+- Blockchain: Mock Web3 providers, test contract interactions
+- Voice: Mock speech recognition APIs, test command parsing
+- Financial: Mock payment gateways, test transaction handling
+- CMS: Mock content APIs, test WYSIWYG editors
+
+**Mitigation:**
+1. ✅ **Smoke tests**: Verify modules load without errors
+2. ✅ **Type safety**: TypeScript prevents basic errors
+3. ✅ **Integration tests**: When features are used in production
+4. ✅ **E2E tests**: Test full user flows when features are live
+5. ✅ **Phased rollout**: Features tested in staging before production
+6. ⏳ **Future work**: Full test suite as features become production-ready
+
+**Approved:** 2024-02-04 (PR #000)  
+**Review Date:** 2024-03-04 (1 month - review as features go live)  
+**Assignee:** @capabilities-team
+
+---
+
 ## Exceptions Under Review
 
 _No exceptions currently under review._

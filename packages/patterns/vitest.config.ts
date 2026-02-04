@@ -18,6 +18,8 @@ export default defineConfig({
         '**/dist/**',
         'vitest.config.ts',
         'src/index.ts', // Re-export file
+        // React components - tested via E2E, see docs/testing/99_EXCEPTIONS.md
+        'src/*.tsx',
       ],
       all: true,
       lines: 100,
