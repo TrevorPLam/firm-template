@@ -1,385 +1,431 @@
-# Disaster Recovery Runbook
+<!--
+META: Disaster Recovery and Backup Systems
+AUTHOR: Platform Team
+CREATED: 2026-02-04
+UPDATED: 2026-02-04
+VERSION: 1.0.0
+STATUS: Production
+PURPOSE: Complete disaster recovery procedures and backup system documentation
+KEYWORDS: disaster-recovery, backup, restore, business-continuity, DR
+-->
 
-**Version:** 1.0  
-**Last Updated:** 2026-02-04  
-**Team:** Platform Operations
+# Disaster Recovery and Backup Systems
 
 ## Overview
 
-This runbook provides step-by-step procedures for recovering from various disaster scenarios affecting the firm-template platform.
+Comprehensive disaster recovery procedures, automated backup systems, and business continuity planning for production operations.
 
-## Emergency Contacts
+## Quick Start
 
-| Role | Contact | Availability |
-|------|---------|--------------|
-| Platform Lead | platform-lead@example.com | 24/7 |
-| DevOps Team | devops@example.com | Business Hours |
-| Database Admin | dba@example.com | On-call |
-| Security Team | security@example.com | 24/7 |
+### Create Backup
 
-## Recovery Time Objectives (RTO)
-
-| Service | RTO | RPO | Priority |
-|---------|-----|-----|----------|
-| Production Sites | 1 hour | 15 minutes | Critical |
-| Database | 30 minutes | 5 minutes | Critical |
-| API Gateway | 1 hour | 15 minutes | High |
-| Analytics | 4 hours | 1 hour | Medium |
-| Development | 8 hours | 24 hours | Low |
-
-## Disaster Scenarios
-
-### Scenario 1: Complete Database Loss
-
-**Severity:** CRITICAL
-
-#### Symptoms
-- Database connection errors across all services
-- 500 errors on all client sites
-- Unable to read/write data
-
-#### Immediate Actions
-1. **Confirm the issue** (5 minutes)
-   ```bash
-   # Check database connectivity
-   psql $DATABASE_URL -c "SELECT 1;"
-   
-   # Check database server status
-   ./scripts/database/health-check.sh
-   ```
-
-2. **Activate incident response** (2 minutes)
-   - Notify Platform Lead and DevOps team
-   - Start incident log
-   - Update status page
-
-3. **Assess backup availability** (3 minutes)
-   ```bash
-   # List available backups
-   ls -lh scripts/database/backups/
-   
-   # Find most recent backup
-   ls -t scripts/database/backups/db-*.dump* | head -1
-   ```
-
-#### Recovery Steps
-
-1. **Provision new database instance** (10-15 minutes)
-   - Use infrastructure-as-code templates
-   - Ensure same configuration as original
-   - Update DNS/connection strings
-
-2. **Restore from most recent backup** (15-30 minutes)
-   ```bash
-   # Find latest backup
-   LATEST_BACKUP=$(ls -t scripts/database/backups/db-*.dump* | head -1)
-   
-   # Restore database
-   ./scripts/database/restore.sh "$LATEST_BACKUP"
-   
-   # Verify data integrity
-   ./scripts/database/verify.sh
-   ```
-
-3. **Verify restoration** (5-10 minutes)
-   ```bash
-   # Check critical tables
-   psql $DATABASE_URL -c "SELECT COUNT(*) FROM clients;"
-   psql $DATABASE_URL -c "SELECT COUNT(*) FROM users;"
-   
-   # Run smoke tests
-   pnpm test:integration
-   ```
-
-4. **Resume operations** (5 minutes)
-   - Update application connection strings
-   - Restart services
-   - Monitor for errors
-   - Update status page
-
-#### Post-Recovery
-- Document timeline and actions taken
-- Review backup procedures
-- Schedule post-mortem meeting
-- Update RTO/RPO if needed
-
----
-
-### Scenario 2: Application Server Failure
-
-**Severity:** HIGH
-
-#### Symptoms
-- 502/503 errors
-- Slow response times
-- Server unreachable
-
-#### Immediate Actions
-1. **Verify scope** (2 minutes)
-   ```bash
-   # Check server status
-   curl -I https://production-server.com/health
-   
-   # Check load balancer
-   ./scripts/monitoring/check-lb.sh
-   ```
-
-2. **Activate failover** (5 minutes)
-   ```bash
-   # Switch to backup server
-   ./scripts/deploy/failover.sh
-   
-   # Update DNS if needed
-   ./scripts/dns/update-primary.sh backup-server
-   ```
-
-3. **Monitor recovery** (Ongoing)
-   - Watch error rates
-   - Check response times
-   - Verify all endpoints
-
----
-
-### Scenario 3: Data Corruption
-
-**Severity:** HIGH
-
-#### Symptoms
-- Inconsistent data
-- Foreign key violations
-- Application errors with valid operations
-
-#### Immediate Actions
-1. **Isolate affected data** (5 minutes)
-   - Identify scope of corruption
-   - Take snapshot of current state
-   - Stop writes to affected tables if possible
-
-2. **Assess data loss** (10 minutes)
-   ```bash
-   # Check transaction logs
-   psql $DATABASE_URL -c "SELECT * FROM pg_stat_activity;"
-   
-   # Identify last known good state
-   ./scripts/database/find-corruption.sh
-   ```
-
-3. **Recovery options**
-
-   **Option A: Point-in-time recovery**
-   ```bash
-   # Restore to specific timestamp
-   ./scripts/database/restore-pitr.sh "2024-01-15 14:30:00"
-   ```
-
-   **Option B: Selective restoration**
-   ```bash
-   # Restore specific tables
-   ./scripts/database/restore-tables.sh affected_table1 affected_table2
-   ```
-
-   **Option C: Manual correction**
-   - If corruption is minor, correct manually
-   - Document all changes
-   - Verify integrity after each change
-
----
-
-### Scenario 4: Security Breach
-
-**Severity:** CRITICAL
-
-#### Immediate Actions
-1. **Contain the breach** (Immediate)
-   - Isolate affected systems
-   - Revoke compromised credentials
-   - Block suspicious IPs
-
-2. **Assess impact** (15 minutes)
-   ```bash
-   # Check access logs
-   ./scripts/security/audit-access.sh
-   
-   # Review recent changes
-   git log --since="1 day ago" --all
-   
-   # Check for unauthorized access
-   ./scripts/security/check-unauthorized.sh
-   ```
-
-3. **Notify stakeholders** (5 minutes)
-   - Security team
-   - Legal team
-   - Affected clients (if required)
-
-4. **Begin forensics** (Ongoing)
-   - Preserve logs
-   - Document timeline
-   - Identify attack vector
-
----
-
-### Scenario 5: Complete Infrastructure Loss
-
-**Severity:** CRITICAL
-
-#### Immediate Actions
-1. **Activate full DR plan** (Immediate)
-   - Notify all stakeholders
-   - Activate backup infrastructure
-   - Begin parallel recovery tracks
-
-2. **Database recovery** (Priority 1)
-   - Restore from latest backup
-   - Verify data integrity
-   - Update connection strings
-
-3. **Application deployment** (Priority 2)
-   ```bash
-   # Deploy from source control
-   git clone https://github.com/TrevorPLam/firm-template
-   cd firm-template
-   pnpm install
-   pnpm build
-   
-   # Deploy to new infrastructure
-   ./scripts/deploy/emergency-deploy.sh
-   ```
-
-4. **DNS and networking** (Priority 3)
-   - Update DNS records
-   - Configure load balancers
-   - Set up SSL certificates
-
-5. **Verification** (Priority 4)
-   - Run full test suite
-   - Verify all client sites
-   - Check integrations
-
----
-
-## Backup Procedures
-
-### Daily Backups
 ```bash
-# Automated daily backup (run via cron)
-0 2 * * * /path/to/scripts/database/backup.sh --compress --verify
+# Full backup with compression and encryption
+./scripts/backup/backup-system.sh --type all --compress --encrypt --notify
+
+# Database only
+./scripts/backup/backup-system.sh --type database --compress
 ```
 
-### Weekly Full Backups
+### Disaster Recovery
+
 ```bash
-# Full backup with encryption (run via cron)
-0 3 * * 0 /path/to/scripts/database/backup.sh --encrypt --compress --verify
+# Verify backup integrity
+./scripts/recovery/disaster-recovery.sh --verify --timestamp 20260204_120000
+
+# Dry run (preview recovery)
+./scripts/recovery/disaster-recovery.sh --dry-run --timestamp 20260204_120000
+
+# Full recovery
+./scripts/recovery/disaster-recovery.sh --type all --timestamp 20260204_120000
 ```
 
-### Backup Verification
+## Features
+
+- **Automated Backups**: Database, files, and configuration backups
+- **Compression & Encryption**: Secure backup storage
+- **S3 Integration**: Cloud backup storage
+- **Retention Management**: Automatic cleanup of old backups
+- **Disaster Recovery**: Complete system restoration
+- **Health Monitoring**: Infrastructure health checks
+- **Notifications**: Email and Slack alerts
+
+## Backup System
+
+### Backup Types
+
+1. **Database Backups** (`--type database`)
+   - PostgreSQL database dumps
+   - Incremental and full backups
+   - Compressed SQL files
+
+2. **File Backups** (`--type files`)
+   - Application code and assets
+   - Excludes node_modules, build artifacts
+   - Tar archives
+
+3. **Configuration Backups** (`--type config`)
+   - Environment files
+   - Package configurations
+   - Docker compose files
+
+4. **Full Backup** (`--type all`)
+   - All of the above
+
+### Backup Schedule
+
+| Type | Frequency | Retention |
+|------|-----------|-----------|
+| Database | Every 6 hours | 30 days |
+| Files | Daily | 7 days |
+| Config | Daily | 30 days |
+| Full | Weekly | 90 days |
+
+### Backup Storage
+
+**Local**: `/var/backups/platform/`
+- `database/` - Database backups
+- `files/` - Application file backups
+- `config/` - Configuration backups
+- `manifest_*.json` - Backup metadata
+
+**Remote**: S3 bucket (configurable)
+- Automatic upload to S3
+- Cross-region replication
+- Glacier archival for long-term storage
+
+## Disaster Recovery
+
+### Recovery Time Objective (RTO)
+
+| Component | RTO | Priority |
+|-----------|-----|----------|
+| Database | 1 hour | Critical |
+| Application | 2 hours | High |
+| Configuration | 30 minutes | High |
+| Full System | 4 hours | Medium |
+
+### Recovery Point Objective (RPO)
+
+| Component | RPO | Data Loss |
+|-----------|-----|-----------|
+| Database | 6 hours | Acceptable |
+| Application | 24 hours | Acceptable |
+| Configuration | 24 hours | Minimal |
+
+### Recovery Procedures
+
+#### 1. Database Recovery
+
 ```bash
-# Verify latest backup
-./scripts/database/verify-backup.sh
+# Restore from specific backup
+./scripts/recovery/disaster-recovery.sh \
+  --type database \
+  --timestamp 20260204_120000
 
-# Test restore (monthly)
-./scripts/database/test-restore.sh
+# Verify database after recovery
+psql -U postgres -d platform_db -c "SELECT COUNT(*) FROM users;"
 ```
 
-## Testing Procedures
+#### 2. Application Recovery
 
-### Monthly DR Drills
-1. Schedule drill with team (announce 1 week prior)
-2. Select random disaster scenario
-3. Execute recovery procedures
-4. Document time to recovery
-5. Identify improvements
-6. Update runbook
+```bash
+# Restore application files
+./scripts/recovery/disaster-recovery.sh \
+  --type files \
+  --timestamp 20260204_120000
 
-### Quarterly Full Recovery Test
-1. Provision test environment
-2. Restore from production backup
-3. Verify all functionality
-4. Measure against RTO/RPO
-5. Document findings
+# Reinstall dependencies
+pnpm install
 
-## Monitoring and Alerting
-
-### Critical Alerts
-- Database connection failures
-- Server unavailability (>5 minutes)
-- Disk space >90%
-- CPU >90% sustained
-- Error rate >5%
-
-### Alert Channels
-- PagerDuty for critical alerts
-- Slack #incidents for all alerts
-- Email for non-critical alerts
-
-## Communication Templates
-
-### Initial Incident Notification
-```
-INCIDENT: [SEVERITY] [SHORT DESCRIPTION]
-Time: [TIMESTAMP]
-Impact: [AFFECTED SERVICES]
-Status: Investigating
-Updates: Every 15 minutes at [LINK]
+# Rebuild applications
+pnpm build
 ```
 
-### Resolution Notification
+#### 3. Full System Recovery
+
+```bash
+# Complete system restoration
+./scripts/recovery/disaster-recovery.sh \
+  --type all \
+  --timestamp 20260204_120000 \
+  --verify
+
+# This will:
+# 1. Restore database
+# 2. Restore files
+# 3. Restore configuration
+# 4. Reinstall dependencies
+# 5. Rebuild applications
 ```
-RESOLVED: [SHORT DESCRIPTION]
-Time: [TIMESTAMP]
-Duration: [DURATION]
-Root Cause: [BRIEF DESCRIPTION]
-Next Steps: [POST-MORTEM LINK]
+
+## Configuration
+
+### Environment Variables
+
+```bash
+# Backup configuration
+export BACKUP_S3_BUCKET="my-backups"
+export BACKUP_ENCRYPTION_KEY="your-secure-key"
+export BACKUP_NOTIFY_EMAIL="alerts@example.com"
+export BACKUP_NOTIFY_SLACK="https://hooks.slack.com/..."
+
+# Database credentials
+export POSTGRES_HOST="localhost"
+export POSTGRES_USER="postgres"
+export POSTGRES_PASSWORD="secure-password"
+export POSTGRES_DB="platform_db"
 ```
 
-## Post-Incident Procedures
+### Backup Script Options
 
-### Within 24 Hours
-1. Complete incident timeline
-2. Document actions taken
-3. Calculate actual vs. target RTO/RPO
-4. Identify immediate improvements
+```bash
+./scripts/backup/backup-system.sh \
+  --type <all|database|files|config> \
+  --retention <days> \
+  --destination <path> \
+  --compress \
+  --encrypt \
+  --notify
+```
 
-### Within 1 Week
-1. Conduct post-mortem meeting
-2. Document root cause analysis
-3. Create action items
-4. Update runbook if needed
-5. Share learnings with team
+### Recovery Script Options
 
-### Within 1 Month
-1. Implement improvements
-2. Update monitoring/alerts
-3. Conduct follow-up drill
-4. Review insurance/contracts if needed
+```bash
+./scripts/recovery/disaster-recovery.sh \
+  --type <all|database|files|config> \
+  --backup-dir <path> \
+  --timestamp <YYYYMMDD_HHMMSS> \
+  --verify \
+  --dry-run
+```
 
-## Tools and Resources
+## Monitoring
 
-### Essential Scripts
-- `scripts/database/backup.sh` - Database backups
-- `scripts/database/restore.sh` - Database restore
-- `scripts/deploy/emergency-deploy.sh` - Emergency deployment
-- `scripts/monitoring/health-check.sh` - System health checks
+### Health Checks
+
+```bash
+# Run health checks
+./scripts/monitoring/health-check.sh --verbose --alert
+```
+
+**Checks**:
+- Disk space (>20% free)
+- Memory available (>1GB)
+- System load
+- Application services
+- Database connectivity
+- Network connectivity
+- Backup recency
+
+### Alerts
+
+Alerts are sent when:
+- Backup fails
+- Disk space < 20%
+- Memory < 1GB
+- Database unreachable
+- Backup > 24 hours old
+
+## Best Practices
+
+### 1. Regular Testing
+
+```bash
+# Test recovery monthly
+./scripts/recovery/disaster-recovery.sh --dry-run --timestamp <latest>
+
+# Verify backup integrity weekly
+./scripts/recovery/disaster-recovery.sh --verify --timestamp <latest>
+```
+
+### 2. Multiple Backup Locations
+
+- **Primary**: Local storage
+- **Secondary**: S3 bucket
+- **Tertiary**: Cross-region S3 replica
+
+### 3. Encryption
+
+Always encrypt sensitive backups:
+
+```bash
+# Generate encryption key
+openssl rand -base64 32
+
+# Use in backup
+export BACKUP_ENCRYPTION_KEY="<generated-key>"
+./scripts/backup/backup-system.sh --encrypt
+```
+
+### 4. Automated Scheduling
+
+**Cron Jobs**:
+
+```cron
+# Database backup every 6 hours
+0 */6 * * * /path/to/scripts/backup/backup-system.sh --type database --compress --encrypt
+
+# Full backup weekly (Sunday 2 AM)
+0 2 * * 0 /path/to/scripts/backup/backup-system.sh --type all --compress --encrypt --notify
+
+# Health check hourly
+0 * * * * /path/to/scripts/monitoring/health-check.sh --alert
+```
+
+### 5. Documentation
+
+Maintain runbooks for:
+- Database recovery procedures
+- Application deployment
+- Configuration management
+- Incident response
+
+## Incident Response
+
+### Level 1: Minor Issues
+
+**Examples**: Slow performance, minor errors
+
+**Actions**:
+1. Check health status
+2. Review logs
+3. Restart affected services
+4. Monitor for recurrence
+
+### Level 2: Service Degradation
+
+**Examples**: Database connection issues, high error rates
+
+**Actions**:
+1. Escalate to on-call engineer
+2. Check recent deployments
+3. Review monitoring dashboards
+4. Consider rollback
+
+### Level 3: Complete Outage
+
+**Examples**: Database corruption, server failure
+
+**Actions**:
+1. Activate disaster recovery plan
+2. Notify stakeholders
+3. Restore from most recent backup
+4. Post-mortem analysis
+
+## Troubleshooting
+
+### Backup Fails
+
+**Check**:
+- Disk space available
+- Database credentials correct
+- Write permissions on backup directory
+- Network connectivity to S3
+
+**Solution**:
+```bash
+# Clear old backups
+./scripts/backup/backup-system.sh --retention 7
+
+# Test database connection
+pg_isready -h $POSTGRES_HOST -U $POSTGRES_USER
+
+# Verify S3 access
+aws s3 ls s3://$BACKUP_S3_BUCKET/
+```
+
+### Recovery Fails
+
+**Check**:
+- Backup file exists and is readable
+- Correct timestamp specified
+- Database service running
+- Sufficient disk space
+
+**Solution**:
+```bash
+# Verify backup
+./scripts/recovery/disaster-recovery.sh --verify
+
+# Check backup contents
+tar -tzf /var/backups/platform/files/files_backup_*.tar.gz | head
+
+# Test database connection
+psql -U postgres -c "SELECT version();"
+```
+
+### Backup Too Large
+
+**Solution**:
+```bash
+# Compress backups
+./scripts/backup/backup-system.sh --compress
+
+# Adjust retention
+./scripts/backup/backup-system.sh --retention 14
+
+# Use incremental backups for database
+# (requires custom implementation)
+```
+
+## Security
+
+### Encryption at Rest
+
+All backups should be encrypted:
+- Use AES-256 encryption
+- Store keys in secure key management system
+- Rotate encryption keys annually
+
+### Access Control
+
+Limit backup access:
+- Backup directory: `chmod 700`
+- Backup files: `chmod 600`
+- S3 bucket: Restricted IAM policies
+
+### Audit Logging
+
+Track backup/recovery operations:
+```bash
+# Log all backup operations
+./scripts/backup/backup-system.sh 2>&1 | tee -a /var/log/backups.log
+
+# Review backup history
+cat /var/log/backups.log | grep "SUCCESS"
+```
+
+## Compliance
+
+### SOC 2
+
+- Automated daily backups
+- Encrypted backup storage
+- Regular recovery testing
+- Access logging and monitoring
+
+### GDPR
+
+- Right to erasure in backups
+- Encryption of personal data
+- Retention policy compliance
+- Data location restrictions
+
+## Resources
 
 ### Documentation
-- [Infrastructure Guide](../infra/INFRASTRUCTURE.md)
-- [Deployment Guide](../deployment/DEPLOYMENT.md)
-- [Security Guide](../security/SECURITY.md)
+- [Backup System Script](../../scripts/backup/backup-system.sh)
+- [Recovery Script](../../scripts/recovery/disaster-recovery.sh)
+- [Health Check Script](../../scripts/monitoring/health-check.sh)
 
-### External Resources
-- Cloud Provider Console
-- DNS Management Panel
-- Status Page Dashboard
-- Monitoring Dashboard
-
-## Version History
-
-| Version | Date | Changes | Author |
-|---------|------|---------|--------|
-| 1.0 | 2026-02-04 | Initial runbook | Platform Team |
+### Tools
+- PostgreSQL backup tools
+- AWS CLI for S3
+- OpenSSL for encryption
 
 ---
 
-**Review Schedule:** Quarterly  
-**Next Review:** 2026-05-04  
-**Owner:** Platform Operations Team
+**Last Updated**: 2026-02-04  
+**Version**: 1.0.0  
+**Maintainer**: Platform Team
