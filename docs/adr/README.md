@@ -2,7 +2,9 @@
 
 **Purpose:** Document significant architectural and cross-feature decisions.
 
-**Last Updated:** 2026-01-31
+**Last Updated:** 2026-02-04
+
+**Link back**: [Architecture Documentation](../architecture/00_INDEX.md)
 
 ## Overview
 
