@@ -358,7 +358,8 @@ export class UserBehaviorAnalyzer {
     // Generate interventions
     const interventions = this.generateInterventions(action, profile)
 
-    // Calculate confidence (ensure all components are clamped and combined properly)
+    // Calculate confidence (use min to ensure high confidence only when ALL components are strong)
+    // This conservative approach prevents overconfident predictions when any component is weak
     const behaviorConfidence = Math.min(profile.behaviors.length / 25, 1)
     const factorConfidence = Math.min(factors.length / 4, 1)
     const confidence = Math.min(behaviorConfidence, factorConfidence, probability)
