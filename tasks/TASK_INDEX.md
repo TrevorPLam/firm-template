@@ -950,9 +950,10 @@ title: Research quantum computing applications for marketing optimization
 type: infra
 priority: medium
 component: documentation
-status: todo
-location: backlog/infra/TASK-20260203-078.md
+status: done
+location: backlog/infra/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Implement API docs endpoint and OpenAPI pipeline
 ## index_entry_end
 
