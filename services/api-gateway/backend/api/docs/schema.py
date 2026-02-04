@@ -7,6 +7,18 @@ including metadata, authentication schemes, and customization.
 This uses Django REST Framework's schema generation capabilities
 with drf-spectacular for enhanced OpenAPI 3.0 support.
 """
+# AI-META-BEGIN
+# 
+# AI-META: API route handler
+# OWNERSHIP: root (configuration)
+# ENTRYPOINTS: HTTP API endpoint
+# DEPENDENCIES: Standard library only
+# DANGER: Authentication logic
+# CHANGE-SAFETY: Schema changes: breaking. Implementation: test with integration tests
+# TESTS: Run: pnpm test && pnpm type-check
+# 
+# AI-META-END
+
 
 from drf_spectacular.generators import SchemaGenerator
 from drf_spectacular.openapi import AutoSchema

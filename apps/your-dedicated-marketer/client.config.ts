@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Application module
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Loaded by build tools at compile time
+// DEPENDENCIES: HubSpot (CRM)
+// DANGER: None identified
+// CHANGE-SAFETY: Config values: safe to modify. Schema/structure: coordinate with team
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Client-specific configuration for Your Dedicated Marketer
  * Defines content, integrations, and business logic specific to this client

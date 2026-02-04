@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Utility functions and helpers
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Supabase (database)
+// DANGER: Secret/API key handling - never log or expose; Server-only code - must never be imported by client; Database operations - ensure proper error handling
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Supabase lead repository for contact submissions.
  *

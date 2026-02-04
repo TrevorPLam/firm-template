@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Test suite
+// OWNERSHIP: apps/template-site
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: internal packages (@repo/*)
+// DANGER: Environment variable access - validate all values
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import { describe, it, expect } from 'vitest'
 
 describe('@repo/template-site smoke tests', () => {

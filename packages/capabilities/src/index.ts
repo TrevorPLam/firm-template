@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Package entry point and public API exports
+// OWNERSHIP: packages/capabilities
+// ENTRYPOINTS: Package entry point, imported by consumers
+// DEPENDENCIES: internal packages (@repo/*)
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 /**
  * Capabilities – business features (lead capture, analytics, scheduling).
  * Use integrations only via @repo/integrations; never import provider SDKs directly.

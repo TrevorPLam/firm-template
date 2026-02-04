@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: Footer
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: Next.js framework, React
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 import React from 'react'
 import Link from 'next/link'
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'

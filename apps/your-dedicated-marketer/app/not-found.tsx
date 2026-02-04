@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Application module
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: Next.js framework, React
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import Link from 'next/link'
 import { ArrowRight, Home, Search, HelpCircle } from 'lucide-react'
 

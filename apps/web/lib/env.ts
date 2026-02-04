@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Environment variable validation and configuration
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Zod (validation), Supabase (database), HubSpot (CRM), Upstash Redis (rate limiting)
+// DANGER: Credential handling; Secret/API key handling - never log or expose; Server-only code - must never be imported by client; Environment variable access - validate all values; Database operations - ensure proper error handling
+// CHANGE-SAFETY: Add new variables: safe. Remove/rename existing: breaking change
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Environment variable validation and type-safe access.
  *

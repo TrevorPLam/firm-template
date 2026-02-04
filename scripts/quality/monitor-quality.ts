@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Build or utility script
+// OWNERSHIP: scripts (build/deployment utilities)
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: Standard library only
+// DANGER: XSS prevention - must sanitize all user input
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 #!/usr/bin/env node
 /**
  * Quality Monitoring Across Sites

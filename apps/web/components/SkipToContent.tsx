@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: SkipToContent
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: Standard library only
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Skip to Content Link
  * Allows keyboard users to skip navigation and go directly to main content

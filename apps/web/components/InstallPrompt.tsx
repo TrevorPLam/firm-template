@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: InstallPrompt
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: React
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 'use client'
 
 import React, { useEffect, useState } from 'react'

@@ -1,3 +1,15 @@
+# AI-META-BEGIN
+# 
+# AI-META: Build or utility script
+# OWNERSHIP: scripts (build/deployment utilities)
+# ENTRYPOINTS: Imported by application modules
+# DEPENDENCIES: Standard library only
+# DANGER: Credential handling
+# CHANGE-SAFETY: Critical - any changes require security review and testing
+# TESTS: Integration tests required - run full test suite: pnpm test
+# 
+# AI-META-END
+
 #!/bin/bash
 # Check for potential secrets and sensitive data in the codebase
 

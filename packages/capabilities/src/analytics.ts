@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Shared package module
+// OWNERSHIP: packages/capabilities
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: internal packages (@repo/*)
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 /**
  * Analytics Capability
  * 

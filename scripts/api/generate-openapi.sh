@@ -1,3 +1,15 @@
+# AI-META-BEGIN
+# 
+# AI-META: API route handler
+# OWNERSHIP: scripts (build/deployment utilities)
+# ENTRYPOINTS: HTTP API endpoint
+# DEPENDENCIES: Standard library only
+# DANGER: None identified
+# CHANGE-SAFETY: Schema changes: breaking. Implementation: test with integration tests
+# TESTS: Run: pnpm test && pnpm type-check
+# 
+# AI-META-END
+
 #!/bin/bash
 # Generate and validate OpenAPI schema for API gateway
 

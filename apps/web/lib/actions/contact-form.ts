@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Utility functions and helpers
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Next.js framework, Zod (validation), Supabase (database), HubSpot (CRM), Upstash Redis (rate limiting)
+// DANGER: XSS prevention - must sanitize all user input; Server-only code - must never be imported by client; Database operations - ensure proper error handling
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Server actions for contact form submission with rate limiting and lead capture.
  *

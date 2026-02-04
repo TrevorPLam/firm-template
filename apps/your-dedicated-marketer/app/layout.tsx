@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Next.js app router page or layout component
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Wrapper for all child routes in this directory
+// DEPENDENCIES: Next.js framework, React
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Root layout component for the entire application.
  *

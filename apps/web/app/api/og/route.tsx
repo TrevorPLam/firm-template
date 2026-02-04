@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: API route handler
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: HTTP API endpoint
+// DEPENDENCIES: Next.js framework, Zod (validation)
+// DANGER: XSS prevention - must sanitize all user input; Environment variable access - validate all values
+// CHANGE-SAFETY: Schema changes: breaking. Implementation: test with integration tests
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Dynamic OG image generation route.
  *

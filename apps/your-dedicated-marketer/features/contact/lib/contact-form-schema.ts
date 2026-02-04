@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Utility functions and helpers
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Zod (validation)
+// DANGER: None identified
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import { z } from 'zod'
 import { FORM_VALIDATION } from './constants'
 

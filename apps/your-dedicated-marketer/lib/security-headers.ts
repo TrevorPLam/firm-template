@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Security utilities and middleware
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Upstash Redis (rate limiting)
+// DANGER: Environment variable access - validate all values
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Integration tests required - run full test suite: pnpm test
+// 
+// AI-META-END
+
 /**
  * Advanced Security Headers Middleware
  * 

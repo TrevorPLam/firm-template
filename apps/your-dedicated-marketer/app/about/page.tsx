@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Next.js app router page or layout component
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Direct route access via Next.js app router
+// DEPENDENCIES: Next.js framework, React
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Target, Users, TrendingUp, Award, Heart, Lightbulb } from 'lucide-react'
