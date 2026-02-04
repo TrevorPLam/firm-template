@@ -656,9 +656,10 @@ title: Create real-time feature development documentation
 type: docs
 priority: low
 component: documentation
-status: todo
-location: backlog/docs/TASK-20260203-053.md
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Create WebAssembly integration and optimization documentation
 ## index_entry_end
 
@@ -667,9 +668,10 @@ title: Create WebAssembly integration and optimization documentation
 type: config
 priority: medium
 component: configuration
-status: todo
-location: backlog/config/TASK-20260203-054.md
+status: done
+location: backlog/config/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Set up AI service configuration and API key management
 ## index_entry_end
 
@@ -678,9 +680,10 @@ title: Set up AI service configuration and API key management
 type: config
 priority: medium
 component: configuration
-status: todo
-location: backlog/config/TASK-20260203-055.md
+status: done
+location: backlog/config/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Configure PWA manifest and service worker settings
 ## index_entry_end
 
@@ -689,9 +692,10 @@ title: Configure PWA manifest and service worker settings
 type: config
 priority: medium
 component: configuration
-status: todo
-location: backlog/config/TASK-20260203-056.md
+status: done
+location: backlog/config/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Set up CMS connection and authentication configuration
 ## index_entry_end
 
@@ -700,9 +704,10 @@ title: Set up CMS connection and authentication configuration
 type: config
 priority: medium
 component: configuration
-status: todo
-location: backlog/config/TASK-20260203-057.md
+status: done
+location: backlog/config/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Configure WebSocket server and real-time infrastructure
 ## index_entry_end
 
@@ -711,9 +716,10 @@ title: Configure WebSocket server and real-time infrastructure
 type: config
 priority: low
 component: configuration
-status: todo
-location: backlog/config/TASK-20260203-058.md
+status: done
+location: backlog/config/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-03
 title: Set up WebAssembly build pipeline and configuration
 ## index_entry_end
 
@@ -957,6 +963,54 @@ status: todo
 location: backlog/ci-medium/TASK-20260203-080.md
 created: 2026-02-03
 title: Add Playwright dependency and lockfile update
+## index_entry_end
+
+## index_entry_begin
+[id:TASK-20260203-081]
+type: docs
+priority: medium
+component: documentation
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
+created: 2026-02-03
+completed: 2026-02-03
+title: Document AI configuration helpers and environment mapping
+## index_entry_end
+
+## index_entry_begin
+[id:TASK-20260203-082]
+type: docs
+priority: medium
+component: documentation
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
+created: 2026-02-03
+completed: 2026-02-03
+title: Document PWA configuration helpers and update strategy
+## index_entry_end
+
+## index_entry_begin
+[id:TASK-20260203-083]
+type: docs
+priority: medium
+component: documentation
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
+created: 2026-02-03
+completed: 2026-02-03
+title: Document CMS and realtime configuration helpers
+## index_entry_end
+
+## index_entry_begin
+[id:TASK-20260203-084]
+type: docs
+priority: medium
+component: documentation
+status: done
+location: backlog/docs/todo/ARCHIVE/ARCHIVE.md
+created: 2026-02-03
+completed: 2026-02-03
+title: Document WebAssembly configuration and build pipeline assets
 ## index_entry_end
 
 <!--

@@ -33,6 +33,7 @@ This directory contains documentation for the Firm Platform.
 - **[ai/README.md](ai/README.md)** – AI setup, usage patterns, and governance guidance.
 - **[pwa/README.md](pwa/README.md)** – PWA setup, testing, and deployment checklist.
 - **[cms/README.md](cms/README.md)** – Headless CMS integration and content workflows.
+- **[wasm/README.md](wasm/README.md)** – WebAssembly configuration, build pipeline, and runtime guidance.
 - **[realtime/README.md](realtime/README.md)** – Real-time collaboration and WebSocket guidance.
 
 - **[business/README.md](business/README.md)** – Market segmentation, ROI, and positioning docs.

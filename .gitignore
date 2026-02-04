@@ -159,3 +159,12 @@ INDEX.toon
 
 # Security
 scripts/security/protected-paths.txt
+
+# Allow tracked build pipeline docs/scripts
+!scripts/build/
+!scripts/build/wasm/
+!scripts/build/wasm/README.md
+!scripts/build/wasm/build.sh
+!packages/wasm/
+!packages/wasm/build/
+!packages/wasm/build/README.md

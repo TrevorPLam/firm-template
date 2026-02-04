@@ -1,0 +1,6 @@
+# WebAssembly build defaults
+
+[build]
+target = "web"
+output_dir = "dist"
+optimize = true

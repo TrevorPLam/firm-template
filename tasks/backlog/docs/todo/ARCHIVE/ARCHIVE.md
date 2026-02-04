@@ -258,3 +258,111 @@ Rules:
 **Completed:** 2026-02-03  
 **Assignee:** @agent
 ## task_end
+
+## task_begin
+### # [id:TASK-20260203-053][type:docs][priority:low][component:documentation] Create WebAssembly integration and optimization documentation
+
+**Status:** done  
+**Description:** Document WebAssembly integration patterns, performance optimization, and development workflows.  
+**Acceptance Criteria:**
+
+- [x] Create WASM module integration guides
+- [x] Document WASM build pipeline and tooling
+- [x] Add performance optimization and benchmarking guides
+- [x] Create browser compatibility and debugging documentation
+- [x] Document WASM vs JavaScript decision criteria
+
+**Dependencies:** TASK-20260203-035
+**Relevant Files:** `docs/wasm/`, `docs/performance/`, `packages/wasm/`
+
+**Notes & Summary:**
+- Added WebAssembly configuration guide with env mapping and helpers.
+- Documented build pipeline steps and artifact locations.
+
+**Completed:** 2026-02-03  
+**Assignee:** @agent
+## task_end
+
+## task_begin
+### # [id:TASK-20260203-081][type:docs][priority:medium][component:documentation] Document AI configuration helpers and environment mapping
+
+**Status:** done  
+**Description:** Document AI configuration helpers, environment variables, and validation workflow for the capabilities package.  
+**Acceptance Criteria:**
+
+- [x] Update AI setup docs with env mappings and helper usage
+- [x] Add guidance on validation and fallback behavior
+- [x] Reference the capabilities export surface for AI configs
+
+**Relevant Files:** `docs/ai/setup.md`, `packages/capabilities/src/ai/`, `packages/capabilities/src/index.ts`
+
+**Notes & Summary:**
+- Added AI config helper usage and validation guidance to setup docs.
+- Updated capabilities exports for AI config utilities.
+
+**Completed:** 2026-02-03  
+**Assignee:** @agent
+## task_end
+
+## task_begin
+### # [id:TASK-20260203-082][type:docs][priority:medium][component:documentation] Document PWA configuration helpers and update strategy
+
+**Status:** done  
+**Description:** Document PWA configuration helpers, environment variables, and update strategy options.  
+**Acceptance Criteria:**
+
+- [x] Add env mapping for PWA configuration options
+- [x] Document install prompt and update strategy settings
+- [x] Reference the PWA config helper in capabilities
+
+**Relevant Files:** `docs/pwa/setup.md`, `packages/capabilities/src/pwa/`
+
+**Notes & Summary:**
+- Expanded PWA setup docs with env variables and update strategy notes.
+- Documented PWA config helper usage.
+
+**Completed:** 2026-02-03  
+**Assignee:** @agent
+## task_end
+
+## task_begin
+### # [id:TASK-20260203-083][type:docs][priority:medium][component:documentation] Document CMS and realtime configuration helpers
+
+**Status:** done  
+**Description:** Document CMS and realtime configuration helpers with environment variables and health check guidance.  
+**Acceptance Criteria:**
+
+- [x] Update CMS setup docs with webhook and health check guidance
+- [x] Update WebSocket setup docs with env mapping and monitoring checklist
+- [x] Reference CMS and realtime config helpers in capabilities
+
+**Relevant Files:** `docs/cms/setup.md`, `docs/websockets/setup.md`, `packages/capabilities/src/cms/`, `packages/capabilities/src/realtime/`
+
+**Notes & Summary:**
+- Added CMS webhook and health check guidance with env mappings.
+- Updated WebSocket docs with monitoring checklist and config helper usage.
+
+**Completed:** 2026-02-03  
+**Assignee:** @agent
+## task_end
+
+## task_begin
+### # [id:TASK-20260203-084][type:docs][priority:medium][component:documentation] Document WebAssembly configuration and build pipeline assets
+
+**Status:** done  
+**Description:** Document WASM configuration helpers and build pipeline assets with links to scripts and artifacts.  
+**Acceptance Criteria:**
+
+- [x] Create WASM docs with env mapping and helper usage
+- [x] Document build pipeline scripts and artifact locations
+- [x] Reference build configuration defaults
+
+**Relevant Files:** `docs/wasm/README.md`, `scripts/build/wasm/`, `.wasmrc`
+
+**Notes & Summary:**
+- Added WASM documentation covering env config and helper usage.
+- Documented build pipeline scripts and defaults.
+
+**Completed:** 2026-02-03  
+**Assignee:** @agent
+## task_end
