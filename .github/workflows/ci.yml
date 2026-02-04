@@ -44,6 +44,22 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Run accessibility tests
+        run: |
+          # Install Playwright browsers if not cached
+          pnpm exec playwright install --with-deps chromium
+          # Run accessibility test suite
+          pnpm exec playwright test tests/accessibility --reporter=html
+        continue-on-error: true
+
+      - name: Upload accessibility test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: playwright-report/
+          retention-days: 30
+
       - name: Prepare artifacts
         run: ./scripts/ci/prepare-artifacts.sh
 
