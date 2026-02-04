@@ -38,73 +38,6 @@ Global Rules:
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
 
 ## task_begin
-### # [id:TASK-20260203-004][type:quality][priority:high][component:performance] Implement comprehensive performance monitoring and budget enforcement
-
-**Status:** todo  
-**Description:** Add automated performance budget enforcement, bundle analysis, Core Web Vitals tracking, and performance regression prevention to optimize loading times and prevent regressions.  
-**Acceptance Criteria:**
-
-- [ ] Configure webpack-bundle-analyzer for all apps
-- [ ] Set performance budgets in next.config.js files
-- [ ] Add automated bundle size checks in CI
-- [ ] Set up Core Web Vitals monitoring and reporting
-- [ ] Implement automated performance budget enforcement
-- [ ] Create performance regression detection and alerting
-- [ ] Document performance optimization guidelines and SLAs
-
-**Relevant Files:** `apps/*/next.config.js`, `scripts/metrics/`, `.github/workflows/`, `packages/*/build/`
-## task_end
-
-## task_begin
-### # [id:TASK-20260203-021][type:quality][priority:high][component:design] Enhance design system with animation tokens and advanced theming
-
-**Status:** todo  
-**Description:** Extend the design system with animation tokens, motion design principles, and more sophisticated theming capabilities for enhanced user experience.  
-**Acceptance Criteria:**
-
-- [ ] Add animation and motion tokens to design system
-- [ ] Create advanced theming patterns and variants
-- [ ] Implement design token validation and testing
-- [ ] Add motion design principles and guidelines
-- [ ] Create theme migration and maintenance tools
-
-**Relevant Files:** `packages/tokens/src/`, `packages/ui/src/`, `docs/design-system/`
-## task_end
-
-## task_begin
-### # [id:TASK-20260203-022][type:quality][priority:high][component:performance] Implement advanced image optimization and CDN integration
-
-**Status:** todo  
-**Description:** Add advanced image optimization with Cloudinary/ImageKit integration and automated image processing for optimal performance.  
-**Acceptance Criteria:**
-
-- [ ] Integrate Cloudinary or ImageKit for image optimization
-- [ ] Add automated image processing and transformation
-- [ ] Implement advanced lazy loading and placeholder strategies
-- [ ] Create image optimization monitoring and reporting
-- [ ] Document image optimization best practices
-
-**Relevant Files:** `packages/capabilities/src/images/`, `apps/*/components/`, `next.config.js`
-## task_end
-
-## task_begin
-### # [id:TASK-20260203-029-B][type:quality][priority:high][component:testing] Create automated quality assurance at scale
-
-**Status:** todo  
-**Description:** Implement automated quality assurance systems that can handle 50-500 clients with consistent quality monitoring and reporting.  
-**Acceptance Criteria:**
-
-- [ ] Set up automated quality monitoring across all client sites
-- [ ] Create quality score dashboards and reporting
-- [ ] Implement automated quality gate enforcement
-- [ ] Add client-specific quality benchmarking
-- [ ] Create quality issue escalation and resolution
-
-**Dependencies:** TASK-20260203-029
-**Relevant Files:** `scripts/automation/`, `scripts/quality/`, `packages/*/testing/`, `metrics/`
-## task_end
-
-## task_begin
 ### # [id:TASK-20260203-042][type:quality][priority:medium][component:accessibility] Implement comprehensive accessibility testing and compliance
 
 **Status:** todo  
@@ -120,4 +53,5 @@ Global Rules:
 **Dependencies:** TASK-20260203-009
 **Relevant Files:** `packages/ui/tests/accessibility/`, `tests/accessibility/`, `docs/accessibility/`
 ## task_end
+
 
