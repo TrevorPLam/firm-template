@@ -79,9 +79,10 @@ title: Implement performance budgets and bundle analysis
 type: quality
 priority: high
 component: security
-status: in-progress
-location: backlog/security/todo/TODO.md
+status: done
+location: backlog/security/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Enhance security scanning and vulnerability management
 ## index_entry_end
 
