@@ -269,7 +269,7 @@ export class ABTestingFramework {
   ): TestVariant {
     // Use hash of userId for deterministic selection
     const hash = this.hashUserId(userId)
-    const random = hash % 1000000 / 1000000
+    const random = (hash % 1000000) / 1000000
 
     let cumulative = 0
     for (const variant of variants) {

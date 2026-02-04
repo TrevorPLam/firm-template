@@ -360,6 +360,7 @@ export class UserBehaviorAnalyzer {
 
     // Calculate confidence
     const confidence = Math.min(
+      1,
       profile.behaviors.length / 25,
       factors.length / 4,
       probability,
