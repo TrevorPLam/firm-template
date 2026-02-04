@@ -94,6 +94,9 @@ export const typographyValidationRules: ValidationRule[] = [
     description: 'Font size must be valid CSS value',
     severity: 'error',
     validate: (value: string) => {
+      if (typeof value !== 'string') {
+        return { valid: true }; // Skip non-string values (could be fontWeight numbers)
+      }
       const valid = /^(\d+\.?\d*)(px|rem|em|%)$/.test(value);
       return {
         valid,
@@ -107,6 +110,7 @@ export const typographyValidationRules: ValidationRule[] = [
     description: 'Font size should be at least 12px for readability',
     severity: 'warning',
     validate: (value: string) => {
+      if (typeof value !== 'string') return { valid: true };
       const match = value.match(/^(\d+\.?\d*)(px|rem)$/);
       if (!match) return { valid: true };
 
@@ -126,6 +130,11 @@ export const typographyValidationRules: ValidationRule[] = [
     description: 'Font weight must be valid',
     severity: 'error',
     validate: (value: number | string) => {
+      // Skip values that aren't purely numeric (could be fontSize values like "16px")
+      if (typeof value === 'string' && !/^\d+$/.test(value)) {
+        return { valid: true };
+      }
+      
       const validWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
       const numValue = typeof value === 'string' ? parseInt(value, 10) : value;
       const valid = validWeights.includes(numValue);

@@ -12,9 +12,13 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@vitest/coverage-v8": "^2.1.9",
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
   }
 }

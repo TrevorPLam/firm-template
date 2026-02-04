@@ -1,15 +1,3 @@
-// AI-META-BEGIN
-// 
-// AI-META: Utility functions and helpers
-// OWNERSHIP: packages/utils (shared utilities)
-// ENTRYPOINTS: Imported by application code
-// DEPENDENCIES: Standard library only
-// DANGER: None identified
-// CHANGE-SAFETY: Config values: safe to modify. Schema/structure: coordinate with team
-// TESTS: Run: pnpm test in package directory, pnpm type-check for types
-// 
-// AI-META-END
-
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
@@ -29,6 +17,9 @@ export default defineConfig({
         '**/node_modules/**',
         '**/dist/**',
         'vitest.config.ts',
+        'src/index.ts', // Re-export file
+        // React components - tested via E2E, see docs/testing/99_EXCEPTIONS.md
+        'src/*.tsx',
       ],
       all: true,
       lines: 100,
