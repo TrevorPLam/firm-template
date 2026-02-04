@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Test suite
+// OWNERSHIP: packages/capabilities
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: Standard library only
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 /**
  * @module ABTestingFramework
  * Comprehensive A/B testing framework for experimentation,

@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Security utilities and middleware
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Upstash Redis (rate limiting)
+// DANGER: XSS prevention - must sanitize all user input; Environment variable access - validate all values
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Advanced Security Headers Middleware
  * 

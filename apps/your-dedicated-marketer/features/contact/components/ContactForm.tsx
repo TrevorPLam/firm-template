@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: ContactForm
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: internal packages (@repo/*), React, Zod (validation)
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Contact form component with validation and submission handling.
  *

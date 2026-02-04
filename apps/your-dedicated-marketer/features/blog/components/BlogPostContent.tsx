@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: BlogPostContent
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: Standard library only
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'

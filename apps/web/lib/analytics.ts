@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Analytics tracking and event management
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Standard library only
+// DANGER: Environment variable access - validate all values
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Analytics event tracking abstraction layer.
  *

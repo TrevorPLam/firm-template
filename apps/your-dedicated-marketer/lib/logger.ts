@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Logging utility for structured application logs
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Standard library only
+// DANGER: Credential handling; Environment variable access - validate all values
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Centralized logging utility with Sentry integration.
  *

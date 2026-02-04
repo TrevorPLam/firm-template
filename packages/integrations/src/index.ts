@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Package entry point and public API exports
+// OWNERSHIP: packages/integrations
+// ENTRYPOINTS: Package entry point, imported by consumers
+// DEPENDENCIES: HubSpot (CRM)
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 /**
  * Integrations – adapter layer for external providers (CRM, analytics, etc.).
  * OFF by default. Capabilities call createIntegrations(config) to get adapters.

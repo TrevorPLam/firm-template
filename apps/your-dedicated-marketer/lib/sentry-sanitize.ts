@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Input sanitization and XSS prevention utilities
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Standard library only
+// DANGER: XSS prevention - must sanitize all user input
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import type { Event } from '@sentry/nextjs'
 
 const EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi

@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: Textarea
+// OWNERSHIP: packages/ui (shared UI components)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: internal packages (@repo/*), React
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 import React, { useId } from 'react'
 import { cn } from '@repo/utils'
 import { CheckCircle2 } from 'lucide-react'

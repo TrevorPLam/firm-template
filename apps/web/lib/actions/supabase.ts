@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Utility functions and helpers
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Supabase (database)
+// DANGER: Secret/API key handling - never log or expose; Database operations - ensure proper error handling
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 import { validatedEnv } from '../env'
 
 export type SupabaseLeadRow = {

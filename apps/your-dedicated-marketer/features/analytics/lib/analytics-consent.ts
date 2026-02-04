@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Analytics tracking and event management
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by application code
+// DEPENDENCIES: Standard library only
+// DANGER: None identified
+// CHANGE-SAFETY: Add functions: safe. Modify existing: check all call sites first
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Analytics consent helpers for client-side tracking.
  */

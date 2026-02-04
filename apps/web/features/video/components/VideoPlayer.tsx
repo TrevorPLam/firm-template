@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: VideoPlayer
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: internal packages (@repo/*)
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 import { Card } from '@repo/ui'
 import { cn } from '@/lib/utils'
 import { resolveVideoSource, type VideoProvider } from '@/lib/video'

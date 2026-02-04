@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Package entry point and public API exports
+// OWNERSHIP: packages/patterns
+// ENTRYPOINTS: Package entry point, imported by consumers
+// DEPENDENCIES: internal packages (@repo/*)
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 /**
  * Patterns – composed sections (hero, pricing, testimonials, etc.).
  * Built from @repo/ui primitives only; take content/config as props.

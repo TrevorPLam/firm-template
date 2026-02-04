@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+# AI-META-BEGIN
+# 
+# AI-META: Build or utility script
+# OWNERSHIP: scripts (build/deployment utilities)
+# ENTRYPOINTS: Imported by application modules
+# DEPENDENCIES: Standard library only
+# DANGER: None identified
+# CHANGE-SAFETY: Review impact on consumers before modifying public API
+# TESTS: Run: pnpm test && pnpm type-check
+# 
+# AI-META-END
+
 
 import datetime
 import os

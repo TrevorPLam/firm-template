@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Shared package module
+// OWNERSHIP: packages/patterns
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: internal packages (@repo/*), React
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 import React from 'react'
 import { Accordion, type AccordionItem, Container, Section, Typography } from '@repo/ui'
 

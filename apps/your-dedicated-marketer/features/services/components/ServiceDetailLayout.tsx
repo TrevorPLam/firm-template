@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: ServiceDetailLayout
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: internal packages (@repo/*), Next.js framework, React
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 /**
  * Reusable service detail page layout template.
  * 

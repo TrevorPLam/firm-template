@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Package entry point and public API exports
+// OWNERSHIP: packages/capabilities
+// ENTRYPOINTS: Package entry point, imported by consumers
+// DEPENDENCIES: Standard library only
+// DANGER: Environment variable access - validate all values
+// CHANGE-SAFETY: Config values: safe to modify. Schema/structure: coordinate with team
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 export interface PwaManifestConfig {
   /** Display name shown on install prompts and launchers. */
   name: string

@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Application module
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by application modules
+// DEPENDENCIES: React
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 'use client'
 
 import React from 'react'

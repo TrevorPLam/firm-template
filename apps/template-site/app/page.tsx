@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Next.js app router page or layout component
+// OWNERSHIP: apps/template-site
+// ENTRYPOINTS: Direct route access via Next.js app router
+// DEPENDENCIES: internal packages (@repo/*)
+// DANGER: None identified
+// CHANGE-SAFETY: Review impact on consumers before modifying public API
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import { Hero } from '@repo/patterns'
 
 const heroContent = {

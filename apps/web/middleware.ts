@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Next.js middleware for request/response handling
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Runs on every request before route handlers
+// DEPENDENCIES: Next.js framework
+// DANGER: XSS prevention - must sanitize all user input; Environment variable access - validate all values
+// CHANGE-SAFETY: High risk - affects all requests. Test edge cases thoroughly
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * Next.js middleware for security headers and request validation.
  *

@@ -1,3 +1,15 @@
+# AI-META-BEGIN
+# 
+# AI-META: Build or utility script
+# OWNERSHIP: scripts (build/deployment utilities)
+# ENTRYPOINTS: Imported by application modules
+# DEPENDENCIES: Standard library only
+# DANGER: None identified
+# CHANGE-SAFETY: Critical - any changes require security review and testing
+# TESTS: Integration tests required - run full test suite: pnpm test
+# 
+# AI-META-END
+
 #!/usr/bin/env bash
 # filepath: scripts/security/check-blast-radius.sh
 # purpose: Fail when protected paths change without explicit approval.

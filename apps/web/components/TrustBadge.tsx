@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: TrustBadge
+// OWNERSHIP: apps/web (marketing website)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: internal packages (@repo/*), React
+// DANGER: Credential handling
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test (Vitest), pnpm type-check (TypeScript)
+// 
+// AI-META-END
+
 /**
  * TrustBadge — Displays certifications or awards with tooltip details.
  *

@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Configuration file
+// OWNERSHIP: root (configuration)
+// ENTRYPOINTS: Loaded by build tools at compile time
+// DEPENDENCIES: Standard library only
+// DANGER: Environment variable access - validate all values
+// CHANGE-SAFETY: Config values: safe to modify. Schema/structure: coordinate with team
+// TESTS: Run: pnpm test && pnpm type-check
+// 
+// AI-META-END
+
 import { defineConfig } from '@playwright/test'
 
 // Central Playwright configuration for template E2E and smoke testing.

@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: Next.js middleware for request/response handling
+// OWNERSHIP: apps/your-dedicated-marketer
+// ENTRYPOINTS: Runs on every request before route handlers
+// DEPENDENCIES: Next.js framework, Upstash Redis (rate limiting)
+// DANGER: XSS prevention - must sanitize all user input; Environment variable access - validate all values
+// CHANGE-SAFETY: High risk - affects all requests. Test edge cases thoroughly
+// TESTS: Integration tests required - run full test suite: pnpm test
+// 
+// AI-META-END
+
 /**
  * Next.js middleware for security headers and request validation.
  *
@@ -211,7 +223,7 @@ export function middleware(request: NextRequest) {
       "style-src 'self' 'unsafe-inline'", // Tailwind injects styles at runtime
       "img-src 'self' data: https:", // Allow same-origin, data URIs, and HTTPS images
       // TODO: Tighten to specific domains when external image sources are identified
-      "font-src 'self' data:',
+      "font-src 'self' data:",
       process.env.NODE_ENV === 'development'
         ? "connect-src 'self' http://localhost:* ws://localhost:*"
         : "connect-src 'self' https://*.sentry.io https://*.upstash.io",

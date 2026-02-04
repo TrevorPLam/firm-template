@@ -1,3 +1,15 @@
+// AI-META-BEGIN
+// 
+// AI-META: React component: Accordion
+// OWNERSHIP: packages/ui (shared UI components)
+// ENTRYPOINTS: Imported by pages and other components
+// DEPENDENCIES: internal packages (@repo/*), React
+// DANGER: None identified
+// CHANGE-SAFETY: Props and styling: generally safe. Logic changes: test thoroughly
+// TESTS: Run: pnpm test in package directory, pnpm type-check for types
+// 
+// AI-META-END
+
 'use client'
 
 import React, { useId, useState } from 'react'
