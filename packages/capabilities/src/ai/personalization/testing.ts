@@ -116,7 +116,7 @@ export class ABTestingFramework {
       throw new Error('Variant weights must sum to 1.0')
     }
 
-    const testId = `test-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    const testId = `test-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
 
     const test: ABTest = {
       ...config,

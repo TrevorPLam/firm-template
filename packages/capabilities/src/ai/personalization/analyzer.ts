@@ -541,7 +541,7 @@ export class UserBehaviorAnalyzer {
       .map(([segment, count]) => ({ segment, count }))
 
     return {
-      totalProfiles: profiles.size,
+      totalProfiles: profiles.length,
       totalBehaviors,
       avgEngagement,
       topSegments,
