@@ -147,9 +147,10 @@ title: Create integration tests for patterns and capabilities
 type: devex
 priority: medium
 component: monitoring
-status: in-progress
-location: backlog/devex/todo/TODO.md
+status: done
+location: backlog/devex/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Implement application performance monitoring (APM)
 ## index_entry_end
 
@@ -158,9 +159,10 @@ title: Implement application performance monitoring (APM)
 type: devex
 priority: medium
 component: performance
-status: in-progress
-location: backlog/devex/todo/TODO.md
+status: done
+location: backlog/devex/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Add real user monitoring (RUM) for production insights
 ## index_entry_end
 
@@ -957,9 +959,10 @@ title: Implement API docs endpoint and OpenAPI pipeline
 type: devex
 priority: medium
 component: tooling
-status: todo
+status: done
 location: backlog/devex/TASK-20260203-079.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Configure Storybook build and deployment
 ## index_entry_end
 
