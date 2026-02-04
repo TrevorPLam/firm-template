@@ -73,7 +73,7 @@ export enum PHIAccessLevel {
   ADMIN = 4       // All access + audit logs
 }
 
-export function enforceMininumNecessary(
+export function enforceMinimumNecessary(
   userRole: string, 
   requestedData: string[]
 ): string[] {
