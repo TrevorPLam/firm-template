@@ -29,12 +29,11 @@ Global Rules:
 -->
 
 ## 🎯 Current Batch Focus
-**Batch Type:** (none)  
-**Batch Goal:** (set when promoting from backlog files)  
+**Batch Type:** business  
+**Batch Goal:** Execute top-priority business operations tasks.  
 **Batch Size Target:** 5
 
 ---
 
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
-
 <!-- (empty) -->

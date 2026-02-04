@@ -159,3 +159,38 @@ INDEX.toon
 
 # Security
 scripts/security/protected-paths.txt
+
+# Allow tracked build pipeline docs/scripts
+!scripts/build/
+!scripts/build/wasm/
+!scripts/build/wasm/README.md
+!scripts/build/wasm/build.sh
+!packages/wasm/
+!packages/wasm/build/
+!packages/wasm/build/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+env/
+ENV/
+.venv/

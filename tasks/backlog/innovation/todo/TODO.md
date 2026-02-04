@@ -29,8 +29,8 @@ Global Rules:
 -->
 
 ## 🎯 Current Batch Focus
-**Batch Type:** (none)  
-**Batch Goal:** (set when promoting from backlog files)  
+**Batch Type:** innovation  
+**Batch Goal:** Execute innovation and R&D tasks.  
 **Batch Size Target:** 5
 
 ---
@@ -38,3 +38,5 @@ Global Rules:
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
 
 <!-- (empty) -->
+
+

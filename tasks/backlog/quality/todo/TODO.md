@@ -29,8 +29,8 @@ Global Rules:
 -->
 
 ## 🎯 Current Batch Focus
-**Batch Type:** (none)  
-**Batch Goal:** (set when promoting from backlog files)  
+**Batch Type:** quality  
+**Batch Goal:** Execute quality and performance tasks.  
 **Batch Size Target:** 5
 
 ---

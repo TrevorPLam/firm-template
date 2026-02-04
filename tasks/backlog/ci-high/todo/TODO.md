@@ -29,8 +29,8 @@ Global Rules:
 -->
 
 ## 🎯 Current Batch Focus
-**Batch Type:** (none)  
-**Batch Goal:** (set when promoting from backlog files)  
+**Batch Type:** ci  
+**Batch Goal:** Execute top-priority CI-CD automation tasks.  
 **Batch Size Target:** 5
 
 ---

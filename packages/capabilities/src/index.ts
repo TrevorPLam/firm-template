@@ -32,3 +32,78 @@ export {
   type ClickEvent,
   type FormSubmissionEvent,
 } from './analytics';
+
+export {
+  getAiConfig,
+  validateAiConfig,
+  type AiConfig,
+  type AiConfigIssue,
+  type AiContentPolicy,
+  type AiProvider,
+} from './ai';
+export { getPwaConfig, type PwaConfig, type PwaManifestConfig } from './pwa';
+export {
+  getCmsConfig,
+  validateCmsConfig,
+  type CmsConfig,
+  type CmsConfigIssue,
+  type CmsProvider,
+} from './cms';
+export {
+  getRealtimeConfig,
+  validateRealtimeConfig,
+  type RealtimeConfig,
+  type RealtimeConfigIssue,
+  type RealtimeProvider,
+} from './realtime';
+export { getWasmConfig, validateWasmConfig, type WasmConfig, type WasmConfigIssue } from './wasm';
+
+// Blockchain integration
+export {
+  ProvenanceTracker,
+  RightsManager,
+  DigitalWatermarkManager,
+  AuditTrailManager,
+  LicensingContractManager,
+  type BlockchainConfig,
+  type ProvenanceRecord,
+  type CustodyRecord,
+  type DigitalRights,
+  type RightsPermission,
+  type RoyaltyConfig,
+  type DigitalWatermark,
+  type WatermarkVerification,
+  type AuditEntry,
+  type AuditQuery,
+  type LicenseTerms,
+  type UsageLimits,
+  type LicenseEvent,
+  type TransactionResult,
+} from './blockchain';
+
+// Voice interface
+export {
+  SpeechToTextEngine,
+  QueryProcessor,
+  NavigationCommandManager,
+  ScreenReaderManager,
+  VoiceAnalyticsManager,
+  type VoiceConfig,
+  type SpeechRecognitionResult,
+  type SpeechAlternative,
+  type NaturalLanguageQuery,
+  type QueryEntity,
+  type QueryContext,
+  type VoiceCommand,
+  type CommandHandler,
+  type CommandParameter,
+  type CommandResult,
+  type ScreenReaderConfig,
+  type AccessibleElement,
+  type VoiceInteractionEvent,
+  type VoiceAnalyticsMetrics,
+  type VoiceAnalyticsReport,
+  type AnalyticsTrend,
+  type NavigationTarget,
+  type VoiceFeedbackOptions,
+} from './voice';

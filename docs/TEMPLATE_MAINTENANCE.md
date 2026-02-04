@@ -1,3 +1,8 @@
+---
+title: Template Maintenance Workflow
+description: Operational guide for keeping the Firm template repository current.
+---
+
 # Template Maintenance Workflow
 
 This guide outlines the workflow for maintaining and updating the Firm template repository to ensure templates remain current, reliable, and valuable for users.
@@ -10,6 +15,19 @@ The Firm template repository serves as the foundation for new projects. Maintain
 - **Relevance**: Templates should use current best practices
 - **Consistency**: Templates should follow established patterns
 - **Extensibility**: Templates should be easy to customize
+
+### Example: template update checklist (with inline commentary)
+
+```bash
+# Sync dependencies before changing templates.
+pnpm install
+
+# Run targeted linting to catch template regressions early.
+pnpm lint
+
+# Update a template package version after verifying changes.
+pnpm --filter @firm/template-site version patch
+```
 
 ## Template Categories
 

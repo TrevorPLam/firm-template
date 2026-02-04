@@ -29,12 +29,28 @@ Global Rules:
 -->
 
 ## 🎯 Current Batch Focus
-**Batch Type:** (none)  
-**Batch Goal:** (set when promoting from backlog files)  
+**Batch Type:** devex  
+**Batch Goal:** Execute developer experience improvements.  
 **Batch Size Target:** 5
 
 ---
 
 <!-- Tasks are promoted here from backlog files. Keep only active tasks in this file. -->
 
-<!-- (empty) -->
+## task_begin
+### # [id:TASK-20260203-034][type:devex][priority:medium][component:productivity] Create developer productivity and velocity optimization tools
+
+**Status:** todo  
+**Description:** Implement developer productivity tools, velocity tracking, and optimization frameworks to improve development efficiency and team collaboration.  
+**Acceptance Criteria:**
+
+- [ ] Set up developer velocity tracking and metrics
+- [ ] Create productivity optimization tools and automation
+- [ ] Implement team collaboration and communication tools
+- [ ] Add code review optimization and quality gates
+- [ ] Create developer experience monitoring and feedback
+
+**Relevant Files:** `scripts/automation/`, `tools/`, `docs/development/`, `.github/`
+## task_end
+
+
