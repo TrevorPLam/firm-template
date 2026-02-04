@@ -68,3 +68,25 @@ Rules:
 - Created mock service fixtures and monitoring check script.
 - Documented integration testing workflow and conventions.
 ## task_end
+
+## task_begin
+### # [id:TASK-20260203-080][type:ci][priority:medium][component:testing] Add Playwright dependency and lockfile update
+
+**Status:** done  
+**Completed:** 2026-02-04  
+**Assignee:** @agent  
+**Description:** Add the `@playwright/test` dependency to the root workspace and refresh the lockfile when registry access is available.  
+**Acceptance Criteria:**
+
+- [x] Add `@playwright/test` to root devDependencies
+- [x] Update `pnpm-lock.yaml`
+- [x] Document Playwright install steps if additional setup is required
+
+**Relevant Files:** `package.json`, `pnpm-lock.yaml`, `docs/testing/README.md`
+
+**Notes & Summary:**
+- Installed @playwright/test@1.58.1 as workspace devDependency
+- Updated pnpm-lock.yaml with 869 new packages
+- Enhanced testing documentation with comprehensive Playwright setup and usage instructions
+- Documented browser installation, test execution modes, and UI testing capabilities
+## task_end

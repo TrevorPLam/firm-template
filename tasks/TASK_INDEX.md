@@ -971,9 +971,10 @@ title: Configure Storybook build and deployment
 type: ci
 priority: medium
 component: testing
-status: todo
-location: backlog/ci-medium/TASK-20260203-080.md
+status: done
+location: backlog/ci-medium/todo/ARCHIVE/ARCHIVE.md
 created: 2026-02-03
+completed: 2026-02-04
 title: Add Playwright dependency and lockfile update
 ## index_entry_end
 
