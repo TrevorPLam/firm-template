@@ -1,9 +1,9 @@
 /**
  * AI-Powered Content Personalization Engine
- * 
+ *
  * Provides advanced machine learning capabilities for dynamic content optimization
  * and personalized user experience delivery based on behavior analysis.
- * 
+ *
  * @module @firm-template/capabilities/ai/personalization
  */
 

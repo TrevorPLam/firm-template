@@ -358,13 +358,10 @@ export class UserBehaviorAnalyzer {
     // Generate interventions
     const interventions = this.generateInterventions(action, profile)
 
-    // Calculate confidence
-    const confidence = Math.min(
-      1,
-      profile.behaviors.length / 25,
-      factors.length / 4,
-      probability,
-    )
+    // Calculate confidence (ensure all components are clamped and combined properly)
+    const behaviorConfidence = Math.min(profile.behaviors.length / 25, 1)
+    const factorConfidence = Math.min(factors.length / 4, 1)
+    const confidence = Math.min(behaviorConfidence, factorConfidence, probability)
 
     return {
       action,
