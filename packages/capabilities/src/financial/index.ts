@@ -283,6 +283,11 @@ export class FinancialReporter {
   }
 }
 
+// Export enhanced financial analytics modules
+export * from './types';
+export * from './calculator';
+export * from './reporting';
+
 /**
  * Export all financial utilities
  */
