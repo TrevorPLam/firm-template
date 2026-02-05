@@ -24,9 +24,10 @@ This governance pack defines the mandatory operating rules for autonomous and hu
 3. `AGENTS/policies/SAFETY_POLICY.md`
 4. `AGENTS/policies/ARCHITECTURE_RULES.md`
 5. `AGENTS/policies/CODING_STANDARDS.md`
-6. `AGENTS/tasks/TODO.toon`
-7. Supporting docs referenced by active tasks
-
+6. `AGENTS/tasks/BACKLOG.toon`
+7. `AGENTS/tasks/TODO.toon`
+8. `AGENTS/tasks/ARCHIVE.toon`
+9. Supporting docs referenced by active tasks
 ## Escalation
 If policy conflicts occur, precedence is:
 1. System/developer/user instructions in runtime context
