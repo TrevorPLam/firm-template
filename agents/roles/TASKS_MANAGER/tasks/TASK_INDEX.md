@@ -31,8 +31,8 @@ Rules:
 type: config  
 priority: critical  
 component: repo  
-status: todo  
-location: BACKLOG.md  
+status: blocked  
+location: TODO.md  
 created: 2026-02-03  
 title: Create AGENTS governance pack  
 ## index_entry_end
@@ -160,4 +160,3 @@ title: Declare supported Node.js versions
 
 
 ---
-

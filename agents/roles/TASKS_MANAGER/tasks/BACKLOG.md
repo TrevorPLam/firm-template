@@ -43,40 +43,6 @@ Global Rules:
 ## group_begin [type:config][priority:critical]
 ## ðŸ§° Config & Tooling â€” CRITICAL
 
-## task_begin
-### # [id:TASK-20260203-001][type:config][priority:critical][component:repo] Create AGENTS governance pack
-**Status:** todo  
-**Description:** Create comprehensive governance pack per PLAN.md requirements. This is the foundation for all other work and must be completed first per PLAN.md "Step 1: Inspect the repository and create governance pack if missing."  
-**Dependencies:** None (blocks all other work)
-**Acceptance Criteria:**  
-- [ ] /AGENTS/AGENTS.toon entrypoint created
-- [ ] /AGENTS/policies/TOOL_POLICY.md created
-- [ ] /AGENTS/policies/SAFETY_POLICY.md created
-- [ ] /AGENTS/policies/ARCHITECTURE_RULES.md created
-- [ ] /AGENTS/policies/CODING_STANDARDS.md created
-- [ ] /AGENTS/tasks/TODO.toon created
-- [ ] /AGENTS/tasks/BACKLOG.toon created
-- [ ] /AGENTS/tasks/ARCHIVE.toon created
-- [ ] Governance pack is enforceable and documented
-**Definition of Done:**  
-- [ ] All files created and validated
-- [ ] PLAN.md requirements satisfied
-- [ ] README.md links to governance pack
-**Relevant Files:** `/AGENTS/*` (all new), `README.md`, `PLAN.md`
-**Relevant Documentation:** `PLAN.md` â€” Agent governance requirements, `docs/standards/README.md` â€” Documentation standards to follow, `docs/architecture/README.md` â€” System architecture for ARCHITECTURE_RULES, `docs/security/00-overview/SECURITY_POLICY.md` â€” Security policy for SAFETY_POLICY
-**Plan:**  
-1. Create `/AGENTS/` directory structure
-2. Create AGENTS.toon entrypoint (references PLAN.md)
-3. Define TOOL_POLICY (tool usage guidelines)
-4. Define SAFETY_POLICY (security, PII, credentials)
-5. Define ARCHITECTURE_RULES (from PLAN.md: domain boundaries, no cross-domain reads, workflow orchestration)
-6. Define CODING_STANDARDS (TypeScript, testing, documentation)
-7. Create task management files (toon format)
-8. Link from README.md
-9. Validate against PLAN.md checklist
-**Estimated Effort:** 1 week
-## task_end
-
 ## group_end
 
 ## group_begin [type:infra][priority:high]
@@ -294,4 +260,3 @@ Global Rules:
 ## task_end
 
 ## group_end
-
