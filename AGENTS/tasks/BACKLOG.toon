@@ -1,0 +1,12 @@
+# AGENTS Task Queue (BACKLOG)
+
+## Purpose
+Unscheduled governance/configuration tasks waiting for promotion into TODO.
+
+## Promotion Rules
+- Promote highest leverage items first.
+- Keep batch type consistent in TODO.
+- Split oversized items before promotion.
+
+## Backlog
+- (none)

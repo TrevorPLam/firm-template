@@ -1,0 +1,36 @@
+# AGENTS Governance Entrypoint
+
+## Purpose
+This governance pack defines the mandatory operating rules for autonomous and human contributors in this repository.
+
+## Inputs
+- Repository-level policy files under `AGENTS/policies/`.
+- Task workflow files under `AGENTS/tasks/`.
+- Existing contribution docs under `README.md`, `CONTRIBUTING.md`, and `docs/`.
+
+## Outputs
+- Enforceable policy boundaries for tooling, safety, architecture, and coding practices.
+- Deterministic task lifecycle (`BACKLOG -> TODO -> ARCHIVE`).
+
+## Invariants
+1. Never weaken security, tenancy, or compliance controls for convenience.
+2. Execute only active TODO items unless explicitly instructed otherwise.
+3. Every completed task must include verification evidence and archival notes.
+4. Unknowns must be recorded as `UNKNOWN` with the source file needed to resolve them.
+
+## Required Read Order
+1. `AGENTS/AGENTS.toon` (this file)
+2. `AGENTS/policies/TOOL_POLICY.md`
+3. `AGENTS/policies/SAFETY_POLICY.md`
+4. `AGENTS/policies/ARCHITECTURE_RULES.md`
+5. `AGENTS/policies/CODING_STANDARDS.md`
+6. `AGENTS/tasks/TODO.toon`
+7. Supporting docs referenced by active tasks
+
+## Escalation
+If policy conflicts occur, precedence is:
+1. System/developer/user instructions in runtime context
+2. Safety and security policy
+3. Architecture rules
+4. Coding standards
+5. Task-level instructions

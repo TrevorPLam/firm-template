@@ -1,0 +1,10 @@
+# AGENTS Task Queue (TODO)
+
+## Purpose
+Active governance and configuration tasks currently in execution.
+
+## Workflow
+Move completed task blocks to `AGENTS/tasks/ARCHIVE.toon` and replenish from backlog when below target batch size.
+
+## Active Tasks
+- (none)

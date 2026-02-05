@@ -34,6 +34,7 @@ Global Rules:
 -->
 
 ## group_begin [type:security][priority:critical]
+
 ## ðŸ” Security â€” CRITICAL (Production Blockers)
 
 <!-- Tasks TASK-20260204-001, TASK-20260204-002, TASK-20260204-003 moved to TODO.md on 2026-02-04 -->
@@ -41,222 +42,200 @@ Global Rules:
 ## group_end
 
 ## group_begin [type:config][priority:critical]
+
 ## ðŸ§° Config & Tooling â€” CRITICAL
 
 ## group_end
 
 ## group_begin [type:infra][priority:high]
+
 ## ðŸ³ Infrastructure (Unscheduled) â€” High
-
-
 
 ## group_end
 
 ## group_begin [type:dev][priority:high]
+
 ## ðŸš€ Development (Unscheduled) â€” High
-
-
-
 
 ## group_end
 
 ## group_begin [type:dev][priority:medium]
+
 ## ðŸš€ Development (Unscheduled) â€” Medium
-
-
-
 
 ## group_end
 
 ## group_begin [type:quality][priority:medium]
-## âœ… Code Quality (Unscheduled) â€” Medium
 
+## âœ… Code Quality (Unscheduled) â€” Medium
 
 ## group_end
 
 ## group_begin [type:security][priority:high]
+
 ## ðŸ” Security â€” HIGH
 
+---
 
 ---
 
-
 ---
-
-
----
-
 
 ## group_end
 
 ## group_begin [type:security][priority:medium]
+
 ## ðŸ” Security â€” MEDIUM
 
+---
 
 ---
 
+---
 
 ---
 
-
 ---
 
-
 ---
-
-
----
-
-
----
-
 
 ## group_end
 
 ## group_begin [type:quality][priority:high]
+
 ## âœ… Code Quality (Unscheduled) â€” High
 
 ## group_end
 
 ## group_begin [type:ci][priority:high]
+
 ## ðŸ§ª CI (Unscheduled) â€” High
 
 ## group_end
 
 ## group_begin [type:test][priority:high]
+
 ## ðŸ§± Testing (Unscheduled) â€” High
 
 ## group_end
 
 ## group_begin [type:devex][priority:medium]
-## ðŸ§­ Developer Experience (Unscheduled) â€” Medium
 
+## ðŸ§­ Developer Experience (Unscheduled) â€” Medium
 
 ## group_end
 
 ## group_begin [type:security][priority:medium]
+
 ## ðŸ” Security & Governance (Unscheduled) â€” Medium
 
-
 ---
-
 
 ## group_end
 
 ## group_begin [type:docs][priority:high]
+
 ## ðŸ“š Documentation â€” HIGH
 
+---
 
 ---
 
+---
 
 ---
 
+---
 
 ---
 
+---
 
 ---
 
+---
 
 ---
 
+---
 
 ---
 
-
 ---
-
-
----
-
-
----
-
-
----
-
-
----
-
-
----
-
-
----
-
 
 ## group_end
 
 ## group_begin [type:docs][priority:medium]
+
 ## ðŸ“š Documentation â€” MEDIUM (P1 Remaining)
 
-
 ---
 
-
 ---
-
 
 ## group_end
 
 ## group_begin [type:docs][priority:low]
+
 ## ðŸ“š Documentation â€” LOW (P2 "Wise Extras")
 
+---
 
 ---
 
-
 ---
-
-
----
-
 
 ## group_end
 
 ## group_begin [type:ci][priority:medium]
+
 ## ðŸ§ª CI (Unscheduled) â€” Medium
 
 ## group_end
 
 ## group_begin [type:reliability][priority:low]
-## ðŸ›¡ï¸ Reliability (Unscheduled) â€” Low
 
+## ðŸ›¡ï¸ Reliability (Unscheduled) â€” Low
 
 ## group_end
 
 ## group_begin [type:release][priority:low]
-## ðŸ·ï¸ Release Management (Unscheduled) â€” Low
 
+## ðŸ·ï¸ Release Management (Unscheduled) â€” Low
 
 ## group_end
 
 ## group_begin [type:infra][priority:low]
-## ðŸ³ Infrastructure (Unscheduled) â€” Low
 
+## ðŸ³ Infrastructure (Unscheduled) â€” Low
 
 ## group_end
 
 ## group_begin [type:config][priority:low]
+
 ## ðŸ§° Config & Tooling (Unscheduled) â€” Low
 
 ## task_begin
-### # [id:TASK-20260203-004][type:config][priority:low][component:tooling] Declare supported Node.js versions
+
+### # [id:TASK-20260205-001][type:config][priority:medium][component:repo] Reconcile broken governance task references
+
 **Status:** todo  
-**Description:** Add a clear Node.js version requirement so installs/builds donâ€™t fail unexpectedly on older Node versions.  
-**Acceptance Criteria:**  
-- [ ] `package.json` declares `engines.node` (minimum supported version)
-- [ ] Local dev and CI use a compatible Node version
-**Relevant Files:** `package.json`
-**Relevant Documentation:** `docs/architecture/10_current_state/BUILD_AND_TOOLING.md` â€” Build requirements, `README.md` â€” Setup instructions
-**Plan:**  
-1. Determine minimum Node.js version (test with current dependencies)
-2. Add `engines.node` field to package.json
-3. Update .nvmrc if present
-4. Update CI to use specified Node version
-5. Document Node version in README
-**Estimated Effort:** 30 minutes
+**Description:** Update task templates and role TODO references that currently point to missing files (for example `PLAN.md`, `docs/standards/README.md`, and `docs/architecture/README.md`) so future agents can verify requirements without guesswork.  
+**Acceptance Criteria:**
+
+- [ ] Missing references are either created or replaced with existing canonical paths
+- [ ] TASKS_MANAGER TODO and related templates reference valid files only
+- [ ] A short note explains where governance requirements now live
+      **Relevant Files:** `agents/roles/TASKS_MANAGER/tasks/TODO.md`, `agents/roles/TASKS_MANAGER/tasks/TASKS.md`, `AGENTS/AGENTS.toon`, `README.md`
+      **Relevant Documentation:** `README.md` — repo entrypoint, `docs/README.md` — docs index
+      **Plan:**
+
+1. Inventory invalid paths in role/task markdown files
+2. Replace with valid existing files or add missing docs intentionally
+3. Verify all updated references resolve with `rg --files`
+4. Document canonical governance source-of-truth locations
+   **Estimated Effort:** 1-2 hours
+
 ## task_end
 
 ## group_end
