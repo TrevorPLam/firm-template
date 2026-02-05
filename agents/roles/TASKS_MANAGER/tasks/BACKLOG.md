@@ -217,7 +217,7 @@ Global Rules:
 
 ## task_begin
 
-### # [id:TASK-20260205-001][type:config][priority:medium][component:repo] Reconcile broken governance task references
+### # [id:TASK-20260205-001][type:config][priority:low][component:repo] Reconcile broken governance task references
 
 **Status:** todo  
 **Description:** Update task templates and role TODO references that currently point to missing files (for example `PLAN.md`, `docs/standards/README.md`, and `docs/architecture/README.md`) so future agents can verify requirements without guesswork.  
