@@ -226,15 +226,16 @@ Global Rules:
 - [ ] Missing references are either created or replaced with existing canonical paths
 - [ ] TASKS_MANAGER TODO and related templates reference valid files only
 - [ ] A short note explains where governance requirements now live
-      **Relevant Files:** `agents/roles/TASKS_MANAGER/tasks/TODO.md`, `agents/roles/TASKS_MANAGER/tasks/TASKS.md`, `AGENTS/AGENTS.toon`, `README.md`
-      **Relevant Documentation:** `README.md` — repo entrypoint, `docs/README.md` — docs index
-      **Plan:**
+**Relevant Files:** `agents/roles/TASKS_MANAGER/tasks/TODO.md`, `agents/roles/TASKS_MANAGER/tasks/TASKS.md`, `AGENTS/AGENTS.toon`, `README.md`
+**Relevant Documentation:** `README.md` — repo entrypoint, `docs/README.md` — docs index
+**Plan:**
 
 1. Inventory invalid paths in role/task markdown files
 2. Replace with valid existing files or add missing docs intentionally
 3. Verify all updated references resolve with `rg --files`
 4. Document canonical governance source-of-truth locations
-   **Estimated Effort:** 1-2 hours
+
+**Estimated Effort:** 1-2 hours
 
 ## task_end
 
