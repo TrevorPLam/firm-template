@@ -133,7 +133,7 @@ Rules:
 
 ## task_begin
 
-## 4. # [id:TASK-20260203-001][type:config][priority:critical][component:repo] Create AGENTS governance pack
+## 4. # [id:TASK-20260205-001][type:config][priority:critical][component:repo] Create AGENTS governance pack
 
 **Status:** done  
 **Created:** 2026-02-03  
