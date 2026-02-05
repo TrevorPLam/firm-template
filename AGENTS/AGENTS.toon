@@ -30,8 +30,8 @@ This governance pack defines the mandatory operating rules for autonomous and hu
 9. Supporting docs referenced by active tasks
 ## Escalation
 If policy conflicts occur, precedence is:
-1. System/developer/user instructions in runtime context
-2. Safety and security policy
+1. Safety and security policy
+2. System/developer/user instructions in runtime context (subject to safety and compliance constraints)
 3. Architecture rules
 4. Coding standards
 5. Task-level instructions
