@@ -13,7 +13,7 @@ This repo implements a **baked-in client architecture** where adding a new clien
 pnpm install
 ```
 
-Copy `.env.example` to `.env` and fill in values for local development (required for apps using Supabase/HubSpot; see [CONTRIBUTING.md](CONTRIBUTING.md)).
+Use Node.js `20.x` (`.nvmrc` provided), then copy `.env.example` to `.env` and fill in values for local development (required for apps using Supabase/HubSpot; see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Usage
 
@@ -40,7 +40,7 @@ pnpm type-check
 This repo is structured as a **platform for many marketing sites**. See [docs/PLATFORM.md](docs/PLATFORM.md) and [docs/archive/CLIENT_SITES.md](docs/archive/CLIENT_SITES.md).
 
 - **apps/**
-  - `web/` – Main Next.js app 
+  - `web/` – Main Next.js app
   - `template-site/` – Template site for new client onboarding
   - `your-dedicated-marketer/` – Second client site (dedicated marketer theme)
 - **packages/**
@@ -72,6 +72,10 @@ This repo is structured as a **platform for many marketing sites**. See [docs/PL
 4. Compose pages using patterns + capabilities
 
 See [docs/archive/CLIENT_SITES.md](docs/archive/CLIENT_SITES.md) for complete guide.
+
+## Governance
+
+Agent governance policies and task lifecycle templates live under [`AGENTS/`](AGENTS/AGENTS.toon).
 
 ## Contributing
 
